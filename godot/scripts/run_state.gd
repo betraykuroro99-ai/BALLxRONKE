@@ -114,6 +114,8 @@ func spawn_wave() -> void:
 func _add_enemy(pos: Vector2, width: float, hp: float, kind: String, speed: float) -> void:
 	next_id += 1
 	enemies.append({"id": next_id, "pos": pos, "width": width, "hp": hp, "max_hp": hp, "kind": kind,
+		"guardian": ("rootheart" if wave >= 10 else "gatekeeper") if kind == "boss" else "",
+		"boss_phase": 1, "volley": 0, "attack_phase": 1, "attack_pattern": "gate_fan",
 		"speed": speed, "fire": 2.0 + rng.randf() * 4.0, "charging": false, "attack_angle": 0.0, "burn": 0.0, "poison": 0.0, "slow": 0.0, "weak": 0.0, "flash": 0.0, "dead": false})
 
 func _step(delta: float, input: Dictionary) -> void:
@@ -208,6 +210,9 @@ func _update_enemies(delta: float, world_delta: float) -> void:
 		enemy.pos.y += enemy.speed * world_delta * (0.35 if enemy.slow > 0.0 else 1.0)
 		if enemy.kind == "boss":
 			enemy.pos.x = 300 + sin(time * 0.65) * 140
+			if enemy.boss_phase == 1 and enemy.hp <= enemy.max_hp * 0.5:
+				enemy.boss_phase = 2
+				emit("boss_phase", {"pos": enemy.pos, "guardian": enemy.guardian})
 		if enemy.pos.y + enemy.width / 2.0 > HEIGHT - 120:
 			breach_count += 1
 			if enemy.kind == "boss":
@@ -220,26 +225,46 @@ func _update_enemies(delta: float, world_delta: float) -> void:
 			continue
 		if enemy.kind in ["prism", "boss"]:
 			enemy.fire -= world_delta
-			var windup = BOSS_WINDUP if enemy.kind == "boss" else PRISM_WINDUP
+			var windup = attack_windup(enemy)
 			if enemy.fire <= windup and not enemy.charging:
 				enemy.charging = true
 				# Lock the angle when the warning begins. Dodging during the windup
 				# works because the released volley follows the displayed lanes.
-				enemy.attack_angle = (player.pos - enemy.pos).angle() + (rng.randf() - 0.5) * (0.6 if crew.id == "tiptoer" else 0.12)
+				enemy.attack_phase = enemy.boss_phase
+				enemy.attack_pattern = "root_spread" if enemy.guardian == "rootheart" and enemy.volley % 2 == 0 else "root_aim" if enemy.guardian == "rootheart" else "gate_fan"
+				enemy.attack_angle = PI / 2 if enemy.attack_pattern == "root_spread" else (player.pos - enemy.pos).angle() + (rng.randf() - 0.5) * (0.6 if crew.id == "tiptoer" else 0.12)
 				emit("windup", {"pos": enemy.pos})
 			if enemy.fire <= 0.0:
 				for direction in attack_directions(enemy):
 					bullets.append({"pos": enemy.pos, "velocity": direction * 145.0, "radius": 7.0 if enemy.kind == "boss" else 5.0,
 						"damage": 5.0 if enemy.weak > 0.0 else 10.0, "dead": false})
-				enemy.fire = 1.5 if enemy.kind == "boss" else 4.5
+				enemy.volley += 1
+				enemy.fire = (1.7 if enemy.boss_phase == 2 else 1.9) if enemy.guardian == "rootheart" else 1.5 if enemy.kind == "boss" else 4.5
 				enemy.charging = false
 
+func attack_windup(enemy: Dictionary) -> float:
+	return 0.95 if enemy.guardian == "rootheart" else BOSS_WINDUP if enemy.kind == "boss" else PRISM_WINDUP
+
 func attack_directions(enemy: Dictionary) -> Array[Vector2]:
-	# One shared definition keeps warnings and projectiles aligned.
+	# A volley snapshots phase/pattern at charge start. Crossing half health
+	# cannot change already-displayed lanes before the projectiles are released.
 	var result: Array[Vector2] = []
-	var count = 3 if enemy.kind == "boss" else 1
+	var count = 1
+	var spacing = 0.21
+	if enemy.kind == "boss":
+		var enraged: bool = enemy.attack_phase == 2
+		match enemy.attack_pattern:
+			"root_spread":
+				count = 7 if enraged else 5
+				spacing = 0.20 if enraged else 0.24
+			"root_aim":
+				count = 5 if enraged else 3
+				spacing = 0.17
+			_:
+				count = 5 if enraged else 3
+				spacing = 0.16 if enraged else 0.21
 	for i in range(count):
-		result.append(Vector2.from_angle(enemy.attack_angle + (i - (count - 1) / 2.0) * 0.21))
+		result.append(Vector2.from_angle(enemy.attack_angle + (i - (count - 1) / 2.0) * spacing))
 	return result
 
 func _update_ball(ball: Dictionary, delta: float) -> void:

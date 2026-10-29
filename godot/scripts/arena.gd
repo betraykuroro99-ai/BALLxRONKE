@@ -38,6 +38,8 @@ var shake_energy = 0.0
 var shake_offset = Vector2.ZERO
 var feedback_clock = 0.0
 var hurt_flash = 0.0
+var phase_notice = ""
+var phase_notice_time = 0.0
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(180, 246)
@@ -71,6 +73,7 @@ func set_run(run: RonkeRun) -> void:
 	shake_offset = Vector2.ZERO
 	hurt_flash = 0.0
 	banner_time = 0.0
+	phase_notice_time = 0.0
 	particles.clear()
 	labels.clear()
 	rings.clear()
@@ -190,6 +193,9 @@ func push_event(event: Dictionary) -> void:
 		banner_time = 2.1
 		if effects and rings.size() < 32:
 			rings.append({"pos": event.pos, "radius": 140.0, "life": 0.35})
+	if kind == "boss_phase":
+		phase_notice = "ROOTHEART / AWAKENED" if event.guardian == "rootheart" else "GATEKEEPER / ENRAGED"
+		phase_notice_time = 1.8
 	if kind == "wave":
 		banner = "GUARDIAN AHEAD" if event.boss else "DEPTH %02d" % event.wave
 		banner_time = 2.1
@@ -217,6 +223,7 @@ func _process(delta: float) -> void:
 	shake_offset = Vector2(sin(feedback_clock * 83), cos(feedback_clock * 107)) * 6.0 * shake_strength * shake_energy * shake_energy if active and effects else Vector2.ZERO
 	if active:
 		banner_time = maxf(0, banner_time - delta)
+		phase_notice_time = maxf(0, phase_notice_time - delta)
 		for particle in particles:
 			particle.life -= delta
 			particle.pos += particle.velocity * delta
@@ -355,6 +362,8 @@ func _draw() -> void:
 		var remaining = maxf(0.0, 1.6 - model.clear_clock)
 		_text("EXIT OPENING" if model.wave == RonkeRun.LAST_WAVE else "NEXT DEPTH / %02d" % (model.wave + 1), Vector2(300, 120), 25, GOLD, true)
 		_text("%.1fs / STAY ALERT" % remaining, Vector2(300, 145), 15, CREAM, true)
+	if phase_notice_time > 0:
+		_text(phase_notice, Vector2(300, 212), 22, Color("ffc0be"), true)
 	if banner_time > 0:
 		var opacity = minf(1.0, banner_time * 3)
 		_box(Rect2(106, 294, 388, 88), Color(0.04, 0.09, 0.075, opacity * 0.86), Color(GOLD, opacity * 0.55), 4)
@@ -367,7 +376,7 @@ func _draw() -> void:
 
 func _draw_attack_warning(enemy: Dictionary) -> void:
 	# Essential gameplay information stays visible with optional effects disabled.
-	var duration = RonkeRun.BOSS_WINDUP if enemy.kind == "boss" else RonkeRun.PRISM_WINDUP
+	var duration = model.attack_windup(enemy)
 	var progress = clampf(1.0 - enemy.fire / duration, 0.0, 1.0)
 	var color = Color("ffc0be")
 	var radius: float = enemy.width * 0.6 + 5.0
@@ -404,7 +413,7 @@ func _draw_enemy(enemy: Dictionary) -> void:
 	var width: float = enemy.width
 	var name: String = enemy.kind
 	if enemy.kind == "boss":
-		name = "gatekeeper" if enemy.max_hp < 600 else "rootheart"
+		name = enemy.guardian
 	var data: Array = visual_data.get("enemy_regions", {}).get(name, [0, 0, 512, 512])
 	var region = Rect2(data[0], data[1], data[2], data[3])
 	var scale_factor = 1.2 if enemy.kind == "boss" else 1.14
@@ -423,9 +432,13 @@ func _draw_enemy(enemy: Dictionary) -> void:
 		var bar = Rect2(Vector2(pos.x - draw_size.x / 2, rect.end.y + 5), Vector2(draw_size.x, 5 if enemy.kind == "boss" else 3.5))
 		draw_rect(bar.grow(1), Color(0.02, 0.04, 0.03, 0.9))
 		bar.size.x *= clampf(enemy.hp / enemy.max_hp, 0, 1)
-		draw_rect(bar, GOLD if enemy.kind == "boss" else Color("a8ca9c"))
+		draw_rect(bar, Color("ffc0be") if enemy.kind == "boss" and enemy.boss_phase == 2 else GOLD if enemy.kind == "boss" else Color("a8ca9c"))
+		if enemy.kind == "boss":
+			var midpoint = bar.position + Vector2(draw_size.x * 0.5, 0)
+			draw_line(midpoint - Vector2(0, 1), midpoint + Vector2(0, 6), DARK, 2)
 	if enemy.kind == "boss":
-		_text("THE GATEKEEPER" if enemy.max_hp < 600 else "THE ROOT OF IT ALL", Vector2(pos.x, rect.position.y - 9), 12, GOLD, true)
+		var title = "THE GATEKEEPER" if enemy.guardian == "gatekeeper" else "THE ROOT OF IT ALL"
+		_text(title + (" / II" if enemy.boss_phase == 2 else " / I"), Vector2(pos.x, rect.position.y - 9), 12, Color("ffc0be") if enemy.boss_phase == 2 else GOLD, true)
 
 func _draw_touch() -> void:
 	var origin = touch_origin if move_touch >= 0 else Vector2(82, 750)

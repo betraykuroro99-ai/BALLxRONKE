@@ -1,13 +1,14 @@
 # Enemy attack readability
 
 Prism enemies now warn for the final 0.55 seconds of their firing cooldown;
-guardians warn for 0.75 seconds. A ring fills around the shooter while dashed
-lanes and arrowheads preview the one-shot or three-shot volley. The angle locks
+Gatekeeper warns for 0.75 seconds and Rootheart for 0.95 seconds. A ring fills around the shooter while dashed
+lanes and arrowheads preview the upcoming volley. The angle locks
 when charging starts, so moving during the warning is a useful dodge. A shared
 direction helper feeds drawing and bullet creation. The firing origin remains
 the enemy's current position as it moves; the lane moves with that origin.
 
-Cooldown lengths, volley sizes, projectile speed and damage are unchanged.
+Prism cooldowns and projectile speed/damage are unchanged. Guardian patterns and
+cadence are described in GUARDIAN_ENCOUNTERS.md.
 These are world-time durations: Surge slow motion and the Tactician's time
 freeze affect both the warning and the attack. Upgrade/pause also hold the
 windup. Defeating a charging enemy cancels its volley. A breached enemy no

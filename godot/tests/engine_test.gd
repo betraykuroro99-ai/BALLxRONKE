@@ -31,6 +31,7 @@ func _run_tests() -> void:
 		print("CREW ", crew.id, ": ", run.phase, " wave ", run.wave, " kills ", run.kills)
 	_test_mechanics()
 	_test_attack_warnings()
+	_test_guardian_phases()
 	_test_report()
 	_test_save()
 	_test_exports()
@@ -140,6 +141,57 @@ func _test_attack_warnings() -> void:
 	breach.enemies[0].fire = 0
 	breach._update_enemies(0.02, 0.02)
 	check(breach.enemies[0].dead and breach.bullets.is_empty(), "Breached shooter cannot fire after removal")
+
+func _test_guardian_phases() -> void:
+	for world_index in range(3):
+		for encounter in [5, 10]:
+			var run = RonkeRun.new("warrior", world_index)
+			run.enemies.clear()
+			run.wave = encounter
+			run._add_enemy(Vector2(300, 150), 110, 500, "boss", 0)
+			var boss: Dictionary = run.enemies[0]
+			var root = encounter == 10
+			check(boss.guardian == ("rootheart" if root else "gatekeeper"), "Guardian identity comes from encounter, not HP")
+			var windup = run.attack_windup(boss)
+			boss.fire = windup + 0.01
+			run.drain_events()
+			run._update_enemies(0.02, 0.02)
+			var preview = run.attack_directions(boss)
+			check(preview.size() == (5 if root else 3), "Distinct first-phase volley sizes")
+			boss.hp = boss.max_hp * 0.5
+			run._update_enemies(0.01, 0.01)
+			check(boss.boss_phase == 2 and boss.attack_phase == 1, "Phase transition preserves charging volley")
+			check(run.drain_events().filter(func(e): return e.type == "boss_phase").size() == 1, "Single phase transition notification")
+			for j in range(preview.size()):
+				check(preview[j].distance_to(run.attack_directions(boss)[j]) < 0.0001, "Phase transition cannot change preview lanes")
+			for _tick in range(12):
+				if not run.bullets.is_empty():
+					break
+				run._update_enemies(0.1, 0.1)
+			check(run.bullets.size() == preview.size(), "Charging volley retains its size at release")
+			for j in range(run.bullets.size()):
+				check(run.bullets[j].velocity.normalized().distance_to(preview[j]) < 0.0001, "Guardian volley follows every preview lane")
+			check(run.drain_events().filter(func(e): return e.type == "boss_phase").is_empty(), "Phase notice is not repeated")
+			for volley in [1, 2]:
+				run.bullets.clear()
+				boss.volley = volley
+				boss.charging = false
+				boss.fire = windup + 0.01
+				run._update_enemies(0.02, 0.02)
+				var expected = 7 if root and volley == 2 else 5
+				check(run.attack_directions(boss).size() == expected and boss.attack_phase == 2, "Second phase widens future volleys")
+				if root:
+					check(boss.attack_pattern == ("root_aim" if volley == 1 else "root_spread"), "Rootheart alternates attack types")
+					if volley == 2:
+						check(absf(boss.attack_angle - PI / 2) < 0.0001, "Rootheart spread is centered downward")
+				var lanes = run.attack_directions(boss)
+				for _tick in range(12):
+					if not run.bullets.is_empty():
+						break
+					run._update_enemies(0.1, 0.1)
+				check(run.bullets.size() == expected, "Second-phase release matches preview size")
+				for j in range(run.bullets.size()):
+					check(run.bullets[j].velocity.normalized().distance_to(lanes[j]) < 0.0001, "Second-phase release follows warning")
 
 func _test_report() -> void:
 	var run = RonkeRun.new()

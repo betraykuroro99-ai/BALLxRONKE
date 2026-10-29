@@ -38,6 +38,8 @@ renderer.
 
 - Expedition reporting: action counts, damage excluding blocked/overkill damage, fatal projectile/breach/guardian causes, terminal-state stability, saved report round-trip, malformed report validation, old-save compatibility, result/journal UI and no repeat banking.
 
+- Guardian encounters: encounter-based identity, both phases in all three worlds, Rootheart alternation, single half-health transition, immutable in-flight warning lanes and matching projectile counts/directions, second-phase presentation with optional effects disabled.
+
 ## Not yet verified
 
 - A real graphical playtest of the native game and its presentation.

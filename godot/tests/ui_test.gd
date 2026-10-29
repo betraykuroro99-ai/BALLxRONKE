@@ -201,6 +201,11 @@ func _run_tests() -> void:
 				enemy.charging = true
 				enemy.attack_angle = PI / 2
 				enemy.fire = 0.4
+				if enemy.kind == "boss":
+					enemy.boss_phase = 2
+					enemy.attack_phase = 2
+					enemy.attack_pattern = "root_spread" if enemy.guardian == "rootheart" else "gate_fan"
+					scene.arena.push_event({"type": "boss_phase", "guardian": enemy.guardian, "pos": enemy.pos})
 			if enemy.kind != "boss":
 				enemy.pos.y = 635
 		scene.arena.effects = false

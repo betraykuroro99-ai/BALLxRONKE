@@ -12,10 +12,10 @@ in the editor. Input actions are configured by `controls.gd` at startup.
 ## Implemented
 
 - All 23 playable gorillas and their character perks.
-- Ten waves, two guardians, and three ruin themes.
+- Ten waves, two distinct guardians, and three ruin themes. Gatekeeper uses focused fans; Rootheart alternates downward spreads and aimed fans. Both widen future volleys below half health.
 - Illustrated stone arenas for Verdant, Ember, and Astral; six painted enemy/boss
   designs; outlined orb trails, distinct hostile shots, and lightweight ambience.
-- Aimed attack warnings: Prism enemies charge for 0.55 seconds; guardians for 0.75 seconds. Dashed lanes match the released volley. Breach danger markers stay visible with optional effects disabled.
+- Aimed attack warnings: Prism enemies charge for 0.55 seconds; Gatekeeper for 0.75 seconds, and Rootheart for 0.95 seconds. Dashed lanes match the released volley. Breach danger markers stay visible with optional effects disabled.
 - Bundled display typography, brass-edged UI, and color-coded orb loadouts.
 - Bouncing orbs, charge return, elemental effects, and three evolutions.
 - Experience, upgrade selection, dash, Rift Surge, and between-wave countdowns.

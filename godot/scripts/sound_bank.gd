@@ -58,6 +58,8 @@ func play_event(kind: String, event: Dictionary = {}) -> void:
 		kind = "crit"
 	elif kind == "wave" and event.get("boss", false):
 		kind = "boss"
+	elif kind == "boss_phase":
+		kind = "boss"
 	elif kind == "end":
 		kind = "victory" if event.get("win", false) else "defeat"
 	if muted or volume <= 0 or not tones.has(kind) or voices.is_empty():
