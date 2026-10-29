@@ -31,6 +31,7 @@ func _run_tests() -> void:
 		print("CREW ", crew.id, ": ", run.phase, " wave ", run.wave, " kills ", run.kills)
 	_test_mechanics()
 	_test_attack_warnings()
+	_test_report()
 	_test_save()
 	_test_exports()
 	if failures.is_empty():
@@ -139,6 +140,58 @@ func _test_attack_warnings() -> void:
 	breach.enemies[0].fire = 0
 	breach._update_enemies(0.02, 0.02)
 	check(breach.enemies[0].dead and breach.bullets.is_empty(), "Breached shooter cannot fire after removal")
+
+func _test_report() -> void:
+	var run = RonkeRun.new()
+	run.enemies.clear()
+	run.hurt(12, "projectile")
+	run.hurt(100, "projectile")
+	check(run.damage_taken == 12, "Blocked hits do not inflate damage taken")
+	run.player.invincible = 0
+	run.player.hp = 5
+	run.hurt(99, "projectile")
+	check(run.report().reason == "projectile" and run.damage_taken == 17, "Report tracks fatal cause and actual health lost")
+	var reason = run.end_reason
+	run.finish(true)
+	check(run.end_reason == reason and not run.report().win, "Terminal cause cannot be overwritten")
+	var terminal = RonkeRun.new()
+	terminal.enemies.clear()
+	terminal.player.hp = 1
+	terminal._add_enemy(Vector2(300, 200), 50, 1, "moss", 0)
+	terminal.add_ball(Vector2(300, 200), Vector2.UP, "stone")
+	terminal.bullets.append({"pos": terminal.player.pos, "velocity": Vector2.ZERO, "radius": 5, "damage": 10, "dead": false})
+	terminal.advance(0.01)
+	check(terminal.phase == "defeat" and terminal.kills == 0 and terminal.reward == 2, "Fatal hit stops same-step kills from changing the report or reward")
+	for kind in ["moss", "boss"]:
+		var breach = RonkeRun.new()
+		breach.enemies.clear()
+		breach.player.hp = 5
+		breach._add_enemy(Vector2(300, 710), 50, 100, kind, 0)
+		breach._update_enemies(0.02, 0.02)
+		check(breach.report().reason == ("guardian_breach" if kind == "boss" else "breach") and breach.breach_count == 1, "Breach outcome is identified: " + kind)
+	run = RonkeRun.new()
+	run.enemies.clear()
+	run.surge = 100
+	for _i in range(2):
+		run.advance(0.02, {"dash": true, "surge": true, "shoot": true, "aim": Vector2(300, 100)})
+	check(run.dash_count == 1 and run.surge_count == 1 and run.shot_count == 1, "Report counts performed actions, not repeated inputs")
+	run._add_enemy(Vector2(300, 100), 110, 500, "boss", 0)
+	run.kill(run.enemies[0])
+	run.kill(run.enemies[0])
+	check(run.guardians_defeated == 1, "Guardian defeat is counted once")
+	run.finish(false, "abandoned")
+	var report = run.report()
+	report.elements.append("fire")
+	check(not run.elements.has("fire"), "Report does not expose mutable loadout state")
+	var progress = RonkeSave.fresh()
+	progress.last_run = run.report()
+	check(RonkeSave.write_progress(progress) == OK, "Expedition report saves")
+	var loaded = RonkeSave.load_progress().last_run
+	check(loaded.reason == "abandoned" and loaded.guardians == 1 and loaded.shots == 1, "Expedition report survives reload")
+	check(RonkeSave.sanitize({}).last_run.is_empty(), "Existing saves without reports remain compatible")
+	check(RonkeSave.sanitize_report({"crew": "missing"}).is_empty(), "Unknown report runner is rejected")
+	var bad = RonkeSave.sanitize_report({"crew": "warrior", "world": INF, "damage_taken": -2, "elements": ["missing", "fire", "fire"], "picks": [null, "Power"]})
+	check(bad.world == 0 and bad.damage_taken == 0 and bad.elements == ["fire"] and bad.picks == ["Power"], "Malformed report fields are validated")
 
 func _test_save() -> void:
 	var raw = {"version": 1, "shards": -20, "last_crew": "missing", "meta": {"power": 100}, "world": "invalid"}

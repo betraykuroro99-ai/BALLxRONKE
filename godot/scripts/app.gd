@@ -639,6 +639,8 @@ func open_camp() -> void:
 	if _critical():
 		return
 	var content = _open_modal("camp", "Home between falls.", "Spend shards on permanent improvements for your next descent.")
+	if not progress.last_run.is_empty():
+		_button(content, "View last expedition", open_last_report)
 	for entry in [["vitality", "Heartwood", "+10 starting health per rank."], ["power", "Heavy lifting", "+5% starting damage per rank."], ["reserves", "Deep pockets", "+1 starting orb charge per rank."]]:
 		var column = _vbox(_panel(content), 10)
 		var id: String = entry[0]
@@ -705,6 +707,7 @@ func _settle() -> void:
 	progress.total_kills += model.kills
 	progress.best_wave = maxi(progress.best_wave, model.wave)
 	progress.runs += 1
+	progress.last_run = model.report()
 	if model.phase == "victory":
 		progress.wins += 1
 	_save()
@@ -718,11 +721,57 @@ func _show_result() -> void:
 	portrait.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	portrait.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	content.add_child(portrait)
-	_label(content, "Depth %02d / %d enemies / +%d shards" % [model.wave, model.kills, model.reward], 27, GOLD)
-	_label(content, "%s in the pit / %dx combo / %d wall bounces" % [_clock(model.time), model.best_combo, model.bounces], 18, MUTED)
+	_build_report(content, model.report())
 	_button(content, "One more descent", start_run, true)
 	_button(content, "Back to basecamp", _return_home)
 	_focus_modal()
+
+func open_last_report() -> void:
+	if _critical() or progress.last_run.is_empty():
+		return
+	var content = _open_modal("journal", "Your last expedition.", "A record of your most recent return from the pit.")
+	_build_report(content, progress.last_run)
+	_button(content, "Back to camp", func():
+		_close_modal()
+		open_camp(), true)
+	_focus_modal()
+
+func _build_report(parent: Control, report: Dictionary) -> void:
+	var runner = RonkeData.crew(report.crew)
+	_label(parent, "%s / %s" % [runner.name, RonkeData.all().worlds[int(report.world)].name], 23, GOLD)
+	_label(parent, "Depth %02d / %s / +%d shards" % [int(report.wave), _clock(report.time), int(report.reward)], 23)
+	var outcomes = {
+		"victory": ["Both guardians defeated", "Try another ruin or runner for a different approach."],
+		"projectile": ["Felled by a hostile projectile", "Leave the pink firing lanes during a windup; dash grants brief protection."],
+		"breach": ["Overwhelmed by breaching enemies", "Prioritize the lowest enemies before adding more pressure up the pit."],
+		"guardian_breach": ["A guardian crossed the breach line", "A guardian breach ends the run immediately. Focus the guardian before it reaches the bottom."],
+		"abandoned": ["Returned to camp", "Your earned shards are banked. Spend them on a stronger start."],
+		"impact": ["Felled in combat", "Use dash to escape danger and Surge to heal while clearing space."],
+		"defeated": ["Expedition ended", "Watch the breach line and spend your banked shards at basecamp."]}
+	var outcome: Array = outcomes.get(report.reason, outcomes.defeated)
+	_label(parent, outcome[0], 22, GREEN if report.win else GOLD)
+	_label(parent, outcome[1], 18, MUTED)
+	var grid = GridContainer.new()
+	grid.columns = 2
+	grid.add_theme_constant_override("h_separation", 12)
+	grid.add_theme_constant_override("v_separation", 8)
+	parent.add_child(grid)
+	for pair in [["ENEMIES / GUARDIANS", "%d / %d" % [int(report.kills), int(report.guardians)]],
+		["THROWS / BOUNCES", "%d / %d" % [int(report.shots), int(report.bounces)]],
+		["DASHES / SURGES", "%d / %d" % [int(report.dashes), int(report.surges)]],
+		["BREACHES / HIT DAMAGE", "%d / %d" % [int(report.breaches), ceili(report.damage_taken)]]]:
+		var tile = _vbox(_panel(grid), 4)
+		_label(tile, pair[0], 12, MUTED)
+		_label(tile, pair[1], 23, CREAM)
+	_label(parent, "Best combo / %dx" % int(report.combo), 18, MUTED)
+	var names: Array[String] = []
+	for element in report.elements:
+		names.append(RonkeData.all().elements[element].name)
+	_label(parent, "FINAL ORBIT", 14, GREEN)
+	_label(parent, " / ".join(names), 20)
+	if not report.picks.is_empty():
+		_label(parent, "UPGRADE PATH", 14, GREEN)
+		_label(parent, " > ".join(report.picks), 17, MUTED)
 
 func pause_run() -> void:
 	if not model or model.phase != "playing":
@@ -754,7 +803,7 @@ func _request_home() -> void:
 
 func _abandon_run() -> void:
 	if model:
-		model.finish(false)
+		model.finish(false, "abandoned")
 		_settle()
 	_return_home()
 

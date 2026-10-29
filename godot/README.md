@@ -18,7 +18,8 @@ in the editor. Input actions are configured by `controls.gd` at startup.
 - Aimed attack warnings: Prism enemies charge for 0.55 seconds; guardians for 0.75 seconds. Dashed lanes match the released volley. Breach danger markers stay visible with optional effects disabled.
 - Bundled display typography, brass-edged UI, and color-coded orb loadouts.
 - Bouncing orbs, charge return, elemental effects, and three evolutions.
-- Experience, upgrade selection, dash, Rift Surge, and run results.
+- Experience, upgrade selection, dash, Rift Surge, and between-wave countdowns.
+- Expedition reports: final orbit, upgrade path, action counts, guardian defeats, damage taken, and outcome-specific advice. The last report can be reopened from Camp after restarting the game.
 - Permanent basecamp upgrades and versioned `user://` saves with backup recovery.
 - Keyboard/mouse and controller bindings, multi-touch controls, portrait and
   landscape layouts, cutout margins on Android, and focus/background pausing.

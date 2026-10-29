@@ -133,11 +133,19 @@ func _run_tests() -> void:
 	scene.model.finish(false)
 	await process_frame
 	check(scene.modal_kind == "result" and scene.settled, "Defeat shows result and banks progress")
+	check(scene.progress.last_run.crew == scene.model.crew.id and scene.progress.last_run.wave == scene.model.wave, "Settlement records the latest expedition")
+	check(scene.modal_content.find_children("*", "Label", true, false).any(func(label): return label.text == "FINAL ORBIT"), "Results include final loadout")
 	var shards = scene.progress.shards
 	scene._settle()
 	check(scene.progress.shards == shards, "Rewards bank once")
 	scene._return_home()
 	check(scene.model == null and scene.home_view.visible, "Return to home works")
+	scene.open_camp()
+	scene.open_last_report()
+	await process_frame
+	check(scene.modal_kind == "journal" and scene.progress.shards == shards, "Saved report reopens without banking rewards again")
+	check(scene.modal_content.get_global_rect().size.x <= scene.size.x, "Report fits viewport width")
+	scene._close_modal()
 	scene.progress.shards = 100
 	var old_rank = scene.progress.meta.power
 	if old_rank < 3:
@@ -175,6 +183,12 @@ func _run_tests() -> void:
 	for _i in range(5):
 		await process_frame
 	check(not scene.compact and scene.header_grid.columns == 6, "Desktop layout restores")
+	scene.model.enemies.clear()
+	scene.model.clear_clock = 0.4
+	var transition_draws = scene.arena.draw_count
+	for _i in range(3):
+		await process_frame
+	check(scene.arena.draw_count > transition_draws, "Wave transition countdown draws natively")
 	for world_index in range(3):
 		scene._return_home()
 		scene.world = world_index

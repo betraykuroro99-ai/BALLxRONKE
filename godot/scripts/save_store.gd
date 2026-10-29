@@ -17,7 +17,7 @@ static func use_test_profile(name: String) -> void:
 static func fresh() -> Dictionary:
 	return {"version": VERSION, "shards": 0, "total_kills": 0, "best_wave": 0,
 		"runs": 0, "wins": 0, "last_crew": "warrior", "world": 0,
-		"muted": true, "volume": 0.65, "shake": 0.5, "meta": {"vitality": 0, "power": 0, "reserves": 0}}
+		"last_run": {}, "muted": true, "volume": 0.65, "shake": 0.5, "meta": {"vitality": 0, "power": 0, "reserves": 0}}
 
 static func load_progress() -> Dictionary:
 	for path in [active_path, backup_path]:
@@ -58,6 +58,33 @@ static func sanitize(raw: Dictionary) -> Dictionary:
 		var value = raw.get(key, result[key])
 		if (value is int or value is float) and is_finite(float(value)):
 			result[key] = clampf(float(value), 0.0, 1.0)
+	result.last_run = sanitize_report(raw.get("last_run", {}))
+	return result
+
+static func sanitize_report(raw: Variant) -> Dictionary:
+	if not raw is Dictionary or raw.is_empty():
+		return {}
+	var id = str(raw.get("crew", ""))
+	if RonkeData.crew(id).id != id:
+		return {}
+	var result = {"crew": id, "win": raw.get("win", false) == true,
+		"reason": str(raw.get("reason", "defeated")), "elements": [], "picks": []}
+	if not result.reason in ["victory", "projectile", "breach", "guardian_breach", "impact", "abandoned", "defeated"]:
+		result.reason = "defeated"
+	for key in ["world", "wave", "time", "kills", "guardians", "reward", "shots", "dashes", "surges", "breaches", "damage_taken", "combo", "bounces"]:
+		var value = raw.get(key, 0)
+		result[key] = clampf(float(value), 0.0, 100000000.0) if (value is int or value is float) and is_finite(float(value)) else 0.0
+	result.world = mini(int(result.world), 2)
+	result.wave = mini(int(result.wave), 10)
+	result.guardians = mini(int(result.guardians), 2)
+	if raw.get("elements") is Array:
+		for element in raw.elements.slice(0, 19):
+			if element is String and RonkeData.all().elements.has(element) and not result.elements.has(element):
+				result.elements.append(element)
+	if raw.get("picks") is Array:
+		for pick in raw.picks.slice(0, 50):
+			if pick is String:
+				result.picks.append(pick.left(80))
 	return result
 
 static func write_progress(progress: Dictionary) -> Error:

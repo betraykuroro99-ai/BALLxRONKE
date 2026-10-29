@@ -351,6 +351,10 @@ func _draw() -> void:
 		draw_rect(Rect2(2, 2, 596, 816), warning, false, 5)
 	if model.combo > 2 and model.combo_time > 0:
 		_text("%dx COMBO" % model.combo, Vector2(300, 641), 23, GOLD, true)
+	if model.phase == "playing" and model.enemies.is_empty():
+		var remaining = maxf(0.0, 1.6 - model.clear_clock)
+		_text("EXIT OPENING" if model.wave == RonkeRun.LAST_WAVE else "NEXT DEPTH / %02d" % (model.wave + 1), Vector2(300, 120), 25, GOLD, true)
+		_text("%.1fs / STAY ALERT" % remaining, Vector2(300, 145), 15, CREAM, true)
 	if banner_time > 0:
 		var opacity = minf(1.0, banner_time * 3)
 		_box(Rect2(106, 294, 388, 88), Color(0.04, 0.09, 0.075, opacity * 0.86), Color(GOLD, opacity * 0.55), 4)

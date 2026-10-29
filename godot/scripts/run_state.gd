@@ -39,6 +39,12 @@ var elements: Array = []
 var element_levels: Dictionary = {}
 var shot_clock = 0.0
 var shot_count = 0
+var dash_count = 0
+var surge_count = 0
+var breach_count = 0
+var guardians_defeated = 0
+var damage_taken = 0.0
+var end_reason = ""
 
 func _init(crew_id: String = "warrior", world_index: int = 0, run_seed: int = 1, meta: Dictionary = {}) -> void:
 	crew = RonkeData.crew(crew_id)
@@ -131,6 +137,7 @@ func _step(delta: float, input: Dictionary) -> void:
 		player.dash_direction = movement.normalized() if movement.length() > 0.05 else Vector2(signf(aim.x - player.pos.x), 0)
 		if player.dash_direction == Vector2.ZERO:
 			player.dash_direction = Vector2.RIGHT
+		dash_count += 1
 		emit("dash", {"pos": player.pos})
 	var motion: Vector2 = player.dash_direction if player.dash > 0.0 else movement
 	var position: Vector2 = player.pos + motion * stats.speed * (3.0 if player.dash > 0.0 else 1.0) * delta
@@ -143,6 +150,7 @@ func _step(delta: float, input: Dictionary) -> void:
 		for i in range(16):
 			var angle = -PI + i / 16.0 * TAU
 			add_ball(player.pos, Vector2.from_angle(angle), elements[i % elements.size()], 1.5, false)
+		surge_count += 1
 		emit("surge", {"pos": player.pos})
 	shot_clock -= delta
 	if (input.get("shoot", false) or crew.id == "radical") and shot_clock <= 0.0 and player.ammo > 0 and balls.size() < 90:
@@ -151,13 +159,17 @@ func _step(delta: float, input: Dictionary) -> void:
 	var world_delta = delta * (0.55 if surge_time > 0.0 else 1.0) * (0.0 if crew.id == "tactician" and turn_time <= 0.0 else 1.0)
 	_update_enemies(delta, world_delta)
 	for bullet in bullets:
+		if phase in ["victory", "defeat"]:
+			break
 		bullet.pos += bullet.velocity * world_delta
 		if bullet.pos.distance_to(player.pos) < 22.0 + bullet.radius:
-			hurt(bullet.damage)
+			hurt(bullet.damage, "projectile")
 			bullet.dead = true
 		if bullet.pos.y > HEIGHT + 20 or bullet.pos.y < 0 or bullet.pos.x < 0 or bullet.pos.x > WIDTH:
 			bullet.dead = true
 	for ball in balls.duplicate():
+		if phase in ["victory", "defeat"]:
+			break
 		if ball.dead:
 			continue
 		ball.life -= delta
@@ -182,6 +194,8 @@ func _step(delta: float, input: Dictionary) -> void:
 
 func _update_enemies(delta: float, world_delta: float) -> void:
 	for enemy in enemies:
+		if phase in ["victory", "defeat"]:
+			break
 		if enemy.dead:
 			continue
 		for key in ["flash", "burn", "poison", "slow", "weak"]:
@@ -195,11 +209,12 @@ func _update_enemies(delta: float, world_delta: float) -> void:
 		if enemy.kind == "boss":
 			enemy.pos.x = 300 + sin(time * 0.65) * 140
 		if enemy.pos.y + enemy.width / 2.0 > HEIGHT - 120:
+			breach_count += 1
 			if enemy.kind == "boss":
 				player.hp = 0.0
-				finish(false)
+				finish(false, "guardian_breach")
 			else:
-				hurt(10.0)
+				hurt(10.0, "breach")
 			enemy.dead = true
 			emit("breach", {"pos": enemy.pos})
 			continue
@@ -424,6 +439,8 @@ func kill(enemy: Dictionary) -> void:
 		return
 	enemy.dead = true
 	kills += 1
+	if enemy.kind == "boss":
+		guardians_defeated += 1
 	combo += 1
 	combo_time = 1.8
 	best_combo = maxi(best_combo, combo)
@@ -497,22 +514,32 @@ func choose_upgrade(index: int) -> bool:
 	check_level()
 	return true
 
-func hurt(value: float) -> void:
-	if player.invincible > 0 or phase in ["victory", "defeat"]:
+func hurt(value: float, source: String = "impact") -> void:
+	if value <= 0 or player.invincible > 0 or phase in ["victory", "defeat"]:
 		return
+	damage_taken += minf(player.hp, value)
 	player.hp = maxf(0, player.hp - value)
 	player.hurt = 0.4
 	player.invincible = 0.85
 	emit("hurt", {"pos": player.pos, "value": value})
 	if player.hp <= 0:
-		finish(false)
+		finish(false, source)
 
-func finish(win: bool) -> void:
+func finish(win: bool, reason: String = "defeated") -> void:
 	if phase in ["victory", "defeat"]:
 		return
 	phase = "victory" if win else "defeat"
+	end_reason = "victory" if win else reason
 	reward = floori(kills * 0.45 + wave * 2 + (30 if win else 0))
 	emit("end", {"win": win, "reward": reward})
+
+func report() -> Dictionary:
+	return {"crew": crew.id, "world": world, "wave": wave, "time": time,
+		"kills": kills, "guardians": guardians_defeated, "reward": reward,
+		"shots": shot_count, "dashes": dash_count, "surges": surge_count,
+		"breaches": breach_count, "damage_taken": damage_taken, "combo": best_combo,
+		"bounces": bounces, "win": phase == "victory", "reason": end_reason,
+		"elements": elements.duplicate(), "picks": picks.duplicate()}
 
 func nearest_threat() -> Dictionary:
 	var result: Dictionary = {}

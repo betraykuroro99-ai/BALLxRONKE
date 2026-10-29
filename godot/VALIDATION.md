@@ -36,6 +36,8 @@ renderer.
 
 - Attack warnings: aim locks before release; actual projectile directions match preview lanes; freeze/upgrade pause the windup; destruction/breach cancels pending fire; warnings render with optional effects disabled.
 
+- Expedition reporting: action counts, damage excluding blocked/overkill damage, fatal projectile/breach/guardian causes, terminal-state stability, saved report round-trip, malformed report validation, old-save compatibility, result/journal UI and no repeat banking.
+
 ## Not yet verified
 
 - A real graphical playtest of the native game and its presentation.
