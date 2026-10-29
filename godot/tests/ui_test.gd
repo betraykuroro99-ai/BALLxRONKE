@@ -18,6 +18,16 @@ func _run_tests() -> void:
 	await process_frame
 	await process_frame
 	check(scene.ready_done and scene.home_view.visible, "Home scene starts")
+	check(scene.sound.tones.size() == 14 and scene.sound.voices.size() == 10, "Combat cues use a bounded voice pool")
+	for stream in scene.sound.tones.values():
+		check(not stream.data.is_empty() and stream.mix_rate == 22050, "Synthesized cue contains PCM data")
+	scene.sound.muted = false
+	scene.sound.play_event("wave", {"boss": true})
+	check(scene.sound.last_played.has("boss"), "Guardian events select warning cue")
+	scene.sound.play_event("end", {"win": true})
+	check(scene.sound.last_played.has("victory"), "Victory selects its own cue")
+	scene.sound.muted = true
+	scene.sound.stop_all()
 	check(scene.home_grid.size.x <= scene.size.x + 1, "Home fits the viewport")
 	check(scene.start_button.get_global_rect().end.y <= scene.home_view.get_global_rect().end.y + 1, "Start button is visible without scrolling")
 	scene.open_crew()
@@ -29,6 +39,19 @@ func _run_tests() -> void:
 	check(cards.size() == 23, "Crew picker contains all 23 runners")
 	cards[4].pressed.emit()
 	check(scene.selected == "cogitator" and scene.modal_kind == "", "Crew button selects correct runner")
+	scene.open_feedback()
+	await process_frame
+	check(scene.modal_kind == "feedback", "Feedback settings open from home")
+	var feedback_controls = scene.modal_content.find_children("*", "Control", true, false).filter(func(b): return b.focus_mode != Control.FOCUS_NONE and b.is_visible_in_tree())
+	check(feedback_controls.filter(func(b): return b is HSlider).size() == 2, "Both feedback sliders accept keyboard focus")
+	for slider in scene.modal_content.find_children("*", "HSlider", true, false):
+		if slider.get_meta("preference") == "shake":
+			slider.value = 0
+		else:
+			slider.value = 0.4
+	check(scene.progress.shake == 0 and scene.arena.shake_strength == 0, "Motion can be disabled")
+	check(absf(RonkeSave.load_progress().volume - 0.4) < 0.001, "Volume setting persists")
+	scene._close_modal()
 	scene._select_crew("warrior")
 	scene.start_button.pressed.emit()
 	await process_frame
@@ -62,6 +85,17 @@ func _run_tests() -> void:
 	await process_frame
 	check(scene.paused and scene.modal_kind == "pause" and scene.model.time == old_time, "Pause freezes combat")
 	check(scene.arena.focus_mode == Control.FOCUS_NONE and scene.start_button.focus_mode == Control.FOCUS_NONE, "Modal blocks focus on background controls")
+	scene.open_feedback(true)
+	await process_frame
+	check(scene.paused and scene.model.time == old_time, "Feedback settings keep combat paused")
+	scene.arena.push_event({"type": "hurt", "pos": Vector2(300, 700)})
+	scene.arena._process(0.01)
+	check(scene.arena.shake_offset == Vector2.ZERO and scene.arena.hurt_flash > 0, "Zero shake retains damage warning")
+	scene.arena.shake_strength = 1.0
+	scene.arena.active = true
+	scene.arena._process(0.01)
+	check(scene.arena.shake_offset.length() > 0 and scene.arena.shake_offset.length() <= 8.5, "Impact motion stays bounded")
+	scene.arena.shake_strength = 0
 	scene._close_modal()
 	check(not scene.paused, "Resume unpauses")
 	check(scene.arena.focus_mode == Control.FOCUS_ALL, "Closing modal restores gameplay focus")

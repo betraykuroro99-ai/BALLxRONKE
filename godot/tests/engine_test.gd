@@ -100,6 +100,8 @@ func _test_save() -> void:
 	var raw = {"version": 1, "shards": -20, "last_crew": "missing", "meta": {"power": 100}, "world": "invalid"}
 	var clean = RonkeSave.sanitize(raw)
 	check(clean.shards == 0 and clean.meta.power == 3 and clean.last_crew == "warrior" and clean.world == 0, "Save input validation")
+	check(RonkeSave.sanitize({"volume": -4, "shake": 8}).volume == 0 and RonkeSave.sanitize({"shake": 8}).shake == 1, "Feedback values clamp safely")
+	check(RonkeSave.sanitize({"volume": "bad", "shake": NAN}).shake == 0.5, "Invalid feedback values use defaults")
 	var save = RonkeSave.fresh()
 	save.shards = 42
 	check(RonkeSave.write_progress(save) == OK, "Save write")

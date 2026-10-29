@@ -32,6 +32,8 @@ renderer.
   bundled license. UI checks exercise all three biome and both boss drawing paths.
 - The 23 playable character textures retain their pre-pass SHA-256 checksums.
 
+- Combat feedback: generated PCM cues and bounded voice pool; guardian/victory event routing; settings persistence; zero-motion damage warning; bounded impact motion; settings keep combat paused.
+
 ## Not yet verified
 
 - A real graphical playtest of the native game and its presentation.

@@ -74,7 +74,9 @@ func _ready() -> void:
 	sound = RonkeSound.new()
 	add_child(sound)
 	sound.muted = progress.muted
+	sound.volume = progress.volume
 	_build_interface()
+	arena.shake_strength = progress.shake
 	resized.connect(_responsive_layout)
 	get_tree().root.size_changed.connect(_window_changed)
 	ready_done = true
@@ -234,7 +236,7 @@ func _build_interface() -> void:
 	_button(header, "Crew", open_crew)
 	_button(header, "Camp", open_camp)
 	_button(header, "Help", open_help).size_flags_stretch_ratio = 0.4
-	volume_button = _button(header, "Sound off" if progress.muted else "Sound on", _toggle_sound)
+	volume_button = _button(header, "Sound / Feel", open_feedback)
 	volume_button.size_flags_stretch_ratio = 0.8
 	shard_label = _label(header, "0 shards", 18, GOLD)
 	shard_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
@@ -469,6 +471,7 @@ func start_run() -> void:
 	paused = false
 	settled = false
 	arena.set_run(model)
+	arena.shake_strength = progress.shake
 	arena.auto_fire = true
 	auto_button.text = "Auto on"
 	home_view.visible = false
@@ -517,7 +520,7 @@ func _process(delta: float) -> void:
 		model.advance(delta, arena.collect_input())
 	for event in model.drain_events():
 		arena.push_event(event)
-		sound.play_event(event.type)
+		sound.play_event(event.type, event)
 		match event.type:
 			"level": _show_upgrade()
 			"upgrade":
@@ -730,6 +733,7 @@ func pause_run() -> void:
 		return
 	var content = _open_modal("pause", "The pit can wait.", "Your descent is paused. Nothing moves until you are ready.")
 	_button(content, "Keep descending", _close_modal, true)
+	_button(content, "Sound / Feel", func(): open_feedback(true))
 	_button(content, "Bank shards and leave", _abandon_run)
 	_focus_modal()
 
@@ -771,10 +775,61 @@ func _toggle_auto() -> void:
 	_toast("Automatic throws enabled." if arena.auto_fire else "Hold mouse, Space, or right trigger to throw.")
 	arena.grab_focus()
 
+func open_feedback(from_pause: bool = false) -> void:
+	if _critical():
+		return
+	var content = _open_modal("feedback", "Make it feel right.", "Sound and motion preferences are saved on this device.")
+	var mute = CheckButton.new()
+	mute.text = "Sound enabled"
+	mute.button_pressed = not sound.muted
+	mute.custom_minimum_size.y = 48
+	content.add_child(mute)
+	mute.toggled.connect(func(enabled):
+		if enabled == sound.muted:
+			_toggle_sound())
+	_label(content, "Sound volume", 21, GOLD)
+	_feedback_slider(content, "volume", progress.volume, func(value):
+		sound.volume = value
+		progress.volume = value
+		if value <= 0:
+			sound.stop_all()
+		_save())
+	_label(content, "Screen shake / zero turns motion off", 21, GOLD)
+	_feedback_slider(content, "shake", progress.shake, func(value):
+		progress.shake = value
+		arena.shake_strength = value
+		if value <= 0:
+			arena.shake_energy = 0.0
+		_save())
+	_button(content, "Preview sound", func(): sound.play_event("level"))
+	_button(content, "Back to pause" if from_pause else "Done", func():
+		_close_modal()
+		if from_pause:
+			pause_run(), true)
+	_focus_modal()
+
+func _feedback_slider(parent: Control, key: String, value: float, changed: Callable) -> void:
+	var row = _hbox(parent)
+	var slider = HSlider.new()
+	slider.min_value = 0
+	slider.max_value = 1
+	slider.step = 0.05
+	slider.value = value
+	slider.custom_minimum_size = Vector2(150, 48)
+	slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	slider.set_meta("preference", key)
+	row.add_child(slider)
+	var percent = _label(row, "%d%%" % roundi(value * 100), 20)
+	percent.custom_minimum_size.x = 58
+	slider.value_changed.connect(func(amount):
+		percent.text = "%d%%" % roundi(amount * 100)
+		changed.call(amount))
+
 func _toggle_sound() -> void:
 	sound.muted = not sound.muted
 	progress.muted = sound.muted
-	volume_button.text = "Sound off" if sound.muted else "Sound on"
+	if sound.muted:
+		sound.stop_all()
 	_save()
 	if not sound.muted:
 		sound.play_event("level")
@@ -787,7 +842,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			_choose_upgrade(event.keycode - KEY_1)
 		get_viewport().set_input_as_handled()
 	elif modal_layer.visible and event.keycode == KEY_TAB:
-		var buttons = modal_content.find_children("*", "Button", true, false).filter(func(b): return not b.disabled)
+		var buttons = modal_content.find_children("*", "Control", true, false).filter(func(b): return b.focus_mode != Control.FOCUS_NONE and b.is_visible_in_tree() and (not b is BaseButton or not b.disabled))
 		if not buttons.is_empty():
 			var index = buttons.find(get_viewport().gui_get_focus_owner())
 			buttons[posmod(index + (-1 if event.shift_pressed else 1), buttons.size())].grab_focus()

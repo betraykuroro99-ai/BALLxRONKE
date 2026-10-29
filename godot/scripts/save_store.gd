@@ -17,7 +17,7 @@ static func use_test_profile(name: String) -> void:
 static func fresh() -> Dictionary:
 	return {"version": VERSION, "shards": 0, "total_kills": 0, "best_wave": 0,
 		"runs": 0, "wins": 0, "last_crew": "warrior", "world": 0,
-		"muted": true, "meta": {"vitality": 0, "power": 0, "reserves": 0}}
+		"muted": true, "volume": 0.65, "shake": 0.5, "meta": {"vitality": 0, "power": 0, "reserves": 0}}
 
 static func load_progress() -> Dictionary:
 	for path in [active_path, backup_path]:
@@ -54,6 +54,10 @@ static func sanitize(raw: Dictionary) -> Dictionary:
 		result["last_crew"] = id
 	result["world"] = clampi(int(raw.get("world", 0)), 0, 2) if raw.get("world", 0) is float or raw.get("world", 0) is int else 0
 	result["muted"] = raw.get("muted", true) != false
+	for key in ["volume", "shake"]:
+		var value = raw.get(key, result[key])
+		if (value is int or value is float) and is_finite(float(value)):
+			result[key] = clampf(float(value), 0.0, 1.0)
 	return result
 
 static func write_progress(progress: Dictionary) -> Error:

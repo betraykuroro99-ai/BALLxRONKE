@@ -33,6 +33,11 @@ var enemy_texture: Texture2D
 var visual_data: Dictionary = {}
 var vignette: GradientTexture2D
 var draw_count = 0
+var shake_strength = 0.5
+var shake_energy = 0.0
+var shake_offset = Vector2.ZERO
+var feedback_clock = 0.0
+var hurt_flash = 0.0
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(180, 246)
@@ -62,6 +67,10 @@ func set_run(run: RonkeRun) -> void:
 	var paths = ["verdant", "ember", "astral"]
 	floor_texture = load("res://assets/art/arenas/" + paths[run.world] + ".png")
 	aim = Vector2(300, 100)
+	shake_energy = 0.0
+	shake_offset = Vector2.ZERO
+	hurt_flash = 0.0
+	banner_time = 0.0
 	particles.clear()
 	labels.clear()
 	rings.clear()
@@ -169,6 +178,18 @@ func collect_input() -> Dictionary:
 
 func push_event(event: Dictionary) -> void:
 	var kind = event.type
+	if kind == "hurt":
+		hurt_flash = 0.32
+		shake_energy = maxf(shake_energy, 1.0)
+	elif kind == "surge" or (kind == "kill" and event.get("kind", "") == "boss"):
+		shake_energy = maxf(shake_energy, 0.85)
+	elif kind == "hit" and event.get("crit", false):
+		shake_energy = maxf(shake_energy, 0.3)
+	if kind == "kill" and event.get("kind", "") == "boss":
+		banner = "GUARDIAN DEFEATED"
+		banner_time = 2.1
+		if effects and rings.size() < 32:
+			rings.append({"pos": event.pos, "radius": 140.0, "life": 0.35})
 	if kind == "wave":
 		banner = "GUARDIAN AHEAD" if event.boss else "DEPTH %02d" % event.wave
 		banner_time = 2.1
@@ -181,14 +202,19 @@ func push_event(event: Dictionary) -> void:
 			if particles.size() >= 180:
 				break
 			particles.append({"pos": event.pos, "velocity": Vector2.from_angle(randf() * TAU) * randf_range(35, 160), "color": color, "life": randf_range(0.25, 0.65)})
-	if kind in ["splash", "shield", "surge"]:
+	if kind in ["splash", "shield", "surge"] and effects and rings.size() < 32:
 		rings.append({"pos": event.pos, "radius": event.get("radius", 80.0 if kind == "surge" else 45.0), "life": 0.35})
-	if kind == "chain":
+	if kind == "chain" and effects and chains.size() < 48:
 		chains.append({"from": event.pos, "to": event.end, "life": 0.13})
 
 func _process(delta: float) -> void:
 	if not is_visible_in_tree() or not model:
 		return
+	# Feedback uses presentation time only; simulation timing is untouched.
+	feedback_clock += delta
+	shake_energy = maxf(0.0, shake_energy - delta * 3.5)
+	hurt_flash = maxf(0.0, hurt_flash - delta)
+	shake_offset = Vector2(sin(feedback_clock * 83), cos(feedback_clock * 107)) * 6.0 * shake_strength * shake_energy * shake_energy if active and effects else Vector2.ZERO
 	if active:
 		banner_time = maxf(0, banner_time - delta)
 		for particle in particles:
@@ -264,7 +290,7 @@ func _draw() -> void:
 	if not model or size.x <= 0 or size.y <= 0:
 		return
 	draw_count += 1
-	draw_set_transform(Vector2.ZERO, 0, size / Vector2(600, 820))
+	draw_set_transform(shake_offset * size / Vector2(600, 820), 0, size / Vector2(600, 820))
 	_draw_floor()
 	if active and model.phase == "playing":
 		var direction: Vector2 = (aim - model.player.pos).normalized()
@@ -293,9 +319,9 @@ func _draw() -> void:
 			draw_arc(ball.pos, ball.radius + 3, model.time * 5, model.time * 5 + PI * 1.2, 10, Color(CREAM, 0.75), 1, true)
 	var p: Dictionary = model.player
 	var world_scale = size / Vector2(600, 820)
-	draw_set_transform((p.pos + Vector2(0, 27)) * world_scale, 0, Vector2(world_scale.x, world_scale.y * 0.26))
+	draw_set_transform((p.pos + Vector2(0, 27) + shake_offset) * world_scale, 0, Vector2(world_scale.x, world_scale.y * 0.26))
 	draw_circle(Vector2.ZERO, 29, Color(0, 0, 0, 0.3))
-	draw_set_transform(Vector2.ZERO, 0, size / Vector2(600, 820))
+	draw_set_transform(shake_offset * size / Vector2(600, 820), 0, size / Vector2(600, 820))
 	if p.invincible > 0:
 		draw_arc(p.pos, 43, 0, TAU, 40, Color(0.95, 0.8, 0.5, 0.6), 2, true)
 	var frame = 7 if model.phase == "defeat" else 6 if p.hurt > 0.07 else 1 if p.shoot > 0.15 else 2 if p.shoot > 0.08 else 3 if p.shoot > 0 else 4 + int(model.time * 7) % 2 if p.moving or p.dash > 0 else 0
@@ -314,6 +340,11 @@ func _draw() -> void:
 		draw_polyline(PackedVector2Array([chain.from, middle, chain.to]), Color("eaffd9"), 2, true)
 	for label in labels:
 		_text(label.text, label.pos, 23 if label.crit else 17, Color(GOLD if label.crit else CREAM, clampf(label.life * 2, 0, 1)), true)
+	# Keep HUD, touch targets and banners stationary while the world reacts.
+	draw_set_transform(Vector2.ZERO, 0, size / Vector2(600, 820))
+	if hurt_flash > 0:
+		var warning = Color(1.0, 0.25, 0.24, hurt_flash * 1.5)
+		draw_rect(Rect2(2, 2, 596, 816), warning, false, 5)
 	if model.combo > 2 and model.combo_time > 0:
 		_text("%dx COMBO" % model.combo, Vector2(300, 641), 23, GOLD, true)
 	if banner_time > 0:
