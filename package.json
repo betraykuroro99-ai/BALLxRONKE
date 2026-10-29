@@ -1,0 +1,1 @@
+{"name":"ballxronke","version":"0.1.0","private":true,"scripts":{"dev":"npm --prefix prototype/browser run dev","test":"npm --prefix prototype/browser test"}}

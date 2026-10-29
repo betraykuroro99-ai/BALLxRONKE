@@ -1,0 +1,230 @@
+{
+  "version": 2,
+  "art_style": "Ronke-inspired cel-shaded gorillas",
+  "frame_size": {
+    "w": 128,
+    "h": 128
+  },
+  "anchor_px": {
+    "x": 64,
+    "y": 120
+  },
+  "facing": "three-quarter right",
+  "animations": {
+    "idle": {
+      "frames": [
+        0
+      ],
+      "loop": true
+    },
+    "throw": {
+      "frames": [
+        1,
+        2,
+        3,
+        0
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "walk": {
+      "frames": [
+        4,
+        5
+      ],
+      "fps": 6,
+      "loop": true
+    },
+    "hurt": {
+      "frames": [
+        6,
+        0
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "defeat": {
+      "frames": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": false,
+      "hold_last": true
+    }
+  },
+  "release_event_frame": 2,
+  "characters": [
+    {
+      "id": "repentant",
+      "name": "The Repentant",
+      "texture": "characters/repentant/sprites.png",
+      "master_row": 2,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_01.png",
+        "source/motion_01.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            97,
+            528,
+            301,
+            758
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            434,
+            521,
+            743,
+            758
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            841,
+            531,
+            1133,
+            759
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            1261,
+            530,
+            1461,
+            759
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            65,
+            520,
+            320,
+            762
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            451,
+            522,
+            725,
+            763
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            832,
+            530,
+            1083,
+            765
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            1237,
+            570,
+            1501,
+            775
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "One facing direction; walking uses two contact poses.",
+    "Concept-derived animation poses; review timing in the game.",
+    "Projectiles should be spawned separately on release."
+  ]
+}

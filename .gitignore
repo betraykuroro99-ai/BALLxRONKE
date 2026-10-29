@@ -1,0 +1,24 @@
+# Godot-generated state
+.godot/
+.import/
+export_credentials.cfg
+*.tmp
+*.translation
+
+# Local tools and credentials
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.openai/
+.DS_Store
+qa/
+
+# Rebuildable output
+/ronke-orbfall-play.html
+/ronke-orbfall-source.zip
+/gorilla-sprites.zip
+/exports/
+/build/

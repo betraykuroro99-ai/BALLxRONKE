@@ -1,0 +1,3882 @@
+{
+  "version": 2,
+  "art_style": "Ronke-inspired cel-shaded gorillas",
+  "frame_size": {
+    "w": 128,
+    "h": 128
+  },
+  "anchor_px": {
+    "x": 64,
+    "y": 120
+  },
+  "facing": "three-quarter right",
+  "animations": {
+    "idle": {
+      "frames": [
+        0
+      ],
+      "loop": true
+    },
+    "throw": {
+      "frames": [
+        1,
+        2,
+        3,
+        0
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "walk": {
+      "frames": [
+        4,
+        5
+      ],
+      "fps": 6,
+      "loop": true
+    },
+    "hurt": {
+      "frames": [
+        6,
+        0
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "defeat": {
+      "frames": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": false,
+      "hold_last": true
+    }
+  },
+  "release_event_frame": 2,
+  "characters": [
+    {
+      "id": "warrior",
+      "name": "The Warrior",
+      "texture": "characters/warrior/sprites.png",
+      "master_row": 0,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_01.png",
+        "source/motion_01.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            88,
+            18,
+            301,
+            254
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            425,
+            12,
+            752,
+            255
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            831,
+            29,
+            1127,
+            255
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            1232,
+            23,
+            1461,
+            255
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            76,
+            16,
+            336,
+            256
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            438,
+            17,
+            716,
+            257
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            820,
+            26,
+            1088,
+            259
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            1240,
+            69,
+            1491,
+            274
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "itchy_finger",
+      "name": "The Itchy Finger",
+      "texture": "characters/itchy_finger/sprites.png",
+      "master_row": 1,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_01.png",
+        "source/motion_01.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            98,
+            265,
+            301,
+            517
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            430,
+            248,
+            742,
+            524
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            830,
+            274,
+            1130,
+            516
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            1254,
+            271,
+            1459,
+            519
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            56,
+            263,
+            320,
+            515
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            435,
+            264,
+            721,
+            515
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            836,
+            272,
+            1083,
+            518
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            1249,
+            315,
+            1500,
+            531
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "repentant",
+      "name": "The Repentant",
+      "texture": "characters/repentant/sprites.png",
+      "master_row": 2,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_01.png",
+        "source/motion_01.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            97,
+            528,
+            301,
+            758
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            434,
+            521,
+            743,
+            758
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            841,
+            531,
+            1133,
+            759
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            1261,
+            530,
+            1461,
+            759
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            65,
+            520,
+            320,
+            762
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            451,
+            522,
+            725,
+            763
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            832,
+            530,
+            1083,
+            765
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            1237,
+            570,
+            1501,
+            775
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "cohabitants",
+      "name": "The Cohabitants",
+      "texture": "characters/cohabitants/sprites.png",
+      "master_row": 3,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_01.png",
+        "source/motion_01.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            37,
+            774,
+            353,
+            1011
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            398,
+            769,
+            751,
+            1010
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            779,
+            778,
+            1137,
+            1011
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_01.png",
+          "bounds": [
+            1178,
+            778,
+            1512,
+            1011
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            24,
+            768,
+            369,
+            1004
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            415,
+            768,
+            756,
+            1005
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            798,
+            775,
+            1121,
+            1001
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_01.png",
+          "bounds": [
+            1169,
+            798,
+            1515,
+            1007
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "cogitator",
+      "name": "The Cogitator",
+      "texture": "characters/cogitator/sprites.png",
+      "master_row": 4,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_02.png",
+        "source/motion_02.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            88,
+            16,
+            306,
+            246
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            436,
+            16,
+            741,
+            246
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            850,
+            16,
+            1150,
+            246
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            1239,
+            15,
+            1467,
+            247
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            85,
+            15,
+            359,
+            253
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            475,
+            15,
+            750,
+            253
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            860,
+            17,
+            1092,
+            254
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            1217,
+            51,
+            1487,
+            260
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "embedded",
+      "name": "The Embedded",
+      "texture": "characters/embedded/sprites.png",
+      "master_row": 5,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_02.png",
+        "source/motion_02.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            80,
+            260,
+            320,
+            505
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            443,
+            265,
+            743,
+            505
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            846,
+            265,
+            1145,
+            505
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            1251,
+            266,
+            1482,
+            506
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            76,
+            263,
+            353,
+            510
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            458,
+            263,
+            748,
+            511
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            855,
+            266,
+            1113,
+            512
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            1214,
+            305,
+            1493,
+            520
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "shade",
+      "name": "The Shade",
+      "texture": "characters/shade/sprites.png",
+      "master_row": 6,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_02.png",
+        "source/motion_02.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            58,
+            519,
+            298,
+            757
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            435,
+            517,
+            734,
+            757
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            805,
+            519,
+            1147,
+            757
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            1232,
+            519,
+            1469,
+            756
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            52,
+            516,
+            331,
+            763
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            461,
+            516,
+            738,
+            762
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            820,
+            520,
+            1113,
+            762
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            1206,
+            563,
+            1501,
+            765
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "shieldbearer",
+      "name": "The Shieldbearer",
+      "texture": "characters/shieldbearer/sprites.png",
+      "master_row": 7,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_02.png",
+        "source/motion_02.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            61,
+            762,
+            335,
+            1009
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            435,
+            762,
+            762,
+            1012
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            845,
+            762,
+            1165,
+            1012
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_02.png",
+          "bounds": [
+            1237,
+            763,
+            1495,
+            1012
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            73,
+            760,
+            368,
+            1006
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            469,
+            761,
+            775,
+            1010
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            852,
+            763,
+            1134,
+            1010
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_02.png",
+          "bounds": [
+            1225,
+            785,
+            1500,
+            1003
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "spendthrift",
+      "name": "The Spendthrift",
+      "texture": "characters/spendthrift/sprites.png",
+      "master_row": 8,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_03.png",
+        "source/motion_03.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            68,
+            24,
+            299,
+            247
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            431,
+            23,
+            742,
+            247
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            830,
+            22,
+            1138,
+            247
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            1247,
+            23,
+            1491,
+            247
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            72,
+            18,
+            341,
+            249
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            459,
+            18,
+            736,
+            250
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            866,
+            16,
+            1096,
+            253
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            1226,
+            64,
+            1495,
+            258
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "juggler",
+      "name": "The Juggler",
+      "texture": "characters/juggler/sprites.png",
+      "master_row": 9,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_03.png",
+        "source/motion_03.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            91,
+            260,
+            311,
+            512
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            449,
+            258,
+            752,
+            511
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            823,
+            259,
+            1138,
+            512
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            1255,
+            260,
+            1499,
+            511
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            65,
+            263,
+            336,
+            512
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            446,
+            263,
+            736,
+            516
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            875,
+            260,
+            1096,
+            514
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            1264,
+            299,
+            1507,
+            515
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "empty_nester",
+      "name": "The Empty Nester",
+      "texture": "characters/empty_nester/sprites.png",
+      "master_row": 10,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_03.png",
+        "source/motion_03.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            63,
+            521,
+            292,
+            754
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            442,
+            519,
+            731,
+            753
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            841,
+            522,
+            1137,
+            754
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            1243,
+            520,
+            1491,
+            753
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            47,
+            526,
+            339,
+            754
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            454,
+            526,
+            745,
+            756
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            865,
+            527,
+            1102,
+            757
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            1244,
+            572,
+            1506,
+            768
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "flagellant",
+      "name": "The Flagellant",
+      "texture": "characters/flagellant/sprites.png",
+      "master_row": 11,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_03.png",
+        "source/motion_03.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            78,
+            764,
+            294,
+            1008
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            436,
+            760,
+            738,
+            1008
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            826,
+            768,
+            1138,
+            1008
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_03.png",
+          "bounds": [
+            1261,
+            767,
+            1490,
+            1008
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            63,
+            763,
+            336,
+            997
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            469,
+            763,
+            743,
+            1002
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            871,
+            764,
+            1114,
+            1004
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_03.png",
+          "bounds": [
+            1228,
+            807,
+            1503,
+            1006
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "makeshift_sisyphus",
+      "name": "The Makeshift Sisyphus",
+      "texture": "characters/makeshift_sisyphus/sprites.png",
+      "master_row": 12,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_04.png",
+        "source/motion_04.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            36,
+            11,
+            339,
+            249
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            424,
+            9,
+            706,
+            249
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            784,
+            20,
+            1146,
+            250
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            1201,
+            20,
+            1474,
+            250
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            45,
+            10,
+            357,
+            257
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            423,
+            7,
+            741,
+            256
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            829,
+            9,
+            1108,
+            255
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            1182,
+            50,
+            1493,
+            261
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "physicist",
+      "name": "The Physicist",
+      "texture": "characters/physicist/sprites.png",
+      "master_row": 13,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_04.png",
+        "source/motion_04.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            77,
+            260,
+            306,
+            511
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            439,
+            256,
+            725,
+            508
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            849,
+            260,
+            1139,
+            511
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            1248,
+            261,
+            1472,
+            510
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            80,
+            257,
+            337,
+            508
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            487,
+            258,
+            743,
+            508
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            856,
+            267,
+            1115,
+            510
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            1242,
+            301,
+            1505,
+            514
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "tactician",
+      "name": "The Tactician",
+      "texture": "characters/tactician/sprites.png",
+      "master_row": 14,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_04.png",
+        "source/motion_04.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            41,
+            520,
+            304,
+            756
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            415,
+            517,
+            756,
+            757
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            800,
+            520,
+            1146,
+            756
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            1205,
+            520,
+            1473,
+            757
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            37,
+            511,
+            363,
+            749
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            423,
+            513,
+            751,
+            753
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            813,
+            515,
+            1101,
+            758
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            1200,
+            547,
+            1513,
+            751
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "radical",
+      "name": "The Radical",
+      "texture": "characters/radical/sprites.png",
+      "master_row": 15,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_04.png",
+        "source/motion_04.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            49,
+            760,
+            326,
+            1012
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            435,
+            758,
+            755,
+            1012
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            817,
+            762,
+            1138,
+            1012
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_04.png",
+          "bounds": [
+            1220,
+            760,
+            1474,
+            1012
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            35,
+            754,
+            350,
+            1013
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            420,
+            753,
+            738,
+            1009
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            833,
+            764,
+            1113,
+            1010
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_04.png",
+          "bounds": [
+            1202,
+            765,
+            1504,
+            1015
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "falconer",
+      "name": "The Falconer",
+      "texture": "characters/falconer/sprites.png",
+      "master_row": 16,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_05.png",
+        "source/motion_05.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            60,
+            16,
+            325,
+            256
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            411,
+            23,
+            714,
+            256
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            832,
+            27,
+            1117,
+            257
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            1209,
+            29,
+            1480,
+            258
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            53,
+            17,
+            330,
+            259
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            434,
+            21,
+            731,
+            260
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            834,
+            22,
+            1097,
+            265
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            1208,
+            75,
+            1488,
+            270
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "carouser",
+      "name": "The Carouser",
+      "texture": "characters/carouser/sprites.png",
+      "master_row": 17,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_05.png",
+        "source/motion_05.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            49,
+            266,
+            314,
+            517
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            414,
+            263,
+            719,
+            532
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            825,
+            278,
+            1120,
+            519
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            1225,
+            269,
+            1485,
+            524
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            51,
+            258,
+            314,
+            521
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            440,
+            261,
+            727,
+            522
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            831,
+            275,
+            1089,
+            523
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            1222,
+            282,
+            1489,
+            517
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "tunneller",
+      "name": "The Tunneller",
+      "texture": "characters/tunneller/sprites.png",
+      "master_row": 18,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_05.png",
+        "source/motion_05.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            66,
+            522,
+            306,
+            772
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            422,
+            523,
+            722,
+            772
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            845,
+            529,
+            1115,
+            773
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            1241,
+            528,
+            1489,
+            779
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            49,
+            518,
+            330,
+            772
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            450,
+            518,
+            735,
+            774
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            853,
+            529,
+            1088,
+            770
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            1237,
+            551,
+            1511,
+            772
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "tiptoer",
+      "name": "The Tiptoer",
+      "texture": "characters/tiptoer/sprites.png",
+      "master_row": 19,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_05.png",
+        "source/motion_05.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            58,
+            783,
+            341,
+            1008
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            413,
+            770,
+            734,
+            1009
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            821,
+            785,
+            1123,
+            1010
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_05.png",
+          "bounds": [
+            1218,
+            786,
+            1482,
+            1009
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            49,
+            781,
+            347,
+            1009
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            439,
+            784,
+            749,
+            1008
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            831,
+            778,
+            1093,
+            1008
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_05.png",
+          "bounds": [
+            1209,
+            804,
+            1501,
+            1005
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "hoary_hoarder",
+      "name": "The Hoary Hoarder",
+      "texture": "characters/hoary_hoarder/sprites.png",
+      "master_row": 20,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_06.png",
+        "source/motion_06.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            59,
+            13,
+            332,
+            262
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            447,
+            12,
+            738,
+            261
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            820,
+            12,
+            1120,
+            261
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            1204,
+            12,
+            1478,
+            261
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            88,
+            17,
+            377,
+            269
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            444,
+            17,
+            734,
+            272
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            851,
+            32,
+            1123,
+            268
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            1198,
+            88,
+            1466,
+            287
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "ballbearer",
+      "name": "The Ballbearer",
+      "texture": "characters/ballbearer/sprites.png",
+      "master_row": 21,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_06.png",
+        "source/motion_06.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            55,
+            271,
+            323,
+            515
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            448,
+            270,
+            720,
+            515
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            820,
+            270,
+            1141,
+            515
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            1224,
+            270,
+            1475,
+            516
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            78,
+            275,
+            359,
+            519
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            458,
+            272,
+            737,
+            519
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            845,
+            275,
+            1120,
+            518
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            1214,
+            314,
+            1497,
+            519
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    },
+    {
+      "id": "false_messiah",
+      "name": "The False Messiah",
+      "texture": "characters/false_messiah/sprites.png",
+      "master_row": 22,
+      "frames": [
+        {
+          "name": "idle",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "windup",
+          "frame": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "release",
+          "frame": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "recovery",
+          "frame": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_a",
+          "frame": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "walk_b",
+          "frame": {
+            "x": 640,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "hurt",
+          "frame": {
+            "x": 768,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        },
+        {
+          "name": "defeated",
+          "frame": {
+            "x": 896,
+            "y": 0,
+            "w": 128,
+            "h": 128
+          }
+        }
+      ],
+      "sources": [
+        "source/batch_06.png",
+        "source/motion_06.png"
+      ],
+      "source_rects": [
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            63,
+            519,
+            330,
+            774
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            448,
+            520,
+            739,
+            774
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            824,
+            515,
+            1115,
+            774
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/batch_06.png",
+          "bounds": [
+            1219,
+            518,
+            1498,
+            775
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            63,
+            517,
+            361,
+            783
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            450,
+            517,
+            754,
+            782
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            834,
+            525,
+            1117,
+            778
+          ],
+          "extraction": "alpha-component isolation"
+        },
+        {
+          "file": "source/motion_06.png",
+          "bounds": [
+            1207,
+            546,
+            1495,
+            785
+          ],
+          "extraction": "alpha-component isolation"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "One facing direction; walking uses two contact poses.",
+    "Concept-derived animation poses; review timing in the game.",
+    "Projectiles should be spawned separately on release."
+  ]
+}
