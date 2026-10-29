@@ -670,6 +670,7 @@ func open_help() -> void:
 	var content = _open_modal("help", "The field guide.", "Keep enemies above the breach line. Clear ten waves and defeat both guardians.")
 	for pair in [["Move and aim", "PC: WASD or arrows move. Pointer aims. Controller: left stick moves, right stick aims; A dashes, X triggers Surge, Start pauses. Auto throws start enabled; turn Auto off to use Space, mouse button, or right trigger."],
 		["On Android", "Use the left stick to move. Drag elsewhere in the arena to aim. Tap DASH and SURGE on the right. Touch/controller aim assist finds a threat when you stop aiming. Back pauses. Changing focus pauses too."],
+		["Read the danger", "Pink dashed lanes show where Prism enemies and guardians will shoot. Their aim locks during the charge: step away or dash across the lane before release. Breach warnings mean an enemy is close to crossing; a guardian breach ends the run."],
 		["Build your orbit", "Pick an upgrade each level. Ember + Venom becomes Toxic Sun; Frost + Spark becomes Stormglass; Light + Void becomes Eclipse. Evolutions replace their ingredients."],
 		["Return stronger", "Wall bounces keep orbs in play. Charges return at the bottom or after expiry. Defeated enemies charge Rift Surge. Spend run rewards at basecamp. Saves stay on this device; browser saves are separate."]]:
 		_label(content, pair[0], 28, GOLD)

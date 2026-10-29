@@ -1,8 +1,8 @@
 # Combat feedback pass
 
-The native Godot project now has fourteen original synthesized cues: throw,
+The native Godot project now has fifteen original synthesized cues: throw,
 wall bounce, impact, critical impact, defeat of an enemy, player damage, dash,
-shield, wave arrival, guardian arrival, level-up, surge, victory and defeat.
+shield, wave arrival, guardian arrival, level-up, surge, victory, defeat and attack windup.
 Samples are generated once at startup. Ten reusable voices, per-cue cooldowns
 and priority-based voice replacement keep dense combat bounded; routine impacts
 cannot replace a guardian warning or result cue. Sound remains muted by default.

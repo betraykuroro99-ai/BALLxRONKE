@@ -83,6 +83,9 @@ func advance(delta: float, input: Dictionary = {}) -> void:
 			break
 		_step(delta / steps, input)
 
+const PRISM_WINDUP = 0.55
+const BOSS_WINDUP = 0.75
+
 func spawn_wave() -> void:
 	wave += 1
 	wave_clock = 0.0
@@ -105,7 +108,7 @@ func spawn_wave() -> void:
 func _add_enemy(pos: Vector2, width: float, hp: float, kind: String, speed: float) -> void:
 	next_id += 1
 	enemies.append({"id": next_id, "pos": pos, "width": width, "hp": hp, "max_hp": hp, "kind": kind,
-		"speed": speed, "fire": 2.0 + rng.randf() * 4.0, "burn": 0.0, "poison": 0.0, "slow": 0.0, "weak": 0.0, "flash": 0.0, "dead": false})
+		"speed": speed, "fire": 2.0 + rng.randf() * 4.0, "charging": false, "attack_angle": 0.0, "burn": 0.0, "poison": 0.0, "slow": 0.0, "weak": 0.0, "flash": 0.0, "dead": false})
 
 func _step(delta: float, input: Dictionary) -> void:
 	time += delta
@@ -199,16 +202,30 @@ func _update_enemies(delta: float, world_delta: float) -> void:
 				hurt(10.0)
 			enemy.dead = true
 			emit("breach", {"pos": enemy.pos})
+			continue
 		if enemy.kind in ["prism", "boss"]:
 			enemy.fire -= world_delta
+			var windup = BOSS_WINDUP if enemy.kind == "boss" else PRISM_WINDUP
+			if enemy.fire <= windup and not enemy.charging:
+				enemy.charging = true
+				# Lock the angle when the warning begins. Dodging during the windup
+				# works because the released volley follows the displayed lanes.
+				enemy.attack_angle = (player.pos - enemy.pos).angle() + (rng.randf() - 0.5) * (0.6 if crew.id == "tiptoer" else 0.12)
+				emit("windup", {"pos": enemy.pos})
 			if enemy.fire <= 0.0:
-				enemy.fire = 1.5 if enemy.kind == "boss" else 4.5
-				var angle = (player.pos - enemy.pos).angle() + (rng.randf() - 0.5) * (0.6 if crew.id == "tiptoer" else 0.12)
-				var count = 3 if enemy.kind == "boss" else 1
-				for i in range(count):
-					var direction = Vector2.from_angle(angle + (i - (count - 1) / 2.0) * 0.21)
+				for direction in attack_directions(enemy):
 					bullets.append({"pos": enemy.pos, "velocity": direction * 145.0, "radius": 7.0 if enemy.kind == "boss" else 5.0,
 						"damage": 5.0 if enemy.weak > 0.0 else 10.0, "dead": false})
+				enemy.fire = 1.5 if enemy.kind == "boss" else 4.5
+				enemy.charging = false
+
+func attack_directions(enemy: Dictionary) -> Array[Vector2]:
+	# One shared definition keeps warnings and projectiles aligned.
+	var result: Array[Vector2] = []
+	var count = 3 if enemy.kind == "boss" else 1
+	for i in range(count):
+		result.append(Vector2.from_angle(enemy.attack_angle + (i - (count - 1) / 2.0) * 0.21))
+	return result
 
 func _update_ball(ball: Dictionary, delta: float) -> void:
 	if ball.orbit:

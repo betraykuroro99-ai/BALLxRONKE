@@ -18,7 +18,7 @@ func _run_tests() -> void:
 	await process_frame
 	await process_frame
 	check(scene.ready_done and scene.home_view.visible, "Home scene starts")
-	check(scene.sound.tones.size() == 14 and scene.sound.voices.size() == 10, "Combat cues use a bounded voice pool")
+	check(scene.sound.tones.size() == 15 and scene.sound.voices.size() == 10, "Combat cues use a bounded voice pool")
 	for stream in scene.sound.tones.values():
 		check(not stream.data.is_empty() and stream.mix_rate == 22050, "Synthesized cue contains PCM data")
 	scene.sound.muted = false
@@ -182,8 +182,18 @@ func _run_tests() -> void:
 		scene.model.enemies.clear()
 		scene.model.wave = 4 if world_index < 2 else 9
 		scene.model.spawn_wave()
+		for enemy in scene.model.enemies:
+			if enemy.kind in ["boss", "prism"]:
+				enemy.charging = true
+				enemy.attack_angle = PI / 2
+				enemy.fire = 0.4
+			if enemy.kind != "boss":
+				enemy.pos.y = 635
+		scene.arena.effects = false
+		var prior_draws = scene.arena.draw_count
 		for _i in range(4):
 			await process_frame
+		check(scene.arena.draw_count > prior_draws, "Warnings render with optional effects disabled")
 		check(scene.arena.floor_texture is Texture2D and scene.arena.draw_count > 0, "Biome and boss art draw paths: " + str(world_index))
 	scene._return_home()
 	scene.queue_free()

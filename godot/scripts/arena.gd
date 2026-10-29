@@ -292,6 +292,9 @@ func _draw() -> void:
 	draw_count += 1
 	draw_set_transform(shake_offset * size / Vector2(600, 820), 0, size / Vector2(600, 820))
 	_draw_floor()
+	for enemy in model.enemies:
+		if not enemy.dead and enemy.get("charging", false):
+			_draw_attack_warning(enemy)
 	if active and model.phase == "playing":
 		var direction: Vector2 = (aim - model.player.pos).normalized()
 		draw_dashed_line(model.player.pos + Vector2(0, -20), model.player.pos + Vector2(0, -20) + direction * 200, Color(0.9, 0.8, 0.6, 0.3), 2, 11)
@@ -342,6 +345,7 @@ func _draw() -> void:
 		_text(label.text, label.pos, 23 if label.crit else 17, Color(GOLD if label.crit else CREAM, clampf(label.life * 2, 0, 1)), true)
 	# Keep HUD, touch targets and banners stationary while the world reacts.
 	draw_set_transform(Vector2.ZERO, 0, size / Vector2(600, 820))
+	_draw_breach_warning()
 	if hurt_flash > 0:
 		var warning = Color(1.0, 0.25, 0.24, hurt_flash * 1.5)
 		draw_rect(Rect2(2, 2, 596, 816), warning, false, 5)
@@ -356,6 +360,40 @@ func _draw() -> void:
 	if touch_enabled:
 		_draw_touch()
 	draw_set_transform(Vector2.ZERO)
+
+func _draw_attack_warning(enemy: Dictionary) -> void:
+	# Essential gameplay information stays visible with optional effects disabled.
+	var duration = RonkeRun.BOSS_WINDUP if enemy.kind == "boss" else RonkeRun.PRISM_WINDUP
+	var progress = clampf(1.0 - enemy.fire / duration, 0.0, 1.0)
+	var color = Color("ffc0be")
+	var radius: float = enemy.width * 0.6 + 5.0
+	draw_arc(enemy.pos, radius, -PI / 2, -PI / 2 + TAU * maxf(0.02, progress), 32, color, 2.5, true)
+	for direction in model.attack_directions(enemy):
+		var length = 1000.0
+		if absf(direction.x) > 0.001:
+			length = minf(length, ((600.0 if direction.x > 0 else 0.0) - enemy.pos.x) / direction.x)
+		if absf(direction.y) > 0.001:
+			length = minf(length, ((820.0 if direction.y > 0 else 0.0) - enemy.pos.y) / direction.y)
+		var start: Vector2 = enemy.pos + direction * radius
+		var end: Vector2 = enemy.pos + direction * maxf(radius, length)
+		draw_dashed_line(start, end, Color(color, 0.22 + progress * 0.18), 1.5, 12, true)
+		var tip: Vector2 = enemy.pos + direction * minf(radius + 35, maxf(radius, length))
+		var side = direction.orthogonal() * 5
+		draw_polyline(PackedVector2Array([tip - direction * 9 + side, tip, tip - direction * 9 - side]), color, 2, true)
+
+func _draw_breach_warning() -> void:
+	var count = 0
+	var guardian = false
+	for enemy in model.enemies:
+		if not enemy.dead and enemy.pos.y + enemy.width / 2.0 > RonkeRun.HEIGHT - 190:
+			count += 1
+			guardian = guardian or enemy.kind == "boss"
+	if count == 0:
+		return
+	var color = Color("ffb1a2")
+	for x in [24, 576]:
+		draw_colored_polygon(PackedVector2Array([Vector2(x - 7, 684), Vector2(x + 7, 684), Vector2(x, 698)]), color)
+	_text("GUARDIAN AT BREACH / STOP IT!" if guardian else "BREACH RISK / %d CLOSE" % count, Vector2(300, 690), 15, color, true)
 
 func _draw_enemy(enemy: Dictionary) -> void:
 	var pos: Vector2 = enemy.pos

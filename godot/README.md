@@ -15,13 +15,14 @@ in the editor. Input actions are configured by `controls.gd` at startup.
 - Ten waves, two guardians, and three ruin themes.
 - Illustrated stone arenas for Verdant, Ember, and Astral; six painted enemy/boss
   designs; outlined orb trails, distinct hostile shots, and lightweight ambience.
+- Aimed attack warnings: Prism enemies charge for 0.55 seconds; guardians for 0.75 seconds. Dashed lanes match the released volley. Breach danger markers stay visible with optional effects disabled.
 - Bundled display typography, brass-edged UI, and color-coded orb loadouts.
 - Bouncing orbs, charge return, elemental effects, and three evolutions.
 - Experience, upgrade selection, dash, Rift Surge, and run results.
 - Permanent basecamp upgrades and versioned `user://` saves with backup recovery.
 - Keyboard/mouse and controller bindings, multi-touch controls, portrait and
   landscape layouts, cutout margins on Android, and focus/background pausing.
-- Fourteen original synthesized combat cues, muted by default. Open **Sound / Feel** at basecamp or in the pause menu to enable sound, adjust volume, or turn screen shake down to zero. Preferences persist locally.
+- Fifteen original synthesized combat cues, muted by default. Open **Sound / Feel** at basecamp or in the pause menu to enable sound, adjust volume, or turn screen shake down to zero. Preferences persist locally.
 - Critical hits, player damage, surge, and guardian defeats trigger bounded arena motion; HUD and touch controls remain stationary. Damage warnings remain visible when motion is disabled.
 - 23 native SpriteFrames resources and 23 AnimatedSprite2D runner scenes.
 

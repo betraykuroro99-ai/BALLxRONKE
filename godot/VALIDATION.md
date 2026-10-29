@@ -34,6 +34,8 @@ renderer.
 
 - Combat feedback: generated PCM cues and bounded voice pool; guardian/victory event routing; settings persistence; zero-motion damage warning; bounded impact motion; settings keep combat paused.
 
+- Attack warnings: aim locks before release; actual projectile directions match preview lanes; freeze/upgrade pause the windup; destruction/breach cancels pending fire; warnings render with optional effects disabled.
+
 ## Not yet verified
 
 - A real graphical playtest of the native game and its presentation.

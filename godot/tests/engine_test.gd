@@ -30,6 +30,7 @@ func _run_tests() -> void:
 		check(run.player.ammo >= 0 and run.balls.size() <= 96, "Invalid supply: " + crew.id)
 		print("CREW ", crew.id, ": ", run.phase, " wave ", run.wave, " kills ", run.kills)
 	_test_mechanics()
+	_test_attack_warnings()
 	_test_save()
 	_test_exports()
 	if failures.is_empty():
@@ -95,6 +96,49 @@ func _test_mechanics() -> void:
 		var runner = load("res://scenes/runners/" + crew.id + ".tscn").instantiate()
 		check(runner.get_node("AnimatedSprite2D").offset == Vector2(0, -56), "Native prefab anchor: " + crew.id)
 		runner.free()
+
+func _test_attack_warnings() -> void:
+	for kind in ["prism", "boss"]:
+		var run = RonkeRun.new()
+		run.enemies.clear()
+		run._add_enemy(Vector2(300, 200), 70, 500, kind, 0)
+		var enemy: Dictionary = run.enemies[0]
+		var duration = RonkeRun.BOSS_WINDUP if kind == "boss" else RonkeRun.PRISM_WINDUP
+		enemy.fire = duration + 0.01
+		run.drain_events()
+		run._update_enemies(0.02, 0.02)
+		check(enemy.charging and run.bullets.is_empty(), "Warning precedes volley: " + kind)
+		check(run.drain_events().filter(func(e): return e.type == "windup").size() == 1, "One warning event: " + kind)
+		var angle: float = enemy.attack_angle
+		var preview = run.attack_directions(enemy)
+		var remaining: float = enemy.fire
+		run.player.pos.x = 80
+		run._update_enemies(0.2, 0.0)
+		check(enemy.fire == remaining and enemy.attack_angle == angle, "World freeze pauses warning: " + kind)
+		run.phase = "upgrade"
+		run.advance(0.1)
+		check(enemy.fire == remaining, "Upgrade freezes warning: " + kind)
+		run.phase = "playing"
+		run._update_enemies(duration * 0.5, duration * 0.5)
+		check(enemy.attack_angle == angle and run.bullets.is_empty(), "Warning locks aim without early fire: " + kind)
+		run._update_enemies(duration * 0.5, duration * 0.5)
+		check(run.bullets.size() == (3 if kind == "boss" else 1), "Expected volley size: " + kind)
+		for i in range(run.bullets.size()):
+			check(run.bullets[i].velocity.normalized().distance_to(preview[i]) < 0.0001, "Projectile follows warning lane: " + kind)
+		check(not enemy.charging and enemy.fire > duration, "Warning resets after release: " + kind)
+		# Destroying a charging shooter cancels its pending volley.
+		run.bullets.clear()
+		enemy.charging = true
+		enemy.fire = 0.001
+		run.kill(enemy)
+		run._update_enemies(0.02, 0.02)
+		check(run.bullets.is_empty(), "Destroyed shooter cannot release volley: " + kind)
+	var breach = RonkeRun.new()
+	breach.enemies.clear()
+	breach._add_enemy(Vector2(300, 700), 50, 100, "prism", 0)
+	breach.enemies[0].fire = 0
+	breach._update_enemies(0.02, 0.02)
+	check(breach.enemies[0].dead and breach.bullets.is_empty(), "Breached shooter cannot fire after removal")
 
 func _test_save() -> void:
 	var raw = {"version": 1, "shards": -20, "last_crew": "missing", "meta": {"power": 100}, "world": "invalid"}

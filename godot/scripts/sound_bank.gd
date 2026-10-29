@@ -3,9 +3,9 @@ extends Node
 
 # Short original synthesized cues: no downloads, streaming, or runtime allocations.
 const RATE = 22050
-const COOLDOWNS = {"shot": 100, "hit": 75, "crit": 100, "kill": 85, "bounce": 130}
+const COOLDOWNS = {"shot": 100, "hit": 75, "crit": 100, "kill": 85, "bounce": 130, "windup": 250}
 const PRIORITY = {"shot": 0, "bounce": 0, "hit": 1, "kill": 1, "crit": 2, "dash": 2,
-	"shield": 2, "hurt": 3, "wave": 3, "boss": 4, "level": 4, "surge": 4, "victory": 5, "defeat": 5}
+	"shield": 2, "windup": 2, "hurt": 3, "wave": 3, "boss": 4, "level": 4, "surge": 4, "victory": 5, "defeat": 5}
 var muted = true
 var volume = 0.65
 var voices: Array[AudioStreamPlayer] = []
@@ -27,7 +27,7 @@ func _ready() -> void:
 		"hit": [190.0, 65.0, 0.085, 0.38, 0.2], "crit": [850.0, 180.0, 0.14, 0.2, 0.45],
 		"kill": [340.0, 90.0, 0.14, 0.3, 0.3], "hurt": [140.0, 48.0, 0.25, 0.35, 0.5],
 		"dash": [170.0, 650.0, 0.13, 0.5, 0.0], "shield": [500.0, 1050.0, 0.17, 0.02, 0.4],
-		"wave": [220.0, 330.0, 0.28, 0.04, 0.3], "boss": [130.0, 55.0, 0.6, 0.12, 0.55],
+		"windup": [390.0, 650.0, 0.19, 0.02, 0.3], "wave": [220.0, 330.0, 0.28, 0.04, 0.3], "boss": [130.0, 55.0, 0.6, 0.12, 0.55],
 		"level": [440.0, 880.0, 0.4, 0.0, 0.35], "surge": [110.0, 880.0, 0.48, 0.2, 0.5],
 		"victory": [440.0, 880.0, 0.7, 0.0, 0.45], "defeat": [220.0, 55.0, 0.65, 0.06, 0.25]}
 	for kind in recipes:
