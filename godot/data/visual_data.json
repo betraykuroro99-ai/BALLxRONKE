@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "floors": [
+    "res://assets/art/arenas/verdant.png",
+    "res://assets/art/arenas/ember.png",
+    "res://assets/art/arenas/astral.png"
+  ],
+  "enemy_atlas": "res://assets/art/enemies/enemies.png",
+  "enemy_regions": {
+    "moss": [
+      40,
+      58,
+      397,
+      414
+    ],
+    "granite": [
+      501,
+      80,
+      518,
+      382
+    ],
+    "prism": [
+      1084,
+      14,
+      401,
+      458
+    ],
+    "swift": [
+      34,
+      540,
+      418,
+      415
+    ],
+    "gatekeeper": [
+      461,
+      484,
+      559,
+      498
+    ],
+    "rootheart": [
+      1045,
+      485,
+      466,
+      524
+    ]
+  },
+  "display_font": "res://assets/fonts/Display.ttf"
+}

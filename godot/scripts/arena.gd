@@ -28,18 +28,39 @@ var effects = true
 var banner = ""
 var banner_time = 0.0
 var font: Font
+var floor_texture: Texture2D
+var enemy_texture: Texture2D
+var visual_data: Dictionary = {}
+var vignette: GradientTexture2D
+var draw_count = 0
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(180, 246)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	focus_mode = Control.FOCUS_ALL
-	font = ThemeDB.fallback_font
+	font = load("res://assets/fonts/Display.ttf")
+	var data_file = FileAccess.open("res://data/visual_data.json", FileAccess.READ)
+	if data_file:
+		visual_data = JSON.parse_string(data_file.get_as_text())
+	enemy_texture = load("res://assets/art/enemies/enemies.png")
+	var gradient = Gradient.new()
+	gradient.offsets = PackedFloat32Array([0.0, 0.52, 1.0])
+	gradient.colors = PackedColorArray([Color.TRANSPARENT, Color.TRANSPARENT, Color(0.01, 0.02, 0.02, 0.48)])
+	vignette = GradientTexture2D.new()
+	vignette.gradient = gradient
+	vignette.width = 128
+	vignette.height = 128
+	vignette.fill = GradientTexture2D.FILL_RADIAL
+	vignette.fill_from = Vector2(0.5, 0.5)
+	vignette.fill_to = Vector2(1.0, 0.5)
 	touch_enabled = OS.has_feature("mobile") or OS.get_cmdline_user_args().has("--mobile-ui")
 
 func set_run(run: RonkeRun) -> void:
 	model = run
 	texture = load("res://assets/crew/" + run.crew.id + ".png")
 	sprite_frames = load("res://assets/animations/" + run.crew.id + ".tres")
+	var paths = ["verdant", "ember", "astral"]
+	floor_texture = load("res://assets/art/arenas/" + paths[run.world] + ".png")
 	aim = Vector2(300, 100)
 	particles.clear()
 	labels.clear()
@@ -152,9 +173,9 @@ func push_event(event: Dictionary) -> void:
 		banner = "GUARDIAN AHEAD" if event.boss else "DEPTH %02d" % event.wave
 		banner_time = 2.1
 	if kind == "damage" and labels.size() < 45:
-		labels.append({"pos": event.pos + Vector2(randf_range(-10, 10), -20), "text": str(event.value) + ("!" if event.crit else ""), "crit": event.crit, "life": 0.65})
+		labels.append({"pos": event.pos + Vector2(randf_range(-8, 8), -25), "text": str(event.value) + ("!" if event.crit else ""), "crit": event.crit, "life": 0.65})
 	if kind in ["hit", "kill", "hurt", "surge", "dash", "shield"] and effects:
-		var count = 28 if kind == "surge" else 9 if kind == "kill" else 4
+		var count = 28 if kind == "surge" else 11 if kind == "kill" else 5
 		var color: Color = event.get("color", Color("ef9d80") if kind == "hurt" else GOLD if kind != "kill" else Color("afd18a"))
 		for _i in range(count):
 			if particles.size() >= 180:
@@ -201,40 +222,75 @@ func _box(rect: Rect2, color: Color, border: Color = DARK, radius: int = 8) -> v
 func _text(text: String, pos: Vector2, font_size: int, color: Color, centered: bool = false) -> void:
 	if centered:
 		pos.x -= font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x / 2.0
+	draw_string_outline(font, pos + Vector2(0, 1), text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, 3, Color(0.02, 0.04, 0.03, color.a * 0.85))
 	draw_string(font, pos, text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, color)
+
+func _draw_floor() -> void:
+	if floor_texture:
+		# Nine regions compress the illustrated walls to the actual bounce boundary.
+		var width = float(floor_texture.get_width())
+		var height = float(floor_texture.get_height())
+		var sx = [0.0, 96.0, width - 96.0, width]
+		var sy = [0.0, 110.0, height - 140.0, height]
+		var dx = [0.0, 18.0, 582.0, 600.0]
+		var dy = [0.0, 24.0, 788.0, 820.0]
+		var tint = Color(0.86, 0.91, 0.87) if model.world == 0 else Color(0.90, 0.85, 0.82) if model.world == 1 else Color(0.87, 0.88, 0.98)
+		for row in range(3):
+			for col in range(3):
+				draw_texture_rect_region(floor_texture, Rect2(dx[col], dy[row], dx[col + 1] - dx[col], dy[row + 1] - dy[row]), Rect2(sx[col], sy[row], sx[col + 1] - sx[col], sy[row + 1] - sy[row]), tint)
+	else:
+		draw_rect(Rect2(0, 0, 600, 820), Color("162f27"))
+	if vignette:
+		draw_texture_rect(vignette, Rect2(0, 0, 600, 820), false)
+	if effects:
+		var color = Color("bde3ba") if model.world == 0 else Color("edb36c") if model.world == 1 else Color("bfd5ff")
+		for i in range(22):
+			var x = 28 + fmod(i * 137.9 + sin(model.time * 0.18 + i) * 10, 544)
+			var y = fmod(i * 83.4 - model.time * (4 + i % 3) + 1640, 820)
+			var alpha = 0.13 + sin(model.time * 0.8 + i * 1.7) * 0.06
+			draw_circle(Vector2(x, y), 1.2 if i % 3 else 1.8, Color(color, alpha))
+	var danger = 0.0
+	for enemy in model.enemies:
+		danger = maxf(danger, clampf((enemy.pos.y - 530) / 160, 0, 1))
+	var line_color = Color("ef9d80") if danger > 0.45 else GOLD
+	var opacity = 0.25 + danger * 0.45
+	draw_line(Vector2(22, 700), Vector2(578, 700), Color(line_color, opacity * 0.15), 9, true)
+	draw_dashed_line(Vector2(22, 700), Vector2(578, 700), Color(line_color, opacity), 1.5, 10)
+	for x in [29.0, 571.0]:
+		draw_polyline(PackedVector2Array([Vector2(x - 5, 694), Vector2(x, 700), Vector2(x - 5, 706)]), Color(line_color, opacity + 0.1), 2, true)
+	_text("BREACH LINE", Vector2(465, 691), 11, Color(line_color, 0.65))
 
 func _draw() -> void:
 	if not model or size.x <= 0 or size.y <= 0:
 		return
+	draw_count += 1
 	draw_set_transform(Vector2.ZERO, 0, size / Vector2(600, 820))
-	var colors = [Color("162f27"), Color("2c281f"), Color("252a38")]
-	draw_rect(Rect2(0, 0, 600, 820), colors[model.world])
-	for y in range(0, 820, 66):
-		draw_line(Vector2(14, y), Vector2(586, y), Color(0.6, 0.7, 0.5, 0.04))
-		for x in range(24 + (int(y / 66.0) % 2) * 60, 600, 118):
-			draw_line(Vector2(x, y), Vector2(x, y + 66), Color(0.6, 0.7, 0.5, 0.04))
-	for x in [0, 588]:
-		draw_rect(Rect2(x, 0, 12, 820), Color("2d4638"))
-		for y in range(30, 820, 75):
-			draw_rect(Rect2(x + 3, y, 6, 18), Color("61734e"))
-	draw_dashed_line(Vector2(20, 700), Vector2(580, 700), Color(0.9, 0.6, 0.5, 0.3), 1, 8)
-	_text("HOLD THE LINE", Vector2(438, 691), 12, Color("8e7966"))
+	_draw_floor()
 	if active and model.phase == "playing":
 		var direction: Vector2 = (aim - model.player.pos).normalized()
 		draw_dashed_line(model.player.pos + Vector2(0, -20), model.player.pos + Vector2(0, -20) + direction * 200, Color(0.9, 0.8, 0.6, 0.3), 2, 11)
 	for enemy in model.enemies:
 		_draw_enemy(enemy)
 	for bullet in model.bullets:
-		draw_circle(bullet.pos, bullet.radius + 3, Color(0.9, 0.5, 0.6, 0.15))
-		draw_circle(bullet.pos, bullet.radius, Color("df9ba3"))
-		draw_circle(bullet.pos - Vector2.ONE, bullet.radius * 0.35, CREAM)
+		draw_line(bullet.pos - bullet.velocity * 0.045, bullet.pos, Color(0.95, 0.45, 0.55, 0.3), bullet.radius, true)
+		var diamond = PackedVector2Array([bullet.pos + Vector2(0, -bullet.radius - 2), bullet.pos + Vector2(bullet.radius + 2, 0), bullet.pos + Vector2(0, bullet.radius + 2), bullet.pos + Vector2(-bullet.radius - 2, 0)])
+		draw_colored_polygon(diamond, DARK)
+		for i in range(diamond.size()):
+			diamond[i] = bullet.pos + (diamond[i] - bullet.pos) * 0.72
+		draw_colored_polygon(diamond, Color("f79ca9"))
+		draw_circle(bullet.pos, 1.8, CREAM)
 	for ball in model.balls:
 		var color = RonkeData.orb_color(ball.element)
-		draw_line(ball.pos - ball.velocity * 0.025, ball.pos, Color(color, 0.24), ball.radius * 1.2, true)
+		draw_line(ball.pos - ball.velocity * 0.045, ball.pos, Color(color, 0.12), ball.radius * 1.8, true)
+		draw_line(ball.pos - ball.velocity * 0.022, ball.pos, Color(color, 0.45), ball.radius * 0.75, true)
 		if effects:
-			draw_circle(ball.pos, ball.radius + 5, Color(color, 0.08))
+			draw_circle(ball.pos, ball.radius + 6, Color(color, 0.09))
+			draw_circle(ball.pos, ball.radius + 3, Color(color, 0.17))
+		draw_circle(ball.pos, ball.radius + 1, DARK)
 		draw_circle(ball.pos, ball.radius, color)
 		draw_circle(ball.pos - Vector2(1.3, 1.3), 1.9, CREAM)
+		if ball.element in ["toxic_sun", "stormglass", "eclipse"]:
+			draw_arc(ball.pos, ball.radius + 3, model.time * 5, model.time * 5 + PI * 1.2, 10, Color(CREAM, 0.75), 1, true)
 	var p: Dictionary = model.player
 	var world_scale = size / Vector2(600, 820)
 	draw_set_transform((p.pos + Vector2(0, 27)) * world_scale, 0, Vector2(world_scale.x, world_scale.y * 0.26))
@@ -250,7 +306,7 @@ func _draw() -> void:
 	if p.dash_cd > 0:
 		draw_arc(p.pos + Vector2(0, 28), 18, -PI / 2, -PI / 2 + TAU * (1 - p.dash_cd / 3.5), 25, Color(0.9, 0.8, 0.5, 0.5), 2, true)
 	for particle in particles:
-		draw_rect(Rect2(particle.pos, Vector2(3, 3)), Color(particle.color, clampf(particle.life / 0.4, 0, 1)))
+		draw_colored_polygon(PackedVector2Array([particle.pos + Vector2(0, -3), particle.pos + Vector2(2, 0), particle.pos + Vector2(0, 3), particle.pos + Vector2(-2, 0)]), Color(particle.color, clampf(particle.life / 0.4, 0, 1)))
 	for ring in rings:
 		draw_arc(ring.pos, ring.radius * (1.2 - ring.life), 0, TAU, 36, Color(0.9, 0.8, 0.5, clampf(ring.life * 2, 0, 0.7)), 2, true)
 	for chain in chains:
@@ -261,8 +317,11 @@ func _draw() -> void:
 	if model.combo > 2 and model.combo_time > 0:
 		_text("%dx COMBO" % model.combo, Vector2(300, 641), 23, GOLD, true)
 	if banner_time > 0:
-		_text(banner, Vector2(300, 340), 38, CREAM, true)
-		_text("MAKE EVERY BOUNCE COUNT", Vector2(300, 367), 14, GOLD, true)
+		var opacity = minf(1.0, banner_time * 3)
+		_box(Rect2(106, 294, 388, 88), Color(0.04, 0.09, 0.075, opacity * 0.86), Color(GOLD, opacity * 0.55), 4)
+		draw_line(Vector2(140, 304), Vector2(460, 304), Color(GOLD, opacity * 0.35), 1)
+		_text(banner, Vector2(300, 341), 34, Color(CREAM, opacity), true)
+		_text("MAKE EVERY BOUNCE COUNT", Vector2(300, 367), 12, Color(GOLD, opacity), true)
 	if touch_enabled:
 		_draw_touch()
 	draw_set_transform(Vector2.ZERO)
@@ -270,37 +329,40 @@ func _draw() -> void:
 func _draw_enemy(enemy: Dictionary) -> void:
 	var pos: Vector2 = enemy.pos
 	var width: float = enemy.width
-	var half = width / 2
-	var color = Color("f4edc9") if enemy.flash > 0 else Color("7d8162") if enemy.kind == "boss" else Color("9a8261") if enemy.kind == "granite" else Color("837b9b") if enemy.kind == "prism" else Color("a4a76c") if enemy.kind == "swift" else Color("64866c")
-	_box(Rect2(pos - Vector2.ONE * half, Vector2.ONE * width), color, DARK, 15 if enemy.kind == "boss" else 7)
-	if enemy.kind == "prism":
-		draw_colored_polygon(PackedVector2Array([pos + Vector2(0, -half + 7), pos + Vector2(half - 8, 0), pos + Vector2(0, half - 7), pos + Vector2(-half + 8, 0)]), Color("dab8f4"))
-	else:
-		var eye = 10 if enemy.kind == "boss" else 4
-		var spread = 22 if enemy.kind == "boss" else 10
-		for x in [-spread, spread]:
-			draw_circle(pos + Vector2(x, -3), eye, DARK)
-			draw_circle(pos + Vector2(x + 1, 0), eye * 0.35, GOLD if enemy.kind == "boss" else CREAM)
-		draw_line(pos + Vector2(-7, half * 0.44), pos + Vector2(7, half * 0.44), Color("243d28"), 3)
-		if enemy.kind == "granite":
-			draw_polyline(PackedVector2Array([pos + Vector2(-half + 4, -half + 5), pos + Vector2(-5, -3), pos + Vector2(-13, half - 3)]), Color("514631"), 3, true)
-		else:
-			_box(Rect2(pos + Vector2(-half - 1, -half - 2), Vector2(width * 0.6, 8)), Color("91ad6b"), Color.TRANSPARENT, 3)
-	if enemy.burn > 0 or enemy.poison > 0 or enemy.slow > 0 or enemy.weak > 0:
-		var outline = Color("8ee5ed") if enemy.slow > 0 else Color("b3e589") if enemy.poison > 0 else Color("ffc18a") if enemy.burn > 0 else Color("ffbee3")
-		draw_rect(Rect2(pos - Vector2.ONE * (half + 3), Vector2.ONE * (width + 6)), outline, false, 2)
-	if enemy.hp < enemy.max_hp or enemy.kind == "boss":
-		draw_rect(Rect2(pos + Vector2(-half, half + 8), Vector2(width, 4)), DARK)
-		draw_rect(Rect2(pos + Vector2(-half, half + 8), Vector2(width * clampf(enemy.hp / enemy.max_hp, 0, 1), 4)), GOLD if enemy.kind == "boss" else Color("8cbd90"))
+	var name: String = enemy.kind
 	if enemy.kind == "boss":
-		_text("THE GATEKEEPER" if enemy.max_hp < 600 else "THE ROOT OF IT ALL", pos + Vector2(0, -half - 12), 12, CREAM, true)
+		name = "gatekeeper" if enemy.max_hp < 600 else "rootheart"
+	var data: Array = visual_data.get("enemy_regions", {}).get(name, [0, 0, 512, 512])
+	var region = Rect2(data[0], data[1], data[2], data[3])
+	var scale_factor = 1.2 if enemy.kind == "boss" else 1.14
+	var draw_size = Vector2(width * scale_factor, width * scale_factor * region.size.y / region.size.x)
+	var bob = sin(model.time * 2.0 + enemy.id * 1.3) * (1.8 if enemy.kind == "prism" else 0.7)
+	var rect = Rect2(pos - draw_size / 2 + Vector2(0, bob), draw_size)
+	if enemy_texture:
+		draw_texture_rect_region(enemy_texture, Rect2(rect.position + Vector2(2, 6), rect.size), region, Color(0.01, 0.025, 0.02, 0.55))
+		if enemy.burn > 0 or enemy.poison > 0 or enemy.slow > 0 or enemy.weak > 0:
+			var outline = Color("8ee5ed") if enemy.slow > 0 else Color("b3e589") if enemy.poison > 0 else Color("ffc18a") if enemy.burn > 0 else Color("ffbee3")
+			draw_texture_rect_region(enemy_texture, rect.grow(3.5), region, Color(outline, 0.55))
+		draw_texture_rect_region(enemy_texture, rect, region, Color(1.8, 1.65, 1.4) if enemy.flash > 0 else Color.WHITE)
+	else:
+		_box(Rect2(pos - Vector2.ONE * width / 2, Vector2.ONE * width), Color("64866c"))
+	if enemy.hp < enemy.max_hp or enemy.kind == "boss":
+		var bar = Rect2(Vector2(pos.x - draw_size.x / 2, rect.end.y + 5), Vector2(draw_size.x, 5 if enemy.kind == "boss" else 3.5))
+		draw_rect(bar.grow(1), Color(0.02, 0.04, 0.03, 0.9))
+		bar.size.x *= clampf(enemy.hp / enemy.max_hp, 0, 1)
+		draw_rect(bar, GOLD if enemy.kind == "boss" else Color("a8ca9c"))
+	if enemy.kind == "boss":
+		_text("THE GATEKEEPER" if enemy.max_hp < 600 else "THE ROOT OF IT ALL", Vector2(pos.x, rect.position.y - 9), 12, GOLD, true)
 
 func _draw_touch() -> void:
 	var origin = touch_origin if move_touch >= 0 else Vector2(82, 750)
-	draw_circle(origin, 53, Color(0.65, 0.8, 0.7, 0.10))
-	draw_arc(origin, 53, 0, TAU, 40, Color(0.65, 0.8, 0.7, 0.35), 2, true)
-	draw_circle(origin + touch_move * 35, 22, Color(0.65, 0.8, 0.7, 0.40))
+	draw_circle(origin, 53, Color(0.035, 0.09, 0.075, 0.38))
+	draw_arc(origin, 53, 0, TAU, 40, Color(GOLD, 0.32), 2, true)
+	draw_arc(origin, 46, 0, TAU, 40, Color(GOLD, 0.12), 1, true)
+	draw_circle(origin + touch_move * 35, 22, Color(0.55, 0.7, 0.6, 0.48))
+	draw_arc(origin + touch_move * 35, 22, 0, TAU, 24, Color(CREAM, 0.35), 1, true)
 	for button in [[Vector2(530, 750), "DASH", model.player.dash_cd <= 0], [Vector2(530, 640), "SURGE", model.surge >= 100]]:
-		draw_circle(button[0], 39, Color(GOLD, 0.3 if button[2] else 0.08))
+		draw_circle(button[0], 39, Color(0.035, 0.09, 0.075, 0.6))
+		draw_circle(button[0], 34, Color(GOLD, 0.22 if button[2] else 0.04))
 		draw_arc(button[0], 39, 0, TAU, 32, Color(GOLD, 0.8 if button[2] else 0.25), 2, true)
 		_text(button[1], button[0] + Vector2(0, 5), 14, GOLD, true)

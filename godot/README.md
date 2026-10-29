@@ -13,6 +13,9 @@ in the editor. Input actions are configured by `controls.gd` at startup.
 
 - All 23 playable gorillas and their character perks.
 - Ten waves, two guardians, and three ruin themes.
+- Illustrated stone arenas for Verdant, Ember, and Astral; six painted enemy/boss
+  designs; outlined orb trails, distinct hostile shots, and lightweight ambience.
+- Bundled display typography, brass-edged UI, and color-coded orb loadouts.
 - Bouncing orbs, charge return, elemental effects, and three evolutions.
 - Experience, upgrade selection, dash, Rift Surge, and run results.
 - Permanent basecamp upgrades and versioned `user://` saves with backup recovery.
@@ -50,6 +53,8 @@ basecamp progress does. Browser localStorage saves are not imported.
 - `scripts/controls.gd`: keyboard/controller input map.
 - `scripts/sound_bank.gd`: small generated PCM sound bank.
 - `data/game_data.json`: crew, elements, upgrades, fusions, and theme data.
+- `data/visual_data.json`: arena textures and tight enemy atlas regions.
+- `assets/art/arenas/` and `assets/art/enemies/`: illustrated environments and NPCs.
 - `assets/animations/`: five animations per character as SpriteFrames resources.
 - `scenes/runners/`: editor-ready visual runner scenes, feet anchored at origin.
 
@@ -117,7 +122,10 @@ Development tests and resource-generation tools are excluded from exports.
 ## Known limits
 
 One illustrated facing direction; two walking contact frames; one hurt and one
-seated defeat pose. Enemies are native drawn shapes. Ruin themes share a wave
+seated defeat pose. Enemies use illustrated atlas sprites. Ruin themes share a wave
 structure. The Showman's perk does not connect to Twitch. No multiplayer,
 cloud saves, store integration, or shipping APK/EXE is included in this source
 delivery. See `VALIDATION.md` for exactly what was tested.
+
+Display typography uses DejaVu Sans Condensed Bold. Its font license is included
+under `assets/fonts/` and included by the export presets.

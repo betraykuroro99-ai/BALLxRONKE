@@ -62,6 +62,10 @@ basecamp progression, multi-touch input, and responsive menus. Native simulation
 and interface checks are included. Source artwork remains unchanged. The browser
 project remains a reference implementation rather than a runtime dependency.
 
+The native visual pass adds three illustrated arenas, six enemy/boss designs,
+brass-edged UI, bundled display typography, clearer hostile projectiles, and
+stronger orb/impact feedback. The approved gorilla textures are unchanged.
+
 The native resource pack can be generated without platform templates. Actual
 Windows/Linux binaries and an Android APK still require matching export templates
 and, for Android, the SDK configuration. They are not included in this source

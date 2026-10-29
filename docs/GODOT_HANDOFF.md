@@ -78,7 +78,8 @@ use a versioned file under `user://`; avoid importing user save values implicitl
 - One illustrated facing direction and two walking contact poses.
 - Three ruin themes share the same wave structure; enemy health and colors vary.
 - The Showman's extra-choice perk has no Twitch integration.
-- Enemy visuals currently use Canvas shapes and need Godot scenes or new art.
+- Native enemies and bosses use an illustrated atlas; the browser reference
+  retains its earlier Canvas shapes.
 - Browser interaction and physical-device playtesting remain pending.
 - The Cogitator's extra hand was removed; 184 exported frames were visually
   reviewed for obvious extra limbs. See the anatomy and validation notes.

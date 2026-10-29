@@ -28,6 +28,9 @@ renderer.
 - Packaged asset verification and run startup from an empty working directory,
   with no `--path` fallback to source files. All 23 animation resources, runner
   scenes, and game data were present in the pack.
+- Visual-pass assets: three arena textures, six atlas regions, display font and
+  bundled license. UI checks exercise all three biome and both boss drawing paths.
+- The 23 playable character textures retain their pre-pass SHA-256 checksums.
 
 ## Not yet verified
 

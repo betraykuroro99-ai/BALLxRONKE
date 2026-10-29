@@ -50,6 +50,7 @@ func _run_tests() -> void:
 	for _i in range(4):
 		await process_frame
 	check(scene.arena.size.x > 0 and scene.arena.size.y > 0, "Arena is laid out")
+	check(scene.arena.draw_count > 0 and scene.arena.floor_texture is Texture2D and scene.arena.enemy_texture is Texture2D, "Illustrated arena executes its native draw path")
 	var motion = InputEventMouseMotion.new()
 	motion.position = Vector2(200, 100) * scene.arena.size / Vector2(600, 820)
 	scene.arena._gui_input(motion)
@@ -70,7 +71,7 @@ func _run_tests() -> void:
 	check(scene.modal_kind == "upgrade", "Level-up opens upgrade choices")
 	var choices: Array = []
 	for button in scene.modal_content.find_children("*", "Button", true, false):
-		if button.custom_minimum_size.y == 90:
+		if button.has_meta("upgrade_index"):
 			choices.append(button)
 	check(choices.size() == 3, "Three upgrade buttons")
 	choices[1].pressed.emit()
@@ -140,6 +141,16 @@ func _run_tests() -> void:
 	for _i in range(5):
 		await process_frame
 	check(not scene.compact and scene.header_grid.columns == 6, "Desktop layout restores")
+	for world_index in range(3):
+		scene._return_home()
+		scene.world = world_index
+		scene.start_run()
+		scene.model.enemies.clear()
+		scene.model.wave = 4 if world_index < 2 else 9
+		scene.model.spawn_wave()
+		for _i in range(4):
+			await process_frame
+		check(scene.arena.floor_texture is Texture2D and scene.arena.draw_count > 0, "Biome and boss art draw paths: " + str(world_index))
 	scene._return_home()
 	scene.queue_free()
 	await process_frame

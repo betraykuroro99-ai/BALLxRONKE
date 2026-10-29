@@ -1,8 +1,8 @@
 extends Control
 
-const BG = Color("0d1918")
-const PANEL = Color("142b23")
-const LINE = Color("354b3b")
+const BG = Color("0c191b")
+const PANEL = Color("182f2c")
+const LINE = Color("52604a")
 const CREAM = Color("f3eedf")
 const MUTED = Color("9aafa0")
 const GOLD = Color("e6ba7a")
@@ -49,7 +49,7 @@ var health_bar: ProgressBar
 var xp_bar: ProgressBar
 var xp_label: Label
 var ammo_label: Label
-var orbit_label: Label
+var orbit_label: RichTextLabel
 var picks_label: Label
 var surge_button: Button
 var mobile_surge_button: Button
@@ -58,7 +58,7 @@ var auto_button: Button
 var status_label: Label
 var status_time = 0.0
 var hud_clock = 0.0
-var bold_font: FontVariation
+var bold_font: Font
 var ready_done = false
 
 func _ready() -> void:
@@ -69,9 +69,7 @@ func _ready() -> void:
 	selected = progress.last_crew
 	world = progress.world
 	touch_device = OS.has_feature("mobile") or OS.get_cmdline_user_args().has("--mobile-ui")
-	bold_font = FontVariation.new()
-	bold_font.base_font = ThemeDB.fallback_font
-	bold_font.variation_embolden = 0.65
+	bold_font = load("res://assets/fonts/Display.ttf")
 	_build_theme()
 	sound = RonkeSound.new()
 	add_child(sound)
@@ -98,6 +96,9 @@ func _style(color: Color, border: Color = LINE, radius: int = 10, padding: int =
 	result.border_color = border
 	result.set_border_width_all(1)
 	result.set_corner_radius_all(radius)
+	result.shadow_color = Color(0.01, 0.025, 0.02, 0.32)
+	result.shadow_size = 5
+	result.shadow_offset = Vector2(0, 3)
 	result.content_margin_left = padding
 	result.content_margin_right = padding
 	result.content_margin_top = padding
@@ -107,13 +108,15 @@ func _style(color: Color, border: Color = LINE, radius: int = 10, padding: int =
 func _build_theme() -> void:
 	theme = Theme.new()
 	theme.default_font_size = 19
+	theme.set_font("font", "Button", bold_font)
+	theme.set_font("font", "OptionButton", bold_font)
 	theme.set_color("font_color", "Label", CREAM)
 	theme.set_color("font_color", "Button", CREAM)
 	theme.set_color("font_hover_color", "Button", CREAM)
 	theme.set_color("font_disabled_color", "Button", MUTED)
-	theme.set_stylebox("normal", "Button", _style(Color("233b2d"), LINE, 7, 12))
-	theme.set_stylebox("hover", "Button", _style(Color("304a34"), GREEN, 7, 12))
-	theme.set_stylebox("pressed", "Button", _style(Color("3b5235"), GOLD, 7, 12))
+	theme.set_stylebox("normal", "Button", _style(Color("263d34"), LINE, 5, 12))
+	theme.set_stylebox("hover", "Button", _style(Color("38503c"), GOLD, 5, 12))
+	theme.set_stylebox("pressed", "Button", _style(Color("1d322b"), GOLD, 5, 12))
 	theme.set_stylebox("disabled", "Button", _style(Color("192c23"), LINE, 7, 12))
 	var focus = _style(Color.TRANSPARENT, GOLD, 7, 0)
 	focus.set_border_width_all(3)
@@ -122,6 +125,15 @@ func _build_theme() -> void:
 	theme.set_stylebox("normal", "OptionButton", _style(Color("233b2d"), LINE, 7, 12))
 	theme.set_stylebox("hover", "OptionButton", _style(Color("304a34"), GREEN, 7, 12))
 	theme.set_color("font_color", "OptionButton", CREAM)
+	theme.set_stylebox("panel", "PopupMenu", _style(PANEL, LINE, 6, 12))
+	theme.set_stylebox("hover", "PopupMenu", _style(Color("354b37"), GOLD, 4, 6))
+	theme.set_color("font_color", "PopupMenu", CREAM)
+	theme.set_color("font_hover_color", "PopupMenu", GOLD)
+	for kind in ["VScrollBar", "HScrollBar"]:
+		theme.set_stylebox("scroll", kind, _style(Color("102420"), Color.TRANSPARENT, 3, 0))
+		theme.set_stylebox("grabber", kind, _style(Color("526448"), Color("74805b"), 3, 0))
+		theme.set_stylebox("grabber_highlight", kind, _style(Color("82956c"), GOLD, 3, 0))
+		theme.set_stylebox("grabber_pressed", kind, _style(GOLD, GOLD, 3, 0))
 
 func _label(parent: Node, text: String, font_size: int = 19, color: Color = CREAM) -> Label:
 	var label = Label.new()
@@ -132,6 +144,8 @@ func _label(parent: Node, text: String, font_size: int = 19, color: Color = CREA
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	if font_size >= 26:
 		label.add_theme_font_override("font", bold_font)
+		label.add_theme_color_override("font_shadow_color", Color(0.01, 0.025, 0.02, 0.65))
+		label.add_theme_constant_override("shadow_offset_y", 2)
 	parent.add_child(label)
 	return label
 
@@ -145,7 +159,9 @@ func _button(parent: Node, text: String, callback: Callable, primary: bool = fal
 	if primary:
 		for key in ["font_color", "font_hover_color", "font_pressed_color"]:
 			button.add_theme_color_override(key, BG)
-		button.add_theme_stylebox_override("normal", _style(GOLD, Color("f5d39f"), 7, 13))
+		var gold_style = _style(GOLD, Color("8b6e42"), 5, 13)
+		gold_style.border_width_bottom = 4
+		button.add_theme_stylebox_override("normal", gold_style)
 		button.add_theme_stylebox_override("hover", _style(Color("f1ce99"), CREAM, 7, 13))
 		button.add_theme_stylebox_override("pressed", _style(Color("c8a060"), GOLD, 7, 13))
 	button.pressed.connect(callback)
@@ -175,7 +191,7 @@ func _panel(parent: Node) -> PanelContainer:
 func _bar(parent: Node, color: Color) -> ProgressBar:
 	var bar = ProgressBar.new()
 	bar.show_percentage = false
-	bar.custom_minimum_size.y = 10
+	bar.custom_minimum_size.y = 12
 	bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	bar.add_theme_stylebox_override("background", _style(Color("0b1b15"), Color.TRANSPARENT, 5, 0))
 	bar.add_theme_stylebox_override("fill", _style(color, Color.TRANSPARENT, 5, 0))
@@ -209,6 +225,9 @@ func _build_interface() -> void:
 	var header = header_grid
 	header.custom_minimum_size.y = 58
 	var brand = _button(header, "BALLxRONKE", _request_home)
+	brand.icon = load("res://assets/icon.svg")
+	brand.expand_icon = true
+	brand.add_theme_constant_override("icon_max_width", 28)
 	brand.add_theme_font_override("font", bold_font)
 	brand.add_theme_font_size_override("font_size", 25)
 	brand.size_flags_stretch_ratio = 1.7
@@ -254,7 +273,7 @@ func _build_home(body: Control) -> void:
 	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hero.add_child(art)
 	var shade = ColorRect.new()
-	shade.color = Color(0.01, 0.05, 0.04, 0.55)
+	shade.color = Color(0.01, 0.05, 0.04, 0.43)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hero.add_child(shade)
 	var margin = MarginContainer.new()
@@ -348,7 +367,15 @@ func _build_game(body: Control) -> void:
 	right_panel.custom_minimum_size.x = 240
 	right_panel.size_flags_horizontal = Control.SIZE_FILL
 	_label(right_panel, "YOUR ORBIT", 18, GREEN)
-	orbit_label = _label(right_panel, "", 20)
+	orbit_label = RichTextLabel.new()
+	orbit_label.bbcode_enabled = true
+	orbit_label.fit_content = true
+	orbit_label.scroll_active = false
+	orbit_label.custom_minimum_size.x = 220
+	orbit_label.add_theme_font_override("bold_font", bold_font)
+	orbit_label.add_theme_font_size_override("normal_font_size", 17)
+	orbit_label.add_theme_font_size_override("bold_font_size", 21)
+	right_panel.add_child(orbit_label)
 	var surge_column = _vbox(_panel(right_panel), 12)
 	_label(surge_column, "RIFT SURGE", 15, GOLD)
 	_label(surge_column, "Let it all out.", 29)
@@ -463,8 +490,11 @@ func _update_hud() -> void:
 	stats_label.text = "%s in the pit\n\n%d enemies cleared\n\n%d wall bounces\n\n%dx best combo" % [_clock(model.time), model.kills, model.bounces, model.best_combo]
 	var names: Array[String] = []
 	for element in model.elements:
-		names.append(RonkeData.all().elements[element].name)
-	orbit_label.text = "\n".join(names)
+		var color = RonkeData.orb_color(element).to_html(false)
+		names.append("[color=#%s]●[/color]  [b]%s[/b]  [color=#9aafa0]Lv.%d[/color]" % [color, RonkeData.all().elements[element].name, int(model.element_levels.get(element, 1))])
+	var orbit_text = "\n".join(names)
+	if orbit_label.text != orbit_text:
+		orbit_label.text = orbit_text
 	picks_label.text = "A fresh start." if model.picks.is_empty() else "\n\n".join(model.picks)
 	surge_bar.value = model.surge
 	surge_button.disabled = model.surge < 100
@@ -524,6 +554,8 @@ func _open_modal(kind: String, title: String, description: String, dismissible: 
 	for child in modal_content.get_children():
 		modal_content.remove_child(child)
 		child.queue_free()
+	var captions = {"crew": "THE CREW", "camp": "BASECAMP", "help": "FIELD GUIDE", "upgrade": "EVOLVE YOUR ORBIT", "result": "EXPEDITION LOG", "pause": "TAKE A BREATH", "leave": "RETURN TO CAMP"}
+	_label(modal_content, captions.get(kind, "ORBFALL"), 13, GREEN)
 	var header = _hbox(modal_content)
 	_label(header, title, 35)
 	if dismissible:
@@ -647,8 +679,11 @@ func _show_upgrade() -> void:
 	var content = _open_modal("upgrade", "Choose your next advantage.", "%s is choosing automatically." % model.crew.name if automatic else "Level %d. Combat waits while you choose." % model.level, false, false)
 	for i in range(model.choices.size()):
 		var choice: Dictionary = model.choices[i]
-		var button = _button(content, "%d. %s\n%s" % [i + 1, choice.name, choice.description], func(): _choose_upgrade(i), choice.has("fusion"))
-		button.custom_minimum_size.y = 90
+		var button = _button(content, "%02d / %s\n%s\n%s" % [i + 1, choice.kind, choice.name, choice.description], func(): _choose_upgrade(i), choice.has("fusion"))
+		button.custom_minimum_size.y = 112
+		button.set_meta("upgrade_index", i)
+		if choice.has("element"):
+			button.add_theme_color_override("font_color", RonkeData.orb_color(choice.element).lightened(0.2))
 		button.disabled = automatic
 	_focus_modal()
 
@@ -794,6 +829,21 @@ func _notification(what: int) -> void:
 
 func _verify_pack_resources() -> void:
 	var valid = RonkeData.all().get("crew", []).size() == 23
+	var art_file = FileAccess.open("res://data/visual_data.json", FileAccess.READ)
+	if not art_file:
+		valid = false
+	else:
+		var art = JSON.parse_string(art_file.get_as_text())
+		if not art is Dictionary or art.get("enemy_regions", {}).size() != 6:
+			valid = false
+		else:
+			for path in art.get("floors", []):
+				if not load(path) is Texture2D:
+					valid = false
+			if not load(art.get("enemy_atlas", "")) is Texture2D or not load(art.get("display_font", "")) is Font:
+				valid = false
+	if not FileAccess.file_exists("res://assets/fonts/LICENSE-DejaVu.txt"):
+		valid = false
 	for crew in RonkeData.all().get("crew", []):
 		var frames = load("res://assets/animations/" + crew.id + ".tres")
 		if not frames is SpriteFrames:
