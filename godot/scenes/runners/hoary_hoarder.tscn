@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/hoary_hoarder.tres" id="1_rfugj"]
+
+[node name="HoaryHoarderRunner" type="Node2D" unique_id=98222829]
+metadata/crew_id = "hoary_hoarder"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2129008495]
+texture_filter = 2
+sprite_frames = ExtResource("1_rfugj")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

@@ -1,0 +1,467 @@
+{
+  "crew": [
+    {
+      "id": "warrior",
+      "name": "Ronke",
+      "role": "The Warrior",
+      "tagline": "A good arm. A better attitude.",
+      "perk": "A balanced runner with 15% more impact damage.",
+      "element": "stone",
+      "index": 0
+    },
+    {
+      "id": "itchy_finger",
+      "name": "Hotshot",
+      "role": "The Itchy Finger",
+      "tagline": "Subtlety was never the plan.",
+      "perk": "Fires 65% faster, with a little extra scatter.",
+      "element": "fire",
+      "index": 1
+    },
+    {
+      "id": "repentant",
+      "name": "Blue Monday",
+      "role": "The Repentant",
+      "tagline": "Every bounce is a second chance.",
+      "perk": "Orbs gain 8% damage every time they bounce.",
+      "element": "frost",
+      "index": 2
+    },
+    {
+      "id": "cohabitants",
+      "name": "The Whole Family",
+      "role": "The Cohabitants",
+      "tagline": "Family time. With projectiles.",
+      "perk": "Launches a mirrored second orb at 60% damage.",
+      "element": "brood",
+      "index": 3
+    },
+    {
+      "id": "cogitator",
+      "name": "Professor Bonk",
+      "role": "The Cogitator",
+      "tagline": "Already thought of that.",
+      "perk": "Automatically picks upgrades; starts with a damage bonus.",
+      "element": "laser",
+      "index": 4
+    },
+    {
+      "id": "embedded",
+      "name": "Old Irons",
+      "role": "The Embedded",
+      "tagline": "Still standing. Still throwing.",
+      "perk": "All orbs pierce through their first two targets.",
+      "element": "poison",
+      "index": 5
+    },
+    {
+      "id": "shade",
+      "name": "Nightshift",
+      "role": "The Shade",
+      "tagline": "Nothing personal. Probably.",
+      "perk": "Fires down from the far end of the pit; 25% critical chance.",
+      "element": "dark",
+      "index": 6
+    },
+    {
+      "id": "shieldbearer",
+      "name": "The Wall",
+      "role": "The Shieldbearer",
+      "tagline": "Return to sender.",
+      "perk": "Nearby returning orbs rebound off the shield once for double damage.",
+      "element": "iron",
+      "index": 7
+    },
+    {
+      "id": "spendthrift",
+      "name": "Big Spender",
+      "role": "The Spendthrift",
+      "tagline": "Why throw one?",
+      "perk": "Throws a three-orb fan with each shot.",
+      "element": "vampire",
+      "index": 8
+    },
+    {
+      "id": "juggler",
+      "name": "Jinx",
+      "role": "The Juggler",
+      "tagline": "Eyes on the ball. All of them.",
+      "perk": "Orbs begin with a splash-damage landing at the aim point.",
+      "element": "lightning",
+      "index": 9
+    },
+    {
+      "id": "empty_nester",
+      "name": "Auntie Blue",
+      "role": "The Empty Nester",
+      "tagline": "Finally, some peace and chaos.",
+      "perk": "Throws three matching wisps; no baby-orb splitting.",
+      "element": "ghost",
+      "index": 10
+    },
+    {
+      "id": "flagellant",
+      "name": "Brother Bounce",
+      "role": "The Flagellant",
+      "tagline": "The floor is just another wall.",
+      "perk": "Orbs bounce off the bottom of the pit instead of returning.",
+      "element": "egg",
+      "index": 11
+    },
+    {
+      "id": "makeshift_sisyphus",
+      "name": "King Again",
+      "role": "The Makeshift Sisyphus",
+      "tagline": "Rock bottom is a starting point.",
+      "perk": "Direct hits become triple-strength area damage.",
+      "element": "earth",
+      "index": 12
+    },
+    {
+      "id": "physicist",
+      "name": "Dr. Orbit",
+      "role": "The Physicist",
+      "tagline": "An applied force of nature.",
+      "perk": "Gravity pulls orbs toward the top of the pit.",
+      "element": "light",
+      "index": 13
+    },
+    {
+      "id": "tactician",
+      "name": "The General",
+      "role": "The Tactician",
+      "tagline": "One move ahead of the mess.",
+      "perk": "Enemies advance only briefly after each of your shots.",
+      "element": "iron",
+      "index": 14
+    },
+    {
+      "id": "radical",
+      "name": "Wild Thing",
+      "role": "The Radical",
+      "tagline": "Trust the process. Mostly.",
+      "perk": "Auto-aims and automatically chooses upgrades.",
+      "element": "wind",
+      "index": 15
+    },
+    {
+      "id": "falconer",
+      "name": "Birdwatch",
+      "role": "The Falconer",
+      "tagline": "A two-bird operation.",
+      "perk": "Twin falcons launch orbs from the sides of the pit.",
+      "element": "lightning",
+      "index": 16
+    },
+    {
+      "id": "carouser",
+      "name": "Last Call",
+      "role": "The Carouser",
+      "tagline": "One more round.",
+      "perk": "Returning orbs orbit you briefly, dealing contact damage.",
+      "element": "charm",
+      "index": 17
+    },
+    {
+      "id": "tunneller",
+      "name": "Digby",
+      "role": "The Tunneller",
+      "tagline": "There is always a deeper way.",
+      "perk": "Orbs wrap between the top and bottom twice.",
+      "element": "earth",
+      "index": 18
+    },
+    {
+      "id": "tiptoer",
+      "name": "Softstep",
+      "role": "The Tiptoer",
+      "tagline": "Quiet feet. Loud impact.",
+      "perk": "Fewer hit points, but enemy shots are 40% less accurate.",
+      "element": "laser",
+      "index": 19
+    },
+    {
+      "id": "hoary_hoarder",
+      "name": "Grandpa Gold",
+      "role": "The Hoary Hoarder",
+      "tagline": "Travel light? Absolutely not.",
+      "perk": "Only five orb charges, but 65% more damage.",
+      "element": "stone",
+      "index": 20
+    },
+    {
+      "id": "ballbearer",
+      "name": "Ball Boy",
+      "role": "The Ballbearer",
+      "tagline": "Prepared for every occasion.",
+      "perk": "Starts with sixteen orb charges.",
+      "element": "stone",
+      "index": 21
+    },
+    {
+      "id": "false_messiah",
+      "name": "The Showman",
+      "role": "The False Messiah",
+      "tagline": "A very persuasive trajectory.",
+      "perk": "Every third level offers four upgrade choices. No streaming connection required.",
+      "element": "dark",
+      "index": 22
+    }
+  ],
+  "elements": {
+    "stone": {
+      "name": "Stone",
+      "color": "#e6c891",
+      "description": "Reliable impact damage."
+    },
+    "fire": {
+      "name": "Ember",
+      "color": "#ff935b",
+      "description": "Burns enemies for damage over time."
+    },
+    "frost": {
+      "name": "Frost",
+      "color": "#84e2fa",
+      "description": "Slows enemy descent and movement."
+    },
+    "brood": {
+      "name": "Brood",
+      "color": "#ffabd2",
+      "description": "Splits into baby orbs on impact."
+    },
+    "laser": {
+      "name": "Beam",
+      "color": "#d9b0ff",
+      "description": "Pierces one extra target."
+    },
+    "poison": {
+      "name": "Venom",
+      "color": "#b5ef87",
+      "description": "Inflicts a lasting poison."
+    },
+    "dark": {
+      "name": "Void",
+      "color": "#af9be8",
+      "description": "Critical strikes deal double damage."
+    },
+    "iron": {
+      "name": "Iron",
+      "color": "#c6d6dc",
+      "description": "Gains damage with each wall bounce."
+    },
+    "vampire": {
+      "name": "Sanguine",
+      "color": "#ff8291",
+      "description": "Hits can restore a little health."
+    },
+    "lightning": {
+      "name": "Spark",
+      "color": "#ffe984",
+      "description": "Chains damage to a nearby enemy."
+    },
+    "ghost": {
+      "name": "Wisp",
+      "color": "#d9f5e9",
+      "description": "Passes through the first target."
+    },
+    "earth": {
+      "name": "Quake",
+      "color": "#dba57b",
+      "description": "Deals splash damage around impact."
+    },
+    "light": {
+      "name": "Light",
+      "color": "#fff3b1",
+      "description": "Deals extra damage to armored targets."
+    },
+    "wind": {
+      "name": "Gale",
+      "color": "#a7e8d9",
+      "description": "Pushes enemies back up the pit."
+    },
+    "charm": {
+      "name": "Charm",
+      "color": "#ffb3e3",
+      "description": "Strikes weaken enemies briefly."
+    },
+    "egg": {
+      "name": "Spore",
+      "color": "#dfe1a0",
+      "description": "Leaves a small burst of splash damage."
+    },
+    "toxic_sun": {
+      "name": "Toxic Sun",
+      "color": "#ffd66b",
+      "description": "Evolved: burning, poisonous explosions."
+    },
+    "stormglass": {
+      "name": "Stormglass",
+      "color": "#9cfff4",
+      "description": "Evolved: freezing chain lightning."
+    },
+    "eclipse": {
+      "name": "Eclipse",
+      "color": "#e2c1ff",
+      "description": "Evolved: piercing critical blasts."
+    }
+  },
+  "fusions": [
+    {
+      "id": "toxic_sun",
+      "ingredients": [
+        "fire",
+        "poison"
+      ],
+      "name": "Toxic Sun"
+    },
+    {
+      "id": "stormglass",
+      "ingredients": [
+        "frost",
+        "lightning"
+      ],
+      "name": "Stormglass"
+    },
+    {
+      "id": "eclipse",
+      "ingredients": [
+        "light",
+        "dark"
+      ],
+      "name": "Eclipse"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "power",
+      "name": "Heavy hands",
+      "description": "All orbs deal 22% more damage.",
+      "icon": "↗",
+      "kind": "POWER"
+    },
+    {
+      "id": "haste",
+      "name": "Quick release",
+      "description": "Throw 18% faster.",
+      "icon": "»",
+      "kind": "TEMPO"
+    },
+    {
+      "id": "capacity",
+      "name": "More is more",
+      "description": "Add 2 orb charges. Refill your supply.",
+      "icon": "◉",
+      "kind": "CAPACITY"
+    },
+    {
+      "id": "vitality",
+      "name": "Heart of the jungle",
+      "description": "Gain 20 maximum health and heal 30.",
+      "icon": "♥",
+      "kind": "RECOVERY"
+    },
+    {
+      "id": "ricochet",
+      "name": "Angle of attack",
+      "description": "Every wall bounce adds 10% damage.",
+      "icon": "⌁",
+      "kind": "BOUNCE"
+    },
+    {
+      "id": "speed",
+      "name": "Light on your feet",
+      "description": "Move 15% faster. Dash recovers sooner.",
+      "icon": "➜",
+      "kind": "MOVEMENT"
+    },
+    {
+      "id": "element_fire",
+      "name": "Ember orb",
+      "description": "Burns enemies for damage over time. Add it to your throws.",
+      "icon": "●",
+      "kind": "NEW ORB",
+      "element": "fire"
+    },
+    {
+      "id": "element_frost",
+      "name": "Frost orb",
+      "description": "Slows enemy descent and movement. Add it to your throws.",
+      "icon": "●",
+      "kind": "NEW ORB",
+      "element": "frost"
+    },
+    {
+      "id": "element_poison",
+      "name": "Venom orb",
+      "description": "Inflicts a lasting poison. Add it to your throws.",
+      "icon": "●",
+      "kind": "NEW ORB",
+      "element": "poison"
+    },
+    {
+      "id": "element_lightning",
+      "name": "Spark orb",
+      "description": "Chains damage to a nearby enemy. Add it to your throws.",
+      "icon": "●",
+      "kind": "NEW ORB",
+      "element": "lightning"
+    },
+    {
+      "id": "element_light",
+      "name": "Light orb",
+      "description": "Deals extra damage to armored targets. Add it to your throws.",
+      "icon": "●",
+      "kind": "NEW ORB",
+      "element": "light"
+    },
+    {
+      "id": "element_dark",
+      "name": "Void orb",
+      "description": "Critical strikes deal double damage. Add it to your throws.",
+      "icon": "●",
+      "kind": "NEW ORB",
+      "element": "dark"
+    },
+    {
+      "id": "element_earth",
+      "name": "Quake orb",
+      "description": "Deals splash damage around impact. Add it to your throws.",
+      "icon": "●",
+      "kind": "NEW ORB",
+      "element": "earth"
+    },
+    {
+      "id": "element_vampire",
+      "name": "Sanguine orb",
+      "description": "Hits can restore a little health. Add it to your throws.",
+      "icon": "●",
+      "kind": "NEW ORB",
+      "element": "vampire"
+    },
+    {
+      "id": "element_brood",
+      "name": "Brood orb",
+      "description": "Splits into baby orbs on impact. Add it to your throws.",
+      "icon": "●",
+      "kind": "NEW ORB",
+      "element": "brood"
+    }
+  ],
+  "worlds": [
+    {
+      "name": "The Verdant Ruins",
+      "subtitle": "Where the jungle swallowed the old world.",
+      "color": "#68bba1"
+    },
+    {
+      "name": "The Ember Vault",
+      "subtitle": "Something down here is still burning.",
+      "color": "#f2a66f"
+    },
+    {
+      "name": "The Astral Hollow",
+      "subtitle": "The last light falls a little differently.",
+      "color": "#b6b4ec"
+    }
+  ]
+}

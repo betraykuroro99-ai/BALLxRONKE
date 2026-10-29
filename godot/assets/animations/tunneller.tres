@@ -1,0 +1,108 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/crew/tunneller.png" id="1_snjf7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhpn2"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccufv"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c86sh"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq1o1"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p66iy"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x3yc"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ears"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqaig"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cx41"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x1la"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofe3s"]
+atlas = ExtResource("1_snjf7")
+region = Rect2(640, 0, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhpn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccufv")
+}],
+"loop": false,
+"name": &"defeat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c86sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq1o1")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p66iy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x3yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ears")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqaig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cx41")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x1la")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofe3s")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]

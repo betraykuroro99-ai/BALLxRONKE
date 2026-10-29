@@ -1,0 +1,108 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/crew/itchy_finger.png" id="1_qtawl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hthwd"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s12rn"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tir4j"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw1og"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucq0d"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8leq2"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv0e6"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hc5i"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5xfp"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28acu"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbwbn"]
+atlas = ExtResource("1_qtawl")
+region = Rect2(640, 0, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hthwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s12rn")
+}],
+"loop": false,
+"name": &"defeat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tir4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw1og")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucq0d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8leq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv0e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hc5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5xfp")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28acu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbwbn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]

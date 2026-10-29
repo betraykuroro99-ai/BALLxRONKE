@@ -1,0 +1,108 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/crew/empty_nester.png" id="1_lmfwj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh2mh"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny3tt"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpx8o"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbv6t"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15gnv"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gp8y"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nft02"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1eai"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuysh"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6jk2"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q24k"]
+atlas = ExtResource("1_lmfwj")
+region = Rect2(640, 0, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh2mh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny3tt")
+}],
+"loop": false,
+"name": &"defeat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpx8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbv6t")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15gnv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gp8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nft02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1eai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuysh")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6jk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q24k")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]

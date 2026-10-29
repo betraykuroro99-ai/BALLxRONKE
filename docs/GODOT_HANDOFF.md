@@ -2,10 +2,16 @@
 
 ## Current state
 
-The playable implementation is in `prototype/browser/`. There is no Godot
-project or GDScript port in this repository yet. Integrate with the user's
-existing Godot project rather than treating the browser code as native Godot.
-Confirm the existing project's Godot version and scene structure before porting.
+The native implementation is now in `godot/`; open `godot/project.godot`.
+The user targets Godot 4.7.2. The available 4.6.3 editor was used for native
+checks, so a final check in 4.7.2 is still needed. No pre-existing Godot project
+was supplied; the native project was created as a separate continuation folder.
+The browser implementation in `prototype/browser/` remains a reference.
+
+All 23 runners also have native SpriteFrames resources under
+`godot/assets/animations/` and visual AnimatedSprite2D scenes under
+`godot/scenes/runners/`. Gameplay input, UI, combat, progression, saves, and
+platform export presets are implemented natively. See `godot/README.md`.
 
 ## Assets ready to import
 
@@ -53,16 +59,16 @@ The prototype world is 600 × 820. Character movement is restricted to the botto
 and P/Escape pauses. Automatic throwing starts enabled. Pointer input aims.
 On touch devices, movement uses a left stick and aiming uses arena dragging.
 
-## Suggested migration order
+## Next development steps
 
-1. Open the existing Godot project and inspect its root scene and input map.
-2. Import one runner strip and configure idle/walk/throw/hurt/defeat animations.
-3. Build the arena, one enemy, and one bouncing orb. Verify the release event,
-   collision normals, wall bounces, and charge return before adding more content.
-4. Port wave progression, health, experience, pause, and upgrade selection.
-5. Add the complete crew data, elemental effects, and evolution recipes.
-6. Rebuild the menu, basecamp persistence, touch controls, and audio in Godot.
-7. Run a real editor playtest, then test the intended desktop/mobile export.
+1. Open the native project in the user's 4.7.2 editor and run the check script.
+2. Playtest visually on PC and tune combat balance and presentation.
+3. Install matching export templates and configure the Android SDK.
+4. Export Windows/Linux debug builds and an Android debug APK.
+5. Test a physical controller, multiple touch inputs, cutouts, rotation, and
+   Android background/resume behavior on actual hardware.
+6. Expand walking/directional animations, enemy art, and level variation after
+   the native loop is approved in playtesting.
 
 Browser localStorage does not automatically migrate into Godot. Save data should
 use a versioned file under `user://`; avoid importing user save values implicitly.

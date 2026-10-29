@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/false_messiah.tres" id="1_lkens"]
+
+[node name="FalseMessiahRunner" type="Node2D" unique_id=1592698186]
+metadata/crew_id = "false_messiah"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1953130357]
+texture_filter = 2
+sprite_frames = ExtResource("1_lkens")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/falconer.tres" id="1_7ygtn"]
+
+[node name="FalconerRunner" type="Node2D" unique_id=134393467]
+metadata/crew_id = "falconer"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1582599621]
+texture_filter = 2
+sprite_frames = ExtResource("1_7ygtn")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

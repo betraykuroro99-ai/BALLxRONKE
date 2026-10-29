@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/shade.tres" id="1_kht4a"]
+
+[node name="ShadeRunner" type="Node2D" unique_id=962957390]
+metadata/crew_id = "shade"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1265431382]
+texture_filter = 2
+sprite_frames = ExtResource("1_kht4a")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

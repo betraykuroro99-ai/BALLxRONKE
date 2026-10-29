@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/juggler.tres" id="1_8ylrg"]
+
+[node name="JugglerRunner" type="Node2D" unique_id=1893911319]
+metadata/crew_id = "juggler"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1505908497]
+texture_filter = 2
+sprite_frames = ExtResource("1_8ylrg")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

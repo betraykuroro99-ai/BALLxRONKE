@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/itchy_finger.tres" id="1_2n7ct"]
+
+[node name="ItchyFingerRunner" type="Node2D" unique_id=477110957]
+metadata/crew_id = "itchy_finger"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=233719341]
+texture_filter = 2
+sprite_frames = ExtResource("1_2n7ct")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

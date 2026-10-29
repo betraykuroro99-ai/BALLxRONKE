@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/physicist.tres" id="1_f7d8v"]
+
+[node name="PhysicistRunner" type="Node2D" unique_id=515380177]
+metadata/crew_id = "physicist"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=511683399]
+texture_filter = 2
+sprite_frames = ExtResource("1_f7d8v")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

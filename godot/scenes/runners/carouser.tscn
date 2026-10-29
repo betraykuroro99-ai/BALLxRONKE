@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/carouser.tres" id="1_sky4x"]
+
+[node name="CarouserRunner" type="Node2D" unique_id=688473369]
+metadata/crew_id = "carouser"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1030293508]
+texture_filter = 2
+sprite_frames = ExtResource("1_sky4x")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

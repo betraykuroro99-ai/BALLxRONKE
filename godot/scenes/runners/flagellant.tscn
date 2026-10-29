@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/flagellant.tres" id="1_t3jhi"]
+
+[node name="FlagellantRunner" type="Node2D" unique_id=128179387]
+metadata/crew_id = "flagellant"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1153225802]
+texture_filter = 2
+sprite_frames = ExtResource("1_t3jhi")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/makeshift_sisyphus.tres" id="1_qb42h"]
+
+[node name="MakeshiftSisyphusRunner" type="Node2D" unique_id=2006909085]
+metadata/crew_id = "makeshift_sisyphus"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=114714598]
+texture_filter = 2
+sprite_frames = ExtResource("1_qb42h")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

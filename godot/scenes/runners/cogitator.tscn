@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/cogitator.tres" id="1_u7fsp"]
+
+[node name="CogitatorRunner" type="Node2D" unique_id=1260972699]
+metadata/crew_id = "cogitator"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1623586228]
+texture_filter = 2
+sprite_frames = ExtResource("1_u7fsp")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)

@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/animations/spendthrift.tres" id="1_iisp4"]
+
+[node name="SpendthriftRunner" type="Node2D" unique_id=1600366491]
+metadata/crew_id = "spendthrift"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=525546960]
+texture_filter = 2
+sprite_frames = ExtResource("1_iisp4")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -56)
