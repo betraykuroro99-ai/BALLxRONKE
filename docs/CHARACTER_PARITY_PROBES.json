@@ -1,0 +1,37 @@
+{
+	"capacity": {
+		"ballbearer": 16,
+		"hoary_hoarder": 5,
+		"warrior": 9
+	},
+	"crew_count": 23,
+	"custom_evolutions": 3,
+	"egg_baby_orbs_spawned": 0,
+	"embedded_pierce_budget": 2,
+	"orb_count": 19,
+	"repentant_enemy_bounce": {
+		"damage_ratio": 1.0,
+		"reflected": true
+	},
+	"repentant_wall_damage_ratio": 1.08,
+	"shield": {
+		"first_catch_ratio": 2.0,
+		"second_catch_ratio": 1.0
+	},
+	"shield_hostile_shot_damage": 10.0,
+	"sisyphus_baby_orbs_spawned": 2,
+	"spendthrift": {
+		"capacity": 9,
+		"orbs_per_shot": 3,
+		"remaining_ammo": 8
+	},
+	"tactician": {
+		"enemy_moved_during_shot": true,
+		"own_orbs_still_active": true
+	},
+	"vampire_heal_on_one_hit": 0.5,
+	"warrior": {
+		"damage_multiplier": 1.15,
+		"element": "stone"
+	}
+}
