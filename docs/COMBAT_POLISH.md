@@ -7,7 +7,7 @@ Samples are generated once at startup. Ten reusable voices, per-cue cooldowns
 and priority-based voice replacement keep dense combat bounded; routine impacts
 cannot replace a guardian warning or result cue. Sound remains muted by default.
 
-Open **Sound / Feel** from the header or pause menu to enable audio and adjust
+Open **Settings** from the header or pause menu to enable audio and adjust
 volume and motion. Values persist in the existing local save, with defaults for
 older saves and validation for invalid values. Muting stops active voices.
 

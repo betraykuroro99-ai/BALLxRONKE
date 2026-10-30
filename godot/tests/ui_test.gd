@@ -51,12 +51,38 @@ func _run_tests() -> void:
 			slider.value = 0.4
 	check(scene.progress.shake == 0 and scene.arena.shake_strength == 0, "Motion can be disabled")
 	check(absf(RonkeSave.load_progress().volume - 0.4) < 0.001, "Volume setting persists")
+	for toggle in scene.modal_content.find_children("*", "CheckButton", true, false):
+		if toggle.has_meta("preference"):
+			toggle.button_pressed = false
+	check(not scene.arena.effects and not scene.arena.damage_numbers, "Performance preferences apply immediately")
+	for option in scene.modal_content.find_children("*", "OptionButton", true, false):
+		if option.get_meta("preference", "") == "frame_limit":
+			option.select(0)
+			option.item_selected.emit(0)
+	check(Engine.max_fps == 30 and RonkeSave.load_progress().frame_limit == 30, "Frame limit applies and persists")
+	for option in scene.modal_content.find_children("*", "OptionButton", true, false):
+		if option.get_meta("preference", "") == "frame_limit":
+			option.select(1)
+			option.item_selected.emit(1)
+	check(Engine.max_fps == 60, "Default frame limit restores")
 	scene._close_modal()
 	scene._select_crew("warrior")
 	scene.start_button.pressed.emit()
 	await process_frame
 	check(scene.model != null and scene.game_view.visible and not scene.home_view.visible, "Start button enters native game")
 	check(scene.arena.texture.get_width() == 1024, "Live arena uses real sprite texture")
+	scene.arena.push_event({"type": "hit", "pos": Vector2(300, 300)})
+	scene.arena.push_event({"type": "damage", "pos": Vector2(300, 300), "value": 10, "crit": false})
+	check(scene.arena.particles.is_empty() and scene.arena.labels.is_empty(), "Disabled effects and numbers do not allocate feedback")
+	scene.arena.push_event({"type": "wave", "wave": 5, "boss": true})
+	check(scene.arena.banner == "GUARDIAN AHEAD", "Essential guardian cue survives reduced effects")
+	scene.arena.configure_presentation(true, true)
+	scene.arena.push_event({"type": "hit", "pos": Vector2(300, 300)})
+	scene.arena.push_event({"type": "damage", "pos": Vector2(300, 300), "value": 10, "crit": false})
+	check(not scene.arena.particles.is_empty() and not scene.arena.labels.is_empty(), "Feedback can be restored during a run")
+	scene.arena.configure_presentation(false, false)
+	check(scene.arena.particles.is_empty() and scene.arena.labels.is_empty(), "Reducing feedback clears already-active effects")
+	scene.arena.configure_presentation(true, true)
 	var key = InputEventKey.new()
 	key.physical_keycode = KEY_D
 	key.pressed = true
@@ -88,6 +114,10 @@ func _run_tests() -> void:
 	scene.open_feedback(true)
 	await process_frame
 	check(scene.paused and scene.model.time == old_time, "Feedback settings keep combat paused")
+	for toggle in scene.modal_content.find_children("*", "CheckButton", true, false):
+		if toggle.get_meta("preference", "") == "effects":
+			toggle.button_pressed = true
+	check(scene.paused and scene.arena.effects, "Changing effects in settings keeps combat paused")
 	scene.arena.push_event({"type": "hurt", "pos": Vector2(300, 700)})
 	scene.arena._process(0.01)
 	check(scene.arena.shake_offset == Vector2.ZERO and scene.arena.hurt_flash > 0, "Zero shake retains damage warning")

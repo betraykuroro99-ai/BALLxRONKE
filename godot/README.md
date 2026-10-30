@@ -24,8 +24,9 @@ in the editor. Input actions are configured by `controls.gd` at startup.
 - Permanent basecamp upgrades and versioned `user://` saves with backup recovery.
 - Keyboard/mouse and controller bindings, multi-touch controls, portrait and
   landscape layouts, cutout margins on Android, and focus/background pausing.
-- Fifteen original synthesized combat cues, muted by default. Open **Sound / Feel** at basecamp or in the pause menu to enable sound, adjust volume, or turn screen shake down to zero. Preferences persist locally.
+- Fifteen original synthesized combat cues, muted by default. Open **Settings** at basecamp or in the pause menu to enable sound, adjust volume, or turn screen shake down to zero. Preferences persist locally.
 - Critical hits, player damage, surge, and guardian defeats trigger bounded arena motion; HUD and touch controls remain stationary. Damage warnings remain visible when motion is disabled.
+- Saved display controls: 30/60/120 FPS limits, optional extra effects and floating damage numbers. The default is 60 FPS; actual rates depend on hardware and VSync. Essential combat warnings remain visible.
 - 23 native SpriteFrames resources and 23 AnimatedSprite2D runner scenes.
 
 The Compatibility renderer is configured for PC and Android. The Android preset

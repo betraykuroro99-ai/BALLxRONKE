@@ -251,6 +251,10 @@ func _test_save() -> void:
 	check(clean.shards == 0 and clean.meta.power == 3 and clean.last_crew == "warrior" and clean.world == 0, "Save input validation")
 	check(RonkeSave.sanitize({"volume": -4, "shake": 8}).volume == 0 and RonkeSave.sanitize({"shake": 8}).shake == 1, "Feedback values clamp safely")
 	check(RonkeSave.sanitize({"volume": "bad", "shake": NAN}).shake == 0.5, "Invalid feedback values use defaults")
+	check(RonkeSave.sanitize({"frame_limit": 30.0}).frame_limit == 30 and RonkeSave.sanitize({"frame_limit": 60.5}).frame_limit == 60, "JSON numeric frame limits load without accepting fractional caps")
+	check(RonkeSave.sanitize({"frame_limit": 120}).frame_limit == 120 and RonkeSave.sanitize({"frame_limit": 30}).frame_limit == 30, "Supported frame limits load")
+	check(RonkeSave.sanitize({"frame_limit": INF}).frame_limit == 60 and RonkeSave.sanitize({"frame_limit": "30"}).frame_limit == 60, "Invalid frame limits use safe default")
+	check(not RonkeSave.sanitize({"effects": false, "damage_numbers": false}).effects and RonkeSave.sanitize({}).damage_numbers, "Optional feedback preferences preserve old saves")
 	var save = RonkeSave.fresh()
 	save.shards = 42
 	check(RonkeSave.write_progress(save) == OK, "Save write")

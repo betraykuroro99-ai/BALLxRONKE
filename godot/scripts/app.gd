@@ -77,6 +77,7 @@ func _ready() -> void:
 	sound.volume = progress.volume
 	_build_interface()
 	arena.shake_strength = progress.shake
+	_apply_video_preferences()
 	resized.connect(_responsive_layout)
 	get_tree().root.size_changed.connect(_window_changed)
 	ready_done = true
@@ -245,7 +246,7 @@ func _build_interface() -> void:
 	_button(header, "Crew", open_crew)
 	_button(header, "Camp", open_camp)
 	_button(header, "Help", open_help).size_flags_stretch_ratio = 0.4
-	volume_button = _button(header, "Sound / Feel", open_feedback)
+	volume_button = _button(header, "Settings", open_feedback)
 	volume_button.size_flags_stretch_ratio = 0.8
 	shard_label = _label(header, "0 shards", 18, BANANA)
 	shard_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
@@ -798,7 +799,7 @@ func pause_run() -> void:
 		return
 	var content = _open_modal("pause", "The pit can wait.", "Your descent is paused. Nothing moves until you are ready.")
 	_button(content, "Keep descending", _close_modal, true)
-	_button(content, "Sound / Feel", func(): open_feedback(true))
+	_button(content, "Settings", func(): open_feedback(true))
 	_button(content, "Bank shards and leave", _abandon_run)
 	_focus_modal()
 
@@ -843,7 +844,7 @@ func _toggle_auto() -> void:
 func open_feedback(from_pause: bool = false) -> void:
 	if _critical():
 		return
-	var content = _open_modal("feedback", "Make it feel right.", "Sound and motion preferences are saved on this device.")
+	var content = _open_modal("feedback", "Make it feel right.", "Sound, motion and display preferences are saved on this device.")
 	var mute = CheckButton.new()
 	mute.text = "Sound enabled"
 	mute.button_pressed = not sound.muted
@@ -867,11 +868,46 @@ func open_feedback(from_pause: bool = false) -> void:
 			arena.shake_energy = 0.0
 		_save())
 	_button(content, "Preview sound", func(): sound.play_event("level"))
+	_label(content, "Display and performance", 21, BANANA)
+	_preference_toggle(content, "effects", "Extra visual effects", progress.effects)
+	_label(content, "Particles, glow and screen shake.", 16, MUTED)
+	_preference_toggle(content, "damage_numbers", "Floating damage numbers", progress.damage_numbers)
+	_label(content, "Attack lanes, health bars and danger warnings always stay visible.", 16, MUTED)
+	var frame_row = _hbox(content)
+	_label(frame_row, "Frame rate limit", 19)
+	var frame_choice = OptionButton.new()
+	frame_choice.custom_minimum_size = Vector2(165, 48)
+	frame_choice.set_meta("preference", "frame_limit")
+	for cap in [30, 60, 120]:
+		frame_choice.add_item("%d FPS" % cap, cap)
+	frame_choice.select([30, 60, 120].find(int(progress.frame_limit)))
+	frame_row.add_child(frame_choice)
+	frame_choice.item_selected.connect(func(index):
+		progress.frame_limit = frame_choice.get_item_id(index)
+		_apply_video_preferences()
+		_save())
+	_label(content, "30 uses fewer frames; 60 is the default. 120 depends on your device and display.", 16, MUTED)
 	_button(content, "Back to pause" if from_pause else "Done", func():
 		_close_modal()
 		if from_pause:
 			pause_run(), true)
 	_focus_modal()
+
+func _apply_video_preferences() -> void:
+	Engine.max_fps = int(progress.frame_limit)
+	arena.configure_presentation(progress.effects, progress.damage_numbers)
+
+func _preference_toggle(parent: Node, key: String, text: String, enabled: bool) -> void:
+	var toggle = CheckButton.new()
+	toggle.text = text
+	toggle.button_pressed = enabled
+	toggle.custom_minimum_size.y = 48
+	toggle.set_meta("preference", key)
+	parent.add_child(toggle)
+	toggle.toggled.connect(func(value):
+		progress[key] = value
+		_apply_video_preferences()
+		_save())
 
 func _feedback_slider(parent: Control, key: String, value: float, changed: Callable) -> void:
 	var row = _hbox(parent)

@@ -42,6 +42,8 @@ renderer.
 
 - Theme pass: updated home/camp and all three arena draw paths; packaged transparent fruit accent; desktop/mobile layout checks. Gameplay/data and playable character textures retain their prior Git blob hashes.
 
+- Performance preferences: saved frame-limit selection and validation, reduced-effects/number suppression, clearing active feedback, restoring effects while paused, essential guardian cues and old-save defaults.
+
 ## Not yet verified
 
 - A real graphical playtest of the native game and its presentation.

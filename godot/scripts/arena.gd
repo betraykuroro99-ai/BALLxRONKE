@@ -25,6 +25,7 @@ var rings: Array = []
 var chains: Array = []
 var styles: Dictionary = {}
 var effects = true
+var damage_numbers = true
 var banner = ""
 var banner_time = 0.0
 var font: Font
@@ -81,6 +82,19 @@ func set_run(run: RonkeRun) -> void:
 	rings.clear()
 	chains.clear()
 	reset_input()
+	queue_redraw()
+
+func configure_presentation(enabled: bool, numbers: bool) -> void:
+	effects = enabled
+	damage_numbers = numbers
+	if not effects:
+		particles.clear()
+		rings.clear()
+		chains.clear()
+		shake_energy = 0.0
+		shake_offset = Vector2.ZERO
+	if not damage_numbers:
+		labels.clear()
 	queue_redraw()
 
 func reset_input() -> void:
@@ -201,7 +215,7 @@ func push_event(event: Dictionary) -> void:
 	if kind == "wave":
 		banner = "GUARDIAN AHEAD" if event.boss else "DEPTH %02d" % event.wave
 		banner_time = 2.1
-	if kind == "damage" and labels.size() < 45:
+	if kind == "damage" and damage_numbers and labels.size() < 45:
 		labels.append({"pos": event.pos + Vector2(randf_range(-8, 8), -25), "text": str(event.value) + ("!" if event.crit else ""), "crit": event.crit, "life": 0.65})
 	if kind in ["hit", "kill", "hurt", "surge", "dash", "shield"] and effects:
 		var count = 28 if kind == "surge" else 11 if kind == "kill" else 5
