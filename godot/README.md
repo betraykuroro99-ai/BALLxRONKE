@@ -101,6 +101,12 @@ This environment supplied Godot **4.6.3**, which passed the native checks. A
 final check in your **4.7.2** editor, a real graphical playtest, physical controller
 testing, and physical Android device testing are still required.
 
+## Android test download
+
+The **Android test APK** GitHub Actions workflow exports a debug-signed APK for
+ARM32/ARM64 phones. See [installation and phone checks](../docs/ANDROID_TEST.md).
+It uses Godot 4.6.3 and does not build Windows/Linux binaries.
+
 ## PC and Android exports
 
 Presets are provided for **Windows**, **Linux**, and **Android**. Install export

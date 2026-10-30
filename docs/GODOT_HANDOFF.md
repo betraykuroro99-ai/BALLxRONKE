@@ -61,14 +61,13 @@ On touch devices, movement uses a left stick and aiming uses arena dragging.
 
 ## Next development steps
 
-1. Open the native project in the user's 4.7.2 editor and run the check script.
-2. Playtest visually on PC and tune combat balance and presentation.
-3. Install matching export templates and configure the Android SDK.
-4. Export Windows/Linux debug builds and an Android debug APK.
-5. Test a physical controller, multiple touch inputs, cutouts, rotation, and
-   Android background/resume behavior on actual hardware.
-6. Expand walking/directional animations, enemy art, and level variation after
-   the native loop is approved in playtesting.
+1. Download the Android test APK from a successful [Android build](https://github.com/betraykuroro99-ai/BALLxRONKE/actions/workflows/android-apk.yml).
+2. Follow [Android installation and phone checks](ANDROID_TEST.md): startup,
+   touch controls, cutouts, rotation, background/resume, saving and a full run.
+3. Tune performance and presentation based on the actual phone results.
+4. Verify the user's 4.7.2 editor separately before any engine migration.
+5. Expand content after the native loop is approved in playtesting. Windows/Linux
+   executable builds are deferred while Android is the current priority.
 
 Browser localStorage does not automatically migrate into Godot. Save data should
 use a versioned file under `user://`; avoid importing user save values implicitly.

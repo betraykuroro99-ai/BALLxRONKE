@@ -93,8 +93,10 @@ jobs:
           mkdir -p exports
           "Godot_v${GODOT_VERSION}-stable_linux.x86_64" --headless --path godot --export-debug Android ../exports/BALLxRONKE-android-test.apk
           "$ANDROID_HOME/build-tools/35.0.1/apksigner" verify --verbose exports/BALLxRONKE-android-test.apk
-          "$ANDROID_HOME/build-tools/35.0.1/aapt" dump badging exports/BALLxRONKE-android-test.apk > exports/APK-INFO.txt
-          python3 godot/tools/verify_apk.py exports/BALLxRONKE-android-test.apk
+          "$ANDROID_HOME/build-tools/35.0.1/aapt" dump badging exports/BALLxRONKE-android-test.apk | tee exports/APK-INFO.txt
+          "$ANDROID_HOME/build-tools/35.0.1/aapt" dump permissions exports/BALLxRONKE-android-test.apk | tee exports/APK-PERMISSIONS.txt
+          "$ANDROID_HOME/build-tools/35.0.1/zipalign" -c -P 16 4 exports/BALLxRONKE-android-test.apk
+          python3 godot/tools/verify_apk.py exports/BALLxRONKE-android-test.apk --badging exports/APK-INFO.txt --permissions exports/APK-PERMISSIONS.txt
           sha256sum exports/BALLxRONKE-android-test.apk > exports/SHA256SUMS.txt
           printf 'Godot %s stable\nSource commit: %s\nDebug-signed test build\n' "$GODOT_VERSION" "$GITHUB_SHA" > exports/BUILD-INFO.txt
       - uses: actions/upload-artifact@v4

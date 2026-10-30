@@ -44,15 +44,15 @@ renderer.
 
 - Performance preferences: saved frame-limit selection and validation, reduced-effects/number suppression, clearing active feedback, restoring effects while paused, essential guardian cues and old-save defaults.
 
+- Android test APK exported on GitHub Actions with Godot 4.6.3, JDK 17 and Android SDK tools. APK v2/v3 signature, ZIP/manifest/DEX/assets and ARM32/ARM64 runtime checks passed. [Successful build](https://github.com/betraykuroro99-ai/BALLxRONKE/actions/runs/40985470994).
+
 ## Not yet verified
 
 - A real graphical playtest of the native game and its presentation.
 - Physical keyboard/mouse/controller feel, audio output, and hardware performance.
 - An actual Android device: multitouch, cutouts, rotation, app background/resume.
 - The user's exact 4.7.2 editor and matching export templates.
-- Windows/Linux executable export and Android APK export, installation, signing,
-  or store submission. Matching binary templates, Android SDK, and Java SDK
-  configuration are not available here.
+- Windows/Linux executable export, physical Android installation/runtime, production release signing or store submission. The local workspace still lacks an Android SDK; the test APK is built and debug-signed by GitHub Actions.
 
 The headless editor/export process reported blocked local debugger TCP listeners
 in this sandbox. Imports, tests, resource-pack export, and packaged runtime still
