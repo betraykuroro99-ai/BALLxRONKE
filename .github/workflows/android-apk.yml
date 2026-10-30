@@ -1,0 +1,100 @@
+name: Android test APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'godot/**'
+      - '.github/workflows/android-apk.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      GODOT_VERSION: 4.6.3
+      GODOT_ANDROID_KEYSTORE_DEBUG_PATH: ${{ github.workspace }}/../ronke-debug.keystore
+      GODOT_ANDROID_KEYSTORE_DEBUG_USER: androiddebugkey
+      GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD: android
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install Android build tools
+        run: sdkmanager "platform-tools" "build-tools;35.0.1" "platforms;android-35"
+      - name: Install verified Godot editor and Android template
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}-stable"
+          cd "$RUNNER_TEMP"
+          curl -fL --retry 3 "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" -o editor.zip
+          curl -fL --retry 3 "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz" -o templates.tpz
+          curl -fL --retry 3 "$base/SHA512-SUMS.txt" -o SHA512-SUMS.txt
+          mv editor.zip "Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          mv templates.tpz "Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          grep -E " Godot_v${GODOT_VERSION}-stable_(linux.x86_64.zip|export_templates.tpz)$" SHA512-SUMS.txt > selected.sha512
+          test "$(wc -l < selected.sha512)" -eq 2
+          sha512sum --check selected.sha512
+          unzip -q "Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" -d godot-bin
+          chmod +x "godot-bin/Godot_v${GODOT_VERSION}-stable_linux.x86_64"
+          echo "$RUNNER_TEMP/godot-bin" >> "$GITHUB_PATH"
+          mkdir -p "$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+          unzip -p "Godot_v${GODOT_VERSION}-stable_export_templates.tpz" templates/android_debug.apk > "$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable/android_debug.apk"
+      - name: Restore test signing key
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.GODOT_ANDROID_KEYSTORE_DEBUG_PATH }}
+          key: ronke-android-debug-key-v1
+      - name: Configure Android export
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f "$GODOT_ANDROID_KEYSTORE_DEBUG_PATH" ]; then
+            keytool -genkeypair -keystore "$GODOT_ANDROID_KEYSTORE_DEBUG_PATH" -storepass android -alias androiddebugkey -keypass android -dname "CN=Android Debug,O=Android,C=US" -keyalg RSA -keysize 2048 -validity 10000
+          fi
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path.home() / '.config/godot/editor_settings-4.6.tres'
+          p.parent.mkdir(parents=True, exist_ok=True)
+          p.write_text('[gd_resource type="EditorSettings" format=3]\n\n[resource]\n'
+                       + 'export/android/android_sdk_path = ' + json.dumps(os.environ['ANDROID_HOME']) + '\n'
+                       + 'export/android/java_sdk_path = ' + json.dumps(os.environ['JAVA_HOME']) + '\n')
+          PY
+      - name: Import and test Android UI
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot="Godot_v${GODOT_VERSION}-stable_linux.x86_64"
+          "$godot" --headless --path godot --editor --import --quit
+          "$godot" --headless --path godot --script res://tests/ui_test.gd -- --mobile-ui
+      - name: Export signed test APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p exports
+          "Godot_v${GODOT_VERSION}-stable_linux.x86_64" --headless --path godot --export-debug Android ../exports/BALLxRONKE-android-test.apk
+          "$ANDROID_HOME/build-tools/35.0.1/apksigner" verify --verbose exports/BALLxRONKE-android-test.apk
+          "$ANDROID_HOME/build-tools/35.0.1/aapt" dump badging exports/BALLxRONKE-android-test.apk > exports/APK-INFO.txt
+          python3 godot/tools/verify_apk.py exports/BALLxRONKE-android-test.apk
+          sha256sum exports/BALLxRONKE-android-test.apk > exports/SHA256SUMS.txt
+          printf 'Godot %s stable\nSource commit: %s\nDebug-signed test build\n' "$GODOT_VERSION" "$GITHUB_SHA" > exports/BUILD-INFO.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BALLxRONKE-android-test
+          path: exports/
+          if-no-files-found: error
+          retention-days: 30
