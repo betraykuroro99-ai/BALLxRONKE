@@ -55,6 +55,11 @@ func _run_tests() -> void:
 		if toggle.has_meta("preference"):
 			toggle.button_pressed = false
 	check(not scene.arena.effects and not scene.arena.damage_numbers, "Performance preferences apply immediately")
+	for toggle in scene.modal_content.find_children("*", "CheckButton", true, false):
+		if toggle.get_meta("preference", "") == "show_fps":
+			toggle.button_pressed = true
+	scene._process(0.6)
+	check(scene.fps_label.visible and scene.fps_label.text.ends_with("FPS") and RonkeSave.load_progress().show_fps, "FPS display applies and persists")
 	for option in scene.modal_content.find_children("*", "OptionButton", true, false):
 		if option.get_meta("preference", "") == "frame_limit":
 			option.select(0)
@@ -176,6 +181,16 @@ func _run_tests() -> void:
 	check(scene.modal_kind == "journal" and scene.progress.shards == shards, "Saved report reopens without banking rewards again")
 	check(scene.modal_content.get_global_rect().size.x <= scene.size.x, "Report fits viewport width")
 	scene._close_modal()
+	var before_practice: Dictionary = scene.progress.duplicate(true)
+	scene.start_practice()
+	await process_frame
+	check(scene.model.practice and scene.depth_label.text == "PRACTICE", "Practice entry opens a labeled arena")
+	check(scene.xp_label.text.contains("no rewards"), "Practice makes reward limits clear")
+	scene.pause_run()
+	check(scene.paused and scene.modal_kind == "pause", "Practice supports pausing")
+	scene._close_modal()
+	scene._abandon_run()
+	check(scene.model == null and scene.home_view.visible and scene.progress == before_practice, "Leaving practice preserves all progression and the latest report")
 	scene.progress.shards = 100
 	var old_rank = scene.progress.meta.power
 	if old_rank < 3:

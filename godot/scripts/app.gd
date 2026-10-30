@@ -55,6 +55,8 @@ var surge_button: Button
 var mobile_surge_button: Button
 var surge_bar: ProgressBar
 var auto_button: Button
+var fps_label: Label
+var fps_clock = 0.0
 var status_label: Label
 var status_time = 0.0
 var hud_clock = 0.0
@@ -255,8 +257,12 @@ func _build_interface() -> void:
 	shell.add_child(body)
 	_build_home(body)
 	_build_game(body)
-	status_label = _label(shell, "Native Godot prototype / PC + Android", 15, MUTED)
+	var footer = _hbox(shell, 8)
+	status_label = _label(footer, "Native Godot prototype / PC + Android", 15, MUTED)
 	status_label.custom_minimum_size.y = 22
+	fps_label = _label(footer, "", 13, CYAN)
+	fps_label.size_flags_horizontal = Control.SIZE_SHRINK_END
+	fps_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_build_modal()
 
 func _build_home(body: Control) -> void:
@@ -319,6 +325,7 @@ func _build_home(body: Control) -> void:
 	runner_orb = _label(details, "", 17, BANANA)
 	_button(details, "Choose runner", open_crew)
 	_button(details, "Start descent", start_run, true)
+	_button(details, "Practice controls", start_practice)
 	var choice = _vbox(_panel(column), 10)
 	_label(choice, "PICK YOUR DESCENT", 16, CYAN)
 	var picker = OptionButton.new()
@@ -476,10 +483,13 @@ func _toast(text: String) -> void:
 	status_label.add_theme_color_override("font_color", BANANA)
 	status_time = 3.0
 
-func start_run() -> void:
+func start_practice() -> void:
+	start_run(true)
+
+func start_run(practice_mode: bool = false) -> void:
 	_close_modal()
 	background_upgrade_pause = false
-	model = RonkeRun.new(selected, world, randi(), progress.meta)
+	model = RonkeRun.new(selected, world, randi(), progress.meta, practice_mode)
 	paused = false
 	settled = false
 	arena.set_run(model)
@@ -491,7 +501,7 @@ func start_run() -> void:
 	arena.active = true
 	arena.grab_focus()
 	_update_hud()
-	_toast("WASD + pointer, controller sticks, or touch controls. The pit is ready.")
+	_toast("Practice: move, aim, dash and Surge. Back returns to camp." if practice_mode else "WASD + pointer, controller sticks, or touch controls. The pit is ready.")
 
 func _update_hud() -> void:
 	if not model:
@@ -499,9 +509,9 @@ func _update_hud() -> void:
 	health_label.text = "VITALITY  %d / %d" % [ceili(model.player.hp), int(model.player.max_hp)]
 	health_bar.value = model.player.hp / model.player.max_hp * 100
 	xp_bar.value = float(model.xp) / model.xp_needed * 100
-	xp_label.text = "Lv.%d / D.%02d" % [model.level, model.wave]
+	xp_label.text = "Practice / no rewards" if model.practice else "Lv.%d / D.%02d" % [model.level, model.wave]
 	ammo_label.text = "%d / %d orbs" % [model.player.ammo, model.player.capacity]
-	depth_label.text = "%02d / 10" % model.wave
+	depth_label.text = "PRACTICE" if model.practice else "%02d / 10" % model.wave
 	stats_label.text = "%s in the pit\n\n%d enemies cleared\n\n%d wall bounces\n\n%dx best combo" % [_clock(model.time), model.kills, model.bounces, model.best_combo]
 	var names: Array[String] = []
 	for element in model.elements:
@@ -520,6 +530,10 @@ func _update_hud() -> void:
 func _process(delta: float) -> void:
 	if not ready_done:
 		return
+	fps_clock += delta
+	if fps_clock >= 0.5:
+		fps_clock = 0.0
+		fps_label.text = "%d FPS" % Engine.get_frames_per_second()
 	if status_time > 0:
 		status_time -= delta
 		if status_time <= 0:
@@ -716,7 +730,7 @@ func _choose_upgrade(index: int) -> void:
 		_update_hud()
 
 func _settle() -> void:
-	if not model or settled:
+	if not model or settled or model.practice:
 		return
 	settled = true
 	progress.shards += model.reward
@@ -800,11 +814,14 @@ func pause_run() -> void:
 	var content = _open_modal("pause", "The pit can wait.", "Your descent is paused. Nothing moves until you are ready.")
 	_button(content, "Keep descending", _close_modal, true)
 	_button(content, "Settings", func(): open_feedback(true))
-	_button(content, "Bank shards and leave", _abandon_run)
+	_button(content, "Return to camp" if model.practice else "Bank shards and leave", _abandon_run)
 	_focus_modal()
 
 func _request_home() -> void:
 	if not model:
+		return
+	if model.practice:
+		_return_home()
 		return
 	if model.phase in ["victory", "defeat"]:
 		_return_home()
@@ -872,6 +889,7 @@ func open_feedback(from_pause: bool = false) -> void:
 	_preference_toggle(content, "effects", "Extra visual effects", progress.effects)
 	_label(content, "Particles, glow and screen shake.", 16, MUTED)
 	_preference_toggle(content, "damage_numbers", "Floating damage numbers", progress.damage_numbers)
+	_preference_toggle(content, "show_fps", "Show FPS counter", progress.show_fps)
 	_label(content, "Attack lanes, health bars and danger warnings always stay visible.", 16, MUTED)
 	var frame_row = _hbox(content)
 	_label(frame_row, "Frame rate limit", 19)
@@ -894,6 +912,7 @@ func open_feedback(from_pause: bool = false) -> void:
 	_focus_modal()
 
 func _apply_video_preferences() -> void:
+	fps_label.visible = progress.show_fps
 	Engine.max_fps = int(progress.frame_limit)
 	arena.configure_presentation(progress.effects, progress.damage_numbers)
 

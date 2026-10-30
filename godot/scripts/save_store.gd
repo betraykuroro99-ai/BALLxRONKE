@@ -17,7 +17,7 @@ static func use_test_profile(name: String) -> void:
 static func fresh() -> Dictionary:
 	return {"version": VERSION, "shards": 0, "total_kills": 0, "best_wave": 0,
 		"runs": 0, "wins": 0, "last_crew": "warrior", "world": 0,
-		"effects": true, "damage_numbers": true, "frame_limit": 60,
+		"show_fps": false, "effects": true, "damage_numbers": true, "frame_limit": 60,
 		"last_run": {}, "muted": true, "volume": 0.65, "shake": 0.5, "meta": {"vitality": 0, "power": 0, "reserves": 0}}
 
 static func load_progress() -> Dictionary:
@@ -64,6 +64,7 @@ static func sanitize(raw: Dictionary) -> Dictionary:
 	var frame_limit = raw.get("frame_limit", 60)
 	if (frame_limit is int or frame_limit is float) and is_finite(float(frame_limit)) and float(frame_limit) in [30.0, 60.0, 120.0]:
 		result.frame_limit = int(frame_limit)
+	result.show_fps = raw.get("show_fps", false) == true
 	result.last_run = sanitize_report(raw.get("last_run", {}))
 	return result
 

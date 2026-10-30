@@ -212,6 +212,9 @@ func push_event(event: Dictionary) -> void:
 	if kind == "boss_phase":
 		phase_notice = "ROOTHEART / AWAKENED" if event.guardian == "rootheart" else "GATEKEEPER / ENRAGED"
 		phase_notice_time = 1.8
+	if kind == "practice_ready":
+		phase_notice = "PRACTICE / NO DAMAGE OR REWARDS"
+		phase_notice_time = 3.0
 	if kind == "wave":
 		banner = "GUARDIAN AHEAD" if event.boss else "DEPTH %02d" % event.wave
 		banner_time = 2.1
@@ -377,12 +380,12 @@ func _draw() -> void:
 		draw_rect(Rect2(2, 2, 596, 816), warning, false, 5)
 	if model.combo > 2 and model.combo_time > 0:
 		_text("%dx COMBO" % model.combo, Vector2(300, 641), 23, BANANA, true)
-	if model.phase == "playing" and model.enemies.is_empty():
+	if model.phase == "playing" and not model.practice and model.enemies.is_empty():
 		var remaining = maxf(0.0, 1.6 - model.clear_clock)
 		_text("EXIT OPENING" if model.wave == RonkeRun.LAST_WAVE else "NEXT DEPTH / %02d" % (model.wave + 1), Vector2(300, 120), 25, BANANA, true)
 		_text("%.1fs / STAY ALERT" % remaining, Vector2(300, 145), 15, CREAM, true)
 	if phase_notice_time > 0:
-		_text(phase_notice, Vector2(300, 212), 22, Color("ffc0be"), true)
+		_text(phase_notice, Vector2(300, 112 if model.practice else 212), 22, Color("ffc0be"), true)
 	if banner_time > 0:
 		var opacity = minf(1.0, banner_time * 3)
 		_box(Rect2(106, 294, 388, 88), Color(0.035, 0.07, 0.17, opacity * 0.86), Color(BANANA, opacity * 0.55), 4)

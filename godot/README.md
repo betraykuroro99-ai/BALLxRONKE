@@ -20,6 +20,8 @@ in the editor. Input actions are configured by `controls.gd` at startup.
 - Bundled display typography and color-coded orb loadouts.
 - Bouncing orbs, charge return, elemental effects, and three evolutions.
 - Experience, upgrade selection, dash, Rift Surge, and between-wave countdowns.
+- Practice controls from home: stationary respawning targets, safe movement/dash/Surge practice, and no progression rewards.
+- Optional saved FPS counter in Settings for on-device checks.
 - Expedition reports: final orbit, upgrade path, action counts, guardian defeats, damage taken, and outcome-specific advice. The last report can be reopened from Camp after restarting the game.
 - Permanent basecamp upgrades and versioned `user://` saves with backup recovery.
 - Keyboard/mouse and controller bindings, multi-touch controls, portrait and

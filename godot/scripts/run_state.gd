@@ -8,6 +8,7 @@ const LAST_WAVE = 10
 var crew: Dictionary
 var world: int
 var rng = RandomNumberGenerator.new()
+var practice = false
 var phase = "playing"
 var time = 0.0
 var wave = 0
@@ -46,7 +47,8 @@ var guardians_defeated = 0
 var damage_taken = 0.0
 var end_reason = ""
 
-func _init(crew_id: String = "warrior", world_index: int = 0, run_seed: int = 1, meta: Dictionary = {}) -> void:
+func _init(crew_id: String = "warrior", world_index: int = 0, run_seed: int = 1, meta: Dictionary = {}, practice_mode: bool = false) -> void:
+	practice = practice_mode
 	crew = RonkeData.crew(crew_id)
 	world = clampi(world_index, 0, 2)
 	rng.seed = run_seed
@@ -59,7 +61,16 @@ func _init(crew_id: String = "warrior", world_index: int = 0, run_seed: int = 1,
 		"interval": 0.17 if crew_id == "itchy_finger" else 0.28, "speed": 250.0, "bounce": 0.0}
 	elements = [crew.element]
 	element_levels[crew.element] = 1
-	spawn_wave()
+	if practice:
+		_spawn_practice_targets()
+		surge = 100.0
+	else:
+		spawn_wave()
+
+func _spawn_practice_targets() -> void:
+	for x in [120, 300, 480]:
+		_add_enemy(Vector2(x, 220), 60, 120, "moss", 0)
+	emit("practice_ready")
 
 func emit(kind: String, data: Dictionary = {}) -> void:
 	var event = data.duplicate()
@@ -127,6 +138,8 @@ func _step(delta: float, input: Dictionary) -> void:
 	for key in ["hurt", "shoot", "invincible", "dash_cd", "dash"]:
 		player[key] = maxf(0.0, float(player[key]) - delta)
 	surge_time = maxf(0.0, surge_time - delta)
+	if practice and surge_time <= 0.0:
+		surge = 100.0
 	turn_time = maxf(0.0, turn_time - delta)
 	var movement: Vector2 = input.get("move", Vector2.ZERO)
 	movement = movement.limit_length()
@@ -183,6 +196,10 @@ func _step(delta: float, input: Dictionary) -> void:
 	enemies = enemies.filter(func(enemy): return not enemy.dead)
 	bullets = bullets.filter(func(bullet): return not bullet.dead)
 	if phase != "playing":
+		return
+	if practice:
+		if enemies.is_empty():
+			_spawn_practice_targets()
 		return
 	if enemies.is_empty():
 		clear_clock += delta
@@ -470,6 +487,9 @@ func kill(enemy: Dictionary) -> void:
 	combo_time = 1.8
 	best_combo = maxi(best_combo, combo)
 	surge = clampf(surge + (30 if enemy.kind == "boss" else 5), 0, 100)
+	if practice:
+		emit("kill", {"pos": enemy.pos, "kind": enemy.kind})
+		return
 	xp += 12 if enemy.kind == "boss" else 3 if enemy.kind == "granite" else 2
 	emit("kill", {"pos": enemy.pos, "kind": enemy.kind})
 	check_level()
@@ -540,7 +560,7 @@ func choose_upgrade(index: int) -> bool:
 	return true
 
 func hurt(value: float, source: String = "impact") -> void:
-	if value <= 0 or player.invincible > 0 or phase in ["victory", "defeat"]:
+	if practice or value <= 0 or player.invincible > 0 or phase in ["victory", "defeat"]:
 		return
 	damage_taken += minf(player.hp, value)
 	player.hp = maxf(0, player.hp - value)
@@ -555,7 +575,7 @@ func finish(win: bool, reason: String = "defeated") -> void:
 		return
 	phase = "victory" if win else "defeat"
 	end_reason = "victory" if win else reason
-	reward = floori(kills * 0.45 + wave * 2 + (30 if win else 0))
+	reward = 0 if practice else floori(kills * 0.45 + wave * 2 + (30 if win else 0))
 	emit("end", {"win": win, "reward": reward})
 
 func report() -> Dictionary:

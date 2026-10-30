@@ -32,6 +32,7 @@ func _run_tests() -> void:
 	_test_mechanics()
 	_test_attack_warnings()
 	_test_guardian_phases()
+	_test_practice()
 	_test_report()
 	_test_save()
 	_test_exports()
@@ -192,6 +193,24 @@ func _test_guardian_phases() -> void:
 				check(run.bullets.size() == expected, "Second-phase release matches preview size")
 				for j in range(run.bullets.size()):
 					check(run.bullets[j].velocity.normalized().distance_to(lanes[j]) < 0.0001, "Second-phase release follows warning")
+
+func _test_practice() -> void:
+	var run = RonkeRun.new("warrior", 0, 42, {}, true)
+	check(run.practice and run.wave == 0 and run.enemies.size() == 3 and run.surge == 100, "Practice starts with targets and ready Surge")
+	var hp: float = run.player.hp
+	run.hurt(999, "projectile")
+	check(run.player.hp == hp, "Practice cannot damage the player")
+	for _i in range(960):
+		run.advance(1.0 / 60.0, {"shoot": true, "aim": Vector2(300, 220), "surge": run.surge >= 100})
+		run.drain_events()
+	check(run.phase == "playing" and run.wave == 0 and run.level == 1 and run.xp == 0 and run.bullets.is_empty(), "Practice does not progress waves or upgrades or fire hostile shots")
+	for enemy in run.enemies.duplicate():
+		run.kill(enemy)
+	run.advance(0.01)
+	check(run.enemies.size() == 3 and run.balls.size() <= 96, "Cleared targets respawn with bounded orb state")
+	run.finish(false, "abandoned")
+	check(run.reward == 0, "Practice cannot award shards")
+	check(not RonkeRun.new().practice and RonkeRun.new().wave == 1, "Normal descent remains the default")
 
 func _test_report() -> void:
 	var run = RonkeRun.new()

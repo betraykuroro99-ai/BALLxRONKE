@@ -46,6 +46,8 @@ renderer.
 
 - Android test APK exported on GitHub Actions with Godot 4.6.3, JDK 17 and Android SDK tools. APK v2/v3 signature, ZIP/manifest/DEX/assets and ARM32/ARM64 runtime checks passed. [Successful build](https://github.com/betraykuroro99-ai/BALLxRONKE/actions/runs/40985470994).
 
+- Practice/FPS tools: safe targets, target respawn, no wave/XP/reward progression, unchanged normal default, pause/return without changing saved progression or last report, and persistent optional FPS display.
+
 ## Not yet verified
 
 - A real graphical playtest of the native game and its presentation.

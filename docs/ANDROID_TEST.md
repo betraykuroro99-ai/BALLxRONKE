@@ -19,7 +19,7 @@ the Godot project automatically rebuild; Run workflow can rebuild manually.
 
 ## First phone check
 
-1. Open the app and start a run. Check the blue theme, character art, menu text
+1. Open the app and choose Practice controls to check movement, aiming, dash and Surge safely. Practice grants no rewards or upgrades. Then start a normal run. Check the blue theme, character art, menu text
    and arena fit on your display, including the camera cutout.
 2. Move with the left touch stick while aiming with a second finger. Release
    each finger separately, then try dash and a fully charged Surge.
@@ -29,7 +29,7 @@ the Godot project automatically rebuild; Run workflow can rebuild manually.
    warning lanes match shots and guardian phase changes remain readable.
 6. Bank shards, return to camp and reopen the last report. Close/reopen the app
    and confirm your settings and banked progress remain.
-7. Play a full run at 60 FPS. If the device struggles, try 30 FPS with extra
+7. Enable Show FPS counter in Settings and play a full run at 60 FPS. If the device struggles, try 30 FPS with extra
    effects and damage numbers disabled. Report the phone model, Android version,
    chosen cap and the wave where slowdowns occur.
 
