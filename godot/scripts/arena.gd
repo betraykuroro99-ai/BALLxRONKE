@@ -1,9 +1,9 @@
 class_name RonkeArena
 extends Control
 
-const GOLD = Color("e6ba7a")
-const CREAM = Color("f3eedf")
-const DARK = Color("0d201a")
+const BANANA = Color("f6d35c")
+const CREAM = Color("fff1d6")
+const DARK = Color("101d3d")
 var model: RonkeRun
 var texture: Texture2D
 var sprite_frames: SpriteFrames
@@ -32,6 +32,7 @@ var floor_texture: Texture2D
 var enemy_texture: Texture2D
 var visual_data: Dictionary = {}
 var vignette: GradientTexture2D
+var fruit_accent: Texture2D
 var draw_count = 0
 var shake_strength = 0.5
 var shake_energy = 0.0
@@ -49,6 +50,7 @@ func _ready() -> void:
 	var data_file = FileAccess.open("res://data/visual_data.json", FileAccess.READ)
 	if data_file:
 		visual_data = JSON.parse_string(data_file.get_as_text())
+	fruit_accent = load("res://assets/art/ui/fruit_accent.png")
 	enemy_texture = load("res://assets/art/enemies/enemies.png")
 	var gradient = Gradient.new()
 	gradient.offsets = PackedFloat32Array([0.0, 0.52, 1.0])
@@ -203,7 +205,7 @@ func push_event(event: Dictionary) -> void:
 		labels.append({"pos": event.pos + Vector2(randf_range(-8, 8), -25), "text": str(event.value) + ("!" if event.crit else ""), "crit": event.crit, "life": 0.65})
 	if kind in ["hit", "kill", "hurt", "surge", "dash", "shield"] and effects:
 		var count = 28 if kind == "surge" else 11 if kind == "kill" else 5
-		var color: Color = event.get("color", Color("ef9d80") if kind == "hurt" else GOLD if kind != "kill" else Color("afd18a"))
+		var color: Color = event.get("color", Color("ef9d80") if kind == "hurt" else BANANA if kind != "kill" else Color("afd18a"))
 		for _i in range(count):
 			if particles.size() >= 180:
 				break
@@ -267,16 +269,19 @@ func _draw_floor() -> void:
 		var sy = [0.0, 110.0, height - 140.0, height]
 		var dx = [0.0, 18.0, 582.0, 600.0]
 		var dy = [0.0, 24.0, 788.0, 820.0]
-		var tint = Color(0.86, 0.91, 0.87) if model.world == 0 else Color(0.90, 0.85, 0.82) if model.world == 1 else Color(0.87, 0.88, 0.98)
+		var tint = Color(0.72, 0.86, 1.0) if model.world == 0 else Color(0.90, 0.85, 0.94) if model.world == 1 else Color(0.82, 0.88, 1.0)
 		for row in range(3):
 			for col in range(3):
 				draw_texture_rect_region(floor_texture, Rect2(dx[col], dy[row], dx[col + 1] - dx[col], dy[row + 1] - dy[row]), Rect2(sx[col], sy[row], sx[col + 1] - sx[col], sy[row + 1] - sy[row]), tint)
 	else:
-		draw_rect(Rect2(0, 0, 600, 820), Color("162f27"))
+		draw_rect(Rect2(0, 0, 600, 820), Color("162b50"))
+	draw_rect(Rect2(0, 0, 600, 820), Color(0.045, 0.12, 0.32, 0.14))
+	if fruit_accent:
+		draw_texture_rect(fruit_accent, Rect2(28, 26, 32, 32), false, Color(1, 1, 1, 0.35))
 	if vignette:
 		draw_texture_rect(vignette, Rect2(0, 0, 600, 820), false)
 	if effects:
-		var color = Color("bde3ba") if model.world == 0 else Color("edb36c") if model.world == 1 else Color("bfd5ff")
+		var color = Color("69c9ee") if model.world == 0 else Color("f0c976") if model.world == 1 else Color("b1bfff")
 		for i in range(22):
 			var x = 28 + fmod(i * 137.9 + sin(model.time * 0.18 + i) * 10, 544)
 			var y = fmod(i * 83.4 - model.time * (4 + i % 3) + 1640, 820)
@@ -285,7 +290,7 @@ func _draw_floor() -> void:
 	var danger = 0.0
 	for enemy in model.enemies:
 		danger = maxf(danger, clampf((enemy.pos.y - 530) / 160, 0, 1))
-	var line_color = Color("ef9d80") if danger > 0.45 else GOLD
+	var line_color = Color("ef9d80") if danger > 0.45 else BANANA
 	var opacity = 0.25 + danger * 0.45
 	draw_line(Vector2(22, 700), Vector2(578, 700), Color(line_color, opacity * 0.15), 9, true)
 	draw_dashed_line(Vector2(22, 700), Vector2(578, 700), Color(line_color, opacity), 1.5, 10)
@@ -304,7 +309,7 @@ func _draw() -> void:
 			_draw_attack_warning(enemy)
 	if active and model.phase == "playing":
 		var direction: Vector2 = (aim - model.player.pos).normalized()
-		draw_dashed_line(model.player.pos + Vector2(0, -20), model.player.pos + Vector2(0, -20) + direction * 200, Color(0.9, 0.8, 0.6, 0.3), 2, 11)
+		draw_dashed_line(model.player.pos + Vector2(0, -20), model.player.pos + Vector2(0, -20) + direction * 200, Color(0.33, 0.79, 0.96, 0.35), 2, 11)
 	for enemy in model.enemies:
 		_draw_enemy(enemy)
 	for bullet in model.bullets:
@@ -340,16 +345,16 @@ func _draw() -> void:
 		var frame_texture = sprite_frames.get_frame_texture(mapping[0], mapping[1])
 		draw_texture_rect(frame_texture, Rect2(p.pos - Vector2(84, 127), Vector2(168, 168)), false)
 	if p.dash_cd > 0:
-		draw_arc(p.pos + Vector2(0, 28), 18, -PI / 2, -PI / 2 + TAU * (1 - p.dash_cd / 3.5), 25, Color(0.9, 0.8, 0.5, 0.5), 2, true)
+		draw_arc(p.pos + Vector2(0, 28), 18, -PI / 2, -PI / 2 + TAU * (1 - p.dash_cd / 3.5), 25, Color(0.96, 0.83, 0.36, 0.5), 2, true)
 	for particle in particles:
 		draw_colored_polygon(PackedVector2Array([particle.pos + Vector2(0, -3), particle.pos + Vector2(2, 0), particle.pos + Vector2(0, 3), particle.pos + Vector2(-2, 0)]), Color(particle.color, clampf(particle.life / 0.4, 0, 1)))
 	for ring in rings:
-		draw_arc(ring.pos, ring.radius * (1.2 - ring.life), 0, TAU, 36, Color(0.9, 0.8, 0.5, clampf(ring.life * 2, 0, 0.7)), 2, true)
+		draw_arc(ring.pos, ring.radius * (1.2 - ring.life), 0, TAU, 36, Color(0.96, 0.83, 0.36, clampf(ring.life * 2, 0, 0.7)), 2, true)
 	for chain in chains:
 		var middle: Vector2 = (chain.from + chain.to) / 2 + Vector2(8, -8)
 		draw_polyline(PackedVector2Array([chain.from, middle, chain.to]), Color("eaffd9"), 2, true)
 	for label in labels:
-		_text(label.text, label.pos, 23 if label.crit else 17, Color(GOLD if label.crit else CREAM, clampf(label.life * 2, 0, 1)), true)
+		_text(label.text, label.pos, 23 if label.crit else 17, Color(BANANA if label.crit else CREAM, clampf(label.life * 2, 0, 1)), true)
 	# Keep HUD, touch targets and banners stationary while the world reacts.
 	draw_set_transform(Vector2.ZERO, 0, size / Vector2(600, 820))
 	_draw_breach_warning()
@@ -357,19 +362,19 @@ func _draw() -> void:
 		var warning = Color(1.0, 0.25, 0.24, hurt_flash * 1.5)
 		draw_rect(Rect2(2, 2, 596, 816), warning, false, 5)
 	if model.combo > 2 and model.combo_time > 0:
-		_text("%dx COMBO" % model.combo, Vector2(300, 641), 23, GOLD, true)
+		_text("%dx COMBO" % model.combo, Vector2(300, 641), 23, BANANA, true)
 	if model.phase == "playing" and model.enemies.is_empty():
 		var remaining = maxf(0.0, 1.6 - model.clear_clock)
-		_text("EXIT OPENING" if model.wave == RonkeRun.LAST_WAVE else "NEXT DEPTH / %02d" % (model.wave + 1), Vector2(300, 120), 25, GOLD, true)
+		_text("EXIT OPENING" if model.wave == RonkeRun.LAST_WAVE else "NEXT DEPTH / %02d" % (model.wave + 1), Vector2(300, 120), 25, BANANA, true)
 		_text("%.1fs / STAY ALERT" % remaining, Vector2(300, 145), 15, CREAM, true)
 	if phase_notice_time > 0:
 		_text(phase_notice, Vector2(300, 212), 22, Color("ffc0be"), true)
 	if banner_time > 0:
 		var opacity = minf(1.0, banner_time * 3)
-		_box(Rect2(106, 294, 388, 88), Color(0.04, 0.09, 0.075, opacity * 0.86), Color(GOLD, opacity * 0.55), 4)
-		draw_line(Vector2(140, 304), Vector2(460, 304), Color(GOLD, opacity * 0.35), 1)
+		_box(Rect2(106, 294, 388, 88), Color(0.035, 0.07, 0.17, opacity * 0.86), Color(BANANA, opacity * 0.55), 4)
+		draw_line(Vector2(140, 304), Vector2(460, 304), Color(BANANA, opacity * 0.35), 1)
 		_text(banner, Vector2(300, 341), 34, Color(CREAM, opacity), true)
-		_text("MAKE EVERY BOUNCE COUNT", Vector2(300, 367), 12, Color(GOLD, opacity), true)
+		_text("MAKE EVERY BOUNCE COUNT", Vector2(300, 367), 12, Color(BANANA, opacity), true)
 	if touch_enabled:
 		_draw_touch()
 	draw_set_transform(Vector2.ZERO)
@@ -432,23 +437,23 @@ func _draw_enemy(enemy: Dictionary) -> void:
 		var bar = Rect2(Vector2(pos.x - draw_size.x / 2, rect.end.y + 5), Vector2(draw_size.x, 5 if enemy.kind == "boss" else 3.5))
 		draw_rect(bar.grow(1), Color(0.02, 0.04, 0.03, 0.9))
 		bar.size.x *= clampf(enemy.hp / enemy.max_hp, 0, 1)
-		draw_rect(bar, Color("ffc0be") if enemy.kind == "boss" and enemy.boss_phase == 2 else GOLD if enemy.kind == "boss" else Color("a8ca9c"))
+		draw_rect(bar, Color("ffc0be") if enemy.kind == "boss" and enemy.boss_phase == 2 else BANANA if enemy.kind == "boss" else Color("a8ca9c"))
 		if enemy.kind == "boss":
 			var midpoint = bar.position + Vector2(draw_size.x * 0.5, 0)
 			draw_line(midpoint - Vector2(0, 1), midpoint + Vector2(0, 6), DARK, 2)
 	if enemy.kind == "boss":
 		var title = "THE GATEKEEPER" if enemy.guardian == "gatekeeper" else "THE ROOT OF IT ALL"
-		_text(title + (" / II" if enemy.boss_phase == 2 else " / I"), Vector2(pos.x, rect.position.y - 9), 12, Color("ffc0be") if enemy.boss_phase == 2 else GOLD, true)
+		_text(title + (" / II" if enemy.boss_phase == 2 else " / I"), Vector2(pos.x, rect.position.y - 9), 12, Color("ffc0be") if enemy.boss_phase == 2 else BANANA, true)
 
 func _draw_touch() -> void:
 	var origin = touch_origin if move_touch >= 0 else Vector2(82, 750)
-	draw_circle(origin, 53, Color(0.035, 0.09, 0.075, 0.38))
-	draw_arc(origin, 53, 0, TAU, 40, Color(GOLD, 0.32), 2, true)
-	draw_arc(origin, 46, 0, TAU, 40, Color(GOLD, 0.12), 1, true)
-	draw_circle(origin + touch_move * 35, 22, Color(0.55, 0.7, 0.6, 0.48))
+	draw_circle(origin, 53, Color(0.035, 0.07, 0.17, 0.38))
+	draw_arc(origin, 53, 0, TAU, 40, Color(BANANA, 0.32), 2, true)
+	draw_arc(origin, 46, 0, TAU, 40, Color(BANANA, 0.12), 1, true)
+	draw_circle(origin + touch_move * 35, 22, Color(0.33, 0.79, 0.96, 0.48))
 	draw_arc(origin + touch_move * 35, 22, 0, TAU, 24, Color(CREAM, 0.35), 1, true)
 	for button in [[Vector2(530, 750), "DASH", model.player.dash_cd <= 0], [Vector2(530, 640), "SURGE", model.surge >= 100]]:
 		draw_circle(button[0], 39, Color(0.035, 0.09, 0.075, 0.6))
-		draw_circle(button[0], 34, Color(GOLD, 0.22 if button[2] else 0.04))
-		draw_arc(button[0], 39, 0, TAU, 32, Color(GOLD, 0.8 if button[2] else 0.25), 2, true)
-		_text(button[1], button[0] + Vector2(0, 5), 14, GOLD, true)
+		draw_circle(button[0], 34, Color(BANANA, 0.22 if button[2] else 0.04))
+		draw_arc(button[0], 39, 0, TAU, 32, Color(BANANA, 0.8 if button[2] else 0.25), 2, true)
+		_text(button[1], button[0] + Vector2(0, 5), 14, BANANA, true)

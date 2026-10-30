@@ -40,6 +40,8 @@ renderer.
 
 - Guardian encounters: encounter-based identity, both phases in all three worlds, Rootheart alternation, single half-health transition, immutable in-flight warning lanes and matching projectile counts/directions, second-phase presentation with optional effects disabled.
 
+- Theme pass: updated home/camp and all three arena draw paths; packaged transparent fruit accent; desktop/mobile layout checks. Gameplay/data and playable character textures retain their prior Git blob hashes.
+
 ## Not yet verified
 
 - A real graphical playtest of the native game and its presentation.

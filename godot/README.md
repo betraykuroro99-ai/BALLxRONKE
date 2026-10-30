@@ -16,7 +16,8 @@ in the editor. Input actions are configured by `controls.gd` at startup.
 - Illustrated stone arenas for Verdant, Ember, and Astral; six painted enemy/boss
   designs; outlined orb trails, distinct hostile shots, and lightweight ambience.
 - Aimed attack warnings: Prism enemies charge for 0.55 seconds; Gatekeeper for 0.75 seconds, and Rootheart for 0.95 seconds. Dashed lanes match the released volley. Breach danger markers stay visible with optional effects disabled.
-- Bundled display typography, brass-edged UI, and color-coded orb loadouts.
+- Ronke-inspired deep-blue menus, cyan highlights, banana-yellow actions and warm cream text. Small banana/mango flourishes in home/camp and one faint arena-corner stamp.
+- Bundled display typography and color-coded orb loadouts.
 - Bouncing orbs, charge return, elemental effects, and three evolutions.
 - Experience, upgrade selection, dash, Rift Surge, and between-wave countdowns.
 - Expedition reports: final orbit, upgrade path, action counts, guardian defeats, damage taken, and outcome-specific advice. The last report can be reopened from Camp after restarting the game.

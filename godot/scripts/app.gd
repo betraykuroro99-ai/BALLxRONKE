@@ -1,12 +1,12 @@
 extends Control
 
-const BG = Color("0c191b")
-const PANEL = Color("182f2c")
-const LINE = Color("52604a")
-const CREAM = Color("f3eedf")
-const MUTED = Color("9aafa0")
-const GOLD = Color("e6ba7a")
-const GREEN = Color("a3c6a7")
+const BG = Color("101b3d")
+const PANEL = Color("192d56")
+const LINE = Color("3b5b87")
+const CREAM = Color("fff1d6")
+const MUTED = Color("a9bfdc")
+const BANANA = Color("f6d35c")
+const CYAN = Color("55c9f5")
 var progress: Dictionary
 var selected = "warrior"
 var world = 0
@@ -98,7 +98,7 @@ func _style(color: Color, border: Color = LINE, radius: int = 10, padding: int =
 	result.border_color = border
 	result.set_border_width_all(1)
 	result.set_corner_radius_all(radius)
-	result.shadow_color = Color(0.01, 0.025, 0.02, 0.32)
+	result.shadow_color = Color(0.015, 0.025, 0.075, 0.32)
 	result.shadow_size = 5
 	result.shadow_offset = Vector2(0, 3)
 	result.content_margin_left = padding
@@ -116,26 +116,26 @@ func _build_theme() -> void:
 	theme.set_color("font_color", "Button", CREAM)
 	theme.set_color("font_hover_color", "Button", CREAM)
 	theme.set_color("font_disabled_color", "Button", MUTED)
-	theme.set_stylebox("normal", "Button", _style(Color("263d34"), LINE, 5, 12))
-	theme.set_stylebox("hover", "Button", _style(Color("38503c"), GOLD, 5, 12))
-	theme.set_stylebox("pressed", "Button", _style(Color("1d322b"), GOLD, 5, 12))
-	theme.set_stylebox("disabled", "Button", _style(Color("192c23"), LINE, 7, 12))
-	var focus = _style(Color.TRANSPARENT, GOLD, 7, 0)
+	theme.set_stylebox("normal", "Button", _style(Color("223e6b"), LINE, 5, 12))
+	theme.set_stylebox("hover", "Button", _style(Color("2b5083"), BANANA, 5, 12))
+	theme.set_stylebox("pressed", "Button", _style(Color("172d55"), BANANA, 5, 12))
+	theme.set_stylebox("disabled", "Button", _style(Color("142546"), LINE, 7, 12))
+	var focus = _style(Color.TRANSPARENT, BANANA, 7, 0)
 	focus.set_border_width_all(3)
 	theme.set_stylebox("focus", "Button", focus)
 	theme.set_stylebox("panel", "PanelContainer", _style(PANEL))
-	theme.set_stylebox("normal", "OptionButton", _style(Color("233b2d"), LINE, 7, 12))
-	theme.set_stylebox("hover", "OptionButton", _style(Color("304a34"), GREEN, 7, 12))
+	theme.set_stylebox("normal", "OptionButton", _style(Color("203c69"), LINE, 7, 12))
+	theme.set_stylebox("hover", "OptionButton", _style(Color("2a4f7e"), CYAN, 7, 12))
 	theme.set_color("font_color", "OptionButton", CREAM)
 	theme.set_stylebox("panel", "PopupMenu", _style(PANEL, LINE, 6, 12))
-	theme.set_stylebox("hover", "PopupMenu", _style(Color("354b37"), GOLD, 4, 6))
+	theme.set_stylebox("hover", "PopupMenu", _style(Color("294a77"), BANANA, 4, 6))
 	theme.set_color("font_color", "PopupMenu", CREAM)
-	theme.set_color("font_hover_color", "PopupMenu", GOLD)
+	theme.set_color("font_hover_color", "PopupMenu", BANANA)
 	for kind in ["VScrollBar", "HScrollBar"]:
-		theme.set_stylebox("scroll", kind, _style(Color("102420"), Color.TRANSPARENT, 3, 0))
-		theme.set_stylebox("grabber", kind, _style(Color("526448"), Color("74805b"), 3, 0))
-		theme.set_stylebox("grabber_highlight", kind, _style(Color("82956c"), GOLD, 3, 0))
-		theme.set_stylebox("grabber_pressed", kind, _style(GOLD, GOLD, 3, 0))
+		theme.set_stylebox("scroll", kind, _style(Color("101f40"), Color.TRANSPARENT, 3, 0))
+		theme.set_stylebox("grabber", kind, _style(Color("41658c"), Color("5c89b5"), 3, 0))
+		theme.set_stylebox("grabber_highlight", kind, _style(Color("629bcc"), BANANA, 3, 0))
+		theme.set_stylebox("grabber_pressed", kind, _style(BANANA, BANANA, 3, 0))
 
 func _label(parent: Node, text: String, font_size: int = 19, color: Color = CREAM) -> Label:
 	var label = Label.new()
@@ -146,7 +146,7 @@ func _label(parent: Node, text: String, font_size: int = 19, color: Color = CREA
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	if font_size >= 26:
 		label.add_theme_font_override("font", bold_font)
-		label.add_theme_color_override("font_shadow_color", Color(0.01, 0.025, 0.02, 0.65))
+		label.add_theme_color_override("font_shadow_color", Color(0.015, 0.025, 0.075, 0.65))
 		label.add_theme_constant_override("shadow_offset_y", 2)
 	parent.add_child(label)
 	return label
@@ -161,11 +161,11 @@ func _button(parent: Node, text: String, callback: Callable, primary: bool = fal
 	if primary:
 		for key in ["font_color", "font_hover_color", "font_pressed_color"]:
 			button.add_theme_color_override(key, BG)
-		var gold_style = _style(GOLD, Color("8b6e42"), 5, 13)
+		var gold_style = _style(BANANA, Color("b99435"), 5, 13)
 		gold_style.border_width_bottom = 4
 		button.add_theme_stylebox_override("normal", gold_style)
-		button.add_theme_stylebox_override("hover", _style(Color("f1ce99"), CREAM, 7, 13))
-		button.add_theme_stylebox_override("pressed", _style(Color("c8a060"), GOLD, 7, 13))
+		button.add_theme_stylebox_override("hover", _style(Color("ffe58b"), CREAM, 7, 13))
+		button.add_theme_stylebox_override("pressed", _style(Color("dfb749"), BANANA, 7, 13))
 	button.pressed.connect(callback)
 	parent.add_child(button)
 	return button
@@ -190,12 +190,21 @@ func _panel(parent: Node) -> PanelContainer:
 	parent.add_child(panel)
 	return panel
 
+func _fruit_mark(parent: Node, extent: int) -> void:
+	var mark = TextureRect.new()
+	mark.texture = load("res://assets/art/ui/fruit_accent.png")
+	mark.custom_minimum_size = Vector2(extent, extent)
+	mark.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	mark.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	mark.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	parent.add_child(mark)
+
 func _bar(parent: Node, color: Color) -> ProgressBar:
 	var bar = ProgressBar.new()
 	bar.show_percentage = false
 	bar.custom_minimum_size.y = 12
 	bar.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	bar.add_theme_stylebox_override("background", _style(Color("0b1b15"), Color.TRANSPARENT, 5, 0))
+	bar.add_theme_stylebox_override("background", _style(Color("0b1733"), Color.TRANSPARENT, 5, 0))
 	bar.add_theme_stylebox_override("fill", _style(color, Color.TRANSPARENT, 5, 0))
 	parent.add_child(bar)
 	return bar
@@ -238,7 +247,7 @@ func _build_interface() -> void:
 	_button(header, "Help", open_help).size_flags_stretch_ratio = 0.4
 	volume_button = _button(header, "Sound / Feel", open_feedback)
 	volume_button.size_flags_stretch_ratio = 0.8
-	shard_label = _label(header, "0 shards", 18, GOLD)
+	shard_label = _label(header, "0 shards", 18, BANANA)
 	shard_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	var body = Control.new()
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -256,7 +265,7 @@ func _build_home(body: Control) -> void:
 	home_view.follow_focus = true
 	body.add_child(home_view)
 	var column = _vbox(home_view, 18)
-	_label(column, "THE PIT IS CALLING", 15, GREEN)
+	_label(column, "THE PIT IS CALLING", 15, CYAN)
 	_label(column, "One more descent.", 43)
 	home_grid = GridContainer.new()
 	home_grid.columns = 2
@@ -275,7 +284,7 @@ func _build_home(body: Control) -> void:
 	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hero.add_child(art)
 	var shade = ColorRect.new()
-	shade.color = Color(0.01, 0.05, 0.04, 0.43)
+	shade.color = Color(0.025, 0.08, 0.22, 0.52)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hero.add_child(shade)
 	var margin = MarginContainer.new()
@@ -283,32 +292,34 @@ func _build_home(body: Control) -> void:
 		margin.add_theme_constant_override("margin_" + edge, 26)
 	hero.add_child(margin)
 	var text = _vbox(margin, 17)
-	_label(text, "A GORILLA-POWERED ROGUELITE", 15, GREEN)
-	_label(text, "SMALL BALL.\nBIG PROBLEM.", 62, GOLD)
+	var fruit_row = _hbox(text, 10)
+	_fruit_mark(fruit_row, 28)
+	_label(fruit_row, "BLUE MONKE / BIG DESCENT", 13, CYAN)
+	_label(text, "SMALL BALL.\nBIG PROBLEM.", 62, BANANA)
 	_label(text, "The world fell in.\nYou might as well follow it.", 22)
 	start_button = _button(text, "Enter the pit / 10 waves", start_run, true)
 	var spacer = Control.new()
 	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	text.add_child(spacer)
-	_label(text, "BOUNCE.  EVOLVE.  DESCEND.", 15, GREEN)
+	_label(text, "BOUNCE.  EVOLVE.  DESCEND.", 15, CYAN)
 	var runner = _panel(home_grid)
 	runner.custom_minimum_size.x = 300
 	var details = _vbox(runner, 12)
-	_label(details, "YOUR RUNNER", 15, GREEN)
+	_label(details, "YOUR RUNNER", 15, CYAN)
 	runner_image = TextureRect.new()
 	runner_image.custom_minimum_size = Vector2(240, 190)
 	runner_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	runner_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	details.add_child(runner_image)
-	runner_role = _label(details, "", 14, GREEN)
+	runner_role = _label(details, "", 14, CYAN)
 	runner_name = _label(details, "", 35)
 	runner_tagline = _label(details, "", 17, MUTED)
 	runner_perk = _label(details, "", 18)
-	runner_orb = _label(details, "", 17, GOLD)
+	runner_orb = _label(details, "", 17, BANANA)
 	_button(details, "Choose runner", open_crew)
 	_button(details, "Start descent", start_run, true)
 	var choice = _vbox(_panel(column), 10)
-	_label(choice, "PICK YOUR DESCENT", 16, GREEN)
+	_label(choice, "PICK YOUR DESCENT", 16, CYAN)
 	var picker = OptionButton.new()
 	picker.custom_minimum_size.y = 52
 	for entry in RonkeData.all().worlds:
@@ -335,11 +346,11 @@ func _build_game(body: Control) -> void:
 	game_view.add_child(left_scroll)
 	left_panel = _vbox(left_scroll, 18)
 	_button(left_panel, "Back to camp", _request_home)
-	_label(left_panel, "CURRENT DEPTH", 15, GREEN)
-	depth_label = _label(left_panel, "01 / 10", 52, GOLD)
+	_label(left_panel, "CURRENT DEPTH", 15, CYAN)
+	depth_label = _label(left_panel, "01 / 10", 52, BANANA)
 	_label(left_panel, "Into the unknown.", 32)
 	stats_label = _label(left_panel, "", 18, MUTED)
-	_label(left_panel, "FIELD NOTE\n\nWalls are your friends.\nMost other things aren't.", 18, GREEN)
+	_label(left_panel, "FIELD NOTE\n\nWalls are your friends.\nMost other things aren't.", 18, CYAN)
 	_label(left_panel, "WASD / arrows: move\nPointer / right stick: aim\nShift / A: dash\nE / X: surge\nP / Start: pause", 16, MUTED)
 	var center = _vbox(game_view, 10)
 	center.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -356,19 +367,19 @@ func _build_game(body: Control) -> void:
 	arena = RonkeArena.new()
 	ratio.add_child(arena)
 	var bottom = _hbox(center, 10)
-	xp_label = _label(bottom, "LV. 1", 17, GREEN)
+	xp_label = _label(bottom, "LV. 1", 17, CYAN)
 	xp_label.size_flags_stretch_ratio = 0.45
-	ammo_label = _label(bottom, "9 / 9 orbs", 17, GOLD)
+	ammo_label = _label(bottom, "9 / 9 orbs", 17, BANANA)
 	auto_button = _button(bottom, "Auto on", _toggle_auto)
 	auto_button.size_flags_stretch_ratio = 0.65
 	mobile_surge_button = _button(bottom, "Surge", func(): arena.pending_surge = true)
 	mobile_surge_button.tooltip_text = "Rift Surge requires 100% charge"
 	mobile_surge_button.size_flags_stretch_ratio = 0.65
-	xp_bar = _bar(center, GREEN)
+	xp_bar = _bar(center, CYAN)
 	right_panel = _vbox(game_view, 17)
 	right_panel.custom_minimum_size.x = 240
 	right_panel.size_flags_horizontal = Control.SIZE_FILL
-	_label(right_panel, "YOUR ORBIT", 18, GREEN)
+	_label(right_panel, "YOUR ORBIT", 18, CYAN)
 	orbit_label = RichTextLabel.new()
 	orbit_label.bbcode_enabled = true
 	orbit_label.fit_content = true
@@ -379,12 +390,12 @@ func _build_game(body: Control) -> void:
 	orbit_label.add_theme_font_size_override("bold_font_size", 21)
 	right_panel.add_child(orbit_label)
 	var surge_column = _vbox(_panel(right_panel), 12)
-	_label(surge_column, "RIFT SURGE", 15, GOLD)
+	_label(surge_column, "RIFT SURGE", 15, BANANA)
 	_label(surge_column, "Let it all out.", 29)
 	_label(surge_column, "Defeat enemies to charge a burst of orbs and a brief shield.", 17, MUTED)
-	surge_bar = _bar(surge_column, GOLD)
+	surge_bar = _bar(surge_column, BANANA)
 	surge_button = _button(surge_column, "Charging", func(): arena.pending_surge = true, true)
-	_label(right_panel, "THIS RUN'S UPGRADES", 15, GREEN)
+	_label(right_panel, "THIS RUN'S UPGRADES", 15, CYAN)
 	var scroll = ScrollContainer.new()
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -393,7 +404,7 @@ func _build_game(body: Control) -> void:
 
 func _build_modal() -> void:
 	modal_layer = ColorRect.new()
-	modal_layer.color = Color(0.015, 0.04, 0.03, 0.94)
+	modal_layer.color = Color(0.02, 0.04, 0.11, 0.94)
 	modal_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	modal_layer.mouse_filter = Control.MOUSE_FILTER_STOP
 	modal_layer.visible = false
@@ -461,7 +472,7 @@ func _save() -> void:
 
 func _toast(text: String) -> void:
 	status_label.text = text
-	status_label.add_theme_color_override("font_color", GOLD)
+	status_label.add_theme_color_override("font_color", BANANA)
 	status_time = 3.0
 
 func start_run() -> void:
@@ -558,7 +569,7 @@ func _open_modal(kind: String, title: String, description: String, dismissible: 
 		modal_content.remove_child(child)
 		child.queue_free()
 	var captions = {"crew": "THE CREW", "camp": "BASECAMP", "help": "FIELD GUIDE", "upgrade": "EVOLVE YOUR ORBIT", "result": "EXPEDITION LOG", "pause": "TAKE A BREATH", "leave": "RETURN TO CAMP"}
-	_label(modal_content, captions.get(kind, "ORBFALL"), 13, GREEN)
+	_label(modal_content, captions.get(kind, "ORBFALL"), 13, CYAN)
 	var header = _hbox(modal_content)
 	_label(header, title, 35)
 	if dismissible:
@@ -607,7 +618,7 @@ func open_crew() -> void:
 		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		card.tooltip_text = crew.perk
 		if crew.id == selected:
-			card.add_theme_stylebox_override("normal", _style(Color("35412a"), GOLD))
+			card.add_theme_stylebox_override("normal", _style(Color("284478"), BANANA))
 		grid.add_child(card)
 		var column = VBoxContainer.new()
 		column.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -639,6 +650,9 @@ func open_camp() -> void:
 	if _critical():
 		return
 	var content = _open_modal("camp", "Home between falls.", "Spend shards on permanent improvements for your next descent.")
+	var fruit_row = _hbox(content, 10)
+	_fruit_mark(fruit_row, 36)
+	_label(fruit_row, "A LITTLE FUEL FOR THE NEXT DESCENT", 13, CYAN)
 	if not progress.last_run.is_empty():
 		_button(content, "View last expedition", open_last_report)
 	for entry in [["vitality", "Heartwood", "+10 starting health per rank."], ["power", "Heavy lifting", "+5% starting damage per rank."], ["reserves", "Deep pockets", "+1 starting orb charge per rank."]]:
@@ -676,7 +690,7 @@ func open_help() -> void:
 		["Know the guardians", "The Gatekeeper fires focused fans. Rootheart alternates downward spreads and aimed fans. At half health both enter phase II. A volley already charging keeps its original lanes; watch the next warning for the wider pattern."],
 		["Build your orbit", "Pick an upgrade each level. Ember + Venom becomes Toxic Sun; Frost + Spark becomes Stormglass; Light + Void becomes Eclipse. Evolutions replace their ingredients."],
 		["Return stronger", "Wall bounces keep orbs in play. Charges return at the bottom or after expiry. Defeated enemies charge Rift Surge. Spend run rewards at basecamp. Saves stay on this device; browser saves are separate."]]:
-		_label(content, pair[0], 28, GOLD)
+		_label(content, pair[0], 28, BANANA)
 		_label(content, pair[1], 19)
 	_button(content, "Got it", _close_modal, true)
 	_focus_modal()
@@ -739,7 +753,7 @@ func open_last_report() -> void:
 
 func _build_report(parent: Control, report: Dictionary) -> void:
 	var runner = RonkeData.crew(report.crew)
-	_label(parent, "%s / %s" % [runner.name, RonkeData.all().worlds[int(report.world)].name], 23, GOLD)
+	_label(parent, "%s / %s" % [runner.name, RonkeData.all().worlds[int(report.world)].name], 23, BANANA)
 	_label(parent, "Depth %02d / %s / +%d shards" % [int(report.wave), _clock(report.time), int(report.reward)], 23)
 	var outcomes = {
 		"victory": ["Both guardians defeated", "Try another ruin or runner for a different approach."],
@@ -750,7 +764,7 @@ func _build_report(parent: Control, report: Dictionary) -> void:
 		"impact": ["Felled in combat", "Use dash to escape danger and Surge to heal while clearing space."],
 		"defeated": ["Expedition ended", "Watch the breach line and spend your banked shards at basecamp."]}
 	var outcome: Array = outcomes.get(report.reason, outcomes.defeated)
-	_label(parent, outcome[0], 22, GREEN if report.win else GOLD)
+	_label(parent, outcome[0], 22, CYAN if report.win else BANANA)
 	_label(parent, outcome[1], 18, MUTED)
 	var grid = GridContainer.new()
 	grid.columns = 2
@@ -768,10 +782,10 @@ func _build_report(parent: Control, report: Dictionary) -> void:
 	var names: Array[String] = []
 	for element in report.elements:
 		names.append(RonkeData.all().elements[element].name)
-	_label(parent, "FINAL ORBIT", 14, GREEN)
+	_label(parent, "FINAL ORBIT", 14, CYAN)
 	_label(parent, " / ".join(names), 20)
 	if not report.picks.is_empty():
-		_label(parent, "UPGRADE PATH", 14, GREEN)
+		_label(parent, "UPGRADE PATH", 14, CYAN)
 		_label(parent, " > ".join(report.picks), 17, MUTED)
 
 func pause_run() -> void:
@@ -838,14 +852,14 @@ func open_feedback(from_pause: bool = false) -> void:
 	mute.toggled.connect(func(enabled):
 		if enabled == sound.muted:
 			_toggle_sound())
-	_label(content, "Sound volume", 21, GOLD)
+	_label(content, "Sound volume", 21, BANANA)
 	_feedback_slider(content, "volume", progress.volume, func(value):
 		sound.volume = value
 		progress.volume = value
 		if value <= 0:
 			sound.stop_all()
 		_save())
-	_label(content, "Screen shake / zero turns motion off", 21, GOLD)
+	_label(content, "Screen shake / zero turns motion off", 21, BANANA)
 	_feedback_slider(content, "shake", progress.shake, func(value):
 		progress.shake = value
 		arena.shake_strength = value
@@ -948,6 +962,10 @@ func _verify_pack_resources() -> void:
 					valid = false
 			if not load(art.get("enemy_atlas", "")) is Texture2D or not load(art.get("display_font", "")) is Font:
 				valid = false
+	if not load("res://assets/art/ui/fruit_accent.png") is Texture2D:
+		push_error("FAIL: packaged fruit accent missing")
+		get_tree().quit(1)
+		return
 	if not FileAccess.file_exists("res://assets/fonts/LICENSE-DejaVu.txt"):
 		valid = false
 	for crew in RonkeData.all().get("crew", []):

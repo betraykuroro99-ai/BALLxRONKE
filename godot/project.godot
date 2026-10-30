@@ -27,7 +27,7 @@ pointing/emulate_mouse_from_touch=true
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/use_nearest_mipmap_filter=false
-environment/defaults/default_clear_color=Color(0.04, 0.085, 0.075, 1)
+environment/defaults/default_clear_color=Color(0.063, 0.106, 0.239, 1)
 
 [audio]
 driver/enable_input=false
