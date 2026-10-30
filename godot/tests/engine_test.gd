@@ -277,4 +277,5 @@ func _test_exports() -> void:
 	check(config.get_value("preset.2", "platform", "") == "Android", "Android target")
 	check(config.get_value("preset.2.options", "architectures/arm64-v8a", false), "ARM64 Android target")
 	check(not config.get_value("preset.2.options", "permissions/internet", true), "No unnecessary Android network permission")
+	check(ProjectSettings.get_setting("rendering/textures/vram_compression/import_etc2_astc", false), "Android texture import support is enabled")
 	check(ProjectSettings.get_setting("rendering/renderer/rendering_method") == "gl_compatibility", "Compatibility renderer")
