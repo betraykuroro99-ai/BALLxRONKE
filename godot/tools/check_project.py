@@ -14,17 +14,17 @@ args = parser.parse_args()
 if not args.godot:
     parser.error('Pass --godot /path/to/Godot or set GODOT_BIN to the editor executable.')
 
-def run(label, flags, user_args=(), *, project=True, cwd=None):
+def run(label, flags, user_args=(), *, project=True, cwd=None, timeout=240):
     command = [args.godot, '--headless']
     if project:
         command += ['--path', str(ROOT)]
     command += flags
     if user_args:
         command += ['--', *user_args]
-    result = subprocess.run(command, capture_output=True, text=True, timeout=240, cwd=cwd)
+    result = subprocess.run(command, capture_output=True, text=True, timeout=timeout, cwd=cwd)
     output = result.stdout + '\n' + result.stderr
     print(f'\n--- {label} ---\n{output}')
-    if result.returncode or any(marker in output for marker in ['SCRIPT ERROR', 'Parse Error', 'Failed to load script', 'FAIL:']):
+    if result.returncode or any(marker in output for marker in ['SCRIPT ERROR', 'Parse Error', 'Failed to load script', 'FAIL:', 'String formatting error']):
         raise SystemExit(f'{label} failed (exit {result.returncode}).')
     return output
 
@@ -33,7 +33,12 @@ print('Godot editor:', version)
 if not version.startswith('4.'):
     raise SystemExit('This project requires Godot 4.')
 run('Import', ['--editor', '--import', '--quit'])
-run('Native engine tests', ['--script', 'res://tests/engine_test.gd'])
+run('Reference mechanics tests', ['--script', 'res://tests/parity_test.gd'])
+run('Evolved catalogue tests', ['--script', 'res://tests/evolution_test.gd'])
+run('Defenses and equipment tests', ['--script', 'res://tests/defense_test.gd'])
+run('Stability and interaction tests', ['--script', 'res://tests/stability_test.gd'])
+run('Ball appearance and environment tests', ['--script', 'res://tests/ball_environment_test.gd'])
+run('Native engine tests', ['--script', 'res://tests/engine_test.gd'], timeout=600)
 run('Native UI/input/layout tests', ['--script', 'res://tests/ui_test.gd'])
 run('Mobile UI/input/layout tests', ['--script', 'res://tests/ui_test.gd'], ['--mobile-ui'])
 with tempfile.TemporaryDirectory(prefix='ballxronke-pack-') as temp:

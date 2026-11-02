@@ -19,4 +19,6 @@ static func crew(id: String) -> Dictionary:
 	return all().get("crew", [{}])[0]
 
 static func orb_color(id: String) -> Color:
+	if id == "baby":
+		return Color("fff1d6")
 	return Color(all().get("elements", {}).get(id, {}).get("color", "#e6ba7a"))

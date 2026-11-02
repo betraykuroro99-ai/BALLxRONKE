@@ -14,8 +14,7 @@ checksum, source commit, engine version and Android package metadata.
 This is a debug-signed test APK, built with Godot 4.6.3, not a Play Store release.
 It includes ARM32 and ARM64 runtimes and uses the Compatibility renderer. The
 workflow keeps a cached debug key for test updates; no production signing key
-or password is committed. Build artifacts expire after 30 days. Pushes affecting
-the Godot project automatically rebuild; Run workflow can rebuild manually.
+or password is committed. Build artifacts expire after 30 days. The workflow is now manual-only; pushes do not rebuild an APK. The current mechanics correction is source-only and is not present in the older APK.
 
 ## First phone check
 

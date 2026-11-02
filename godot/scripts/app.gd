@@ -1,12 +1,12 @@
 extends Control
 
-const BG = Color("101b3d")
-const PANEL = Color("192d56")
-const LINE = Color("3b5b87")
+const BG = Color("09152c")
+const PANEL = Color("14243f")
+const LINE = Color("4b698f")
 const CREAM = Color("fff1d6")
 const MUTED = Color("a9bfdc")
-const BANANA = Color("f6d35c")
-const CYAN = Color("55c9f5")
+const BANANA = Color("e9c879")
+const CYAN = Color("9bd5f5")
 var progress: Dictionary
 var selected = "warrior"
 var world = 0
@@ -27,6 +27,7 @@ var home_grid: GridContainer
 var game_view: HBoxContainer
 var left_panel: VBoxContainer
 var left_scroll: ScrollContainer
+var right_scroll: ScrollContainer
 var right_panel: VBoxContainer
 var arena: RonkeArena
 var sound: RonkeSound
@@ -224,6 +225,15 @@ func _build_interface() -> void:
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(background)
+	var temple = TextureRect.new()
+	temple.name = "MoonTempleBackdrop"
+	temple.texture = load("res://assets/art/arenas/moon_temple_backdrop.png")
+	temple.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	temple.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	temple.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	temple.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	temple.modulate = Color(0.80, 0.88, 1.0, 0.72)
+	add_child(temple)
 	root_margin = MarginContainer.new()
 	root_margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	for edge in ["left", "right", "top", "bottom"]:
@@ -272,7 +282,7 @@ func _build_home(body: Control) -> void:
 	home_view.follow_focus = true
 	body.add_child(home_view)
 	var column = _vbox(home_view, 18)
-	_label(column, "THE PIT IS CALLING", 15, CYAN)
+	_label(column, "BENEATH THE BLUE MOON", 15, CYAN)
 	_label(column, "One more descent.", 43)
 	home_grid = GridContainer.new()
 	home_grid.columns = 2
@@ -291,7 +301,7 @@ func _build_home(body: Control) -> void:
 	art.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hero.add_child(art)
 	var shade = ColorRect.new()
-	shade.color = Color(0.025, 0.08, 0.22, 0.52)
+	shade.color = Color(0.015, 0.04, 0.12, 0.66)
 	shade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hero.add_child(shade)
 	var margin = MarginContainer.new()
@@ -326,6 +336,7 @@ func _build_home(body: Control) -> void:
 	_button(details, "Choose runner", open_crew)
 	_button(details, "Start descent", start_run, true)
 	_button(details, "Practice controls", start_practice)
+	_button(details, "Balls / evolution recipes", open_ball_catalogue)
 	var choice = _vbox(_panel(column), 10)
 	_label(choice, "PICK YOUR DESCENT", 16, CYAN)
 	var picker = OptionButton.new()
@@ -356,7 +367,7 @@ func _build_game(body: Control) -> void:
 	_button(left_panel, "Back to camp", _request_home)
 	_label(left_panel, "CURRENT DEPTH", 15, CYAN)
 	depth_label = _label(left_panel, "01 / 10", 52, BANANA)
-	_label(left_panel, "Into the unknown.", 32)
+	_label(left_panel, "Moonlit descent.", 32)
 	stats_label = _label(left_panel, "", 18, MUTED)
 	_label(left_panel, "FIELD NOTE\n\nWalls are your friends.\nMost other things aren't.", 18, CYAN)
 	_label(left_panel, "WASD / arrows: move\nPointer / right stick: aim\nShift / A: dash\nE / X: surge\nP / Start: pause", 16, MUTED)
@@ -380,11 +391,19 @@ func _build_game(body: Control) -> void:
 	ammo_label = _label(bottom, "9 / 9 orbs", 17, BANANA)
 	auto_button = _button(bottom, "Auto on", _toggle_auto)
 	auto_button.size_flags_stretch_ratio = 0.65
+	var recall = _button(bottom, "Recall", func(): arena.pending_recall = true)
+	recall.tooltip_text = "Recall active balls / R or Y"
+	recall.size_flags_stretch_ratio = 0.65
 	mobile_surge_button = _button(bottom, "Surge", func(): arena.pending_surge = true)
 	mobile_surge_button.tooltip_text = "Rift Surge requires 100% charge"
 	mobile_surge_button.size_flags_stretch_ratio = 0.65
 	xp_bar = _bar(center, CYAN)
-	right_panel = _vbox(game_view, 17)
+	right_scroll = ScrollContainer.new()
+	right_scroll.custom_minimum_size.x = 240
+	right_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	right_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	game_view.add_child(right_scroll)
+	right_panel = _vbox(right_scroll, 17)
 	right_panel.custom_minimum_size.x = 240
 	right_panel.size_flags_horizontal = Control.SIZE_FILL
 	_label(right_panel, "YOUR ORBIT", 18, CYAN)
@@ -444,6 +463,7 @@ func _responsive_layout() -> void:
 	left_scroll.visible = not compact and not touch_device and size.x > 1100
 	left_panel.visible = left_scroll.visible
 	right_panel.visible = not compact and not touch_device and size.x > 1000
+	right_scroll.visible = right_panel.visible
 	var margin = 12 if compact else 22
 	for edge in ["left", "right", "top", "bottom"]:
 		root_margin.add_theme_constant_override("margin_" + edge, margin)
@@ -462,13 +482,16 @@ func _responsive_layout() -> void:
 
 func _select_crew(id: String) -> void:
 	selected = id
-	progress.last_crew = id
 	var crew = RonkeData.crew(id)
+	if not crew.get("enabled", true):
+		_toast(crew.get("disabled_reason", "This runner is unavailable."))
+		return
+	progress.last_crew = id
 	runner_name.text = crew.name
 	runner_role.text = str(crew.role).to_upper()
 	runner_tagline.text = crew.tagline
 	runner_perk.text = crew.perk
-	runner_orb.text = "STARTING ORB / " + RonkeData.all().elements[crew.element].name
+	runner_orb.text = "STARTING BALL / " + (RonkeData.all().elements[crew.element].name if crew.element != "" else "None / choose in the pit")
 	runner_orb.add_theme_color_override("font_color", RonkeData.orb_color(crew.element))
 	runner_image.texture = _portrait(id)
 	_save()
@@ -487,6 +510,9 @@ func start_practice() -> void:
 	start_run(true)
 
 func start_run(practice_mode: bool = false) -> void:
+	if not RonkeData.crew(selected).get("enabled", true):
+		_toast("This runner requires Twitch audience support and is unavailable.")
+		return
 	_close_modal()
 	background_upgrade_pause = false
 	model = RonkeRun.new(selected, world, randi(), progress.meta, practice_mode)
@@ -494,8 +520,8 @@ func start_run(practice_mode: bool = false) -> void:
 	settled = false
 	arena.set_run(model)
 	arena.shake_strength = progress.shake
-	arena.auto_fire = true
-	auto_button.text = "Auto on"
+	arena.auto_fire = selected != "tactician"
+	auto_button.text = "Auto on" if arena.auto_fire else "Auto off"
 	home_view.visible = false
 	game_view.visible = true
 	arena.active = true
@@ -509,14 +535,21 @@ func _update_hud() -> void:
 	health_label.text = "VITALITY  %d / %d" % [ceili(model.player.hp), int(model.player.max_hp)]
 	health_bar.value = model.player.hp / model.player.max_hp * 100
 	xp_bar.value = float(model.xp) / model.xp_needed * 100
-	xp_label.text = "Practice / no rewards" if model.practice else "Lv.%d / D.%02d" % [model.level, model.wave]
-	ammo_label.text = "%d / %d orbs" % [model.player.ammo, model.player.capacity]
+	xp_label.text = "Practice / no rewards" if model.practice else model.turn_phase.to_upper() + " TURN" if model.crew.id == "tactician" else "Lv.%d / D.%02d" % [model.level, model.wave]
+	ammo_label.text = "%d babies / %d ready" % [model.player.ammo, model.ready_specials().size()]
+	ammo_label.tooltip_text = "%d/%d ball slots; %d/%d passive slots. R / Y recalls balls." % [model.elements.size(), model.special_slots, model.passives.size(), model.passive_slots]
 	depth_label.text = "PRACTICE" if model.practice else "%02d / 10" % model.wave
 	stats_label.text = "%s in the pit\n\n%d enemies cleared\n\n%d wall bounces\n\n%dx best combo" % [_clock(model.time), model.kills, model.bounces, model.best_combo]
 	var names: Array[String] = []
 	for element in model.elements:
 		var color = RonkeData.orb_color(element).to_html(false)
 		names.append("[color=#%s]●[/color]  [b]%s[/b]  [color=#9aafa0]Lv.%d[/color]" % [color, RonkeData.all().elements[element].name, int(model.element_levels.get(element, 1))])
+	if names.is_empty():
+		names.append("No special ball equipped.")
+	names.push_front("BALL SLOTS %d/%d" % [model.elements.size(), model.special_slots])
+	names.append("\nPASSIVES %d/%d" % [model.passives.size(), model.passive_slots])
+	for id in model.passives:
+		names.append(RonkeData.all().passives[id].name + " / Lv.%d" % int(model.passive_levels.get(id, 1)))
 	var orbit_text = "\n".join(names)
 	if orbit_label.text != orbit_text:
 		orbit_label.text = orbit_text
@@ -621,7 +654,7 @@ func _critical() -> bool:
 func open_crew() -> void:
 	if _critical():
 		return
-	var content = _open_modal("crew", "Meet your crew.", "All 23 runners are available. Select a runner for your next descent.")
+	var content = _open_modal("crew", "Meet your crew.", "22 runners are available. The Showman needs Twitch audience support and is currently disabled.")
 	var grid = GridContainer.new()
 	grid.columns = 3 if compact else 5
 	grid.add_theme_constant_override("h_separation", 10)
@@ -631,7 +664,8 @@ func open_crew() -> void:
 		var card = Button.new()
 		card.custom_minimum_size = Vector2(150, 180)
 		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		card.tooltip_text = crew.perk
+		card.tooltip_text = crew.get("disabled_reason", crew.perk)
+		card.disabled = not crew.get("enabled", true)
 		if crew.id == selected:
 			card.add_theme_stylebox_override("normal", _style(Color("284478"), BANANA))
 		grid.add_child(card)
@@ -654,6 +688,8 @@ func open_crew() -> void:
 			var label = _label(column, pair[0], pair[1], pair[2])
 			label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if not crew.get("enabled", true):
+			_label(column, "TWITCH REQUIRED", 12, MUTED)
 		var id: String = crew.id
 		card.pressed.connect(func():
 			_select_crew(id)
@@ -703,7 +739,8 @@ func open_help() -> void:
 		["On Android", "Use the left stick to move. Drag elsewhere in the arena to aim. Tap DASH and SURGE on the right. Touch/controller aim assist finds a threat when you stop aiming. Back pauses. Changing focus pauses too."],
 		["Read the danger", "Pink dashed lanes show where Prism enemies and guardians will shoot. Their aim locks during the charge: step away or dash across the lane before release. Breach warnings mean an enemy is close to crossing; a guardian breach ends the run."],
 		["Know the guardians", "The Gatekeeper fires focused fans. Rootheart alternates downward spreads and aimed fans. At half health both enter phase II. A volley already charging keeps its original lanes; watch the next warning for the wider pattern."],
-		["Build your orbit", "Pick an upgrade each level. Ember + Venom becomes Toxic Sun; Frost + Spark becomes Stormglass; Light + Void becomes Eclipse. Evolutions replace their ingredients."],
+		["Build your orbit", "Pick attributes, passive equipment or special balls each level. Balls can be levelled to 3, then matching ingredients can evolve. Special and passive slot limits depend on your runner."],
+		["Ball control", "R or controller Y recalls active balls. Recall is useful for bottom-bounce, gravity and wrapping builds. Tactician volleys end when balls return; enemy turns then advance the field."],
 		["Return stronger", "Wall bounces keep orbs in play. Charges return at the bottom or after expiry. Defeated enemies charge Rift Surge. Spend run rewards at basecamp. Saves stay on this device; browser saves are separate."]]:
 		_label(content, pair[0], 28, BANANA)
 		_label(content, pair[1], 19)
@@ -754,6 +791,66 @@ func _show_result() -> void:
 	_build_report(content, model.report())
 	_button(content, "One more descent", start_run, true)
 	_button(content, "Back to basecamp", _return_home)
+	_focus_modal()
+
+func open_ball_catalogue() -> void:
+	if _critical(): return
+	var content = _open_modal("catalogue", "Build your next orbit.", "21 base balls and 69 evolutions. Bring every listed ingredient to level 3 to evolve it. Alternate recipes are shown separately.")
+	var search = LineEdit.new()
+	search.placeholder_text = "Find a ball or ingredient…"
+	search.custom_minimum_size.y = 52
+	content.add_child(search)
+	var cards: Array = []
+	var ids: Array = RonkeData.all().elements.keys().filter(func(id): return RonkeData.all().elements[id].get("tier") in ["base", "evolved"])
+	ids.sort_custom(func(a, b): return RonkeData.all().elements[a].name < RonkeData.all().elements[b].name)
+	for id in ids:
+		var ball: Dictionary = RonkeData.all().elements[id]
+		var card = _panel(content)
+		var column = _vbox(card, 8)
+		_label(column, ball.name + " / " + ("BASE" if ball.tier == "base" else "EVOLUTION"), 22, RonkeData.orb_color(id))
+		_label(column, ball.description, 17)
+		var recipe_text = ""
+		for recipe in RonkeData.all().fusions:
+			if recipe.id != id: continue
+			var names: Array[String] = []
+			for ingredient in recipe.ingredients: names.append(RonkeData.all().elements[ingredient].name)
+			var text = " + ".join(names)
+			recipe_text += " " + text
+			_label(column, text, 17, MUTED)
+		if not model or model.practice:
+			_button(column, "Try in practice", _preview_ball.bind(id))
+		cards.append({"card": card, "search": (ball.name + " " + ball.description + recipe_text).to_lower()})
+	search.text_changed.connect(func(value):
+		for entry in cards: entry.card.visible = value.to_lower() in entry.search)
+	_button(content, "Close catalogue", _close_modal, true)
+	_focus_modal()
+
+func _preview_ball(id: String) -> void:
+	start_practice()
+	if not model: return
+	model.elements = [id]
+	model.element_levels = {id: 1}
+	model.special_cooldowns.clear()
+	model.special_inflight.clear()
+	model.launch_groups.clear()
+	model.balls.clear()
+	_update_hud()
+	_toast(RonkeData.all().elements[id].name + " / practice only; no rewards or progression.")
+
+func open_loadout() -> void:
+	if not model or _critical():
+		return
+	var content = _open_modal("loadout", "Your equipment.", "Special balls reload after all linked copies return. Equipment slots are separate from baby-ball ammo.")
+	_label(content, "Special balls / %d of %d" % [model.elements.size(), model.special_slots], 24, BANANA)
+	for id in model.elements:
+		var state = "In flight" if int(model.special_inflight.get(id, 0)) > 0 else "Ready" if float(model.special_cooldowns.get(id, 0)) <= 0 else "Cooldown %.1fs" % float(model.special_cooldowns.get(id, 0))
+		_label(content, "%s / Lv.%d / %s" % [RonkeData.all().elements[id].name, int(model.element_levels.get(id, 1)), state], 19)
+	_label(content, "Passive items / %d of %d" % [model.passives.size(), model.passive_slots], 24, CYAN)
+	for id in model.passives:
+		_label(content, RonkeData.all().passives[id].name + " / " + RonkeData.all().passives[id].description, 18)
+	_button(content, "Back to pause", func():
+		_close_modal()
+		pause_run(), true)
 	_focus_modal()
 
 func open_last_report() -> void:
@@ -813,6 +910,8 @@ func pause_run() -> void:
 		return
 	var content = _open_modal("pause", "The pit can wait.", "Your descent is paused. Nothing moves until you are ready.")
 	_button(content, "Keep descending", _close_modal, true)
+	_button(content, "Loadout / slots", open_loadout)
+	_button(content, "Balls / evolution recipes", open_ball_catalogue)
 	_button(content, "Settings", func(): open_feedback(true))
 	_button(content, "Return to camp" if model.practice else "Bank shards and leave", _abandon_run)
 	_focus_modal()

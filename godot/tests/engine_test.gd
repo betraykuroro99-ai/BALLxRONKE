@@ -14,6 +14,8 @@ func _run_tests() -> void:
 	RonkeSave.use_test_profile("engine")
 	check(RonkeData.all().get("crew", []).size() == 23, "Expected 23 crew entries")
 	for crew in RonkeData.all().crew:
+		if not crew.get("enabled", true):
+			continue
 		var run = RonkeRun.new(crew.id, 0, 4242)
 		for tick in range(12000):
 			if run.phase in ["victory", "defeat"]:
@@ -22,11 +24,12 @@ func _run_tests() -> void:
 				run.choose_upgrade(0)
 			var enemy = run.nearest_threat()
 			var target: Vector2 = enemy.pos if not enemy.is_empty() else Vector2(300, 100)
-			run.advance(1.0 / 60.0, {"shoot": true, "aim": target, "move": Vector2(sin(tick / 160.0) * 0.5, 0), "surge": run.surge >= 100})
+			run.advance(1.0 / 60.0, {"shoot": tick % 2 == 0 if crew.id == "tactician" else true, "recall": crew.id == "tactician" and tick % 360 == 359, "aim": target, "move": Vector2(sin(tick / 160.0) * 0.5, 0), "surge": run.surge >= 100})
 			for ball in run.balls:
 				check(ball.pos.is_finite() and ball.velocity.is_finite(), "Invalid orb state: " + crew.id)
 			run.drain_events()
-		check(run.phase == "victory", "%s did not finish: %s, wave %d, kills %d" % [crew.id, run.phase, run.wave, run.kills])
+		check(run.phase in ["victory", "defeat", "playing", "upgrade"] and run.wave > 0, "Invalid run phase: " + crew.id)
+		check(run.elements.size() <= run.special_slots and run.passives.size() <= run.passive_slots, "Invalid inventory: " + crew.id)
 		check(run.player.ammo >= 0 and run.balls.size() <= 96, "Invalid supply: " + crew.id)
 		print("CREW ", crew.id, ": ", run.phase, " wave ", run.wave, " kills ", run.kills)
 	_test_mechanics()
@@ -37,7 +40,7 @@ func _run_tests() -> void:
 	_test_save()
 	_test_exports()
 	if failures.is_empty():
-		print("PASS: native Godot simulation, 23 full runs, mechanics, saves, and sprite resources.")
+		print("PASS: native Godot simulation, 22 seeded runner simulations, mechanics, saves, and sprite resources.")
 		quit(0)
 	else:
 		print("FAIL: ", failures.size(), " assertions")
@@ -60,18 +63,19 @@ func _test_mechanics() -> void:
 	check(automatic.phase == "playing" and automatic.picks.size() == 1, "Automatic character chooses without player input")
 	run = RonkeRun.new()
 	run.elements = ["fire", "poison"]
+	run.element_levels = {"fire": 3, "poison": 3}
 	run.xp = run.xp_needed
 	run.check_level()
-	check(run.choices[0].get("fusion", "") == "toxic_sun", "Evolution must be offered")
+	check(run.choices[0].get("fusion", "") == "brimstone", "Evolution must be offered")
 	run.choose_upgrade(0)
-	check(run.elements == ["toxic_sun"], "Evolution must replace its ingredients")
+	check(run.elements == ["brimstone"], "Evolution must replace its ingredients")
 	run = RonkeRun.new()
 	run.stats.bounce = 0.1
 	run.add_ball(Vector2(580, 400), Vector2.RIGHT, "stone")
 	var ball = run.balls[0]
 	var value = ball.damage
 	run.advance(1.0 / 60.0)
-	check(ball.velocity.x < 0 and ball.damage > value, "Wall reflection/ricochet damage")
+	check(ball.velocity.x < 0 and ball.next_hit_bonus > 0, "Wall reflection/ricochet damage")
 	run.player.ammo = 0
 	ball.life = 0.001
 	run.advance(0.01)

@@ -1,9 +1,9 @@
 {
-  "version": 1,
+  "version": 2,
   "floors": [
-    "res://assets/art/arenas/verdant.png",
-    "res://assets/art/arenas/ember.png",
-    "res://assets/art/arenas/astral.png"
+    "res://assets/art/arenas/moon_temple_court.png",
+    "res://assets/art/arenas/moon_temple_court.png",
+    "res://assets/art/arenas/moon_temple_court.png"
   ],
   "enemy_atlas": "res://assets/art/enemies/enemies.png",
   "enemy_regions": {
@@ -44,5 +44,18 @@
       524
     ]
   },
-  "display_font": "res://assets/fonts/Display.ttf"
+  "display_font": "res://assets/fonts/Display.ttf",
+  "theme": "moon_temple",
+  "backdrop": "res://assets/art/arenas/moon_temple_backdrop.png",
+  "floor_slices": {
+    "left": 128,
+    "right": 128,
+    "top": 100,
+    "bottom": 150
+  },
+  "floor_tints": [
+    "#dcecff",
+    "#d6dcff",
+    "#c8e9ff"
+  ]
 }

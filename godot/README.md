@@ -11,14 +11,13 @@ in the editor. Input actions are configured by `controls.gd` at startup.
 
 ## Implemented
 
-- All 23 playable gorillas and their character perks.
+- 23 gorilla designs; 22 playable runners with corrected signature abilities. The Twitch-dependent Showman is disabled until Twitch support exists.
 - Ten waves, two distinct guardians, and three ruin themes. Gatekeeper uses focused fans; Rootheart alternates downward spreads and aimed fans. Both widen future volleys below half health.
-- Illustrated stone arenas for Verdant, Ember, and Astral; six painted enemy/boss
-  designs; outlined orb trails, distinct hostile shots, and lightweight ambience.
+- Moon Temple presentation: dark navy stone court, pale cyan edge light, moonlit ruin backdrop, restrained gold crescents and lanterns. Three existing stages retain their rules with subtle cool tint variations. Original arena textures remain in the project. Six painted enemy/boss designs, outlined orb trails, and distinct hostile shots remain unchanged.
 - Aimed attack warnings: Prism enemies charge for 0.55 seconds; Gatekeeper for 0.75 seconds, and Rootheart for 0.95 seconds. Dashed lanes match the released volley. Breach danger markers stay visible with optional effects disabled.
 - Ronke-inspired deep-blue menus, cyan highlights, banana-yellow actions and warm cream text. Small banana/mango flourishes in home/camp and one faint arena-corner stamp.
 - Bundled display typography and color-coded orb loadouts.
-- Bouncing orbs, charge return, elemental effects, and three evolutions.
+- 21 base balls, 69 evolved balls, alternate and multi-stage recipes, linked reloads, status effects, recall, and a searchable practice catalogue.
 - Experience, upgrade selection, dash, Rift Surge, and between-wave countdowns.
 - Practice controls from home: stationary respawning targets, safe movement/dash/Surge practice, and no progression rewards.
 - Optional saved FPS counter in Settings for on-device checks.
@@ -95,7 +94,7 @@ python godot/tools/check_project.py --godot /path/to/your/Godot
 ```
 
 Tests use isolated `user://qa/` profiles and do not overwrite the player's normal
-save. Checks cover all 23 full runs, core mechanics, save recovery, all sprite
+save. Checks cover 22 seeded runner simulations, all 90 ball types, recipe chains, character mechanics, equipment defenses, save recovery, all sprite
 resources, menu/run transitions, actual input bindings, multi-touch, layout,
 resource packaging, and packaged startup.
 
@@ -142,3 +141,7 @@ delivery. See `VALIDATION.md` for exactly what was tested.
 
 Display typography uses DejaVu Sans Condensed Bold. Its font license is included
 under `assets/fonts/` and included by the export presets.
+
+The latest local character/ball correction is detailed in [MECHANICS_CORRECTIONS.md](../docs/MECHANICS_CORRECTIONS.md). No APK is built as part of these checks. Exact original numeric balance is not claimed.
+
+The latest [stability pass](../docs/STABILITY_PASS.md) records items 1–11, implemented regressions and unresolved original-game measurements, including ball sizes. The source contains explicit level profiles; their field-level verification status is recorded rather than assuming every original numeric value is known.

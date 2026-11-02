@@ -5,330 +5,1585 @@
       "name": "Ronke",
       "role": "The Warrior",
       "tagline": "A good arm. A better attitude.",
-      "perk": "A balanced runner with 15% more impact damage.",
-      "element": "stone",
-      "index": 0
+      "perk": "No special combat quirk. Starts with Bleed.",
+      "element": "bleed",
+      "index": 0,
+      "enabled": true
     },
     {
       "id": "itchy_finger",
       "name": "Hotshot",
       "role": "The Itchy Finger",
       "tagline": "Subtlety was never the plan.",
-      "perk": "Fires 65% faster, with a little extra scatter.",
+      "perk": "Always fires when a ball is ready, at twice the usual rate. Scattered aim; full movement speed while firing.",
       "element": "fire",
-      "index": 1
+      "index": 1,
+      "enabled": true
     },
     {
       "id": "repentant",
       "name": "Blue Monday",
       "role": "The Repentant",
       "tagline": "Every bounce is a second chance.",
-      "perk": "Orbs gain 8% damage every time they bounce.",
+      "perk": "Every bounce adds 5% damage. At the far wall, balls return through enemies to the player.",
       "element": "frost",
-      "index": 2
+      "index": 2,
+      "enabled": true
     },
     {
       "id": "cohabitants",
       "name": "The Whole Family",
       "role": "The Cohabitants",
       "tagline": "Family time. With projectiles.",
-      "perk": "Launches a mirrored second orb at 60% damage.",
+      "perk": "Each launch has a mirrored copy. Both deal half damage; a special reloads after both return.",
       "element": "brood",
-      "index": 3
+      "index": 3,
+      "enabled": true
     },
     {
       "id": "cogitator",
       "name": "Professor Bonk",
       "role": "The Cogitator",
       "tagline": "Already thought of that.",
-      "perk": "Automatically picks upgrades; starts with a damage bonus.",
+      "perk": "Automatically chooses upgrades and evolutions. Movement and aiming remain yours.",
       "element": "laser",
-      "index": 4
+      "index": 4,
+      "enabled": true
     },
     {
       "id": "embedded",
       "name": "Old Irons",
       "role": "The Embedded",
       "tagline": "Still standing. Still throwing.",
-      "perk": "All orbs pierce through their first two targets.",
+      "perk": "Launched balls pierce enemies until they hit a wall.",
       "element": "poison",
-      "index": 5
+      "index": 5,
+      "enabled": true
     },
     {
       "id": "shade",
       "name": "Nightshift",
       "role": "The Shade",
       "tagline": "Nothing personal. Probably.",
-      "perk": "Fires down from the far end of the pit; 25% critical chance.",
+      "perk": "Fires from the far end of the pit. Base critical chance is 10%.",
       "element": "dark",
-      "index": 6
+      "index": 6,
+      "enabled": true
     },
     {
       "id": "shieldbearer",
       "name": "The Wall",
       "role": "The Shieldbearer",
       "tagline": "Return to sender.",
-      "perk": "Nearby returning orbs rebound off the shield once for double damage.",
+      "perk": "A frontal shield rebounds returning balls. Each shield bounce adds 100% of launch damage.",
       "element": "iron",
-      "index": 7
+      "index": 7,
+      "enabled": true
     },
     {
       "id": "spendthrift",
       "name": "Big Spender",
       "role": "The Spendthrift",
       "tagline": "Why throw one?",
-      "perk": "Throws a three-orb fan with each shot.",
+      "perk": "Fires all ready equipped special balls together in a wide arc.",
       "element": "vampire",
-      "index": 8
+      "index": 8,
+      "enabled": true
     },
     {
       "id": "juggler",
       "name": "Jinx",
       "role": "The Juggler",
       "tagline": "Eyes on the ball. All of them.",
-      "perk": "Orbs begin with a splash-damage landing at the aim point.",
+      "perk": "Lobs balls over enemies to the aim point. They only collide after landing.",
       "element": "lightning",
-      "index": 9
+      "index": 9,
+      "enabled": true
     },
     {
       "id": "empty_nester",
       "name": "Auntie Blue",
       "role": "The Empty Nester",
       "tagline": "Finally, some peace and chaos.",
-      "perk": "Throws three matching wisps; no baby-orb splitting.",
+      "perk": "No regular baby volley. Fires copies from a shared special-ball pool; effects can still create babies.",
       "element": "ghost",
-      "index": 10
+      "index": 10,
+      "enabled": true
     },
     {
       "id": "flagellant",
       "name": "Brother Bounce",
       "role": "The Flagellant",
       "tagline": "The floor is just another wall.",
-      "perk": "Orbs bounce off the bottom of the pit instead of returning.",
+      "perk": "Balls bounce off the bottom edge. Catch or recall them to reload.",
       "element": "egg",
-      "index": 11
+      "index": 11,
+      "enabled": true
     },
     {
       "id": "makeshift_sisyphus",
       "name": "King Again",
       "role": "The Makeshift Sisyphus",
       "tagline": "Rock bottom is a starting point.",
-      "perk": "Direct hits become triple-strength area damage.",
+      "perk": "No direct ball-hit damage or regular baby volley. Area and status damage are quadrupled; effects can still create babies.",
       "element": "earth",
-      "index": 12
+      "index": 12,
+      "enabled": true
     },
     {
       "id": "physicist",
       "name": "Dr. Orbit",
       "role": "The Physicist",
       "tagline": "An applied force of nature.",
-      "perk": "Gravity pulls orbs toward the top of the pit.",
+      "perk": "Gravity pulls balls toward the far end of the pit.",
       "element": "light",
-      "index": 13
+      "index": 13,
+      "enabled": true
     },
     {
       "id": "tactician",
       "name": "The General",
       "role": "The Tactician",
       "tagline": "One move ahead of the mess.",
-      "perk": "Enemies advance only briefly after each of your shots.",
+      "perk": "Alternating turns: aim and fire your volley, then enemies act. Recall can end a long volley.",
       "element": "iron",
-      "index": 14
+      "index": 14,
+      "enabled": true
     },
     {
       "id": "radical",
       "name": "Wild Thing",
       "role": "The Radical",
       "tagline": "Trust the process. Mostly.",
-      "perk": "Auto-aims and automatically chooses upgrades.",
+      "perk": "Automatically moves, dodges, aims, fires and selects upgrades.",
       "element": "wind",
-      "index": 15
+      "index": 15,
+      "enabled": true
     },
     {
       "id": "falconer",
       "name": "Birdwatch",
       "role": "The Falconer",
       "tagline": "A two-bird operation.",
-      "perk": "Twin falcons launch orbs from the sides of the pit.",
+      "perk": "Two falcons flying at the sides launch your balls.",
       "element": "lightning",
-      "index": 16
+      "index": 16,
+      "enabled": true
     },
     {
       "id": "carouser",
       "name": "Last Call",
       "role": "The Carouser",
       "tagline": "One more round.",
-      "perk": "Returning orbs orbit you briefly, dealing contact damage.",
+      "perk": "Returning balls briefly orbit around you and hit nearby enemies.",
       "element": "charm",
-      "index": 17
+      "index": 17,
+      "enabled": true
     },
     {
       "id": "tunneller",
       "name": "Digby",
       "role": "The Tunneller",
       "tagline": "There is always a deeper way.",
-      "perk": "Orbs wrap between the top and bottom twice.",
+      "perk": "Balls wrap between the top and bottom edges. Catch or recall them to reload.",
       "element": "earth",
-      "index": 18
+      "index": 18,
+      "enabled": true
     },
     {
       "id": "tiptoer",
       "name": "Softstep",
       "role": "The Tiptoer",
       "tagline": "Quiet feet. Loud impact.",
-      "perk": "Fewer hit points, but enemy shots are 40% less accurate.",
-      "element": "laser",
-      "index": 19
+      "perk": "Ordinary enemies cannot detect you. Guardians can; your health and damage are much lower.",
+      "element": "laser_h",
+      "index": 19,
+      "enabled": true
     },
     {
       "id": "hoary_hoarder",
       "name": "Grandpa Gold",
       "role": "The Hoary Hoarder",
       "tagline": "Travel light? Absolutely not.",
-      "perk": "Only five orb charges, but 65% more damage.",
-      "element": "stone",
-      "index": 20
+      "perk": "Only two special-ball slots, with ten passive slots. No assigned starting special ball.",
+      "element": "",
+      "index": 20,
+      "enabled": true
     },
     {
       "id": "ballbearer",
       "name": "Ball Boy",
       "role": "The Ballbearer",
       "tagline": "Prepared for every occasion.",
-      "perk": "Starts with sixteen orb charges.",
+      "perk": "Ten special-ball slots, but no passive equipment slots.",
       "element": "stone",
-      "index": 21
+      "index": 21,
+      "enabled": true
     },
     {
       "id": "false_messiah",
       "name": "The Showman",
       "role": "The False Messiah",
       "tagline": "A very persuasive trajectory.",
-      "perk": "Every third level offers four upgrade choices. No streaming connection required.",
-      "element": "dark",
-      "index": 22
+      "perk": "Unavailable: the original character needs live Twitch audience voting. No offline substitute.",
+      "element": "bleed",
+      "index": 22,
+      "enabled": false,
+      "disabled_reason": "Requires live Twitch audience support; unavailable in this offline version."
     }
   ],
   "elements": {
+    "bleed": {
+      "name": "Bleed",
+      "color": "#ff777f",
+      "description": "Applies two bleed stacks. Each later ball hit triggers bleed damage; maximum eight stacks.",
+      "tier": "base"
+    },
     "stone": {
       "name": "Stone",
       "color": "#e6c891",
-      "description": "Reliable impact damage."
+      "description": "Starts at 300% impact damage. Each enemy hit erodes damage by 40%, to a 50% minimum.",
+      "tier": "base"
     },
     "fire": {
-      "name": "Ember",
+      "name": "Burn",
       "color": "#ff935b",
-      "description": "Burns enemies for damage over time."
+      "description": "Adds a three-second burn stack, up to three stacks. Each stack deals fire damage over time.",
+      "tier": "base"
     },
     "frost": {
-      "name": "Frost",
+      "name": "Freeze",
       "color": "#84e2fa",
-      "description": "Slows enemy descent and movement."
+      "description": "Has a 4% chance to freeze for five seconds. Frozen targets take 25% more damage.",
+      "tier": "base"
     },
     "brood": {
-      "name": "Brood",
+      "name": "Brood Mother",
       "color": "#ffabd2",
-      "description": "Splits into baby orbs on impact."
+      "description": "Each enemy hit has a 25% chance to spawn a baby ball.",
+      "tier": "base"
     },
     "laser": {
-      "name": "Beam",
+      "name": "Laser (Vertical)",
       "color": "#d9b0ff",
-      "description": "Pierces one extra target."
+      "description": "On hit, damages all enemies in the same column.",
+      "tier": "base"
+    },
+    "laser_h": {
+      "name": "Laser (Horizontal)",
+      "color": "#b99aff",
+      "description": "On hit, damages all enemies in the same row.",
+      "tier": "base"
     },
     "poison": {
-      "name": "Venom",
+      "name": "Poison",
       "color": "#b5ef87",
-      "description": "Inflicts a lasting poison."
+      "description": "Applies poison for six seconds, stacking up to five times.",
+      "tier": "base"
     },
     "dark": {
-      "name": "Void",
+      "name": "Dark",
       "color": "#af9be8",
-      "description": "Critical strikes deal double damage."
+      "description": "Deals triple impact damage and is destroyed on impact. Three-second cooldown.",
+      "tier": "base"
     },
     "iron": {
       "name": "Iron",
       "color": "#c6d6dc",
-      "description": "Gains damage with each wall bounce."
+      "description": "Deals double impact damage but travels 40% slower.",
+      "tier": "base"
     },
     "vampire": {
-      "name": "Sanguine",
+      "name": "Vampire",
       "color": "#ff8291",
-      "description": "Hits can restore a little health."
+      "description": "Each hit has a 4.5% chance to heal one health.",
+      "tier": "base"
     },
     "lightning": {
-      "name": "Spark",
+      "name": "Lightning",
       "color": "#ffe984",
-      "description": "Chains damage to a nearby enemy."
+      "description": "On hit, lightning strikes up to three nearby enemies.",
+      "tier": "base"
     },
     "ghost": {
-      "name": "Wisp",
+      "name": "Ghost",
       "color": "#d9f5e9",
-      "description": "Passes through the first target."
+      "description": "Passes through enemies without bouncing off them.",
+      "tier": "base"
     },
     "earth": {
-      "name": "Quake",
+      "name": "Earthquake",
       "color": "#dba57b",
-      "description": "Deals splash damage around impact."
+      "description": "On impact, damages a three-by-three-tile area.",
+      "tier": "base"
     },
     "light": {
       "name": "Light",
       "color": "#fff3b1",
-      "description": "Deals extra damage to armored targets."
+      "description": "Blinds enemies for three seconds, reducing detection and giving their attacks a 50% miss chance.",
+      "tier": "base"
     },
     "wind": {
-      "name": "Gale",
+      "name": "Wind",
       "color": "#a7e8d9",
-      "description": "Pushes enemies back up the pit."
+      "description": "Passes through enemies and slows them by 30% for five seconds. Impact damage is reduced by 25%.",
+      "tier": "base"
     },
     "charm": {
       "name": "Charm",
       "color": "#ffb3e3",
-      "description": "Strikes weaken enemies briefly."
+      "description": "Each hit has a 4% chance to charm for five seconds. Charmed enemies move upward and attack enemies.",
+      "tier": "base"
     },
     "egg": {
-      "name": "Spore",
+      "name": "Egg Sac",
       "color": "#dfe1a0",
-      "description": "Leaves a small burst of splash damage."
+      "description": "Breaks on an enemy into two to four baby balls. Three-second cooldown.",
+      "tier": "base"
+    },
+    "cell": {
+      "name": "Cell",
+      "color": "#8bdfb2",
+      "description": "Splits into a clone on hit, twice per lineage.",
+      "tier": "base"
+    },
+    "time": {
+      "name": "Time",
+      "color": "#aacdff",
+      "description": "Impact leaves a freezing snare for 2 / 2.5 / 3 seconds.",
+      "tier": "base"
+    },
+    "flesh": {
+      "name": "Flesh",
+      "color": "#e296a8",
+      "description": "Starts at half impact damage. Each bounce increases speed by 25%.",
+      "tier": "base"
+    },
+    "brimstone": {
+      "name": "Brimstone",
+      "color": "#ff935b",
+      "description": "Nearby enemies receive burns and poison every second.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Brimstone"
+    },
+    "blizzard": {
+      "name": "Blizzard",
+      "color": "#84e2fa",
+      "description": "An icy two-tile blast freezes for 0.8 seconds.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Blizzard"
+    },
+    "flicker": {
+      "name": "Flicker",
+      "color": "#fff1d6",
+      "description": "Pulses damage across the field every 1.4 seconds.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Flicker"
     },
     "toxic_sun": {
-      "name": "Toxic Sun",
-      "color": "#ffd66b",
-      "description": "Evolved: burning, poisonous explosions."
+      "name": "Legacy Toxic Sun",
+      "color": "#b8b0cc",
+      "description": "Retired custom ball, retained only to display old expedition reports.",
+      "tier": "legacy"
     },
     "stormglass": {
-      "name": "Stormglass",
-      "color": "#9cfff4",
-      "description": "Evolved: freezing chain lightning."
+      "name": "Legacy Stormglass",
+      "color": "#b8b0cc",
+      "description": "Retired custom ball, retained only to display old expedition reports.",
+      "tier": "legacy"
     },
     "eclipse": {
-      "name": "Eclipse",
-      "color": "#e2c1ff",
-      "description": "Evolved: piercing critical blasts."
+      "name": "Legacy Eclipse",
+      "color": "#b8b0cc",
+      "description": "Retired custom ball, retained only to display old expedition reports.",
+      "tier": "legacy"
+    },
+    "assassin": {
+      "name": "Assassin",
+      "color": "#c6d6dc",
+      "description": "Pierces fronts; rear impacts gain 30% damage.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Assassin"
+    },
+    "berserk": {
+      "name": "Berserk",
+      "color": "#ff88af",
+      "description": "A 30% hit chance causes six seconds of attacks on adjacent enemies.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Berserk"
+    },
+    "black_hole": {
+      "name": "Black Hole",
+      "color": "#af9be8",
+      "description": "Consumes one ordinary enemy, then disappears; seven-second reload.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Black_Hole"
+    },
+    "bomb": {
+      "name": "Bomb",
+      "color": "#ff935b",
+      "description": "Explodes on impact; three-second reload.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Bomb"
+    },
+    "flash": {
+      "name": "Flash",
+      "color": "#fff1d6",
+      "description": "Impact flashes and blinds the whole field.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Flash"
+    },
+    "freeze_ray": {
+      "name": "Freeze Ray",
+      "color": "#84e2fa",
+      "description": "A beam can freeze targets for ten seconds.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Freeze_Ray"
+    },
+    "frozen_flame": {
+      "name": "Frozen Flame",
+      "color": "#ff935b",
+      "description": "Stacking frostburn lasts twenty seconds and increases damage taken.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Frozen_Flame"
+    },
+    "glacier": {
+      "name": "Glacier",
+      "color": "#84e2fa",
+      "description": "Drops freezing spikes along its path.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Glacier"
+    },
+    "hemorrhage": {
+      "name": "Hemorrhage",
+      "color": "#ff777f",
+      "description": "Three bleed stacks; twelve stacks trigger a health-based burst.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Hemorrhage"
+    },
+    "holy_laser": {
+      "name": "Holy Laser",
+      "color": "#d9b0ff",
+      "description": "Strikes the target row and column.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Holy_Laser"
+    },
+    "incubus": {
+      "name": "Incubus",
+      "color": "#ff88af",
+      "description": "Can charm enemies; charmed enemies spread curses.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Incubus"
+    },
+    "inferno": {
+      "name": "Inferno",
+      "color": "#ff935b",
+      "description": "Nearby enemies receive stacking burns each second.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Inferno"
+    },
+    "laser_beam": {
+      "name": "Laser Beam",
+      "color": "#d9b0ff",
+      "description": "A blinding beam strikes along the launch orientation.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_Beam"
+    },
+    "leech": {
+      "name": "Leech",
+      "color": "#ff88af",
+      "description": "Attaches one leech that builds bleed over time.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Leech"
+    },
+    "lightning_rod": {
+      "name": "Lightning Rod",
+      "color": "#ffe984",
+      "description": "Implanted rods arc to nearby enemies every three seconds.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Lightning_Rod"
+    },
+    "lovestruck": {
+      "name": "Lovestruck",
+      "color": "#ff88af",
+      "description": "Affected enemy attacks may heal you for twenty seconds.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Lovestruck"
+    },
+    "maggot": {
+      "name": "Maggot",
+      "color": "#a2d9bc",
+      "description": "Infested enemies release babies when killed.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Maggot"
+    },
+    "magma": {
+      "name": "Magma",
+      "color": "#dba57b",
+      "description": "Leaves damaging, burning lava patches.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Magma"
+    },
+    "mosquito_king": {
+      "name": "Mosquito King",
+      "color": "#ff88af",
+      "description": "Releases a seeking mosquito on impact; its kills heal.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Mosquito_King"
+    },
+    "mosquito_swarm": {
+      "name": "Mosquito Swarm",
+      "color": "#ffe2ad",
+      "description": "Bursts into seeking mosquitoes, then disappears.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Mosquito_Swarm"
+    },
+    "noxious": {
+      "name": "Noxious",
+      "color": "#b5ef87",
+      "description": "Pierces while spreading poison to nearby enemies.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Noxious"
+    },
+    "nuclear_bomb": {
+      "name": "Nuclear Bomb",
+      "color": "#ff935b",
+      "description": "An explosive impact irradiates the whole field permanently.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Nuclear_Bomb"
+    },
+    "nosferatu": {
+      "name": "Nosferatu",
+      "color": "#ff88af",
+      "description": "Bounces release bats that strike enemies and become Vampire Lord balls.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Nosferatu"
+    },
+    "phantom": {
+      "name": "Phantom",
+      "color": "#af9be8",
+      "description": "A curse bursts after five subsequent hits.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Phantom"
+    },
+    "radiation_beam": {
+      "name": "Radiation Beam",
+      "color": "#b5ef87",
+      "description": "A beam applies stacking radiation vulnerability.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Radiation_Beam"
+    },
+    "sacrifice": {
+      "name": "Sacrifice",
+      "color": "#ff777f",
+      "description": "Adds bleed and a five-hit curse.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Sacrifice"
+    },
+    "sandstorm": {
+      "name": "Sandstorm",
+      "color": "#a6d9ef",
+      "description": "A piercing storm damages and blinds nearby enemies.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Sandstorm"
+    },
+    "satan": {
+      "name": "Satan",
+      "color": "#ff935b",
+      "description": "While flying, burns the field and drives enemies berserk.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Satan"
+    },
+    "shotgun": {
+      "name": "Shotgun",
+      "color": "#c6d6dc",
+      "description": "Wall bounces eject fast, fragile iron pellets.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Shotgun"
+    },
+    "soul_sucker": {
+      "name": "Soul Sucker",
+      "color": "#af9be8",
+      "description": "Pierces; once per enemy may steal health and weaken attacks.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Soul_Sucker"
+    },
+    "spider_queen": {
+      "name": "Spider Queen",
+      "color": "#ffe2ad",
+      "description": "Hits have a 25% chance to release an Egg Sac.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Spider_Queen"
+    },
+    "storm": {
+      "name": "Storm",
+      "color": "#ffe984",
+      "description": "Arcs at nearby enemies every second.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Storm"
+    },
+    "succubus": {
+      "name": "Succubus",
+      "color": "#ff88af",
+      "description": "Can charm for nine seconds; charmed hits heal.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Succubus"
+    },
+    "sun": {
+      "name": "Sun",
+      "color": "#fff1d6",
+      "description": "While flying, blinds the field and adds burns each second.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Sun"
+    },
+    "swamp": {
+      "name": "Swamp",
+      "color": "#b5ef87",
+      "description": "Leaves poisonous tar that strongly slows enemies.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Swamp"
+    },
+    "vampire_lord": {
+      "name": "Vampire Lord",
+      "color": "#ff88af",
+      "description": "Adds bleed; consumes ten stacks to heal.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Vampire_Lord"
+    },
+    "virus": {
+      "name": "Virus",
+      "color": "#b5ef87",
+      "description": "Stacking disease can spread to nearby enemies.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Virus"
+    },
+    "voluptuous_egg_sac": {
+      "name": "Voluptuous Egg Sac",
+      "color": "#ffe2ad",
+      "description": "Bursts into two or three Egg Sacs.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Voluptuous_Egg_Sac"
+    },
+    "wraith": {
+      "name": "Wraith",
+      "color": "#84e2fa",
+      "description": "Pierces and briefly freezes every enemy it touches.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Wraith"
+    },
+    "landslide": {
+      "name": "Landslide",
+      "color": "#dba57b",
+      "description": "Impact leaves a five-second damaging rockfall.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Landslide"
+    },
+    "steel": {
+      "name": "Steel",
+      "color": "#c6d6dc",
+      "description": "Starts slow and strong; impact damage grows with each hit.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Steel"
+    },
+    "catapult": {
+      "name": "Catapult",
+      "color": "#dba57b",
+      "description": "Periodically ejects fragile stone pellets.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Catapult"
+    },
+    "banished_flame": {
+      "name": "Banished Flame",
+      "color": "#ff935b",
+      "description": "Darkflame stacks burst when they expire.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Banished_Flame"
+    },
+    "fireworks": {
+      "name": "Fireworks",
+      "color": "#ff935b",
+      "description": "Bursts into seeking fireworks that apply burn.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Fireworks"
+    },
+    "laser_cutter": {
+      "name": "Laser Cutter",
+      "color": "#d9b0ff",
+      "description": "Projects a continuous beam along its direction of travel.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_Cutter"
+    },
+    "timestop": {
+      "name": "Timestop",
+      "color": "#7de0d4",
+      "description": "Launch freezes enemies and hostile shots for five seconds; thirty-second reload.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Timestop"
+    },
+    "erosion": {
+      "name": "Erosion",
+      "color": "#a6d9ef",
+      "description": "Pierces and deals extra damage based on current health.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Erosion"
+    },
+    "warp": {
+      "name": "Warp",
+      "color": "#7de0d4",
+      "description": "Teleports after impact and gains speed.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Warp"
+    },
+    "time_bomb": {
+      "name": "Time Bomb",
+      "color": "#7de0d4",
+      "description": "Drops delayed explosive snares along its path.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Time_Bomb"
+    },
+    "venom": {
+      "name": "Venom",
+      "color": "#b5ef87",
+      "description": "Applies stacking poison-like damage and a slow.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Venom"
+    },
+    "heart_swallower": {
+      "name": "Heart Swallower",
+      "color": "#ff777f",
+      "description": "Once per enemy may steal health and weaken attacks.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Heart_Swallower"
+    },
+    "reaper": {
+      "name": "Reaper",
+      "color": "#ff777f",
+      "description": "A 10% impact chance executes ordinary enemies and heals five.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Reaper"
+    },
+    "x_ray": {
+      "name": "X Ray",
+      "color": "#d9b0ff",
+      "description": "An X-shaped beam applies radiation vulnerability.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/X_Ray"
+    },
+    "banshee": {
+      "name": "Banshee",
+      "color": "#af9be8",
+      "description": "Launch curses the field; the curse bursts after six hits.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Banshee"
+    },
+    "sniper": {
+      "name": "Sniper",
+      "color": "#c6d6dc",
+      "description": "Pierces and ejects piercing pellets on wall bounces.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Sniper"
+    },
+    "petrify": {
+      "name": "Petrify",
+      "color": "#fff1d6",
+      "description": "Launch petrifies enemies along its sightline.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Petrify"
+    },
+    "tumor": {
+      "name": "Tumor",
+      "color": "#b5ef87",
+      "description": "Infected ordinary enemies die after forty seconds.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Tumor"
+    },
+    "zombie": {
+      "name": "Zombie",
+      "color": "#a2d9bc",
+      "description": "Infected enemies may return as allies after death.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Zombie"
+    },
+    "offspring": {
+      "name": "Offspring",
+      "color": "#a2d9bc",
+      "description": "Clones on impact through four generations.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Offspring"
+    },
+    "flesh_mound": {
+      "name": "Flesh Mound",
+      "color": "#a2d9bc",
+      "description": "Emits a fleshy baby each second while flying.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Flesh_Mound"
+    },
+    "lightning_bug": {
+      "name": "Lightning Bug",
+      "color": "#ffe984",
+      "description": "Releases a seeking bug that arcs to nearby enemies.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Lightning_Bug"
+    },
+    "mosquito_kingdom": {
+      "name": "Mosquito Kingdom",
+      "color": "#ff88af",
+      "description": "Releases stronger seeking mosquitoes; their kills heal two.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Mosquito_Kingdom"
+    },
+    "drill": {
+      "name": "Drill",
+      "color": "#c6d6dc",
+      "description": "Pierces with extra impact damage until reaching the far wall.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Drill"
+    },
+    "armageddon": {
+      "name": "Armageddon",
+      "color": "#ff935b",
+      "description": "Impact leaves a five-second meteor shower.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Armageddon"
+    },
+    "elemental": {
+      "name": "Elemental",
+      "color": "#a2d9bc",
+      "description": "Applies a random burn, slow, or freeze around an impact.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Elemental"
+    },
+    "overgrowth": {
+      "name": "Overgrowth",
+      "color": "#dba57b",
+      "description": "Three growth stacks burst into a three-by-three tile blast.",
+      "tier": "evolved",
+      "reference": "https://ballxpit.wiki.gg/wiki/Overgrowth"
     }
   },
   "fusions": [
     {
-      "id": "toxic_sun",
+      "id": "assassin",
+      "name": "Assassin",
       "ingredients": [
-        "fire",
-        "poison"
-      ],
-      "name": "Toxic Sun"
+        "iron",
+        "ghost"
+      ]
     },
     {
-      "id": "stormglass",
+      "id": "assassin",
+      "name": "Assassin",
+      "ingredients": [
+        "iron",
+        "dark"
+      ]
+    },
+    {
+      "id": "berserk",
+      "name": "Berserk",
+      "ingredients": [
+        "charm",
+        "bleed"
+      ]
+    },
+    {
+      "id": "berserk",
+      "name": "Berserk",
+      "ingredients": [
+        "charm",
+        "fire"
+      ]
+    },
+    {
+      "id": "black_hole",
+      "name": "Black Hole",
+      "ingredients": [
+        "sun",
+        "dark"
+      ]
+    },
+    {
+      "id": "black_hole",
+      "name": "Black Hole",
+      "ingredients": [
+        "sun",
+        "time"
+      ]
+    },
+    {
+      "id": "blizzard",
+      "name": "Blizzard",
       "ingredients": [
         "frost",
         "lightning"
-      ],
-      "name": "Stormglass"
+      ]
     },
     {
-      "id": "eclipse",
+      "id": "blizzard",
+      "name": "Blizzard",
+      "ingredients": [
+        "frost",
+        "wind"
+      ]
+    },
+    {
+      "id": "bomb",
+      "name": "Bomb",
+      "ingredients": [
+        "fire",
+        "iron"
+      ]
+    },
+    {
+      "id": "flash",
+      "name": "Flash",
+      "ingredients": [
+        "light",
+        "lightning"
+      ]
+    },
+    {
+      "id": "flicker",
+      "name": "Flicker",
       "ingredients": [
         "light",
         "dark"
-      ],
-      "name": "Eclipse"
+      ]
+    },
+    {
+      "id": "freeze_ray",
+      "name": "Freeze Ray",
+      "ingredients": [
+        "frost",
+        "laser"
+      ]
+    },
+    {
+      "id": "freeze_ray",
+      "name": "Freeze Ray",
+      "ingredients": [
+        "frost",
+        "laser_h"
+      ]
+    },
+    {
+      "id": "frozen_flame",
+      "name": "Frozen Flame",
+      "ingredients": [
+        "fire",
+        "frost"
+      ]
+    },
+    {
+      "id": "glacier",
+      "name": "Glacier",
+      "ingredients": [
+        "earth",
+        "frost"
+      ]
+    },
+    {
+      "id": "glacier",
+      "name": "Glacier",
+      "ingredients": [
+        "stone",
+        "frost"
+      ]
+    },
+    {
+      "id": "hemorrhage",
+      "name": "Hemorrhage",
+      "ingredients": [
+        "bleed",
+        "iron"
+      ]
+    },
+    {
+      "id": "hemorrhage",
+      "name": "Hemorrhage",
+      "ingredients": [
+        "bleed",
+        "flesh"
+      ]
+    },
+    {
+      "id": "holy_laser",
+      "name": "Holy Laser",
+      "ingredients": [
+        "laser",
+        "laser_h"
+      ]
+    },
+    {
+      "id": "incubus",
+      "name": "Incubus",
+      "ingredients": [
+        "charm",
+        "dark"
+      ]
+    },
+    {
+      "id": "inferno",
+      "name": "Inferno",
+      "ingredients": [
+        "fire",
+        "wind"
+      ]
+    },
+    {
+      "id": "inferno",
+      "name": "Inferno",
+      "ingredients": [
+        "fire",
+        "time"
+      ]
+    },
+    {
+      "id": "laser_beam",
+      "name": "Laser Beam",
+      "ingredients": [
+        "light",
+        "laser"
+      ]
+    },
+    {
+      "id": "laser_beam",
+      "name": "Laser Beam",
+      "ingredients": [
+        "light",
+        "laser_h"
+      ]
+    },
+    {
+      "id": "leech",
+      "name": "Leech",
+      "ingredients": [
+        "bleed",
+        "brood"
+      ]
+    },
+    {
+      "id": "lightning_rod",
+      "name": "Lightning Rod",
+      "ingredients": [
+        "lightning",
+        "iron"
+      ]
+    },
+    {
+      "id": "lovestruck",
+      "name": "Lovestruck",
+      "ingredients": [
+        "charm",
+        "light"
+      ]
+    },
+    {
+      "id": "lovestruck",
+      "name": "Lovestruck",
+      "ingredients": [
+        "charm",
+        "lightning"
+      ]
+    },
+    {
+      "id": "lovestruck",
+      "name": "Lovestruck",
+      "ingredients": [
+        "charm",
+        "time"
+      ]
+    },
+    {
+      "id": "maggot",
+      "name": "Maggot",
+      "ingredients": [
+        "brood",
+        "cell"
+      ]
+    },
+    {
+      "id": "magma",
+      "name": "Magma",
+      "ingredients": [
+        "fire",
+        "earth"
+      ]
+    },
+    {
+      "id": "mosquito_king",
+      "name": "Mosquito King",
+      "ingredients": [
+        "brood",
+        "vampire"
+      ]
+    },
+    {
+      "id": "mosquito_swarm",
+      "name": "Mosquito Swarm",
+      "ingredients": [
+        "egg",
+        "vampire"
+      ]
+    },
+    {
+      "id": "noxious",
+      "name": "Noxious",
+      "ingredients": [
+        "wind",
+        "poison"
+      ]
+    },
+    {
+      "id": "noxious",
+      "name": "Noxious",
+      "ingredients": [
+        "wind",
+        "dark"
+      ]
+    },
+    {
+      "id": "nuclear_bomb",
+      "name": "Nuclear Bomb",
+      "ingredients": [
+        "bomb",
+        "poison"
+      ]
+    },
+    {
+      "id": "nosferatu",
+      "name": "Nosferatu",
+      "ingredients": [
+        "vampire_lord",
+        "spider_queen",
+        "mosquito_king"
+      ]
+    },
+    {
+      "id": "phantom",
+      "name": "Phantom",
+      "ingredients": [
+        "dark",
+        "ghost"
+      ]
+    },
+    {
+      "id": "radiation_beam",
+      "name": "Radiation Beam",
+      "ingredients": [
+        "laser",
+        "poison"
+      ]
+    },
+    {
+      "id": "radiation_beam",
+      "name": "Radiation Beam",
+      "ingredients": [
+        "laser",
+        "cell"
+      ]
+    },
+    {
+      "id": "radiation_beam",
+      "name": "Radiation Beam",
+      "ingredients": [
+        "laser_h",
+        "poison"
+      ]
+    },
+    {
+      "id": "radiation_beam",
+      "name": "Radiation Beam",
+      "ingredients": [
+        "laser_h",
+        "cell"
+      ]
+    },
+    {
+      "id": "sacrifice",
+      "name": "Sacrifice",
+      "ingredients": [
+        "bleed",
+        "dark"
+      ]
+    },
+    {
+      "id": "sandstorm",
+      "name": "Sandstorm",
+      "ingredients": [
+        "earth",
+        "wind"
+      ]
+    },
+    {
+      "id": "sandstorm",
+      "name": "Sandstorm",
+      "ingredients": [
+        "stone",
+        "wind"
+      ]
+    },
+    {
+      "id": "satan",
+      "name": "Satan",
+      "ingredients": [
+        "succubus",
+        "incubus"
+      ]
+    },
+    {
+      "id": "shotgun",
+      "name": "Shotgun",
+      "ingredients": [
+        "egg",
+        "iron"
+      ]
+    },
+    {
+      "id": "soul_sucker",
+      "name": "Soul Sucker",
+      "ingredients": [
+        "ghost",
+        "vampire"
+      ]
+    },
+    {
+      "id": "spider_queen",
+      "name": "Spider Queen",
+      "ingredients": [
+        "brood",
+        "egg"
+      ]
+    },
+    {
+      "id": "storm",
+      "name": "Storm",
+      "ingredients": [
+        "lightning",
+        "wind"
+      ]
+    },
+    {
+      "id": "succubus",
+      "name": "Succubus",
+      "ingredients": [
+        "charm",
+        "vampire"
+      ]
+    },
+    {
+      "id": "sun",
+      "name": "Sun",
+      "ingredients": [
+        "fire",
+        "light"
+      ]
+    },
+    {
+      "id": "swamp",
+      "name": "Swamp",
+      "ingredients": [
+        "poison",
+        "earth"
+      ]
+    },
+    {
+      "id": "vampire_lord",
+      "name": "Vampire Lord",
+      "ingredients": [
+        "vampire",
+        "bleed"
+      ]
+    },
+    {
+      "id": "vampire_lord",
+      "name": "Vampire Lord",
+      "ingredients": [
+        "vampire",
+        "dark"
+      ]
+    },
+    {
+      "id": "virus",
+      "name": "Virus",
+      "ingredients": [
+        "poison",
+        "bleed"
+      ]
+    },
+    {
+      "id": "virus",
+      "name": "Virus",
+      "ingredients": [
+        "poison",
+        "ghost"
+      ]
+    },
+    {
+      "id": "virus",
+      "name": "Virus",
+      "ingredients": [
+        "poison",
+        "cell"
+      ]
+    },
+    {
+      "id": "voluptuous_egg_sac",
+      "name": "Voluptuous Egg Sac",
+      "ingredients": [
+        "egg",
+        "cell"
+      ]
+    },
+    {
+      "id": "wraith",
+      "name": "Wraith",
+      "ingredients": [
+        "frost",
+        "ghost"
+      ]
+    },
+    {
+      "id": "landslide",
+      "name": "Landslide",
+      "ingredients": [
+        "stone",
+        "earth"
+      ]
+    },
+    {
+      "id": "steel",
+      "name": "Steel",
+      "ingredients": [
+        "stone",
+        "iron"
+      ]
+    },
+    {
+      "id": "catapult",
+      "name": "Catapult",
+      "ingredients": [
+        "stone",
+        "egg"
+      ]
+    },
+    {
+      "id": "brimstone",
+      "name": "Brimstone",
+      "ingredients": [
+        "fire",
+        "poison"
+      ]
+    },
+    {
+      "id": "brimstone",
+      "name": "Brimstone",
+      "ingredients": [
+        "fire",
+        "stone"
+      ]
+    },
+    {
+      "id": "banished_flame",
+      "name": "Banished Flame",
+      "ingredients": [
+        "dark",
+        "fire"
+      ]
+    },
+    {
+      "id": "fireworks",
+      "name": "Fireworks",
+      "ingredients": [
+        "egg",
+        "fire"
+      ]
+    },
+    {
+      "id": "laser_cutter",
+      "name": "Laser Cutter",
+      "ingredients": [
+        "steel",
+        "laser"
+      ]
+    },
+    {
+      "id": "laser_cutter",
+      "name": "Laser Cutter",
+      "ingredients": [
+        "steel",
+        "laser_h"
+      ]
+    },
+    {
+      "id": "timestop",
+      "name": "Timestop",
+      "ingredients": [
+        "time",
+        "frost"
+      ]
+    },
+    {
+      "id": "erosion",
+      "name": "Erosion",
+      "ingredients": [
+        "time",
+        "wind"
+      ]
+    },
+    {
+      "id": "warp",
+      "name": "Warp",
+      "ingredients": [
+        "time",
+        "light"
+      ]
+    },
+    {
+      "id": "time_bomb",
+      "name": "Time Bomb",
+      "ingredients": [
+        "time",
+        "bomb"
+      ]
+    },
+    {
+      "id": "venom",
+      "name": "Venom",
+      "ingredients": [
+        "frost",
+        "poison"
+      ]
+    },
+    {
+      "id": "heart_swallower",
+      "name": "Heart Swallower",
+      "ingredients": [
+        "ghost",
+        "bleed"
+      ]
+    },
+    {
+      "id": "reaper",
+      "name": "Reaper",
+      "ingredients": [
+        "soul_sucker",
+        "heart_swallower"
+      ]
+    },
+    {
+      "id": "x_ray",
+      "name": "X Ray",
+      "ingredients": [
+        "holy_laser",
+        "laser_beam"
+      ]
+    },
+    {
+      "id": "banshee",
+      "name": "Banshee",
+      "ingredients": [
+        "wraith",
+        "phantom"
+      ]
+    },
+    {
+      "id": "sniper",
+      "name": "Sniper",
+      "ingredients": [
+        "assassin",
+        "shotgun"
+      ]
+    },
+    {
+      "id": "petrify",
+      "name": "Petrify",
+      "ingredients": [
+        "stone",
+        "flesh"
+      ]
+    },
+    {
+      "id": "tumor",
+      "name": "Tumor",
+      "ingredients": [
+        "radiation_beam",
+        "flesh"
+      ]
+    },
+    {
+      "id": "zombie",
+      "name": "Zombie",
+      "ingredients": [
+        "vampire",
+        "flesh"
+      ]
+    },
+    {
+      "id": "offspring",
+      "name": "Offspring",
+      "ingredients": [
+        "cell",
+        "flesh"
+      ]
+    },
+    {
+      "id": "flesh_mound",
+      "name": "Flesh Mound",
+      "ingredients": [
+        "brood",
+        "flesh"
+      ]
+    },
+    {
+      "id": "lightning_bug",
+      "name": "Lightning Bug",
+      "ingredients": [
+        "brood",
+        "lightning"
+      ]
+    },
+    {
+      "id": "mosquito_kingdom",
+      "name": "Mosquito Kingdom",
+      "ingredients": [
+        "mosquito_king",
+        "mosquito_swarm"
+      ]
+    },
+    {
+      "id": "drill",
+      "name": "Drill",
+      "ingredients": [
+        "earth",
+        "iron"
+      ]
+    },
+    {
+      "id": "armageddon",
+      "name": "Armageddon",
+      "ingredients": [
+        "inferno",
+        "storm"
+      ]
+    },
+    {
+      "id": "elemental",
+      "name": "Elemental",
+      "ingredients": [
+        "fire",
+        "wind",
+        "frost",
+        "earth"
+      ]
+    },
+    {
+      "id": "overgrowth",
+      "name": "Overgrowth",
+      "ingredients": [
+        "cell",
+        "earth"
+      ]
     }
   ],
   "upgrades": [
@@ -336,115 +1591,832 @@
       "id": "power",
       "name": "Heavy hands",
       "description": "All orbs deal 22% more damage.",
-      "icon": "↗",
+      "icon": "\u2197",
       "kind": "POWER"
     },
     {
       "id": "haste",
       "name": "Quick release",
       "description": "Throw 18% faster.",
-      "icon": "»",
+      "icon": "\u00bb",
       "kind": "TEMPO"
     },
     {
       "id": "capacity",
       "name": "More is more",
       "description": "Add 2 orb charges. Refill your supply.",
-      "icon": "◉",
+      "icon": "\u25c9",
       "kind": "CAPACITY"
     },
     {
       "id": "vitality",
       "name": "Heart of the jungle",
       "description": "Gain 20 maximum health and heal 30.",
-      "icon": "♥",
+      "icon": "\u2665",
       "kind": "RECOVERY"
     },
     {
       "id": "ricochet",
       "name": "Angle of attack",
       "description": "Every wall bounce adds 10% damage.",
-      "icon": "⌁",
+      "icon": "\u2301",
       "kind": "BOUNCE"
     },
     {
       "id": "speed",
       "name": "Light on your feet",
       "description": "Move 15% faster. Dash recovers sooner.",
-      "icon": "➜",
+      "icon": "\u279c",
       "kind": "MOVEMENT"
     },
     {
       "id": "element_fire",
-      "name": "Ember orb",
-      "description": "Burns enemies for damage over time. Add it to your throws.",
-      "icon": "●",
-      "kind": "NEW ORB",
+      "name": "Burn",
+      "description": "Adds a three-second burn stack, up to three stacks. Each stack deals fire damage over time.",
+      "icon": "\u25cf",
+      "kind": "NEW BALL",
       "element": "fire"
     },
     {
       "id": "element_frost",
-      "name": "Frost orb",
-      "description": "Slows enemy descent and movement. Add it to your throws.",
-      "icon": "●",
-      "kind": "NEW ORB",
+      "name": "Freeze",
+      "description": "Has a 4% chance to freeze for five seconds. Frozen targets take 25% more damage.",
+      "icon": "\u25cf",
+      "kind": "NEW BALL",
       "element": "frost"
     },
     {
       "id": "element_poison",
-      "name": "Venom orb",
-      "description": "Inflicts a lasting poison. Add it to your throws.",
-      "icon": "●",
-      "kind": "NEW ORB",
+      "name": "Poison",
+      "description": "Applies poison for six seconds, stacking up to five times.",
+      "icon": "\u25cf",
+      "kind": "NEW BALL",
       "element": "poison"
     },
     {
       "id": "element_lightning",
-      "name": "Spark orb",
-      "description": "Chains damage to a nearby enemy. Add it to your throws.",
-      "icon": "●",
-      "kind": "NEW ORB",
+      "name": "Lightning",
+      "description": "On hit, lightning strikes up to three nearby enemies.",
+      "icon": "\u25cf",
+      "kind": "NEW BALL",
       "element": "lightning"
     },
     {
       "id": "element_light",
-      "name": "Light orb",
-      "description": "Deals extra damage to armored targets. Add it to your throws.",
-      "icon": "●",
-      "kind": "NEW ORB",
+      "name": "Light",
+      "description": "Blinds enemies for three seconds, reducing detection and giving their attacks a 50% miss chance.",
+      "icon": "\u25cf",
+      "kind": "NEW BALL",
       "element": "light"
     },
     {
       "id": "element_dark",
-      "name": "Void orb",
-      "description": "Critical strikes deal double damage. Add it to your throws.",
-      "icon": "●",
-      "kind": "NEW ORB",
+      "name": "Dark",
+      "description": "Deals triple impact damage and is destroyed on impact. Three-second cooldown.",
+      "icon": "\u25cf",
+      "kind": "NEW BALL",
       "element": "dark"
     },
     {
       "id": "element_earth",
-      "name": "Quake orb",
-      "description": "Deals splash damage around impact. Add it to your throws.",
-      "icon": "●",
-      "kind": "NEW ORB",
+      "name": "Earthquake",
+      "description": "On impact, damages a three-by-three-tile area.",
+      "icon": "\u25cf",
+      "kind": "NEW BALL",
       "element": "earth"
     },
     {
       "id": "element_vampire",
-      "name": "Sanguine orb",
-      "description": "Hits can restore a little health. Add it to your throws.",
-      "icon": "●",
-      "kind": "NEW ORB",
+      "name": "Vampire",
+      "description": "Each hit has a 4.5% chance to heal one health.",
+      "icon": "\u25cf",
+      "kind": "NEW BALL",
       "element": "vampire"
     },
     {
       "id": "element_brood",
-      "name": "Brood orb",
-      "description": "Splits into baby orbs on impact. Add it to your throws.",
-      "icon": "●",
-      "kind": "NEW ORB",
+      "name": "Brood Mother",
+      "description": "Each enemy hit has a 25% chance to spawn a baby ball.",
+      "icon": "\u25cf",
+      "kind": "NEW BALL",
       "element": "brood"
+    },
+    {
+      "id": "element_bleed",
+      "name": "Bleed",
+      "description": "Applies two bleed stacks. Each later ball hit triggers bleed damage; maximum eight stacks.",
+      "kind": "NEW BALL",
+      "element": "bleed",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_stone",
+      "name": "Stone",
+      "description": "Starts at 300% impact damage. Each enemy hit erodes damage by 40%, to a 50% minimum.",
+      "kind": "NEW BALL",
+      "element": "stone",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_laser",
+      "name": "Laser (Vertical)",
+      "description": "On hit, damages all enemies in the same column.",
+      "kind": "NEW BALL",
+      "element": "laser",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_laser_h",
+      "name": "Laser (Horizontal)",
+      "description": "On hit, damages all enemies in the same row.",
+      "kind": "NEW BALL",
+      "element": "laser_h",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_iron",
+      "name": "Iron",
+      "description": "Deals double impact damage but travels 40% slower.",
+      "kind": "NEW BALL",
+      "element": "iron",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_ghost",
+      "name": "Ghost",
+      "description": "Passes through enemies without bouncing off them.",
+      "kind": "NEW BALL",
+      "element": "ghost",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_wind",
+      "name": "Wind",
+      "description": "Passes through enemies and slows them by 30% for five seconds. Impact damage is reduced by 25%.",
+      "kind": "NEW BALL",
+      "element": "wind",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_charm",
+      "name": "Charm",
+      "description": "Each hit has a 4% chance to charm for five seconds. Charmed enemies move upward and attack enemies.",
+      "kind": "NEW BALL",
+      "element": "charm",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_egg",
+      "name": "Egg Sac",
+      "description": "Breaks on an enemy into two to four baby balls. Three-second cooldown.",
+      "kind": "NEW BALL",
+      "element": "egg",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_cell",
+      "name": "Cell",
+      "description": "Splits into a clone on hit, twice per lineage.",
+      "kind": "NEW BALL",
+      "element": "cell",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_time",
+      "name": "Time",
+      "description": "Breaks into a twenty-second time snare that freezes enemies inside.",
+      "kind": "NEW BALL",
+      "element": "time",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "element_flesh",
+      "name": "Flesh",
+      "description": "Starts at half impact damage. Each bounce increases speed by 25%.",
+      "kind": "NEW BALL",
+      "element": "flesh",
+      "icon": "\u25cf"
+    },
+    {
+      "id": "orb_brimstone",
+      "name": "Brimstone",
+      "description": "Nearby enemies receive burns and poison every second.",
+      "element": "brimstone",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_blizzard",
+      "name": "Blizzard",
+      "description": "An icy two-tile blast freezes for 0.8 seconds.",
+      "element": "blizzard",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_flicker",
+      "name": "Flicker",
+      "description": "Pulses damage across the field every 1.4 seconds.",
+      "element": "flicker",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_assassin",
+      "name": "Assassin",
+      "description": "Pierces fronts; rear impacts gain 30% damage.",
+      "element": "assassin",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_berserk",
+      "name": "Berserk",
+      "description": "A 30% hit chance causes six seconds of attacks on adjacent enemies.",
+      "element": "berserk",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_black_hole",
+      "name": "Black Hole",
+      "description": "Consumes one ordinary enemy, then disappears; seven-second reload.",
+      "element": "black_hole",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_bomb",
+      "name": "Bomb",
+      "description": "Explodes on impact; three-second reload.",
+      "element": "bomb",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_flash",
+      "name": "Flash",
+      "description": "Impact flashes and blinds the whole field.",
+      "element": "flash",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_freeze_ray",
+      "name": "Freeze Ray",
+      "description": "A beam can freeze targets for ten seconds.",
+      "element": "freeze_ray",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_frozen_flame",
+      "name": "Frozen Flame",
+      "description": "Stacking frostburn lasts twenty seconds and increases damage taken.",
+      "element": "frozen_flame",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_glacier",
+      "name": "Glacier",
+      "description": "Drops freezing spikes along its path.",
+      "element": "glacier",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_hemorrhage",
+      "name": "Hemorrhage",
+      "description": "Three bleed stacks; twelve stacks trigger a health-based burst.",
+      "element": "hemorrhage",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_holy_laser",
+      "name": "Holy Laser",
+      "description": "Strikes the target row and column.",
+      "element": "holy_laser",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_incubus",
+      "name": "Incubus",
+      "description": "Can charm enemies; charmed enemies spread curses.",
+      "element": "incubus",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_inferno",
+      "name": "Inferno",
+      "description": "Nearby enemies receive stacking burns each second.",
+      "element": "inferno",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_laser_beam",
+      "name": "Laser Beam",
+      "description": "A blinding beam strikes along the launch orientation.",
+      "element": "laser_beam",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_leech",
+      "name": "Leech",
+      "description": "Attaches one leech that builds bleed over time.",
+      "element": "leech",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_lightning_rod",
+      "name": "Lightning Rod",
+      "description": "Implanted rods arc to nearby enemies every three seconds.",
+      "element": "lightning_rod",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_lovestruck",
+      "name": "Lovestruck",
+      "description": "Affected enemy attacks may heal you for twenty seconds.",
+      "element": "lovestruck",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_maggot",
+      "name": "Maggot",
+      "description": "Infested enemies release babies when killed.",
+      "element": "maggot",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_magma",
+      "name": "Magma",
+      "description": "Leaves damaging, burning lava patches.",
+      "element": "magma",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_mosquito_king",
+      "name": "Mosquito King",
+      "description": "Releases a seeking mosquito on impact; its kills heal.",
+      "element": "mosquito_king",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_mosquito_swarm",
+      "name": "Mosquito Swarm",
+      "description": "Bursts into seeking mosquitoes, then disappears.",
+      "element": "mosquito_swarm",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_noxious",
+      "name": "Noxious",
+      "description": "Pierces while spreading poison to nearby enemies.",
+      "element": "noxious",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_nuclear_bomb",
+      "name": "Nuclear Bomb",
+      "description": "An explosive impact irradiates the whole field permanently.",
+      "element": "nuclear_bomb",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_nosferatu",
+      "name": "Nosferatu",
+      "description": "Bounces release bats that strike enemies and become Vampire Lord balls.",
+      "element": "nosferatu",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_phantom",
+      "name": "Phantom",
+      "description": "A curse bursts after five subsequent hits.",
+      "element": "phantom",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_radiation_beam",
+      "name": "Radiation Beam",
+      "description": "A beam applies stacking radiation vulnerability.",
+      "element": "radiation_beam",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_sacrifice",
+      "name": "Sacrifice",
+      "description": "Adds bleed and a five-hit curse.",
+      "element": "sacrifice",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_sandstorm",
+      "name": "Sandstorm",
+      "description": "A piercing storm damages and blinds nearby enemies.",
+      "element": "sandstorm",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_satan",
+      "name": "Satan",
+      "description": "While flying, burns the field and drives enemies berserk.",
+      "element": "satan",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_shotgun",
+      "name": "Shotgun",
+      "description": "Wall bounces eject fast, fragile iron pellets.",
+      "element": "shotgun",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_soul_sucker",
+      "name": "Soul Sucker",
+      "description": "Pierces; once per enemy may steal health and weaken attacks.",
+      "element": "soul_sucker",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_spider_queen",
+      "name": "Spider Queen",
+      "description": "Hits have a 25% chance to release an Egg Sac.",
+      "element": "spider_queen",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_storm",
+      "name": "Storm",
+      "description": "Arcs at nearby enemies every second.",
+      "element": "storm",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_succubus",
+      "name": "Succubus",
+      "description": "Can charm for nine seconds; charmed hits heal.",
+      "element": "succubus",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_sun",
+      "name": "Sun",
+      "description": "While flying, blinds the field and adds burns each second.",
+      "element": "sun",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_swamp",
+      "name": "Swamp",
+      "description": "Leaves poisonous tar that strongly slows enemies.",
+      "element": "swamp",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_vampire_lord",
+      "name": "Vampire Lord",
+      "description": "Adds bleed; consumes ten stacks to heal.",
+      "element": "vampire_lord",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_virus",
+      "name": "Virus",
+      "description": "Stacking disease can spread to nearby enemies.",
+      "element": "virus",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_voluptuous_egg_sac",
+      "name": "Voluptuous Egg Sac",
+      "description": "Bursts into two or three Egg Sacs.",
+      "element": "voluptuous_egg_sac",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_wraith",
+      "name": "Wraith",
+      "description": "Pierces and briefly freezes every enemy it touches.",
+      "element": "wraith",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_landslide",
+      "name": "Landslide",
+      "description": "Impact leaves a five-second damaging rockfall.",
+      "element": "landslide",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_steel",
+      "name": "Steel",
+      "description": "Starts slow and strong; impact damage grows with each hit.",
+      "element": "steel",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_catapult",
+      "name": "Catapult",
+      "description": "Periodically ejects fragile stone pellets.",
+      "element": "catapult",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_banished_flame",
+      "name": "Banished Flame",
+      "description": "Darkflame stacks burst when they expire.",
+      "element": "banished_flame",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_fireworks",
+      "name": "Fireworks",
+      "description": "Bursts into seeking fireworks that apply burn.",
+      "element": "fireworks",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_laser_cutter",
+      "name": "Laser Cutter",
+      "description": "Projects a continuous beam along its direction of travel.",
+      "element": "laser_cutter",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_timestop",
+      "name": "Timestop",
+      "description": "Launch freezes enemies and hostile shots for five seconds; thirty-second reload.",
+      "element": "timestop",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_erosion",
+      "name": "Erosion",
+      "description": "Pierces and deals extra damage based on current health.",
+      "element": "erosion",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_warp",
+      "name": "Warp",
+      "description": "Teleports after impact and gains speed.",
+      "element": "warp",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_time_bomb",
+      "name": "Time Bomb",
+      "description": "Drops delayed explosive snares along its path.",
+      "element": "time_bomb",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_venom",
+      "name": "Venom",
+      "description": "Applies stacking poison-like damage and a slow.",
+      "element": "venom",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_heart_swallower",
+      "name": "Heart Swallower",
+      "description": "Once per enemy may steal health and weaken attacks.",
+      "element": "heart_swallower",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_reaper",
+      "name": "Reaper",
+      "description": "A 10% impact chance executes ordinary enemies and heals five.",
+      "element": "reaper",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_x_ray",
+      "name": "X Ray",
+      "description": "An X-shaped beam applies radiation vulnerability.",
+      "element": "x_ray",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_banshee",
+      "name": "Banshee",
+      "description": "Launch curses the field; the curse bursts after six hits.",
+      "element": "banshee",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_sniper",
+      "name": "Sniper",
+      "description": "Pierces and ejects piercing pellets on wall bounces.",
+      "element": "sniper",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_petrify",
+      "name": "Petrify",
+      "description": "Launch petrifies enemies along its sightline.",
+      "element": "petrify",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_tumor",
+      "name": "Tumor",
+      "description": "Infected ordinary enemies die after forty seconds.",
+      "element": "tumor",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_zombie",
+      "name": "Zombie",
+      "description": "Infected enemies may return as allies after death.",
+      "element": "zombie",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_offspring",
+      "name": "Offspring",
+      "description": "Clones on impact through four generations.",
+      "element": "offspring",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_flesh_mound",
+      "name": "Flesh Mound",
+      "description": "Emits a fleshy baby each second while flying.",
+      "element": "flesh_mound",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_lightning_bug",
+      "name": "Lightning Bug",
+      "description": "Releases a seeking bug that arcs to nearby enemies.",
+      "element": "lightning_bug",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_mosquito_kingdom",
+      "name": "Mosquito Kingdom",
+      "description": "Releases stronger seeking mosquitoes; their kills heal two.",
+      "element": "mosquito_kingdom",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_drill",
+      "name": "Drill",
+      "description": "Pierces with extra impact damage until reaching the far wall.",
+      "element": "drill",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_armageddon",
+      "name": "Armageddon",
+      "description": "Impact leaves a five-second meteor shower.",
+      "element": "armageddon",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_elemental",
+      "name": "Elemental",
+      "description": "Applies a random burn, slow, or freeze around an impact.",
+      "element": "elemental",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
+    },
+    {
+      "id": "orb_overgrowth",
+      "name": "Overgrowth",
+      "description": "Three growth stacks burst into a three-by-three tile blast.",
+      "element": "overgrowth",
+      "level_only": true,
+      "icon": "*",
+      "kind": "BALL"
     }
   ],
   "worlds": [
@@ -463,5 +2435,3258 @@
       "subtitle": "The last light falls a little differently.",
       "color": "#b6b4ec"
     }
-  ]
+  ],
+  "legacy_element_aliases": {
+    "toxic_sun": "brimstone",
+    "stormglass": "blizzard",
+    "eclipse": "flicker"
+  },
+  "passives": {
+    "fleet_feet": {
+      "name": "Fleet Feet",
+      "description": "Move 10% faster and at full speed while shooting.",
+      "max_level": 1
+    },
+    "protective_charm": {
+      "name": "Protective Charm",
+      "description": "Block one incoming hit; the shield recharges after 60 seconds.",
+      "max_level": 1
+    },
+    "crown_of_thorns": {
+      "name": "Crown of Thorns",
+      "description": "Taking a close-range hit destroys the two nearest ordinary enemies.",
+      "max_level": 1
+    },
+    "wagon_wheel": {
+      "name": "Wagon Wheel",
+      "description": "A wall bounce adds 30% damage to the next impact.",
+      "max_level": 1
+    },
+    "breastplate": {
+      "name": "Breastplate",
+      "description": "Take 10% less damage.",
+      "max_level": 1
+    },
+    "eye_of_the_beholder": {
+      "name": "Eye of the Beholder",
+      "description": "A 10% chance to dodge an incoming hit.",
+      "max_level": 1
+    },
+    "hand_mirror": {
+      "name": "Hand Mirror",
+      "description": "A 50% chance to reflect a projectile, dealing 20\u201340 to enemies.",
+      "max_level": 1
+    },
+    "lovers_quiver": {
+      "name": "Lover\u2019s Quiver",
+      "description": "A 40% chance that an incoming projectile heals one instead.",
+      "max_level": 1
+    },
+    "magic_staff": {
+      "name": "Magic Staff",
+      "description": "Increase area damage by 20%.",
+      "max_level": 1
+    },
+    "magnet": {
+      "name": "Magnet",
+      "description": "Catch returning balls from one additional tile away.",
+      "max_level": 1
+    },
+    "shortbow": {
+      "name": "Shortbow",
+      "description": "Increase fire rate by 15%.",
+      "max_level": 1
+    },
+    "war_horn": {
+      "name": "War Horn",
+      "description": "Baby balls deal 20% more damage.",
+      "max_level": 1
+    },
+    "bandage_roll": {
+      "name": "Bandage Roll",
+      "description": "Healing releases one or two baby balls.",
+      "max_level": 1
+    },
+    "bottled_tornado": {
+      "name": "Bottled Tornado",
+      "description": "Catching a special ball releases one to three babies.",
+      "max_level": 1
+    },
+    "hand_fan": {
+      "name": "Hand Fan",
+      "description": "Enemies in your column move 50% slower.",
+      "max_level": 1
+    },
+    "platinum_dumbbell": {
+      "name": "Platinum Dumbbell",
+      "description": "Balls deal 12% more damage until reaching the far wall.",
+      "max_level": 1
+    },
+    "silver_bullet": {
+      "name": "Silver Bullet",
+      "description": "Balls deal 20% more damage until their first wall bounce.",
+      "max_level": 1
+    },
+    "wretched_onion": {
+      "name": "Wretched Onion",
+      "description": "Nearby enemies take 6\u201312 damage per second.",
+      "max_level": 1
+    }
+  },
+  "mechanics_reference": {
+    "source": "https://ballxpit.wiki.gg/wiki/Characters",
+    "balls_source": "https://ballxpit.wiki.gg/wiki/Balls",
+    "ball_slots": 5,
+    "passive_slots": 5,
+    "hoarder_ball_slots": 2,
+    "hoarder_passive_slots": 10,
+    "ballbearer_ball_slots": 10,
+    "ballbearer_passive_slots": 0,
+    "notes": "Exact character attribute growth and undocumented tuning remain subject to in-game verification."
+  },
+  "ball_rules": {
+    "bleed": {
+      "levels": [
+        {
+          "stacks": 2,
+          "limit": 8
+        },
+        {
+          "stacks": 4,
+          "limit": 11
+        },
+        {
+          "stacks": 4,
+          "limit": 14
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Bleed",
+      "verified_level_fields": [
+        "stacks",
+        "limit"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "stone": {
+      "levels": [
+        {
+          "impact": 3,
+          "erosion": 0.4,
+          "floor": 0.5
+        },
+        {
+          "impact": 3.5,
+          "erosion": 0.35,
+          "floor": 0.5
+        },
+        {
+          "impact": 4,
+          "erosion": 0.3,
+          "floor": 0.5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Stone",
+      "verified_level_fields": [
+        "impact",
+        "erosion",
+        "floor"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "fire": {
+      "levels": [
+        {
+          "duration": 3,
+          "low": 4,
+          "high": 8,
+          "limit": 3
+        },
+        {
+          "duration": 3,
+          "low": 7,
+          "high": 11,
+          "limit": 3
+        },
+        {
+          "duration": 5,
+          "low": 7,
+          "high": 11,
+          "limit": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Burn",
+      "verified_level_fields": [
+        "duration",
+        "low",
+        "high",
+        "limit"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "frost": {
+      "levels": [
+        {
+          "chance": 0.04,
+          "duration": 5
+        },
+        {
+          "chance": 0.04,
+          "duration": 5
+        },
+        {
+          "chance": 0.04,
+          "duration": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Freeze",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "brood": {
+      "levels": [
+        {
+          "chance": 0.25
+        },
+        {
+          "chance": 0.35
+        },
+        {
+          "chance": 0.45
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Brood_Mother",
+      "verified_level_fields": [
+        "chance"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "laser": {
+      "levels": [
+        {
+          "low": 9,
+          "high": 18
+        },
+        {
+          "low": 11,
+          "high": 26
+        },
+        {
+          "low": 13,
+          "high": 34
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_(Vertical)",
+      "verified_level_fields": [
+        "low",
+        "high"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "laser_h": {
+      "levels": [
+        {
+          "low": 9,
+          "high": 18
+        },
+        {
+          "low": 9,
+          "high": 18
+        },
+        {
+          "low": 9,
+          "high": 18
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_(Horizontal)",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "poison": {
+      "levels": [
+        {
+          "duration": 6,
+          "low": 1,
+          "high": 4,
+          "limit": 5
+        },
+        {
+          "duration": 6,
+          "low": 1,
+          "high": 4,
+          "limit": 5
+        },
+        {
+          "duration": 6,
+          "low": 1,
+          "high": 4,
+          "limit": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Poison",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "low",
+        "high",
+        "limit"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "dark": {
+      "levels": [
+        {
+          "impact": 3,
+          "cooldown": 3
+        },
+        {
+          "impact": 3,
+          "cooldown": 3
+        },
+        {
+          "impact": 3,
+          "cooldown": 3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Dark",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "impact",
+        "cooldown"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "iron": {
+      "levels": [
+        {
+          "impact": 2,
+          "speed": 0.6
+        },
+        {
+          "impact": 2,
+          "speed": 0.6
+        },
+        {
+          "impact": 2,
+          "speed": 0.7
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Iron",
+      "verified_level_fields": [
+        "speed",
+        "impact"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "vampire": {
+      "levels": [
+        {
+          "chance": 0.045,
+          "heal": 1
+        },
+        {
+          "chance": 0.06,
+          "heal": 1
+        },
+        {
+          "chance": 0.06,
+          "heal": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Vampire",
+      "verified_level_fields": [
+        "chance",
+        "heal"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "lightning": {
+      "levels": [
+        {
+          "low": 1,
+          "high": 20,
+          "targets": 3,
+          "radius": 2.5
+        },
+        {
+          "low": 1,
+          "high": 20,
+          "targets": 3,
+          "radius": 2.5
+        },
+        {
+          "low": 1,
+          "high": 20,
+          "targets": 3,
+          "radius": 2.5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Lightning",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "targets",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "ghost": {
+      "levels": [
+        {
+          "pierce": -1
+        },
+        {
+          "pierce": -1
+        },
+        {
+          "pierce": -1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Ghost",
+      "verified_level_fields": [
+        "pierce"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "earth": {
+      "levels": [
+        {
+          "low": 5,
+          "high": 13,
+          "radius": 1.5
+        },
+        {
+          "low": 5,
+          "high": 13,
+          "radius": 1.5
+        },
+        {
+          "low": 5,
+          "high": 13,
+          "radius": 1.5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Earthquake",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "light": {
+      "levels": [
+        {
+          "duration": 3
+        },
+        {
+          "duration": 3
+        },
+        {
+          "duration": 3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Light",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "wind": {
+      "levels": [
+        {
+          "duration": 5,
+          "impact": 0.75,
+          "slow": 0.3
+        },
+        {
+          "duration": 5,
+          "impact": 0.75,
+          "slow": 0.3
+        },
+        {
+          "duration": 5,
+          "impact": 0.75,
+          "slow": 0.3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Wind",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "impact",
+        "slow"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "charm": {
+      "levels": [
+        {
+          "chance": 0.04,
+          "duration": 5
+        },
+        {
+          "chance": 0.04,
+          "duration": 5
+        },
+        {
+          "chance": 0.04,
+          "duration": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Charm",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "egg": {
+      "levels": [
+        {
+          "count_min": 2,
+          "count_max": 4,
+          "cooldown": 3
+        },
+        {
+          "count_min": 2,
+          "count_max": 5,
+          "cooldown": 3
+        },
+        {
+          "count_min": 3,
+          "count_max": 5,
+          "cooldown": 3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Egg_Sac",
+      "verified_level_fields": [
+        "count_min",
+        "count_max",
+        "cooldown"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "cell": {
+      "levels": [
+        {
+          "divisions": 2
+        },
+        {
+          "divisions": 2
+        },
+        {
+          "divisions": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Cell",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "divisions"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "time": {
+      "levels": [
+        {
+          "duration": 2,
+          "cooldown": 0,
+          "radius": 1
+        },
+        {
+          "duration": 2.5,
+          "cooldown": 0,
+          "radius": 1
+        },
+        {
+          "duration": 3,
+          "cooldown": 0,
+          "radius": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Time",
+      "verified_level_fields": [
+        "duration"
+      ],
+      "unverified_level_fields": [
+        "cooldown",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "flesh": {
+      "levels": [
+        {
+          "impact": 0.5,
+          "bounce_speed": 0.25
+        },
+        {
+          "impact": 0.5,
+          "bounce_speed": 0.25
+        },
+        {
+          "impact": 0.5,
+          "bounce_speed": 0.25
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Flesh",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "impact",
+        "bounce_speed"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "brimstone": {
+      "levels": [
+        {
+          "low": 1,
+          "high": 4,
+          "poison_low": 2,
+          "poison_high": 3,
+          "burn_duration": 3,
+          "poison_duration": 6,
+          "limit": 4,
+          "radius": 2,
+          "interval": 1
+        },
+        {
+          "low": 1,
+          "high": 4,
+          "poison_low": 2,
+          "poison_high": 3,
+          "burn_duration": 3,
+          "poison_duration": 6,
+          "limit": 4,
+          "radius": 2,
+          "interval": 1
+        },
+        {
+          "low": 1,
+          "high": 4,
+          "poison_low": 2,
+          "poison_high": 3,
+          "burn_duration": 3,
+          "poison_duration": 6,
+          "limit": 4,
+          "radius": 2,
+          "interval": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Brimstone",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "poison_low",
+        "poison_high",
+        "burn_duration",
+        "poison_duration",
+        "limit",
+        "radius",
+        "interval"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "blizzard": {
+      "levels": [
+        {
+          "low": 1,
+          "high": 50,
+          "duration": 0.8,
+          "radius": 2
+        },
+        {
+          "low": 1,
+          "high": 50,
+          "duration": 1.3,
+          "radius": 2
+        },
+        {
+          "low": 1,
+          "high": 70,
+          "duration": 1.3,
+          "radius": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Blizzard",
+      "verified_level_fields": [
+        "duration",
+        "low",
+        "high"
+      ],
+      "unverified_level_fields": [
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "flicker": {
+      "levels": [
+        {
+          "low": 1,
+          "high": 7,
+          "interval": 1.4
+        },
+        {
+          "low": 1,
+          "high": 7,
+          "interval": 1.4
+        },
+        {
+          "low": 1,
+          "high": 7,
+          "interval": 1.4
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Flicker",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "interval"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "assassin": {
+      "levels": [
+        {
+          "back_bonus": 0.3
+        },
+        {
+          "back_bonus": 0.3
+        },
+        {
+          "back_bonus": 0.3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Assassin",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "back_bonus"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "berserk": {
+      "levels": [
+        {
+          "chance": 0.3,
+          "duration": 6,
+          "low": 15,
+          "high": 24
+        },
+        {
+          "chance": 0.3,
+          "duration": 9,
+          "low": 19,
+          "high": 28
+        },
+        {
+          "chance": 0.4,
+          "duration": 9,
+          "low": 23,
+          "high": 32
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Berserk",
+      "verified_level_fields": [
+        "chance",
+        "duration",
+        "low",
+        "high"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "black_hole": {
+      "levels": [
+        {
+          "cooldown": 7
+        },
+        {
+          "cooldown": 6
+        },
+        {
+          "cooldown": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Black_Hole",
+      "verified_level_fields": [
+        "cooldown"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "bomb": {
+      "levels": [
+        {
+          "low": 150,
+          "high": 300,
+          "radius": 2,
+          "cooldown": 3
+        },
+        {
+          "low": 150,
+          "high": 300,
+          "radius": 2,
+          "cooldown": 3
+        },
+        {
+          "low": 150,
+          "high": 300,
+          "radius": 2,
+          "cooldown": 3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Bomb",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "radius",
+        "cooldown"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "flash": {
+      "levels": [
+        {
+          "low": 1,
+          "high": 3,
+          "duration": 2
+        },
+        {
+          "low": 1,
+          "high": 3,
+          "duration": 2
+        },
+        {
+          "low": 1,
+          "high": 3,
+          "duration": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Flash",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "freeze_ray": {
+      "levels": [
+        {
+          "low": 20,
+          "high": 50,
+          "chance": 0.1,
+          "duration": 10
+        },
+        {
+          "low": 25,
+          "high": 65,
+          "chance": 0.1,
+          "duration": 10
+        },
+        {
+          "low": 25,
+          "high": 65,
+          "chance": 0.1,
+          "duration": 13
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Freeze_Ray",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "chance",
+        "duration"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "frozen_flame": {
+      "levels": [
+        {
+          "low": 8,
+          "high": 12,
+          "duration": 20,
+          "limit": 4
+        },
+        {
+          "low": 10,
+          "high": 16,
+          "duration": 20,
+          "limit": 4
+        },
+        {
+          "low": 10,
+          "high": 16,
+          "duration": 30,
+          "limit": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Frozen_Flame",
+      "verified_level_fields": [
+        "duration",
+        "low",
+        "high",
+        "limit"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "glacier": {
+      "levels": [
+        {
+          "low": 15,
+          "high": 30,
+          "duration": 2,
+          "aura_low": 6,
+          "aura_high": 12,
+          "interval": 1,
+          "patch_life": 5
+        },
+        {
+          "low": 25,
+          "high": 40,
+          "duration": 2,
+          "aura_low": 6,
+          "aura_high": 12,
+          "interval": 1,
+          "patch_life": 5
+        },
+        {
+          "low": 25,
+          "high": 40,
+          "duration": 3,
+          "aura_low": 6,
+          "aura_high": 12,
+          "interval": 1,
+          "patch_life": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Glacier",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ],
+      "unverified_level_fields": [
+        "aura_low",
+        "aura_high",
+        "interval",
+        "patch_life"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "hemorrhage": {
+      "levels": [
+        {
+          "stacks": 3,
+          "threshold": 12,
+          "percent": 0.2
+        },
+        {
+          "stacks": 4,
+          "threshold": 12,
+          "percent": 0.2
+        },
+        {
+          "stacks": 4,
+          "threshold": 12,
+          "percent": 0.3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Hemorrhage",
+      "verified_level_fields": [
+        "stacks",
+        "threshold",
+        "percent"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "holy_laser": {
+      "levels": [
+        {
+          "low": 24,
+          "high": 36
+        },
+        {
+          "low": 24,
+          "high": 36
+        },
+        {
+          "low": 24,
+          "high": 36
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Holy_Laser",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "incubus": {
+      "levels": [
+        {
+          "chance": 0.04,
+          "duration": 9,
+          "curse_low": 100,
+          "curse_high": 200,
+          "curse_hits": 5
+        },
+        {
+          "chance": 0.04,
+          "duration": 9,
+          "curse_low": 150,
+          "curse_high": 250,
+          "curse_hits": 5
+        },
+        {
+          "chance": 0.05,
+          "duration": 9,
+          "curse_low": 150,
+          "curse_high": 250,
+          "curse_hits": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Incubus",
+      "verified_level_fields": [
+        "chance",
+        "duration",
+        "curse_low",
+        "curse_high",
+        "curse_hits"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "inferno": {
+      "levels": [
+        {
+          "low": 3,
+          "high": 7,
+          "duration": 6,
+          "limit": 3,
+          "radius": 2,
+          "interval": 1
+        },
+        {
+          "low": 3,
+          "high": 7,
+          "duration": 6,
+          "limit": 3,
+          "radius": 2,
+          "interval": 1
+        },
+        {
+          "low": 3,
+          "high": 7,
+          "duration": 6,
+          "limit": 3,
+          "radius": 2,
+          "interval": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Inferno",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit",
+        "radius",
+        "interval"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "laser_beam": {
+      "levels": [
+        {
+          "low": 30,
+          "high": 42,
+          "duration": 8
+        },
+        {
+          "low": 30,
+          "high": 42,
+          "duration": 8
+        },
+        {
+          "low": 30,
+          "high": 42,
+          "duration": 8
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_Beam",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "leech": {
+      "levels": [
+        {
+          "stacks": 2,
+          "limit": 24,
+          "interval": 1
+        },
+        {
+          "stacks": 2,
+          "limit": 24,
+          "interval": 1
+        },
+        {
+          "stacks": 2,
+          "limit": 24,
+          "interval": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Leech",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "stacks",
+        "limit",
+        "interval"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "lightning_rod": {
+      "levels": [
+        {
+          "low": 1,
+          "high": 30,
+          "targets": 8,
+          "interval": 3,
+          "radius": 2.5
+        },
+        {
+          "low": 1,
+          "high": 40,
+          "targets": 8,
+          "interval": 3,
+          "radius": 2.5
+        },
+        {
+          "low": 1,
+          "high": 40,
+          "targets": 8,
+          "interval": 2.5,
+          "radius": 2.5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Lightning_Rod",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "targets",
+        "interval"
+      ],
+      "unverified_level_fields": [
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "lovestruck": {
+      "levels": [
+        {
+          "duration": 20,
+          "chance": 0.5,
+          "heal": 5
+        },
+        {
+          "duration": 20,
+          "chance": 0.5,
+          "heal": 5
+        },
+        {
+          "duration": 20,
+          "chance": 0.5,
+          "heal": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Lovestruck",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "chance",
+        "heal"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "maggot": {
+      "levels": [
+        {
+          "count_min": 1,
+          "count_max": 2
+        },
+        {
+          "count_min": 1,
+          "count_max": 2
+        },
+        {
+          "count_min": 1,
+          "count_max": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Maggot",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "magma": {
+      "levels": [
+        {
+          "low": 15,
+          "high": 30,
+          "burn_low": 3,
+          "burn_high": 8,
+          "duration": 3,
+          "limit": 3,
+          "aura_low": 6,
+          "aura_high": 12,
+          "interval": 1,
+          "patch_life": 5
+        },
+        {
+          "low": 15,
+          "high": 30,
+          "burn_low": 5,
+          "burn_high": 10,
+          "duration": 3,
+          "limit": 3,
+          "aura_low": 6,
+          "aura_high": 12,
+          "interval": 1,
+          "patch_life": 5
+        },
+        {
+          "low": 20,
+          "high": 35,
+          "burn_low": 5,
+          "burn_high": 10,
+          "duration": 3,
+          "limit": 3,
+          "aura_low": 6,
+          "aura_high": 12,
+          "interval": 1,
+          "patch_life": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Magma",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "burn_low",
+        "burn_high",
+        "duration",
+        "limit",
+        "aura_low",
+        "aura_high"
+      ],
+      "unverified_level_fields": [
+        "interval",
+        "patch_life"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "mosquito_king": {
+      "levels": [
+        {
+          "count_min": 1,
+          "count_max": 1,
+          "low": 80,
+          "high": 120,
+          "heal": 1
+        },
+        {
+          "count_min": 1,
+          "count_max": 1,
+          "low": 100,
+          "high": 150,
+          "heal": 1
+        },
+        {
+          "count_min": 1,
+          "count_max": 1,
+          "low": 100,
+          "high": 150,
+          "heal": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Mosquito_King",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "heal",
+        "count_min",
+        "count_max"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "mosquito_swarm": {
+      "levels": [
+        {
+          "count_min": 3,
+          "count_max": 6,
+          "low": 80,
+          "high": 120,
+          "heal": 1,
+          "cooldown": 3
+        },
+        {
+          "count_min": 3,
+          "count_max": 6,
+          "low": 100,
+          "high": 150,
+          "heal": 1,
+          "cooldown": 3
+        },
+        {
+          "count_min": 4,
+          "count_max": 8,
+          "low": 100,
+          "high": 150,
+          "heal": 1,
+          "cooldown": 3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Mosquito_Swarm",
+      "verified_level_fields": [
+        "count_min",
+        "count_max",
+        "low",
+        "high",
+        "heal"
+      ],
+      "unverified_level_fields": [
+        "cooldown"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "noxious": {
+      "levels": [
+        {
+          "stacks": 3,
+          "low": 1,
+          "high": 3,
+          "duration": 4,
+          "limit": 5,
+          "radius": 2
+        },
+        {
+          "stacks": 3,
+          "low": 2,
+          "high": 5,
+          "duration": 4,
+          "limit": 5,
+          "radius": 2
+        },
+        {
+          "stacks": 3,
+          "low": 2,
+          "high": 5,
+          "duration": 6,
+          "limit": 5,
+          "radius": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Noxious",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ],
+      "unverified_level_fields": [
+        "stacks",
+        "limit",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "nuclear_bomb": {
+      "levels": [
+        {
+          "low": 300,
+          "high": 500,
+          "radius": 2,
+          "cooldown": 3,
+          "limit": 5
+        },
+        {
+          "low": 300,
+          "high": 500,
+          "radius": 2,
+          "cooldown": 3,
+          "limit": 5
+        },
+        {
+          "low": 300,
+          "high": 500,
+          "radius": 2,
+          "cooldown": 3,
+          "limit": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Nuclear_Bomb",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "radius",
+        "cooldown",
+        "limit"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "nosferatu": {
+      "levels": [
+        {
+          "low": 132,
+          "high": 176
+        },
+        {
+          "low": 156,
+          "high": 224
+        },
+        {
+          "low": 180,
+          "high": 272
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Nosferatu",
+      "verified_level_fields": [
+        "low",
+        "high"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "phantom": {
+      "levels": [
+        {
+          "low": 100,
+          "high": 200,
+          "hits": 5
+        },
+        {
+          "low": 150,
+          "high": 250,
+          "hits": 5
+        },
+        {
+          "low": 200,
+          "high": 300,
+          "hits": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Phantom",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "hits"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "radiation_beam": {
+      "levels": [
+        {
+          "low": 24,
+          "high": 48,
+          "duration": 15,
+          "limit": 5
+        },
+        {
+          "low": 30,
+          "high": 60,
+          "duration": 15,
+          "limit": 5
+        },
+        {
+          "low": 36,
+          "high": 72,
+          "duration": 15,
+          "limit": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Radiation_Beam",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "sacrifice": {
+      "levels": [
+        {
+          "stacks": 4,
+          "limit": 15,
+          "low": 50,
+          "high": 100,
+          "hits": 5
+        },
+        {
+          "stacks": 4,
+          "limit": 15,
+          "low": 50,
+          "high": 100,
+          "hits": 5
+        },
+        {
+          "stacks": 4,
+          "limit": 15,
+          "low": 50,
+          "high": 100,
+          "hits": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Sacrifice",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "stacks",
+        "limit",
+        "low",
+        "high",
+        "hits"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "sandstorm": {
+      "levels": [
+        {
+          "low": 10,
+          "high": 20,
+          "duration": 3,
+          "radius": 2,
+          "interval": 1
+        },
+        {
+          "low": 10,
+          "high": 20,
+          "duration": 3,
+          "radius": 2,
+          "interval": 1
+        },
+        {
+          "low": 10,
+          "high": 20,
+          "duration": 3,
+          "radius": 2,
+          "interval": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Sandstorm",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "radius",
+        "interval"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "satan": {
+      "levels": [
+        {
+          "low": 10,
+          "high": 20,
+          "berserk_low": 15,
+          "berserk_high": 24,
+          "duration": 6,
+          "limit": 5,
+          "interval": 1
+        },
+        {
+          "low": 10,
+          "high": 20,
+          "berserk_low": 21,
+          "berserk_high": 30,
+          "duration": 6,
+          "limit": 5,
+          "interval": 1
+        },
+        {
+          "low": 15,
+          "high": 30,
+          "berserk_low": 21,
+          "berserk_high": 30,
+          "duration": 6,
+          "limit": 5,
+          "interval": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Satan",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "berserk_low",
+        "berserk_high",
+        "limit",
+        "interval"
+      ],
+      "unverified_level_fields": [
+        "duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "shotgun": {
+      "levels": [
+        {
+          "count_min": 3,
+          "count_max": 7
+        },
+        {
+          "count_min": 3,
+          "count_max": 7
+        },
+        {
+          "count_min": 3,
+          "count_max": 7
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Shotgun",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "soul_sucker": {
+      "levels": [
+        {
+          "chance": 0.3,
+          "heal": 1,
+          "attack_scale": 0.8
+        },
+        {
+          "chance": 0.3,
+          "heal": 1,
+          "attack_scale": 0.8
+        },
+        {
+          "chance": 0.3,
+          "heal": 1,
+          "attack_scale": 0.8
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Soul_Sucker",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "heal",
+        "attack_scale"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "spider_queen": {
+      "levels": [
+        {
+          "chance": 0.25
+        },
+        {
+          "chance": 0.25
+        },
+        {
+          "chance": 0.25
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Spider_Queen",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "storm": {
+      "levels": [
+        {
+          "low": 1,
+          "high": 40,
+          "interval": 1,
+          "radius": 2
+        },
+        {
+          "low": 1,
+          "high": 40,
+          "interval": 1,
+          "radius": 2
+        },
+        {
+          "low": 1,
+          "high": 40,
+          "interval": 1,
+          "radius": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Storm",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "interval",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "succubus": {
+      "levels": [
+        {
+          "chance": 0.04,
+          "duration": 9,
+          "heal": 1
+        },
+        {
+          "chance": 0.04,
+          "duration": 9,
+          "heal": 1
+        },
+        {
+          "chance": 0.04,
+          "duration": 9,
+          "heal": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Succubus",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "duration",
+        "heal"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "sun": {
+      "levels": [
+        {
+          "low": 6,
+          "high": 12,
+          "duration": 6,
+          "limit": 5,
+          "interval": 1
+        },
+        {
+          "low": 6,
+          "high": 12,
+          "duration": 6,
+          "limit": 5,
+          "interval": 1
+        },
+        {
+          "low": 6,
+          "high": 12,
+          "duration": 6,
+          "limit": 5,
+          "interval": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Sun",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit",
+        "interval"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "swamp": {
+      "levels": [
+        {
+          "low": 15,
+          "high": 30,
+          "poison_low": 1,
+          "poison_high": 3,
+          "duration": 7,
+          "limit": 8,
+          "aura_low": 6,
+          "aura_high": 12,
+          "interval": 1,
+          "patch_life": 5
+        },
+        {
+          "low": 15,
+          "high": 30,
+          "poison_low": 2,
+          "poison_high": 4,
+          "duration": 7,
+          "limit": 8,
+          "aura_low": 6,
+          "aura_high": 12,
+          "interval": 1,
+          "patch_life": 5
+        },
+        {
+          "low": 25,
+          "high": 40,
+          "poison_low": 2,
+          "poison_high": 4,
+          "duration": 7,
+          "limit": 8,
+          "aura_low": 6,
+          "aura_high": 12,
+          "interval": 1,
+          "patch_life": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Swamp",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "poison_low",
+        "poison_high",
+        "duration",
+        "limit",
+        "aura_low",
+        "aura_high"
+      ],
+      "unverified_level_fields": [
+        "interval",
+        "patch_life"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "vampire_lord": {
+      "levels": [
+        {
+          "stacks": 3,
+          "threshold": 10,
+          "heal": 1
+        },
+        {
+          "stacks": 3,
+          "threshold": 10,
+          "heal": 1
+        },
+        {
+          "stacks": 3,
+          "threshold": 10,
+          "heal": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Vampire_Lord",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "stacks",
+        "threshold",
+        "heal"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "virus": {
+      "levels": [
+        {
+          "low": 3,
+          "high": 6,
+          "duration": 6,
+          "limit": 8,
+          "chance": 0.15
+        },
+        {
+          "low": 5,
+          "high": 9,
+          "duration": 6,
+          "limit": 8,
+          "chance": 0.15
+        },
+        {
+          "low": 5,
+          "high": 9,
+          "duration": 6,
+          "limit": 8,
+          "chance": 0.25
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Virus",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "chance"
+      ],
+      "unverified_level_fields": [
+        "duration",
+        "limit"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "voluptuous_egg_sac": {
+      "levels": [
+        {
+          "count_min": 2,
+          "count_max": 3,
+          "cooldown": 3
+        },
+        {
+          "count_min": 2,
+          "count_max": 3,
+          "cooldown": 3
+        },
+        {
+          "count_min": 2,
+          "count_max": 3,
+          "cooldown": 3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Voluptuous_Egg_Sac",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max",
+        "cooldown"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "wraith": {
+      "levels": [
+        {
+          "duration": 0.8
+        },
+        {
+          "duration": 0.8
+        },
+        {
+          "duration": 0.8
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Wraith",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "landslide": {
+      "levels": [
+        {
+          "low": 20,
+          "high": 30,
+          "duration": 5,
+          "radius": 2
+        },
+        {
+          "low": 20,
+          "high": 30,
+          "duration": 5,
+          "radius": 2
+        },
+        {
+          "low": 20,
+          "high": 30,
+          "duration": 5,
+          "radius": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Landslide",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "steel": {
+      "levels": [
+        {
+          "impact": 2,
+          "speed": 0.5,
+          "growth": 0.1,
+          "ceiling": 3
+        },
+        {
+          "impact": 2,
+          "speed": 0.5,
+          "growth": 0.1,
+          "ceiling": 3
+        },
+        {
+          "impact": 2,
+          "speed": 0.5,
+          "growth": 0.1,
+          "ceiling": 3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Steel",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "impact",
+        "speed",
+        "growth",
+        "ceiling"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "catapult": {
+      "levels": [
+        {
+          "count_min": 3,
+          "count_max": 5,
+          "interval": 1.5
+        },
+        {
+          "count_min": 3,
+          "count_max": 5,
+          "interval": 1.5
+        },
+        {
+          "count_min": 3,
+          "count_max": 5,
+          "interval": 1.5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Catapult",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max",
+        "interval"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "banished_flame": {
+      "levels": [
+        {
+          "low": 1,
+          "high": 30,
+          "burst_low": 1,
+          "burst_high": 100,
+          "duration": 2,
+          "limit": 6
+        },
+        {
+          "low": 1,
+          "high": 35,
+          "burst_low": 1,
+          "burst_high": 100,
+          "duration": 2,
+          "limit": 6
+        },
+        {
+          "low": 1,
+          "high": 35,
+          "burst_low": 1,
+          "burst_high": 100,
+          "duration": 2,
+          "limit": 8
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Banished_Flame",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "burst_low",
+        "burst_high",
+        "duration",
+        "limit"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "fireworks": {
+      "levels": [
+        {
+          "count_min": 3,
+          "count_max": 6,
+          "low": 20,
+          "high": 30,
+          "burn_low": 7,
+          "burn_high": 11,
+          "duration": 3,
+          "limit": 3
+        },
+        {
+          "count_min": 3,
+          "count_max": 6,
+          "low": 20,
+          "high": 30,
+          "burn_low": 10,
+          "burn_high": 14,
+          "duration": 3,
+          "limit": 3
+        },
+        {
+          "count_min": 4,
+          "count_max": 8,
+          "low": 20,
+          "high": 30,
+          "burn_low": 10,
+          "burn_high": 14,
+          "duration": 3,
+          "limit": 3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Fireworks",
+      "verified_level_fields": [
+        "count_min",
+        "count_max",
+        "low",
+        "high",
+        "burn_low",
+        "burn_high"
+      ],
+      "unverified_level_fields": [
+        "duration",
+        "limit"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "laser_cutter": {
+      "levels": [
+        {
+          "low": 100,
+          "high": 150
+        },
+        {
+          "low": 100,
+          "high": 150
+        },
+        {
+          "low": 100,
+          "high": 150
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_Cutter",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "timestop": {
+      "levels": [
+        {
+          "duration": 5,
+          "cooldown": 30
+        },
+        {
+          "duration": 5,
+          "cooldown": 30
+        },
+        {
+          "duration": 5,
+          "cooldown": 30
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Timestop",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "cooldown"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "erosion": {
+      "levels": [
+        {
+          "percent": 0.03
+        },
+        {
+          "percent": 0.03
+        },
+        {
+          "percent": 0.03
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Erosion",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "percent"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "warp": {
+      "levels": [
+        {
+          "speed_gain": 0.05
+        },
+        {
+          "speed_gain": 0.05
+        },
+        {
+          "speed_gain": 0.05
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Warp",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "speed_gain"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "time_bomb": {
+      "levels": [
+        {
+          "low": 80,
+          "high": 120,
+          "interval": 3,
+          "delay": 2,
+          "radius": 2,
+          "snare_duration": 2
+        },
+        {
+          "low": 80,
+          "high": 120,
+          "interval": 3,
+          "delay": 2,
+          "radius": 2,
+          "snare_duration": 2
+        },
+        {
+          "low": 80,
+          "high": 120,
+          "interval": 3,
+          "delay": 2,
+          "radius": 2,
+          "snare_duration": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Time_Bomb",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "interval",
+        "delay",
+        "radius",
+        "snare_duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "venom": {
+      "levels": [
+        {
+          "low": 3,
+          "high": 6,
+          "duration": 6,
+          "limit": 8
+        },
+        {
+          "low": 3,
+          "high": 6,
+          "duration": 6,
+          "limit": 8
+        },
+        {
+          "low": 3,
+          "high": 6,
+          "duration": 6,
+          "limit": 8
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Venom",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "heart_swallower": {
+      "levels": [
+        {
+          "chance": 0.4,
+          "heal": 1,
+          "attack_scale": 0.8
+        },
+        {
+          "chance": 0.4,
+          "heal": 1,
+          "attack_scale": 0.8
+        },
+        {
+          "chance": 0.4,
+          "heal": 1,
+          "attack_scale": 0.8
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Heart_Swallower",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "heal",
+        "attack_scale"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "reaper": {
+      "levels": [
+        {
+          "chance": 0.1,
+          "heal": 5
+        },
+        {
+          "chance": 0.1,
+          "heal": 5
+        },
+        {
+          "chance": 0.1,
+          "heal": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Reaper",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "heal"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "x_ray": {
+      "levels": [
+        {
+          "low": 50,
+          "high": 75,
+          "duration": 15,
+          "limit": 5
+        },
+        {
+          "low": 50,
+          "high": 75,
+          "duration": 15,
+          "limit": 5
+        },
+        {
+          "low": 50,
+          "high": 75,
+          "duration": 15,
+          "limit": 5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/X_Ray",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "banshee": {
+      "levels": [
+        {
+          "low": 150,
+          "high": 300,
+          "hits": 6
+        },
+        {
+          "low": 150,
+          "high": 300,
+          "hits": 6
+        },
+        {
+          "low": 150,
+          "high": 300,
+          "hits": 6
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Banshee",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "hits"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "sniper": {
+      "levels": [
+        {
+          "count_min": 3,
+          "count_max": 7
+        },
+        {
+          "count_min": 3,
+          "count_max": 7
+        },
+        {
+          "count_min": 3,
+          "count_max": 7
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Sniper",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "petrify": {
+      "levels": [
+        {
+          "low": 50,
+          "high": 120,
+          "duration": 1.5
+        },
+        {
+          "low": 50,
+          "high": 120,
+          "duration": 1.5
+        },
+        {
+          "low": 50,
+          "high": 120,
+          "duration": 1.5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Petrify",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "tumor": {
+      "levels": [
+        {
+          "duration": 40
+        },
+        {
+          "duration": 40
+        },
+        {
+          "duration": 40
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Tumor",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "zombie": {
+      "levels": [
+        {
+          "chance": 0.4
+        },
+        {
+          "chance": 0.4
+        },
+        {
+          "chance": 0.4
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Zombie",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "offspring": {
+      "levels": [
+        {
+          "divisions": 4
+        },
+        {
+          "divisions": 4
+        },
+        {
+          "divisions": 4
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Offspring",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "divisions"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "flesh_mound": {
+      "levels": [
+        {
+          "interval": 1
+        },
+        {
+          "interval": 1
+        },
+        {
+          "interval": 1
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Flesh_Mound",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "interval"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "lightning_bug": {
+      "levels": [
+        {
+          "low": 1,
+          "high": 80,
+          "targets": 3,
+          "radius": 2.5
+        },
+        {
+          "low": 1,
+          "high": 80,
+          "targets": 3,
+          "radius": 2.5
+        },
+        {
+          "low": 1,
+          "high": 80,
+          "targets": 3,
+          "radius": 2.5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Lightning_Bug",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "targets",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "mosquito_kingdom": {
+      "levels": [
+        {
+          "count_min": 1,
+          "count_max": 2,
+          "low": 100,
+          "high": 150,
+          "heal": 2
+        },
+        {
+          "count_min": 1,
+          "count_max": 3,
+          "low": 100,
+          "high": 150,
+          "heal": 2
+        },
+        {
+          "count_min": 2,
+          "count_max": 3,
+          "low": 100,
+          "high": 150,
+          "heal": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Mosquito_Kingdom",
+      "verified_level_fields": [
+        "count_min",
+        "count_max",
+        "low",
+        "high",
+        "heal"
+      ],
+      "unverified_level_fields": [],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "drill": {
+      "levels": [
+        {
+          "impact_bonus": 0.5
+        },
+        {
+          "impact_bonus": 0.5
+        },
+        {
+          "impact_bonus": 0.5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Drill",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "impact_bonus"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "armageddon": {
+      "levels": [
+        {
+          "low": 30,
+          "high": 50,
+          "duration": 5,
+          "radius": 3
+        },
+        {
+          "low": 30,
+          "high": 50,
+          "duration": 5,
+          "radius": 3
+        },
+        {
+          "low": 30,
+          "high": 50,
+          "duration": 5,
+          "radius": 3
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Armageddon",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "elemental": {
+      "levels": [
+        {
+          "duration": 3,
+          "low": 4,
+          "high": 8,
+          "limit": 3,
+          "radius": 2
+        },
+        {
+          "duration": 3,
+          "low": 4,
+          "high": 8,
+          "limit": 3,
+          "radius": 2
+        },
+        {
+          "duration": 3,
+          "low": 4,
+          "high": 8,
+          "limit": 3,
+          "radius": 2
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Elemental",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "low",
+        "high",
+        "limit",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    },
+    "overgrowth": {
+      "levels": [
+        {
+          "threshold": 3,
+          "low": 150,
+          "high": 200,
+          "radius": 1.5
+        },
+        {
+          "threshold": 3,
+          "low": 150,
+          "high": 200,
+          "radius": 1.5
+        },
+        {
+          "threshold": 3,
+          "low": 150,
+          "high": 200,
+          "radius": 1.5
+        }
+      ],
+      "reference": "https://ballxpit.wiki.gg/wiki/Overgrowth",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "threshold",
+        "low",
+        "high",
+        "radius"
+      ],
+      "level_policy": "Unverified curves retain the documented first-level value; no invented level multiplier."
+    }
+  },
+  "ball_geometry": {
+    "special_radius_tiles": 0.09482758620689655,
+    "baby_radius_tiles": 0.06896551724137931,
+    "pellet_radius_tiles": 0.09482758620689655,
+    "outline_pixels": 0.6,
+    "reference_status": "unverified_original_hitbox",
+    "reference": "https://www.devolverdigital.com/games/ball-x-pit",
+    "notes": "Existing radii preserved: ordinary baby 4, special/pellet/fleshy baby 5.5 in a 58-unit tile. Publisher screenshots do not establish original collision radii; no original-size match is claimed.",
+    "fleshy_baby_radius_tiles": 0.09482758620689655
+  },
+  "character_rules": {
+    "default": {
+      "hp": 100,
+      "damage": 1,
+      "speed": 250,
+      "interval": 0.28,
+      "crit": 0.04,
+      "baby_capacity": 9,
+      "nester_instances": 3,
+      "gravity": 165,
+      "orbit_seconds": 1.1,
+      "shield_increment": 1
+    },
+    "tiptoer": {
+      "hp": 25,
+      "damage": 0.6
+    },
+    "shade": {
+      "crit": 0.1
+    },
+    "itchy_finger": {
+      "interval": 0.14
+    },
+    "reference_status": "Numerical starting profiles and growth remain local tuning, unverified against a clean original save. Documented signature modifiers are recorded separately from those unknown base attributes."
+  },
+  "ball_visuals": {
+    "bleed": {
+      "family": "spiked",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "stone": {
+      "family": "stone",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "fire": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "frost": {
+      "family": "ice",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "brood": {
+      "family": "cell",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "laser": {
+      "family": "laser",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "laser_h": {
+      "family": "laser",
+      "accent": "#101d3d",
+      "axis": "horizontal"
+    },
+    "poison": {
+      "family": "toxic",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "dark": {
+      "family": "ghost",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "iron": {
+      "family": "metal",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "vampire": {
+      "family": "heart",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "lightning": {
+      "family": "bolt",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "ghost": {
+      "family": "ghost",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "earth": {
+      "family": "stone",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "light": {
+      "family": "light",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "wind": {
+      "family": "wind",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "charm": {
+      "family": "heart",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "egg": {
+      "family": "egg",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "cell": {
+      "family": "cell",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "time": {
+      "family": "clock",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "flesh": {
+      "family": "flesh",
+      "accent": "#101d3d",
+      "axis": "vertical"
+    },
+    "brimstone": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#b5ef87"
+    },
+    "blizzard": {
+      "family": "ice",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ffe984"
+    },
+    "flicker": {
+      "family": "light",
+      "accent": "#af9be8",
+      "axis": "vertical"
+    },
+    "assassin": {
+      "family": "metal",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#af9be8"
+    },
+    "berserk": {
+      "family": "heart",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ff777f"
+    },
+    "black_hole": {
+      "family": "ghost",
+      "accent": "#fff1d6",
+      "axis": "vertical"
+    },
+    "bomb": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#c6d6dc"
+    },
+    "flash": {
+      "family": "light",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ffe984"
+    },
+    "freeze_ray": {
+      "family": "ice",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#d9b0ff"
+    },
+    "frozen_flame": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#84e2fa"
+    },
+    "glacier": {
+      "family": "ice",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dba57b"
+    },
+    "hemorrhage": {
+      "family": "spiked",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#c6d6dc"
+    },
+    "holy_laser": {
+      "family": "laser",
+      "accent": "#101d3d",
+      "axis": "cross",
+      "secondary": "#fff1d6"
+    },
+    "incubus": {
+      "family": "heart",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#af9be8"
+    },
+    "inferno": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#a6d9ef"
+    },
+    "laser_beam": {
+      "family": "laser",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#fff1d6"
+    },
+    "leech": {
+      "family": "heart",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#a2d9bc"
+    },
+    "lightning_rod": {
+      "family": "bolt",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#c6d6dc"
+    },
+    "lovestruck": {
+      "family": "heart",
+      "accent": "#fff1d6",
+      "axis": "vertical"
+    },
+    "maggot": {
+      "family": "cell",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#fff1d6"
+    },
+    "magma": {
+      "family": "stone",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ff935b"
+    },
+    "mosquito_king": {
+      "family": "heart",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#a2d9bc"
+    },
+    "mosquito_swarm": {
+      "family": "egg",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ff88af"
+    },
+    "noxious": {
+      "family": "toxic",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#a6d9ef"
+    },
+    "nuclear_bomb": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#b5ef87"
+    },
+    "nosferatu": {
+      "family": "heart",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ffe2ad"
+    },
+    "phantom": {
+      "family": "ghost",
+      "accent": "#fff1d6",
+      "axis": "vertical"
+    },
+    "radiation_beam": {
+      "family": "toxic",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#d9b0ff"
+    },
+    "sacrifice": {
+      "family": "spiked",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#af9be8"
+    },
+    "sandstorm": {
+      "family": "wind",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dba57b"
+    },
+    "satan": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ff88af"
+    },
+    "shotgun": {
+      "family": "metal",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ffe2ad"
+    },
+    "soul_sucker": {
+      "family": "ghost",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ff88af"
+    },
+    "spider_queen": {
+      "family": "egg",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#a2d9bc"
+    },
+    "storm": {
+      "family": "bolt",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#a6d9ef"
+    },
+    "succubus": {
+      "family": "heart",
+      "accent": "#fff1d6",
+      "axis": "vertical"
+    },
+    "sun": {
+      "family": "light",
+      "accent": "#ff935b",
+      "axis": "vertical"
+    },
+    "swamp": {
+      "family": "toxic",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dba57b"
+    },
+    "vampire_lord": {
+      "family": "heart",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ff777f"
+    },
+    "virus": {
+      "family": "toxic",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ff777f"
+    },
+    "voluptuous_egg_sac": {
+      "family": "egg",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#a2d9bc"
+    },
+    "wraith": {
+      "family": "ice",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#af9be8"
+    },
+    "landslide": {
+      "family": "stone",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#fff1d6"
+    },
+    "steel": {
+      "family": "metal",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dba57b"
+    },
+    "catapult": {
+      "family": "stone",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ffe2ad"
+    },
+    "banished_flame": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#af9be8"
+    },
+    "fireworks": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ffe2ad"
+    },
+    "laser_cutter": {
+      "family": "laser",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#c6d6dc"
+    },
+    "timestop": {
+      "family": "clock",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#84e2fa"
+    },
+    "erosion": {
+      "family": "wind",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#7de0d4"
+    },
+    "warp": {
+      "family": "clock",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#fff1d6"
+    },
+    "time_bomb": {
+      "family": "clock",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ff935b"
+    },
+    "venom": {
+      "family": "toxic",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#84e2fa"
+    },
+    "heart_swallower": {
+      "family": "spiked",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#af9be8"
+    },
+    "reaper": {
+      "family": "spiked",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#af9be8"
+    },
+    "x_ray": {
+      "family": "laser",
+      "accent": "#101d3d",
+      "axis": "diagonal",
+      "secondary": "#fff1d6"
+    },
+    "banshee": {
+      "family": "ghost",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#84e2fa"
+    },
+    "sniper": {
+      "family": "metal",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#fff1d6"
+    },
+    "petrify": {
+      "family": "light",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dfa6b4"
+    },
+    "tumor": {
+      "family": "toxic",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dfa6b4"
+    },
+    "zombie": {
+      "family": "cell",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dfa6b4"
+    },
+    "offspring": {
+      "family": "cell",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dfa6b4"
+    },
+    "flesh_mound": {
+      "family": "cell",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dfa6b4"
+    },
+    "lightning_bug": {
+      "family": "bolt",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#a2d9bc"
+    },
+    "mosquito_kingdom": {
+      "family": "heart",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ffe2ad"
+    },
+    "drill": {
+      "family": "metal",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dba57b"
+    },
+    "armageddon": {
+      "family": "flame",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#ffe984"
+    },
+    "elemental": {
+      "family": "cell",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#dba57b"
+    },
+    "overgrowth": {
+      "family": "stone",
+      "accent": "#101d3d",
+      "axis": "vertical",
+      "secondary": "#a2d9bc"
+    }
+  }
 }

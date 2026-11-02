@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-02",
+  "timezone": "Asia/Manila",
+  "engine_tested": "4.6.3",
+  "target_editor_unverified": "4.7.2",
+  "theme": "moon_temple",
+  "checks": {
+    "headless_import": "passed",
+    "ball_appearance_environment_assertions": 345,
+    "desktop_ui": "passed",
+    "mobile_ui": "passed",
+    "packaged_resources": "passed",
+    "packaged_startup": "passed",
+    "long_combat_simulation": "not rerun; presentation-only changes"
+  },
+  "interactive_graphical_playtest": false,
+  "android_device_test": false,
+  "apk_built": false,
+  "deployed": false,
+  "github_pushed": false,
+  "assets": {
+    "godot/assets/art/arenas/moon_temple_backdrop.png": [
+      1536,
+      1024
+    ],
+    "godot/assets/art/arenas/moon_temple_court.png": [
+      1024,
+      1536
+    ]
+  },
+  "core_unchanged_from_previous_verification": {
+    "run_state.gd": true,
+    "combat_geometry.gd": true,
+    "ball_rules.gd": true,
+    "ball_effects.gd": true,
+    "evolved_effects.gd": true,
+    "ball_visuals.gd": true,
+    "controls.gd": true,
+    "save_store.gd": true
+  },
+  "source_sha256": {
+    "AGENTS.md": "73f7fbc4dc5ecc2361abc11cd8b4020e0929fb502da8be6da7b325093634de32",
+    "godot/scripts/app.gd": "1b96aa5ec1328a9a73ac34d3db89fb8c49c05b5aea44fda96886f31e36bd5acb",
+    "godot/scripts/arena.gd": "1ad5f4b4f2e78c670960c2b98c6a2974b7ada44c07586b2a495f63645bc4861b",
+    "godot/data/visual_data.json": "496ee88ce1d3beee4469fda3beebeff308ed1ddf9b082c2894995b1491192929",
+    "godot/assets/art/arenas/moon_temple_backdrop.png": "7a7a4282b3beb538faa919f9f3e6ee2812e7873dd2005aafdf0e7b58556adc65",
+    "godot/assets/art/arenas/moon_temple_court.png": "e00cc5bcfbb95bc28dc77220d1fc7848eba518ae379a2ab535e8d614200d4c24"
+  }
+}

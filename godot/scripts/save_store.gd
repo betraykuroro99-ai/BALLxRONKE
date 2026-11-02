@@ -51,7 +51,7 @@ static func sanitize(raw: Dictionary) -> Dictionary:
 			if (value is int or value is float) and is_finite(float(value)):
 				result["meta"][key] = clampi(int(value), 0, 3)
 	var id = str(raw.get("last_crew", "warrior"))
-	if RonkeData.crew(id).get("id") == id:
+	if RonkeData.crew(id).get("id") == id and RonkeData.crew(id).get("enabled", true):
 		result["last_crew"] = id
 	result["world"] = clampi(int(raw.get("world", 0)), 0, 2) if raw.get("world", 0) is float or raw.get("world", 0) is int else 0
 	result["muted"] = raw.get("muted", true) != false
