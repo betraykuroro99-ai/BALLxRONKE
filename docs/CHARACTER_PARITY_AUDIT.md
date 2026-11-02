@@ -1,3 +1,5 @@
+> Historical audit of the previous source. See [the local mechanics correction](MECHANICS_CORRECTIONS.md) for the implemented changes and remaining reference limits. This table is preserved as the before-state.
+
 # Character, attack and defense parity audit
 
 Reviewed 30 October 2026 against BALLxRONKE **0.1.1**, source commit

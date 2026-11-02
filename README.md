@@ -25,6 +25,8 @@ The native project was checked with the available Godot **4.6.3** editor;
 4.7.2 and actual device/export testing remain to be completed on your setup.
 See [`godot/README.md`](godot/README.md) for controls, checks, and exports.
 
+Latest ball visual and interaction corrections: [review notes](docs/BALL_APPEARANCE_AND_RESPONSES.md) and [shared glyph preview](docs/BALL_GLYPH_PREVIEW.png).
+
 ## Run the browser reference
 
 Requires Node.js 18 or newer. No dependency installation is needed.
@@ -57,7 +59,7 @@ walking contact poses and single hurt/seated-defeat poses.
 
 ## Native status
 
-The native game now includes the run loop, all 23 crews, upgrades, fusions,
+The native game now includes the run loop, 23 crew designs (22 enabled), upgrades, named evolutions,
 basecamp progression, multi-touch input, and responsive menus. Native simulation
 and interface checks are included. Source artwork remains unchanged. The browser
 project remains a reference implementation rather than a runtime dependency.
@@ -78,3 +80,9 @@ browser save data are included.
 This is a fan prototype inspired by BALL x PIT, with original gorilla
 reinterpretations and no affiliation with its creators. No license has been
 selected; third-party names and references remain attributed to their owners.
+
+## Local mechanics correction
+
+The native Godot source now includes 21 base balls, 69 named evolutions and their recipe chains, corrected character mechanics, defensive equipment, and a searchable practice catalogue. 22 runners are available; the Twitch-dependent Showman is disabled pending real integration. See [scope, verification and reference limits](docs/MECHANICS_CORRECTIONS.md). This local revision has not been pushed or built into an APK. The browser prototype remains the earlier prototype.
+
+Latest local work: [stability pass and remaining reference gaps](docs/STABILITY_PASS.md). This source revision is not an APK release.

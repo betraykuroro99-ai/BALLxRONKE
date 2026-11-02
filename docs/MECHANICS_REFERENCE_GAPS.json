@@ -1,0 +1,873 @@
+{
+  "date": "2026-10-30",
+  "original_numeric_parity": "partial",
+  "character_starting_stats_and_growth": "unverified against an unmodified original clean save",
+  "ball_collision_radii": "unverified; previous local radii preserved",
+  "physics_parameters": [
+    "gravity acceleration",
+    "orbit duration/force",
+    "exact shield increment interpretation",
+    "Leadership-derived Empty Nester instance formula"
+  ],
+  "balls": {
+    "bleed": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Bleed",
+      "verified_level_fields": [
+        "stacks",
+        "limit"
+      ],
+      "unverified_level_fields": []
+    },
+    "stone": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Stone",
+      "verified_level_fields": [
+        "impact",
+        "erosion",
+        "floor"
+      ],
+      "unverified_level_fields": []
+    },
+    "fire": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Burn",
+      "verified_level_fields": [
+        "duration",
+        "low",
+        "high",
+        "limit"
+      ],
+      "unverified_level_fields": []
+    },
+    "frost": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Freeze",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "duration"
+      ]
+    },
+    "brood": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Brood_Mother",
+      "verified_level_fields": [
+        "chance"
+      ],
+      "unverified_level_fields": []
+    },
+    "laser": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_(Vertical)",
+      "verified_level_fields": [
+        "low",
+        "high"
+      ],
+      "unverified_level_fields": []
+    },
+    "laser_h": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_(Horizontal)",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high"
+      ]
+    },
+    "poison": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Poison",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "low",
+        "high",
+        "limit"
+      ]
+    },
+    "dark": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Dark",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "impact",
+        "cooldown"
+      ]
+    },
+    "iron": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Iron",
+      "verified_level_fields": [
+        "speed",
+        "impact"
+      ],
+      "unverified_level_fields": []
+    },
+    "vampire": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Vampire",
+      "verified_level_fields": [
+        "chance",
+        "heal"
+      ],
+      "unverified_level_fields": []
+    },
+    "lightning": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Lightning",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "targets",
+        "radius"
+      ]
+    },
+    "ghost": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Ghost",
+      "verified_level_fields": [
+        "pierce"
+      ],
+      "unverified_level_fields": []
+    },
+    "earth": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Earthquake",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "radius"
+      ]
+    },
+    "light": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Light",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration"
+      ]
+    },
+    "wind": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Wind",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "impact",
+        "slow"
+      ]
+    },
+    "charm": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Charm",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "duration"
+      ]
+    },
+    "egg": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Egg_Sac",
+      "verified_level_fields": [
+        "count_min",
+        "count_max",
+        "cooldown"
+      ],
+      "unverified_level_fields": []
+    },
+    "cell": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Cell",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "divisions"
+      ]
+    },
+    "time": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Time",
+      "verified_level_fields": [
+        "duration"
+      ],
+      "unverified_level_fields": [
+        "cooldown",
+        "radius"
+      ]
+    },
+    "flesh": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Flesh",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "impact",
+        "bounce_speed"
+      ]
+    },
+    "brimstone": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Brimstone",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "poison_low",
+        "poison_high",
+        "burn_duration",
+        "poison_duration",
+        "limit",
+        "radius",
+        "interval"
+      ]
+    },
+    "blizzard": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Blizzard",
+      "verified_level_fields": [
+        "duration",
+        "low",
+        "high"
+      ],
+      "unverified_level_fields": [
+        "radius"
+      ]
+    },
+    "flicker": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Flicker",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "interval"
+      ]
+    },
+    "assassin": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Assassin",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "back_bonus"
+      ]
+    },
+    "berserk": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Berserk",
+      "verified_level_fields": [
+        "chance",
+        "duration",
+        "low",
+        "high"
+      ],
+      "unverified_level_fields": []
+    },
+    "black_hole": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Black_Hole",
+      "verified_level_fields": [
+        "cooldown"
+      ],
+      "unverified_level_fields": []
+    },
+    "bomb": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Bomb",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "radius",
+        "cooldown"
+      ]
+    },
+    "flash": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Flash",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ]
+    },
+    "freeze_ray": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Freeze_Ray",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "chance",
+        "duration"
+      ],
+      "unverified_level_fields": []
+    },
+    "frozen_flame": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Frozen_Flame",
+      "verified_level_fields": [
+        "duration",
+        "low",
+        "high",
+        "limit"
+      ],
+      "unverified_level_fields": []
+    },
+    "glacier": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Glacier",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ],
+      "unverified_level_fields": [
+        "aura_low",
+        "aura_high",
+        "interval",
+        "patch_life"
+      ]
+    },
+    "hemorrhage": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Hemorrhage",
+      "verified_level_fields": [
+        "stacks",
+        "threshold",
+        "percent"
+      ],
+      "unverified_level_fields": []
+    },
+    "holy_laser": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Holy_Laser",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high"
+      ]
+    },
+    "incubus": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Incubus",
+      "verified_level_fields": [
+        "chance",
+        "duration",
+        "curse_low",
+        "curse_high",
+        "curse_hits"
+      ],
+      "unverified_level_fields": []
+    },
+    "inferno": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Inferno",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit",
+        "radius",
+        "interval"
+      ]
+    },
+    "laser_beam": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_Beam",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ]
+    },
+    "leech": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Leech",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "stacks",
+        "limit",
+        "interval"
+      ]
+    },
+    "lightning_rod": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Lightning_Rod",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "targets",
+        "interval"
+      ],
+      "unverified_level_fields": [
+        "radius"
+      ]
+    },
+    "lovestruck": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Lovestruck",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "chance",
+        "heal"
+      ]
+    },
+    "maggot": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Maggot",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max"
+      ]
+    },
+    "magma": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Magma",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "burn_low",
+        "burn_high",
+        "duration",
+        "limit",
+        "aura_low",
+        "aura_high"
+      ],
+      "unverified_level_fields": [
+        "interval",
+        "patch_life"
+      ]
+    },
+    "mosquito_king": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Mosquito_King",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "heal",
+        "count_min",
+        "count_max"
+      ],
+      "unverified_level_fields": []
+    },
+    "mosquito_swarm": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Mosquito_Swarm",
+      "verified_level_fields": [
+        "count_min",
+        "count_max",
+        "low",
+        "high",
+        "heal"
+      ],
+      "unverified_level_fields": [
+        "cooldown"
+      ]
+    },
+    "noxious": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Noxious",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ],
+      "unverified_level_fields": [
+        "stacks",
+        "limit",
+        "radius"
+      ]
+    },
+    "nuclear_bomb": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Nuclear_Bomb",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "radius",
+        "cooldown",
+        "limit"
+      ]
+    },
+    "nosferatu": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Nosferatu",
+      "verified_level_fields": [
+        "low",
+        "high"
+      ],
+      "unverified_level_fields": []
+    },
+    "phantom": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Phantom",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "hits"
+      ],
+      "unverified_level_fields": []
+    },
+    "radiation_beam": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Radiation_Beam",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit"
+      ],
+      "unverified_level_fields": []
+    },
+    "sacrifice": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Sacrifice",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "stacks",
+        "limit",
+        "low",
+        "high",
+        "hits"
+      ]
+    },
+    "sandstorm": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Sandstorm",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "radius",
+        "interval"
+      ]
+    },
+    "satan": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Satan",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "berserk_low",
+        "berserk_high",
+        "limit",
+        "interval"
+      ],
+      "unverified_level_fields": [
+        "duration"
+      ]
+    },
+    "shotgun": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Shotgun",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max"
+      ]
+    },
+    "soul_sucker": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Soul_Sucker",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "heal",
+        "attack_scale"
+      ]
+    },
+    "spider_queen": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Spider_Queen",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance"
+      ]
+    },
+    "storm": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Storm",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "interval",
+        "radius"
+      ]
+    },
+    "succubus": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Succubus",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "duration",
+        "heal"
+      ]
+    },
+    "sun": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Sun",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit",
+        "interval"
+      ]
+    },
+    "swamp": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Swamp",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "poison_low",
+        "poison_high",
+        "duration",
+        "limit",
+        "aura_low",
+        "aura_high"
+      ],
+      "unverified_level_fields": [
+        "interval",
+        "patch_life"
+      ]
+    },
+    "vampire_lord": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Vampire_Lord",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "stacks",
+        "threshold",
+        "heal"
+      ]
+    },
+    "virus": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Virus",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "chance"
+      ],
+      "unverified_level_fields": [
+        "duration",
+        "limit"
+      ]
+    },
+    "voluptuous_egg_sac": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Voluptuous_Egg_Sac",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max",
+        "cooldown"
+      ]
+    },
+    "wraith": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Wraith",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration"
+      ]
+    },
+    "landslide": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Landslide",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "radius"
+      ]
+    },
+    "steel": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Steel",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "impact",
+        "speed",
+        "growth",
+        "ceiling"
+      ]
+    },
+    "catapult": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Catapult",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max",
+        "interval"
+      ]
+    },
+    "banished_flame": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Banished_Flame",
+      "verified_level_fields": [
+        "low",
+        "high",
+        "burst_low",
+        "burst_high",
+        "duration",
+        "limit"
+      ],
+      "unverified_level_fields": []
+    },
+    "fireworks": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Fireworks",
+      "verified_level_fields": [
+        "count_min",
+        "count_max",
+        "low",
+        "high",
+        "burn_low",
+        "burn_high"
+      ],
+      "unverified_level_fields": [
+        "duration",
+        "limit"
+      ]
+    },
+    "laser_cutter": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Laser_Cutter",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high"
+      ]
+    },
+    "timestop": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Timestop",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "cooldown"
+      ]
+    },
+    "erosion": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Erosion",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "percent"
+      ]
+    },
+    "warp": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Warp",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "speed_gain"
+      ]
+    },
+    "time_bomb": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Time_Bomb",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "interval",
+        "delay",
+        "radius",
+        "snare_duration"
+      ]
+    },
+    "venom": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Venom",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit"
+      ]
+    },
+    "heart_swallower": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Heart_Swallower",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "heal",
+        "attack_scale"
+      ]
+    },
+    "reaper": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Reaper",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance",
+        "heal"
+      ]
+    },
+    "x_ray": {
+      "reference": "https://ballxpit.wiki.gg/wiki/X_Ray",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "limit"
+      ]
+    },
+    "banshee": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Banshee",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "hits"
+      ]
+    },
+    "sniper": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Sniper",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "count_min",
+        "count_max"
+      ]
+    },
+    "petrify": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Petrify",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration"
+      ]
+    },
+    "tumor": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Tumor",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration"
+      ]
+    },
+    "zombie": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Zombie",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "chance"
+      ]
+    },
+    "offspring": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Offspring",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "divisions"
+      ]
+    },
+    "flesh_mound": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Flesh_Mound",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "interval"
+      ]
+    },
+    "lightning_bug": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Lightning_Bug",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "targets",
+        "radius"
+      ]
+    },
+    "mosquito_kingdom": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Mosquito_Kingdom",
+      "verified_level_fields": [
+        "count_min",
+        "count_max",
+        "low",
+        "high",
+        "heal"
+      ],
+      "unverified_level_fields": []
+    },
+    "drill": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Drill",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "impact_bonus"
+      ]
+    },
+    "armageddon": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Armageddon",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "low",
+        "high",
+        "duration",
+        "radius"
+      ]
+    },
+    "elemental": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Elemental",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "duration",
+        "low",
+        "high",
+        "limit",
+        "radius"
+      ]
+    },
+    "overgrowth": {
+      "reference": "https://ballxpit.wiki.gg/wiki/Overgrowth",
+      "verified_level_fields": [],
+      "unverified_level_fields": [
+        "threshold",
+        "low",
+        "high",
+        "radius"
+      ]
+    }
+  }
+}

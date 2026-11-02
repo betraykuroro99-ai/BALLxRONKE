@@ -17,12 +17,14 @@ var aim_touch = -1
 var touch_origin = Vector2(82, 750)
 var pending_dash = false
 var pending_surge = false
+var pending_recall = false
 var last_aim_ms = 0
 var auto_fire = true
 var particles: Array = []
 var labels: Array = []
 var rings: Array = []
 var chains: Array = []
+var beams: Array = []
 var styles: Dictionary = {}
 var effects = true
 var damage_numbers = true
@@ -45,6 +47,7 @@ var phase_notice_time = 0.0
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(180, 246)
+	clip_contents = true
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	focus_mode = Control.FOCUS_ALL
 	font = load("res://assets/fonts/Display.ttf")
@@ -69,8 +72,8 @@ func set_run(run: RonkeRun) -> void:
 	model = run
 	texture = load("res://assets/crew/" + run.crew.id + ".png")
 	sprite_frames = load("res://assets/animations/" + run.crew.id + ".tres")
-	var paths = ["verdant", "ember", "astral"]
-	floor_texture = load("res://assets/art/arenas/" + paths[run.world] + ".png")
+	var floors: Array = visual_data.get("floors", [])
+	floor_texture = load(floors[clampi(run.world, 0, floors.size() - 1)]) if not floors.is_empty() else null
 	aim = Vector2(300, 100)
 	shake_energy = 0.0
 	shake_offset = Vector2.ZERO
@@ -81,6 +84,7 @@ func set_run(run: RonkeRun) -> void:
 	labels.clear()
 	rings.clear()
 	chains.clear()
+	beams.clear()
 	reset_input()
 	queue_redraw()
 
@@ -104,6 +108,7 @@ func reset_input() -> void:
 	pointer_held = false
 	pending_dash = false
 	pending_surge = false
+	pending_recall = false
 
 func world_point(local_point: Vector2) -> Vector2:
 	return local_point * Vector2(600.0 / maxf(size.x, 1), 820.0 / maxf(size.y, 1))
@@ -190,13 +195,17 @@ func collect_input() -> Dictionary:
 	var result = {"move": movement, "aim": Vector2(clampf(aim.x, 0, 600), clampf(aim.y, 20, 680)),
 		"shoot": auto_fire or pointer_held or aim_touch >= 0 or Input.is_action_pressed("fire"),
 		"dash": pending_dash or Input.is_action_just_pressed("dash"),
-		"surge": pending_surge or Input.is_action_just_pressed("surge")}
+		"surge": pending_surge or Input.is_action_just_pressed("surge"),
+		"recall": pending_recall or Input.is_action_just_pressed("recall")}
 	pending_dash = false
 	pending_surge = false
+	pending_recall = false
 	return result
 
 func push_event(event: Dictionary) -> void:
 	var kind = event.type
+	if kind == "beam" and beams.size() < 24:
+		beams.append({"pos": event.pos, "horizontal": event.horizontal, "mode": event.get("mode", "horizontal" if event.horizontal else "vertical"), "direction": event.get("direction", Vector2.UP), "life": 0.18})
 	if kind == "hurt":
 		hurt_flash = 0.32
 		shake_energy = maxf(shake_energy, 1.0)
@@ -254,6 +263,9 @@ func _process(delta: float) -> void:
 			ring.life -= delta
 		for chain in chains:
 			chain.life -= delta
+		for beam in beams:
+			beam.life -= delta
+		beams = beams.filter(func(beam): return beam.life > 0)
 		particles = particles.filter(func(p): return p.life > 0)
 		labels = labels.filter(func(p): return p.life > 0)
 		rings = rings.filter(func(p): return p.life > 0)
@@ -282,27 +294,31 @@ func _draw_floor() -> void:
 		# Nine regions compress the illustrated walls to the actual bounce boundary.
 		var width = float(floor_texture.get_width())
 		var height = float(floor_texture.get_height())
-		var sx = [0.0, 96.0, width - 96.0, width]
-		var sy = [0.0, 110.0, height - 140.0, height]
-		var dx = [0.0, 18.0, 582.0, 600.0]
-		var dy = [0.0, 24.0, 788.0, 820.0]
-		var tint = Color(0.72, 0.86, 1.0) if model.world == 0 else Color(0.90, 0.85, 0.94) if model.world == 1 else Color(0.82, 0.88, 1.0)
+		var slices: Dictionary = visual_data.get("floor_slices", {"left": 96, "right": 96, "top": 110, "bottom": 140})
+		var sx = [0.0, float(slices.left), width - float(slices.right), width]
+		var sy = [0.0, float(slices.top), height - float(slices.bottom), height]
+		var dx = [0.0, RonkeRun.WALL_LEFT, RonkeRun.WALL_RIGHT, 600.0]
+		var dy = [0.0, RonkeRun.WALL_TOP, RonkeRun.WALL_BOTTOM, 820.0]
+		var tints: Array = visual_data.get("floor_tints", ["#ffffff", "#ffffff", "#ffffff"])
+		var tint = Color(tints[clampi(model.world, 0, tints.size() - 1)])
 		for row in range(3):
 			for col in range(3):
 				draw_texture_rect_region(floor_texture, Rect2(dx[col], dy[row], dx[col + 1] - dx[col], dy[row + 1] - dy[row]), Rect2(sx[col], sy[row], sx[col + 1] - sx[col], sy[row + 1] - sy[row]), tint)
 	else:
 		draw_rect(Rect2(0, 0, 600, 820), Color("162b50"))
-	draw_rect(Rect2(0, 0, 600, 820), Color(0.045, 0.12, 0.32, 0.14))
-	if fruit_accent:
-		draw_texture_rect(fruit_accent, Rect2(28, 26, 32, 32), false, Color(1, 1, 1, 0.35))
+	draw_rect(Rect2(0, 0, 600, 820), Color(0.015, 0.035, 0.10, 0.22))
+	# Cold highlights trace the real collision edges; artwork never adds obstacles.
+	draw_line(Vector2(16, 24), Vector2(16, 802), Color(0.50, 0.77, 1.0, 0.3), 1, true)
+	draw_line(Vector2(584, 24), Vector2(584, 802), Color(0.50, 0.77, 1.0, 0.3), 1, true)
 	if vignette:
 		draw_texture_rect(vignette, Rect2(0, 0, 600, 820), false)
 	if effects:
-		var color = Color("69c9ee") if model.world == 0 else Color("f0c976") if model.world == 1 else Color("b1bfff")
-		for i in range(22):
-			var x = 28 + fmod(i * 137.9 + sin(model.time * 0.18 + i) * 10, 544)
+		var color = Color("99cfff") if model.world != 1 else Color("b2b9fa")
+		for i in range(12):
+			var x = 5.0 + fmod(i * 1.37 + sin(model.time * 0.18 + i) * 2, 7.0)
+			if i % 2: x = 600.0 - x
 			var y = fmod(i * 83.4 - model.time * (4 + i % 3) + 1640, 820)
-			var alpha = 0.13 + sin(model.time * 0.8 + i * 1.7) * 0.06
+			var alpha = 0.09 + sin(model.time * 0.8 + i * 1.7) * 0.04
 			draw_circle(Vector2(x, y), 1.2 if i % 3 else 1.8, Color(color, alpha))
 	var danger = 0.0
 	for enemy in model.enemies:
@@ -325,35 +341,72 @@ func _draw() -> void:
 		if not enemy.dead and enemy.get("charging", false):
 			_draw_attack_warning(enemy)
 	if active and model.phase == "playing":
-		var direction: Vector2 = (aim - model.player.pos).normalized()
-		draw_dashed_line(model.player.pos + Vector2(0, -20), model.player.pos + Vector2(0, -20) + direction * 200, Color(0.33, 0.79, 0.96, 0.35), 2, 11)
+		var origins: Array = model.falcons if model.crew.id == "falconer" else [Vector2(model.player.pos.x, 35)] if model.crew.id == "shade" else [model.player.pos + Vector2(0, -28)]
+		for origin in origins:
+			var target = Vector2(aim.x, maxf(100, aim.y) if model.crew.id == "shade" else minf(model.player.pos.y - 63, aim.y))
+			var direction: Vector2 = (target - origin).normalized()
+			if model.crew.id == "juggler":
+				var landing = Vector2(clampf(aim.x, 45, 555), clampf(aim.y, 80, 600))
+				draw_arc(landing, 13, 0, TAU, 20, Color("84e2fa"), 1.2, true)
+			else: draw_dashed_line(origin, origin + direction * 160, Color(0.33, 0.79, 0.96, 0.35), 1.5, 9)
+	for hazard in model.hazards: _draw_hazard(hazard)
+	for ally in model.allies:
+		var body = Rect2(ally.pos - Vector2.ONE * ally.radius, Vector2.ONE * ally.radius * 2)
+		draw_rect(body, Color("183f46"))
+		draw_rect(body.grow(-2), Color("7ee4ac"))
+		draw_polyline(PackedVector2Array([ally.pos + Vector2(-6, 2), ally.pos + Vector2(0, -5), ally.pos + Vector2(6, 2)]), DARK, 2, true)
+		draw_line(ally.pos + Vector2(-ally.radius, ally.radius + 5), ally.pos + Vector2(-ally.radius + ally.radius * 2 * clampf(ally.hp / maxf(1, ally.max_hp), 0, 1), ally.radius + 5), Color("7ee4ac"), 3, true)
+	for seeker in model.seekers:
+		var color = Color("a8e8ff") if seeker.kind == "lightning_bug" else Color("ff8755") if seeker.kind == "firework" else Color("c5a0ef") if seeker.kind == "bat" else BANANA
+		draw_circle(seeker.pos, 5, DARK)
+		draw_circle(seeker.pos, 3, color)
+		draw_line(seeker.pos + Vector2(-8, -3), seeker.pos + Vector2(8, -3), Color(color, 0.7), 2, true)
+	for beam in beams:
+		var color = Color(0.8, 0.68, 1.0, minf(1, beam.life * 6))
+		if beam.mode == "diagonal":
+			for direction in [Vector2(1, 1).normalized(), Vector2(1, -1).normalized()]: _draw_field_beam(beam.pos, direction, color)
+		elif beam.mode in ["direction", "ray"]: _draw_field_beam(beam.pos, beam.direction, color, beam.mode == "ray")
+		else:
+			_draw_field_beam(beam.pos, Vector2.RIGHT if beam.horizontal else Vector2.DOWN, color)
+			if beam.mode == "cross": _draw_field_beam(beam.pos, Vector2.RIGHT, color)
 	for enemy in model.enemies:
 		_draw_enemy(enemy)
 	for bullet in model.bullets:
-		draw_line(bullet.pos - bullet.velocity * 0.045, bullet.pos, Color(0.95, 0.45, 0.55, 0.3), bullet.radius, true)
+		var shot_color = Color("8ce9c7") if bullet.get("ally", false) else Color("f79ca9")
+		draw_line(bullet.pos - bullet.velocity * 0.045, bullet.pos, Color(shot_color, 0.3), bullet.radius, true)
 		var diamond = PackedVector2Array([bullet.pos + Vector2(0, -bullet.radius - 2), bullet.pos + Vector2(bullet.radius + 2, 0), bullet.pos + Vector2(0, bullet.radius + 2), bullet.pos + Vector2(-bullet.radius - 2, 0)])
 		draw_colored_polygon(diamond, DARK)
 		for i in range(diamond.size()):
 			diamond[i] = bullet.pos + (diamond[i] - bullet.pos) * 0.72
-		draw_colored_polygon(diamond, Color("f79ca9"))
+		draw_colored_polygon(diamond, shot_color)
 		draw_circle(bullet.pos, 1.8, CREAM)
 	for ball in model.balls:
 		var color = RonkeData.orb_color(ball.element)
-		draw_line(ball.pos - ball.velocity * 0.045, ball.pos, Color(color, 0.12), ball.radius * 1.8, true)
-		draw_line(ball.pos - ball.velocity * 0.022, ball.pos, Color(color, 0.45), ball.radius * 0.75, true)
-		if effects:
-			draw_circle(ball.pos, ball.radius + 6, Color(color, 0.09))
-			draw_circle(ball.pos, ball.radius + 3, Color(color, 0.17))
-		draw_circle(ball.pos, ball.radius + 1, DARK)
-		draw_circle(ball.pos, ball.radius, color)
-		draw_circle(ball.pos - Vector2(1.3, 1.3), 1.9, CREAM)
-		if ball.element in ["toxic_sun", "stormglass", "eclipse"]:
-			draw_arc(ball.pos, ball.radius + 3, model.time * 5, model.time * 5 + PI * 1.2, 10, Color(CREAM, 0.75), 1, true)
+		var rendered = ball.pos
+		if ball.get("air_time", 0.0) > 0:
+			var progress = 1.0 - ball.air_time / maxf(ball.air_duration, 0.001)
+			draw_circle(rendered, ball.radius + 1, Color(0, 0, 0, 0.25))
+			rendered += Vector2(0, -sin(progress * PI) * 90)
+		if ball.get("air_time", 0.0) <= 0:
+			var points: Array = ball.get("trail", [])
+			for i in range(1, points.size()):
+				var alpha = 0.08 + 0.35 * float(i) / points.size()
+				draw_line(points[i - 1], points[i], Color(color, alpha), maxf(1.0, ball.radius * 0.65), true)
+		if effects: draw_circle(rendered, ball.radius + 3, Color(color, 0.12))
+		RonkeBallVisuals.draw_ball(self, ball, rendered)
 	var p: Dictionary = model.player
 	var world_scale = size / Vector2(600, 820)
 	draw_set_transform((p.pos + Vector2(0, 27) + shake_offset) * world_scale, 0, Vector2(world_scale.x, world_scale.y * 0.26))
 	draw_circle(Vector2.ZERO, 29, Color(0, 0, 0, 0.3))
 	draw_set_transform(shake_offset * size / Vector2(600, 820), 0, size / Vector2(600, 820))
+	if model.crew.id == "shieldbearer":
+		draw_line(p.pos + Vector2(-58, -32), p.pos + Vector2(58, -32), BANANA, 6, true)
+	if model.crew.id == "falconer":
+		for bird in model.falcons:
+			var flap = sin(model.time * 14) * 8
+			draw_polyline(PackedVector2Array([bird + Vector2(-17, flap), bird + Vector2(-5, 0), bird + Vector2(0, 4), bird + Vector2(5, 0), bird + Vector2(17, flap)]), CREAM, 4, true)
+	if model.protective_charges > 0:
+		draw_arc(p.pos, 40, 0, TAU, 32, Color("84e2fa"), 2, true)
 	if p.invincible > 0:
 		draw_arc(p.pos, 43, 0, TAU, 40, Color(0.95, 0.8, 0.5, 0.6), 2, true)
 	var frame = 7 if model.phase == "defeat" else 6 if p.hurt > 0.07 else 1 if p.shoot > 0.15 else 2 if p.shoot > 0.08 else 3 if p.shoot > 0 else 4 + int(model.time * 7) % 2 if p.moving or p.dash > 0 else 0
@@ -416,6 +469,45 @@ func _draw_attack_warning(enemy: Dictionary) -> void:
 		var side = direction.orthogonal() * 5
 		draw_polyline(PackedVector2Array([tip - direction * 9 + side, tip, tip - direction * 9 - side]), color, 2, true)
 
+func _draw_field_beam(origin: Vector2, direction: Vector2, color: Color, ray: bool = false) -> void:
+	var endpoints = field_beam_endpoints(origin, direction, ray)
+	if endpoints.size() == 2: draw_line(endpoints[0], endpoints[1], color, 5, true)
+
+static func field_beam_endpoints(origin: Vector2, direction: Vector2, ray: bool = false) -> Array:
+	var low = -INF
+	var high = INF
+	var minimum = Vector2(RonkeRun.WALL_LEFT, RonkeRun.WALL_TOP)
+	var maximum = Vector2(RonkeRun.WALL_RIGHT, RonkeRun.WALL_BOTTOM)
+	if direction.length_squared() < .000001: return []
+	for axis in range(2):
+		if absf(direction[axis]) < .000001:
+			if origin[axis] < minimum[axis] or origin[axis] > maximum[axis]: return []
+			continue
+		var a: float = (minimum[axis] - origin[axis]) / direction[axis]
+		var b: float = (maximum[axis] - origin[axis]) / direction[axis]
+		low = maxf(low, minf(a, b))
+		high = minf(high, maxf(a, b))
+	if ray: low = maxf(0, low)
+	if low > high: return []
+	return [origin + direction * low, origin + direction * high]
+
+func _draw_hazard(hazard: Dictionary) -> void:
+	var colors = {"time_snare": "#84e2fa", "magma": "#ff935b", "swamp": "#b5cf87", "glacier": "#b1efff", "landslide": "#dba57b", "armageddon": "#ff777f", "delayed_bomb": "#ffe984"}
+	var color = Color(colors.get(hazard.kind, "#f6d35c"))
+	draw_circle(hazard.pos, hazard.radius, Color(color, 0.10))
+	draw_arc(hazard.pos, hazard.radius, 0, TAU, 28, Color(color, 0.7), 1.5, true)
+	if hazard.kind == "delayed_bomb":
+		_text(str(maxi(1, ceili(hazard.life))), hazard.pos + Vector2(0, 5), 16, color, true)
+	elif hazard.kind == "time_snare":
+		draw_line(hazard.pos, hazard.pos + Vector2(0, -12), color, 2, true)
+		draw_line(hazard.pos, hazard.pos + Vector2(9, 4), color, 2, true)
+	else:
+		for i in range(3):
+			var position: Vector2 = hazard.pos + Vector2.from_angle(i * TAU / 3 + .5) * minf(18, hazard.radius * .4)
+			if hazard.kind in ["glacier", "armageddon"]:
+				draw_colored_polygon(PackedVector2Array([position + Vector2(0, -7), position + Vector2(5, 4), position + Vector2(-5, 4)]), Color(color, .7))
+			else: draw_circle(position, 4, Color(color, .6))
+
 func _draw_breach_warning() -> void:
 	var count = 0
 	var guardian = false
@@ -444,8 +536,8 @@ func _draw_enemy(enemy: Dictionary) -> void:
 	var rect = Rect2(pos - draw_size / 2 + Vector2(0, bob), draw_size)
 	if enemy_texture:
 		draw_texture_rect_region(enemy_texture, Rect2(rect.position + Vector2(2, 6), rect.size), region, Color(0.01, 0.025, 0.02, 0.55))
-		if enemy.burn > 0 or enemy.poison > 0 or enemy.slow > 0 or enemy.weak > 0:
-			var outline = Color("8ee5ed") if enemy.slow > 0 else Color("b3e589") if enemy.poison > 0 else Color("ffc18a") if enemy.burn > 0 else Color("ffbee3")
+		if enemy.burn > 0 or enemy.poison > 0 or enemy.slow > 0 or enemy.freeze > 0 or enemy.blind > 0 or enemy.charm > 0 or enemy.weak > 0:
+			var outline = Color("8ee5ed") if enemy.slow > 0 or enemy.freeze > 0 else Color("ffb3e3") if enemy.charm > 0 else Color("fff3b1") if enemy.blind > 0 else Color("b3e589") if enemy.poison > 0 else Color("ffc18a") if enemy.burn > 0 else Color("ffbee3")
 			draw_texture_rect_region(enemy_texture, rect.grow(3.5), region, Color(outline, 0.55))
 		draw_texture_rect_region(enemy_texture, rect, region, Color(1.8, 1.65, 1.4) if enemy.flash > 0 else Color.WHITE)
 	else:

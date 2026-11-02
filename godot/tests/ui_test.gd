@@ -37,8 +37,21 @@ func _run_tests() -> void:
 		if button.custom_minimum_size.y == 180:
 			cards.append(button)
 	check(cards.size() == 23, "Crew picker contains all 23 runners")
+	check(cards.filter(func(b): return b.disabled).size() == 1, "Twitch-only runner is visibly disabled")
 	cards[4].pressed.emit()
 	check(scene.selected == "cogitator" and scene.modal_kind == "", "Crew button selects correct runner")
+	scene.open_ball_catalogue()
+	await process_frame
+	var previews = scene.modal_content.find_children("*", "Button", true, false).filter(func(b): return b.text == "Try in practice")
+	check(previews.size() == 90, "Catalogue contains all 21 base and 69 evolved balls")
+	var search = scene.modal_content.find_children("*", "LineEdit", true, false)[0]
+	search.text = "Nosferatu"
+	search.text_changed.emit("Nosferatu")
+	await process_frame
+	check(previews.filter(func(b): return b.is_visible_in_tree()).size() == 1, "Catalogue search filters cards")
+	scene._preview_ball("nosferatu")
+	check(scene.model.practice and scene.model.elements == ["nosferatu"] and scene.modal_kind == "", "Catalogue launches a reward-free ball preview")
+	scene._return_home()
 	scene.open_feedback()
 	await process_frame
 	check(scene.modal_kind == "feedback", "Feedback settings open from home")

@@ -1,0 +1,339 @@
+Godot editor: 4.6.3.stable.official.7d41c59c4
+
+--- Import ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+
+ERROR: Condition "_sock == -1" is true. Returning: FAILED
+   at: _inet_open (drivers/unix/net_socket_unix.cpp:287)
+ERROR: Condition "err != OK" is true. Returning: ERR_CANT_CREATE
+   at: listen (core/io/tcp_server.cpp:54)
+ERROR: Condition "_sock == -1" is true. Returning: FAILED
+   at: _inet_open (drivers/unix/net_socket_unix.cpp:287)
+ERROR: Condition "err != OK" is true. Returning: ERR_CANT_CREATE
+   at: listen (core/io/tcp_server.cpp:54)
+
+
+--- Reference mechanics tests ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: reference-mechanic parity / 112 checks
+
+
+
+--- Evolved catalogue tests ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: evolved catalogue / 485 checks
+
+
+
+--- Defenses and equipment tests ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: defenses and equipment / 67 checks
+
+
+
+--- Stability and interaction tests ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: stability and interaction regression / 433 checks
+
+
+
+--- Ball appearance and environment tests ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: ball appearance and environment / 345 checks
+
+
+
+Remaining stages resumed with 600-second simulation timeout:
+
+--- Native engine tests ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+CREW warrior: victory wave 10 kills 139
+CREW itchy_finger: victory wave 10 kills 146
+CREW repentant: victory wave 10 kills 133
+CREW cohabitants: victory wave 10 kills 137
+CREW cogitator: victory wave 10 kills 130
+CREW embedded: victory wave 10 kills 133
+CREW shade: victory wave 10 kills 134
+CREW shieldbearer: victory wave 10 kills 139
+CREW spendthrift: victory wave 10 kills 139
+CREW juggler: victory wave 10 kills 135
+CREW empty_nester: victory wave 10 kills 134
+CREW flagellant: victory wave 10 kills 137
+CREW makeshift_sisyphus: victory wave 10 kills 130
+CREW physicist: victory wave 10 kills 132
+CREW tactician: playing wave 10 kills 140
+CREW radical: victory wave 10 kills 139
+CREW falconer: victory wave 10 kills 145
+CREW carouser: victory wave 10 kills 138
+CREW tunneller: victory wave 10 kills 134
+CREW tiptoer: victory wave 10 kills 133
+CREW hoary_hoarder: victory wave 10 kills 140
+CREW ballbearer: victory wave 10 kills 134
+PASS: native Godot simulation, 22 seeded runner simulations, mechanics, saves, and sprite resources.
+
+
+
+--- Native UI/input/layout tests ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: native menu/run/upgrade/pause/result/camp flow, sprites, multi-touch, focus handling, portrait and desktop layouts.
+
+
+
+--- Mobile UI/input/layout tests ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: native menu/run/upgrade/pause/result/camp flow, sprites, multi-touch, focus handling, portrait and desktop layouts.
+
+
+
+--- Export resource pack ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1msavepack[22m | Started Packing (102 steps)[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-5a047852f0efb0c8f4bc4103577ef4b4-ballbearer.res[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-d976dbb8c07c0fb760da5e8379d15ea7-carouser.res[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-b7167f952107ee15feded4270d28b7ec-cogitator.res[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-21b1fc181f1e8727e8243276f7f1ac69-cohabitants.res[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-e61fea7c8d68553e8091b1284d8d68fd-embedded.res[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-0a702e4ed0e2b2b8955f5329376992b0-empty_nester.res[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-b975a5ad3eb2bb91ed90917ad432eecc-falconer.res[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-b7f14f6efb4ee102968dd81fb90ab1d7-false_messiah.res[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-bbcf1e328b0fe5a72abbbbd780f2c2f2-flagellant.res[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-d649235bb85265e8f2c22d431c2ea7d7-hoary_hoarder.res[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-4112f6ce983250a816917a4e72b7626a-itchy_finger.res[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-e1d0bb8719f7a2956849b2df8dcc7434-juggler.res[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-8cb2879ca97f771fbc96cdab203754a9-makeshift_sisyphus.res[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-5374a35e0a38243a1d1031f4b013cb41-physicist.res[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-fa4cdc7005357bd4207349f0eb3a46a2-radical.res[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-4b649670e1aedd95ecd3829f09e8824d-repentant.res[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-3533752298495c8b4ce473d186efa26e-shade.res[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-64b3ab53e459f8606e8e0db77147b5db-shieldbearer.res[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-10790de1485ee033099115a47ad20de6-spendthrift.res[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-fc4084cde0f9967c8d78b38938cbe9d9-tactician.res[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-12214a8f9486a7c0e706d7412e86bfd5-tiptoer.res[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-18873a6e2b0f7d1232f0aebdf151b7c7-tunneller.res[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-a54a0e97fb8129183e12d1d1b2c9825a-warrior.res[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/astral.png-51b4df0c1584a59344748426c4debc2c.ctex[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://assets/art/arenas/astral.png.import[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ember.png-566c9f366ef6ff54182fbacca366bd05.ctex[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://assets/art/arenas/ember.png.import[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/verdant.png-16b8f78f4979a48c36d580bb2ccf8424.ctex[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://assets/art/arenas/verdant.png.import[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/enemies.png-7af36326c7b70a5b031c0755176d4b51.ctex[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://assets/art/enemies/enemies.png.import[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/fruit_accent.png-ec183c1df02011af385acd63bc65744c.ctex[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://assets/art/ui/fruit_accent.png.import[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/keyart.png-2c41b6c3ea513469f435d22fec633fde.ctex[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://assets/art/keyart.png.import[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ballbearer.png-bb2c1545c53011b9ddfcbc921e701848.ctex[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://assets/crew/ballbearer.png.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/carouser.png-a0b62321e974120dc59648e6b5fe0a73.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/crew/carouser.png.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cogitator.png-63dc6d1d3f59ba7ebf71d62dadaa81e2.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/crew/cogitator.png.import[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cohabitants.png-735cb03c6f379f8ad065ec3cdd7c0ff9.ctex[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/crew/cohabitants.png.import[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/embedded.png-5d35761da9e29c24f6b4a90bf56880f1.ctex[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://assets/crew/embedded.png.import[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/empty_nester.png-8774fe6444b636890d6cc61c8e792270.ctex[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://assets/crew/empty_nester.png.import[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/falconer.png-2198b9c80bb93f56872e3322c79dbca8.ctex[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://assets/crew/falconer.png.import[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/false_messiah.png-f04ab6d2a4de298b93ce59d8abe383f7.ctex[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://assets/crew/false_messiah.png.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/flagellant.png-dce06ef15c1c9c8985a8098d8651b056.ctex[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/crew/flagellant.png.import[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hoary_hoarder.png-70f4a0e7a8b72a23ab8d01f498bfe6ea.ctex[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://assets/crew/hoary_hoarder.png.import[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/itchy_finger.png-12d150672703935ac561d977351444cb.ctex[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://assets/crew/itchy_finger.png.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/juggler.png-1ea4b34f1a8c1e4d4998b7e17234d435.ctex[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/crew/juggler.png.import[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/makeshift_sisyphus.png-3d474d6ad127ff18efe440af39004bea.ctex[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://assets/crew/makeshift_sisyphus.png.import[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/physicist.png-9eaa1a1492b5e3cc4988bef504325318.ctex[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://assets/crew/physicist.png.import[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/radical.png-1ad69962bc6308d99e97e75a08fdf27d.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://assets/crew/radical.png.import[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/repentant.png-f52f4df13b759e71247bd0a083592cf9.ctex[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://assets/crew/repentant.png.import[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/shade.png-9563a7aec0d1363bc739e61279edc411.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://assets/crew/shade.png.import[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/shieldbearer.png-7e307be461f3999f06bd2a260efecd82.ctex[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://assets/crew/shieldbearer.png.import[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/spendthrift.png-295e07c367cfcf3d142f1af8b5ca1884.ctex[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://assets/crew/spendthrift.png.import[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tactician.png-a655d6894b2c2fbe9506467099b3db6f.ctex[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://assets/crew/tactician.png.import[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tiptoer.png-56b0c5feeaab06522f590637a8b4947b.ctex[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://assets/crew/tiptoer.png.import[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tunneller.png-6dbf22b54024806b21042bcf3fb37236.ctex[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://assets/crew/tunneller.png.import[39m[0m
+[  54% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/warrior.png-f6312c9f1a60fef6e98cb879782e27a2.ctex[39m[0m
+[  54% ] [90m[1msavepack[22m | Storing File: res://assets/crew/warrior.png.import[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Display.ttf-3eccd71c9abdf38358c9167ba8c78b48.fontdata[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://assets/fonts/Display.ttf.import[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/icon.svg-56083ea2a1f1a4f1e49773bdc6d7826c.ctex[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://assets/icon.svg.import[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://data/game_data.json[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://data/visual_data.json[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-b91ca4220262b9dfe456b8dba727c22c-ballbearer.scn[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-7b62a5b54a17a876ae5dabd9e1aa1a52-carouser.scn[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-0b7d29c745a8f464694db590ab417343-cogitator.scn[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-c102745e9108cd2bebfd701812910a39-cohabitants.scn[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-4cfd56811e42de40a5e8620616dc5034-embedded.scn[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-ba40cd1a6dd1a4ef4287b1b27b5d06de-empty_nester.scn[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-922ca5269f4eca6a6704a5d6df871cb6-falconer.scn[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-2ab065d3416b83a4bf69196d197581b0-false_messiah.scn[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-c7d68605472b96ccb9a2528440b45d2f-flagellant.scn[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-44963cfb9475cc2570f9845a38f24e6a-hoary_hoarder.scn[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-8707273af80ab1f8d1fc27a1d6fcbce8-itchy_finger.scn[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-791c5c650cecefba5d928b5a8cafa7e2-juggler.scn[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-0c07a0e8e171e30cdc0798b65f12e055-makeshift_sisyphus.scn[39m[0m
+[  73% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-6abc25594282f768aa246eee0a91cbd9-physicist.scn[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-c59a8e88ecf9d864f773847c7c22ecdd-radical.scn[39m[0m
+[  75% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-58f24b49f3d38241b378b6d38d546de8-repentant.scn[39m[0m
+[  76% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-124efd201d67dc3b957f1751adc74ec4-shade.scn[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-a10fcc37d0c61c44e3a910eaa5519c1f-shieldbearer.scn[39m[0m
+[  78% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-e4386d6cea44fd14a9fe33b4a7c44090-spendthrift.scn[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-00903b73bca8463f1dec11027b1aa943-tactician.scn[39m[0m
+[  80% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-3bed3052e229554d40afb6b782b76225-tiptoer.scn[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-ac2508d738f225f918525996b4053641-tunneller.scn[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-db82078a8a65b867176c0dbd61061050-warrior.scn[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/app.gdc[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://scripts/arena.gdc[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://scripts/ball_effects.gdc[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://scripts/ball_rules.gdc[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://scripts/ball_visuals.gdc[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://scripts/combat_geometry.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://scripts/controls.gdc[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://scripts/evolved_effects.gdc[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://scripts/game_data.gdc[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/run_state.gdc[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://scripts/save_store.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/sound_bank.gdc[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/fonts/LICENSE-DejaVu.txt[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/ballbearer.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/carouser.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/cogitator.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/cohabitants.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/embedded.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/empty_nester.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/falconer.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/false_messiah.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/flagellant.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/hoary_hoarder.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/itchy_finger.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/juggler.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/makeshift_sisyphus.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/physicist.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/radical.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/repentant.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/shade.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/shieldbearer.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/spendthrift.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/tactician.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/tiptoer.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/tunneller.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/animations/warrior.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/ballbearer.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/carouser.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/cogitator.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/cohabitants.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/embedded.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/empty_nester.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/falconer.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/false_messiah.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/flagellant.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/hoary_hoarder.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/itchy_finger.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/juggler.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/makeshift_sisyphus.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/physicist.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/radical.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/repentant.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/shade.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/shieldbearer.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/spendthrift.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/tactician.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/tiptoer.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/tunneller.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/runners/warrior.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/main.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/app.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/arena.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/ball_effects.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/ball_rules.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/ball_visuals.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/combat_geometry.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/controls.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/evolved_effects.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/game_data.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/run_state.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/save_store.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/sound_bank.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/global_script_class_cache.cfg[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/icon.svg[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/uid_cache.bin[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m
+
+ERROR: Condition "_sock == -1" is true. Returning: FAILED
+   at: _inet_open (drivers/unix/net_socket_unix.cpp:287)
+ERROR: Condition "err != OK" is true. Returning: ERR_CANT_CREATE
+   at: listen (core/io/tcp_server.cpp:54)
+ERROR: Condition "_sock == -1" is true. Returning: FAILED
+   at: _inet_open (drivers/unix/net_socket_unix.cpp:287)
+ERROR: Condition "err != OK" is true. Returning: ERR_CANT_CREATE
+   at: listen (core/io/tcp_server.cpp:54)
+
+
+--- Packaged assets ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+PASS: all packaged crew resources, native scenes, and JSON data are present.
+
+
+
+--- Run packaged game ---
+Godot Engine v4.6.3.stable.official.7d41c59c4 - https://godotengine.org
+
+SMOKE: native run started
+
+
+
+PASS: native simulation, UI, input, layouts, resource pack, and packaged startup.
+Device testing and Windows/Android binary export require the matching export templates and platform SDKs.

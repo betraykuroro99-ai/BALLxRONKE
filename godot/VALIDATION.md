@@ -1,3 +1,5 @@
+> Updated by the [stability pass](../docs/STABILITY_PASS.md). Earlier descriptions below record the preceding revision; the latest pass corrects spawned-baby restrictions, level parameters, damage categories, clocks, allies and collisions.
+
 # Native validation
 
 Validated with the installed **Godot 4.6.3 stable** editor. The requested
@@ -5,10 +7,14 @@ Validated with the installed **Godot 4.6.3 stable** editor. The requested
 setup before release. The project uses Godot 4 APIs and the Compatibility
 renderer.
 
+## Current mechanics correction
+
+The source correction adds all 21 base balls, 69 evolved balls and recipe chains, a searchable practice catalogue, signature character rules, and defensive items. See [the scope and reference limits](../docs/MECHANICS_CORRECTIONS.md). Three focused suites contain 663 assertions in addition to existing engine/UI checks. No new APK is built or deployed.
+
 ## Passed
 
 - Project import and native main-scene startup, with no GDScript parse/runtime errors.
-- All 23 crews completed seeded ten-wave native simulation runs.
+- 22 enabled crews execute seeded native simulations with valid state and inventory limits. The Twitch-dependent character is disabled. Victory is not required for every automated input policy.
 - Bounded finite orb state, ricochet reflection/damage, charge recovery, evolution
   ingredient replacement, dash protection, breach defeat, stable terminal state.
 - Manual upgrade freeze/resume and automatic character upgrade selection.
@@ -30,7 +36,7 @@ renderer.
   scenes, and game data were present in the pack.
 - Visual-pass assets: three arena textures, six atlas regions, display font and
   bundled license. UI checks exercise all three biome and both boss drawing paths.
-- The 23 playable character textures retain their pre-pass SHA-256 checksums.
+- All 23 character textures retain their pre-pass SHA-256 checksums.
 
 - Combat feedback: generated PCM cues and bounded voice pool; guardian/victory event routing; settings persistence; zero-motion damage warning; bounded impact motion; settings keep combat paused.
 
@@ -44,7 +50,7 @@ renderer.
 
 - Performance preferences: saved frame-limit selection and validation, reduced-effects/number suppression, clearing active feedback, restoring effects while paused, essential guardian cues and old-save defaults.
 
-- Android test APK exported on GitHub Actions with Godot 4.6.3, JDK 17 and Android SDK tools. APK v2/v3 signature, ZIP/manifest/DEX/assets and ARM32/ARM64 runtime checks passed. [Successful build](https://github.com/betraykuroro99-ai/BALLxRONKE/actions/runs/40985470994).
+- Historical APK validation (before the current mechanics correction): Android test APK exported on GitHub Actions with Godot 4.6.3, JDK 17 and Android SDK tools. APK v2/v3 signature, ZIP/manifest/DEX/assets and ARM32/ARM64 runtime checks passed. [Successful build](https://github.com/betraykuroro99-ai/BALLxRONKE/actions/runs/40985470994).
 
 - Practice/FPS tools: safe targets, target respawn, no wave/XP/reward progression, unchanged normal default, pause/return without changing saved progression or last report, and persistent optional FPS display.
 
